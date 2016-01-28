@@ -1,7 +1,5 @@
 package main;
 
-import items.food.Jerky;
-import items.food.CampBread;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;

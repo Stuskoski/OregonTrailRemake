@@ -13,12 +13,16 @@ public class Profile {
     private static int health;
     private static double thirst;
     private static double hunger;
+    private static double thirstReduce;
+    private static double hungerReduce;
     private static int strength;
     private static int luck;
     private static int smarts;
     private static int agility;
     private static int perception;
     private static int endurance;
+    private static double money;
+    private static double carryingCapactity;
     private static String charClass;
     private static String name;
 
@@ -44,6 +48,14 @@ public class Profile {
     public static void setHunger(double hunger) {
         Profile.hunger = hunger;
     }
+
+
+    public static double getThirstReduce() {return thirstReduce;}
+    public static void setThirstReduce(double thirstReduce) {Profile.thirstReduce = thirstReduce;}
+
+
+    public static double getHungerReduce() {return hungerReduce;}
+    public static void setHungerReduce(double hungerReduce) {Profile.hungerReduce = hungerReduce;}
 
 
     public static int getStrength() {
@@ -94,6 +106,14 @@ public class Profile {
     }
 
 
+    public static double getMoney() {return money;}
+    public static void setMoney(double money) {Profile.money = money;}
+
+
+    public static double getCarryingCapactity() {return carryingCapactity;}
+    public static void setCarryingCapactity(double carryingCapactity) {Profile.carryingCapactity = carryingCapactity;}
+
+
     public static String getCharClass() {
         return charClass;
     }
@@ -105,8 +125,6 @@ public class Profile {
     public static String getName() {
         return name;
     }
-
-
     public static void setName(String name) {
         Profile.name = name;
     }

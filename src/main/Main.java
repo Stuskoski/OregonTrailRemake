@@ -10,7 +10,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-
         BorderPane borderPane = new BorderPane();
         Scene test = new Scene(borderPane, 500, 500);
 

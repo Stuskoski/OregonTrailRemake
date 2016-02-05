@@ -55,7 +55,7 @@ public class JackOfAllTrades implements Characteristics {
     public double getStartingMoney() {return 500.00;}
 
     @Override
-    public String getName() {return "Jack of All Trades";}
+    public String getCharClass() {return "Jack of All Trades";}
 
     @Override
     public String getDescription() {

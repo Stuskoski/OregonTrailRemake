@@ -57,7 +57,7 @@ public class LuckyMF implements Characteristics {
     public double getStartingMoney() {return 900.00;}
 
     @Override
-    public String getName() {
+    public String getCharClass() {
         return "Lucky MF";
     }
 

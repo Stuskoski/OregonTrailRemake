@@ -18,6 +18,6 @@ public interface Characteristics {
     int getPerception(); //Perception is how well a character can see things such as items or traps 1-25
     int getEndurance(); //Endurance is how long a character can travel before they have to reset 1-25
     double getStartingMoney(); //return the starting money of the class
-    String getName(); //get the name of the character class
-    String getDescription(); //get the description of the character class
+    String getCharClass(); //get the name of the character class
+    String getDescription(); //get the description of the character class.
 }

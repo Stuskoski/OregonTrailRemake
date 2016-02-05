@@ -58,7 +58,7 @@ public class Genius implements Characteristics {
     }
 
     @Override
-    public String getName() {
+    public String getCharClass() {
         return "Genius";
     }
 

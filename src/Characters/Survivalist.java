@@ -55,7 +55,7 @@ public class Survivalist implements Characteristics {
     public double getStartingMoney() {return 300.00;}
 
     @Override
-    public String getName() {
+    public String getCharClass() {
         return "Survivalist";
     }
 

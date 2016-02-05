@@ -54,7 +54,7 @@ public class Banker implements Characteristics{
     public double getStartingMoney() {return 1000.00;}
 
     @Override
-    public String getName() {
+    public String getCharClass() {
         return "Banker";
     }
 

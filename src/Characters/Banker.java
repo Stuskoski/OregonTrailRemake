@@ -54,6 +54,9 @@ public class Banker implements Characteristics{
     public double getStartingMoney() {return 1000.00;}
 
     @Override
+    public double getCarryingCapacity() {return 50.00;}
+
+    @Override
     public String getCharClass() {
         return "Banker";
     }

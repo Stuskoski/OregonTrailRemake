@@ -8,9 +8,7 @@ import items.ItemInterface;
  */
 public class Ox implements ItemInterface {
     @Override
-    public double getWeight() {
-        return 1000.0;
-    }
+    public double getWeight() {return 1000.0;}
 
     @Override
     public String getDescription() {

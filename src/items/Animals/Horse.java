@@ -7,9 +7,7 @@ import items.ItemInterface;
  */
 public class Horse implements ItemInterface {
     @Override
-    public double getWeight() {
-        return 800.00;
-    }
+    public double getWeight() {return 800.00;}
 
     @Override
     public String getDescription() {
@@ -24,5 +22,9 @@ public class Horse implements ItemInterface {
     @Override
     public String getName() {
         return "American Pure Bred";
+    }
+
+    public double getWeightCapacityIncrease(){
+        return 40.00;
     }
 }

@@ -1,6 +1,5 @@
 package models;
 
-import Characters.Banker;
 import Characters.Characteristics;
 import main.Profile;
 

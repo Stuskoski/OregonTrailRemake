@@ -58,6 +58,9 @@ public class Genius implements Characteristics {
     }
 
     @Override
+    public double getCarryingCapacity() {return 50.00;}
+
+    @Override
     public String getCharClass() {
         return "Genius";
     }

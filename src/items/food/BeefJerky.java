@@ -8,9 +8,7 @@ import items.ItemInterface;
  */
 public class BeefJerky implements ItemInterface {
     @Override
-    public double getWeight() {
-        return 0.5;
-    }
+    public double getWeight() {return 0.5;}
 
     @Override
     public String getDescription() {

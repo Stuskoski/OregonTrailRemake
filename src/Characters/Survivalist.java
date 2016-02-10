@@ -47,12 +47,13 @@ public class Survivalist implements Characteristics {
     }
 
     @Override
-    public int getEndurance() {
-        return 25;
-    }
+    public int getEndurance() {return 25;}
 
     @Override
     public double getStartingMoney() {return 300.00;}
+
+    @Override
+    public double getCarryingCapacity() {return 150.00;}
 
     @Override
     public String getCharClass() {

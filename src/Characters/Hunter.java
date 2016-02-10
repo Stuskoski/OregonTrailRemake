@@ -56,6 +56,9 @@ public class Hunter implements Characteristics {
     public double getStartingMoney() {return 300.00;}
 
     @Override
+    public double getCarryingCapacity() {return 100.00;}
+
+    @Override
     public String getCharClass() { return "Hunter"; }
 
     @Override

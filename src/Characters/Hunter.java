@@ -13,12 +13,12 @@ public class Hunter implements Characteristics {
     public int getHealth() {return 100;}
 
     @Override
-    public double getThirst() {
+    public double getThirstConsume() {
         return 0.4;
     }
 
     @Override
-    public double getHunger() {
+    public double getHungerConsume() {
         return 0.5;
     }
 

@@ -12,12 +12,12 @@ public class Survivalist implements Characteristics {
     public int getHealth() {return 120;}
 
     @Override
-    public double getThirst() {
+    public double getThirstConsume() {
         return 0.2;
     }
 
     @Override
-    public double getHunger() {
+    public double getHungerConsume() {
         return 0.2;
     }
 

@@ -17,8 +17,8 @@ public class InstantiateProfile {
         Profile.setHealth(character.getHealth());
         Profile.setThirst(100.00);
         Profile.setHunger(100.00);
-        Profile.setThirstReduce(character.getThirst());
-        Profile.setHungerReduce(character.getHunger());
+        Profile.setThirstReduce(character.getThirstConsume());
+        Profile.setHungerReduce(character.getHungerConsume());
         Profile.setStrength(character.getStrength());
         Profile.setLuck(character.getLuck());
         Profile.setSmarts(character.getSmarts());
@@ -26,7 +26,7 @@ public class InstantiateProfile {
         Profile.setPerception(character.getPerception());
         Profile.setEndurance(character.getEndurance());
         Profile.setMoney(character.getStartingMoney());
-        Profile.setCarryingCapactity(character.getStrength() * 10.00); //Strength is associated with the amount you can carry
+        Profile.setCarryingCapactity(character.getCarryingCapacity());
         Profile.setCharClass(character.getCharClass());
         Profile.setName(name);
     }

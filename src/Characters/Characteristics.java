@@ -9,8 +9,8 @@ package Characters;
  */
 public interface Characteristics {
     int getHealth(); //Health will be an int between 0-120
-    double getThirst(); //Thirst will be a double 0.00-1.00, this is how fast the traveller goes through water
-    double getHunger(); //Hunger will be a double 0.00-1.00, this is how fast the traveller goes through food
+    double getThirstConsume(); //Thirst will be a double 0.00-1.00, this is how fast the traveller goes through water
+    double getHungerConsume(); //Hunger will be a double 0.00-1.00, this is how fast the traveller goes through food
     int getStrength(); //How strong the character is. 1-25
     int getLuck(); //How lucky the the characters is. 1-25
     int getSmarts(); //Smarts is how well a character is able to do things 1-25

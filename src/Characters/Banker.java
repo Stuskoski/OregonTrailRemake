@@ -13,10 +13,10 @@ public class Banker implements Characteristics{
     }
 
     @Override
-    public double getThirst() {return 0.75;}
+    public double getThirstConsume() {return 0.75;}
 
     @Override
-    public double getHunger() {
+    public double getHungerConsume() {
         return 0.75;
     }
 

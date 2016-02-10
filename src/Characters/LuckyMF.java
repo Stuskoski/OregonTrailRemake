@@ -16,12 +16,12 @@ public class LuckyMF implements Characteristics {
     }
 
     @Override
-    public double getThirst() {
+    public double getThirstConsume() {
         return 0.6;
     }
 
     @Override
-    public double getHunger() {
+    public double getHungerConsume() {
         return 0.6;
     }
 

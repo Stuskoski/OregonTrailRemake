@@ -13,12 +13,12 @@ public class Genius implements Characteristics {
     public int getHealth() {return 80;}
 
     @Override
-    public double getThirst() {
+    public double getThirstConsume() {
         return 0.30;
     } //Thirsty but smart enough not to go through all the water
 
     @Override
-    public double getHunger() {
+    public double getHungerConsume() {
         return 0.30;
     }
 

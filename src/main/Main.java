@@ -1,31 +1,36 @@
 package main;
 
 import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import views.MainScreenView;
 
 public class Main extends Application {
 
+    private static Stage mainPrimaryStage;
+
+    /**
+     * Gets the primaryStage from start and sets it to
+     * a instance variable so we can access it from
+     * anywhere.  Creates the main screen and sets it
+     * so it has a starting point.
+     * @param primaryStage
+     * @throws Exception
+     */
     @Override
     public void start(Stage primaryStage) throws Exception{
-        BorderPane borderPane = new BorderPane();
-        Scene test = new Scene(borderPane, 500, 500);
-
-        Label label1 = new Label("Title");
-
-        borderPane.setCenter(label1);
-
-        //Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Hello World");
-
-        primaryStage.setScene(test);
-        primaryStage.show();
+        mainPrimaryStage = primaryStage;
+        MainScreenView.createLoginScene();
+        mainPrimaryStage.setTitle("Oregon Trail - Remake");
+        mainPrimaryStage.setScene(MainScreenView.getLoginScene());
+        mainPrimaryStage.show();
     }
 
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    public static Stage getPrimaryStage(){
+        return mainPrimaryStage;
     }
 }

@@ -1,0 +1,5 @@
+#mainScreen {
+    -fx-background-image: url("homescreenBackground.jpg");
+    -fx-background-repeat: stretch;
+    -fx-background-position: center center;
+}

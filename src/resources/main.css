@@ -1,5 +1,13 @@
+/*-----------------------Main Screen---------------------------*/
 #mainScreen {
     -fx-background-image: url("homescreenBackground.jpg");
     -fx-background-repeat: stretch;
     -fx-background-position: center center;
 }
+#mainScreenBtn{
+    -fx-background-color: linear-gradient(#ff5400, #be1d00);
+    -fx-background-radius: 30;
+    -fx-background-insets: 0;
+    -fx-text-fill: white;
+}
+/*---------------------------------------------------------------*/

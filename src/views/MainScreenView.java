@@ -32,6 +32,10 @@ public class MainScreenView {
         Button loadGame = new Button("Load Game");
         Button exit = new Button("Exit");
 
+        newGame.setId("mainScreenBtn");
+        loadGame.setId("mainScreenBtn");
+        exit.setId("mainScreenBtn");
+
         vBox.getChildren().addAll(newGame, loadGame, exit);
 
         gridPane.add(vBox, 0, 0);
@@ -40,6 +44,17 @@ public class MainScreenView {
 
         gridPane.setId("mainScreen");
         newScene.getStylesheets().add("resources/main.css");
+
+        //Action listeners
+        newGame.setOnAction(event -> {
+            System.out.println("New Game");
+        });
+        loadGame.setOnAction(event -> {
+            System.out.println("Load Game");
+        });
+        exit.setOnAction(event -> {
+            System.exit(0);
+        });
 
         setLoginScene(newScene);
     }

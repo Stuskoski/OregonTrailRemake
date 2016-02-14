@@ -47,12 +47,6 @@ public class NewGameView {
         gridPane.setVgap(10);
         gridPane.setPadding(new Insets(25, 25, 25, 25));
 
-        characterDescriptionArea.setPrefWidth(350);
-        characterDescriptionArea.setEditable(false);
-        Label characterDescriptionLabel = new Label("Character Description");
-        vBox.getChildren().addAll(characterDescriptionLabel, characterDescriptionArea);
-        borderPane.setRight(vBox);
-
         Label characterLabel = new Label("Select A Character");
         ComboBox<String> comboBox = new ComboBox<>();
         comboBox.setPromptText("Select Character Type");
@@ -90,6 +84,26 @@ public class NewGameView {
         name5Field.setPromptText("Child Three's Name");
         gridPane.add(name5Label, 0, 8);
         gridPane.add(name5Field, 1, 8);
+
+        characterDescriptionArea.setPrefWidth(350);
+        characterDescriptionArea.setEditable(false);
+        HBox charDescriptionLabelHbox = new HBox();
+        Label characterDescriptionLabel = new Label("Character Description");
+        charDescriptionLabelHbox.setAlignment(Pos.CENTER);
+        charDescriptionLabelHbox.getChildren().add(characterDescriptionLabel);
+        characterDescriptionArea.setTooltip(new Tooltip("Description of the selected character"));
+        vBox.getChildren().addAll(charDescriptionLabelHbox, characterDescriptionArea);
+        gridPane.add(vBox, 2, 1);
+
+        HBox createCharHbox = new HBox();
+        Button createChar = new Button("Create Character");
+        createChar.setTooltip(new Tooltip("Submit Character Creation"));
+        createCharHbox.getChildren().add(createChar);
+        createCharHbox.setAlignment(Pos.CENTER);
+        createCharHbox.setPadding(new Insets(0,0,25,0));
+        borderPane.setBottom(createCharHbox);
+
+        gridPane.setGridLinesVisible(true);
 
         borderPane.setCenter(gridPane);
         borderPane.setTop(hBox);

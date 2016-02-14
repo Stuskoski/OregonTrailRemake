@@ -21,10 +21,7 @@ public class Banker implements Characteristics{
     }
 
     @Override
-    public int getStrength() {
-        return 10;
-    }
-
+    public int getStrength() {return 10;}
     @Override
     public int getLuck() {
         return 15;

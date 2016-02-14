@@ -47,7 +47,7 @@ public class MainScreenView {
 
         //Action listeners
         newGame.setOnAction(event -> {
-            System.out.println("New Game");
+            NewGameView.createNewGameView();
         });
         loadGame.setOnAction(event -> {
             System.out.println("Load Game");

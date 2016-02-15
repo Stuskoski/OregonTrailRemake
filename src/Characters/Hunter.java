@@ -48,9 +48,7 @@ public class Hunter implements Characteristics {
     }
 
     @Override
-    public int getEndurance() {
-        return 15;
-    }
+    public int getEndurance() {return 15;}
 
     @Override
     public double getStartingMoney() {return 300.00;}

@@ -40,7 +40,7 @@ public class MainScreenView {
 
         gridPane.add(vBox, 0, 0);
 
-        Scene newScene = new Scene(gridPane, 800, 600);
+        Scene newScene = new Scene(gridPane, 900, 700);
 
         gridPane.setId("mainScreen");
         newScene.getStylesheets().add("resources/main.css");

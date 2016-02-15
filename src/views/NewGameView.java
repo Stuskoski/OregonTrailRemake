@@ -1,6 +1,8 @@
 package views;
 
 import Characters.*;
+import CustomClasses.ProgressIndicatorBar;
+import javafx.beans.property.ReadOnlyDoubleWrapper;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -9,10 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.stage.Popup;
 import main.Main;
@@ -35,6 +34,23 @@ public class NewGameView {
 
     public static void createNewGameView(){
         double height, width;
+        final int statMax25 = 25;
+        final int cashMax1000 = 1000;
+        final int carryMax150 = 150;
+        final int healthMax120 = 120;
+        final String WORK_DONE_LABEL_FORMAT = "%.0f";
+        final ReadOnlyDoubleWrapper strengthWrapper = new ReadOnlyDoubleWrapper();
+        final ReadOnlyDoubleWrapper luckWrapper = new ReadOnlyDoubleWrapper();
+        final ReadOnlyDoubleWrapper smartWrapper = new ReadOnlyDoubleWrapper();
+        final ReadOnlyDoubleWrapper agilityWrapper = new ReadOnlyDoubleWrapper();
+        final ReadOnlyDoubleWrapper perceptionWrapper = new ReadOnlyDoubleWrapper();
+        final ReadOnlyDoubleWrapper enduranceWrapper = new ReadOnlyDoubleWrapper();
+        final ReadOnlyDoubleWrapper moneyWrapper = new ReadOnlyDoubleWrapper();
+        final ReadOnlyDoubleWrapper carryWrapper = new ReadOnlyDoubleWrapper();
+        final ReadOnlyDoubleWrapper healthWrapper = new ReadOnlyDoubleWrapper();
+        final ReadOnlyDoubleWrapper thirstWrapper = new ReadOnlyDoubleWrapper();
+        final ReadOnlyDoubleWrapper hungerWrapper = new ReadOnlyDoubleWrapper();
+
         BorderPane borderPane = new BorderPane();
         GridPane gridPane = new GridPane();
         Label title = new Label("Create A Character");
@@ -43,7 +59,7 @@ public class NewGameView {
         TextArea characterDescriptionArea = new TextArea();
 
         hBox.setAlignment(Pos.CENTER);
-        gridPane.setHgap(10);
+        gridPane.setHgap(40);
         gridPane.setVgap(10);
         gridPane.setPadding(new Insets(25, 25, 25, 25));
 
@@ -99,7 +115,7 @@ public class NewGameView {
         createChar.setTooltip(new Tooltip("Submit Character Creation"));
         createCharHbox.getChildren().add(createChar);
         createCharHbox.setAlignment(Pos.CENTER);
-        createCharHbox.setPadding(new Insets(0,0,25,0));
+        createCharHbox.setPadding(new Insets(25,0,25,0));
         borderPane.setBottom(createCharHbox);
 
        // gridPane.setGridLinesVisible(true);
@@ -108,19 +124,18 @@ public class NewGameView {
         Label charStatsLabel = new Label("Character Stats");
         charStatsHbox.getChildren().add(charStatsLabel);
         charStatsHbox.setAlignment(Pos.CENTER);
-        gridPane.add(charStatsHbox, 2, 2);
 
-        HBox stat1 = new HBox(10);
-        HBox stat2 = new HBox(10);
-        HBox stat3 = new HBox(10);
-        HBox stat4 = new HBox(10);
-        HBox stat5 = new HBox(10);
-        HBox stat6 = new HBox(10);
-        HBox stat7 = new HBox(10);
-        HBox stat8 = new HBox(10);
-        HBox stat9 = new HBox(10);
-        HBox stat10 = new HBox(10);
-        HBox stat11 = new HBox(10);
+        HBox strengthHbox = new HBox(10);
+        HBox luckHbox = new HBox(10);
+        HBox smartsHbox = new HBox(10);
+        HBox agilityHbox = new HBox(10);
+        HBox perceptionHbox = new HBox(10);
+        HBox enduranceHbox = new HBox(10);
+        HBox moneyHbox = new HBox(10);
+        HBox carryHbox = new HBox(10);
+        HBox healthHbox = new HBox(10);
+        HBox thirstHbox = new HBox(10);
+        HBox hungerHbox = new HBox(10);
 
         Label strengthLabel = new Label("Strength: ");
         Label luckLabel = new Label("Luck: ");
@@ -134,40 +149,85 @@ public class NewGameView {
         Label thirstLabel = new Label("Thirst: ");
         Label hungerLabel = new Label("Hunger: ");
 
-        Label stat1Label = new Label();
-        Label stat2Label = new Label();
-        Label stat3Label = new Label();
-        Label stat4Label = new Label();
-        Label stat5Label = new Label();
-        Label stat6Label = new Label();
-        Label stat7Label = new Label();
-        Label stat8Label = new Label();
-        Label stat9Label = new Label();
-        Label stat10Label = new Label();
-        Label stat11Label = new Label();
+        final ProgressIndicatorBar strBar = new ProgressIndicatorBar(
+                strengthWrapper.getReadOnlyProperty(),
+                statMax25,
+                WORK_DONE_LABEL_FORMAT
+        );
+        final ProgressIndicatorBar luckBar = new ProgressIndicatorBar(
+                luckWrapper.getReadOnlyProperty(),
+                statMax25,
+                WORK_DONE_LABEL_FORMAT
+        );
+        final ProgressIndicatorBar agilityBar = new ProgressIndicatorBar(
+                agilityWrapper.getReadOnlyProperty(),
+                statMax25,
+                WORK_DONE_LABEL_FORMAT
+        );
+        final ProgressIndicatorBar smartsBar = new ProgressIndicatorBar(
+                smartWrapper.getReadOnlyProperty(),
+                statMax25,
+                WORK_DONE_LABEL_FORMAT
+        );
+        final ProgressIndicatorBar perceptionBar = new ProgressIndicatorBar(
+                perceptionWrapper.getReadOnlyProperty(),
+                statMax25,
+                WORK_DONE_LABEL_FORMAT
+        );
+        final ProgressIndicatorBar enduranceBar = new ProgressIndicatorBar(
+                enduranceWrapper.getReadOnlyProperty(),
+                statMax25,
+                WORK_DONE_LABEL_FORMAT
+        );
+        final ProgressIndicatorBar moneyBar = new ProgressIndicatorBar(
+                moneyWrapper.getReadOnlyProperty(),
+                cashMax1000,
+                WORK_DONE_LABEL_FORMAT
+        );
+        final ProgressIndicatorBar carryBar = new ProgressIndicatorBar(
+                carryWrapper.getReadOnlyProperty(),
+                carryMax150,
+                WORK_DONE_LABEL_FORMAT
+        );
+        final ProgressIndicatorBar healthBar = new ProgressIndicatorBar(
+                healthWrapper.getReadOnlyProperty(),
+                healthMax120,
+                WORK_DONE_LABEL_FORMAT
+        );
+        final ProgressIndicatorBar thirstBar = new ProgressIndicatorBar(
+                thirstWrapper.getReadOnlyProperty(),
+                statMax25,
+                WORK_DONE_LABEL_FORMAT
+        );
+        final ProgressIndicatorBar hungerBar = new ProgressIndicatorBar(
+                hungerWrapper.getReadOnlyProperty(),
+                statMax25,
+                WORK_DONE_LABEL_FORMAT
+        );
 
-        stat1.getChildren().addAll(strengthLabel, stat1Label);
-        stat2.getChildren().addAll(luckLabel, stat2Label);
-        stat3.getChildren().addAll(smartsLabel, stat3Label);
-        stat4.getChildren().addAll(agilityLabel, stat4Label);
-        stat5.getChildren().addAll(perceptionLabel, stat5Label);
-        stat6.getChildren().addAll(enduranceLabel, stat6Label);
-        stat7.getChildren().addAll(startingMoneyLabel, stat7Label);
-        stat8.getChildren().addAll(carryingCapacityLabel, stat8Label);
-        stat9.getChildren().addAll(healthLabel, stat9Label);
-        stat10.getChildren().addAll(thirstLabel, stat10Label);
-        stat11.getChildren().addAll(hungerLabel, stat11Label);
+        strengthHbox.getChildren().addAll(strengthLabel, strBar);
+        luckHbox.getChildren().addAll(luckLabel, luckBar);
+        smartsHbox.getChildren().addAll(smartsLabel, smartsBar);
+        agilityHbox.getChildren().addAll(agilityLabel, agilityBar);
+        perceptionHbox.getChildren().addAll(perceptionLabel, perceptionBar);
+        enduranceHbox.getChildren().addAll(enduranceLabel, enduranceBar);
+        moneyHbox.getChildren().addAll(startingMoneyLabel, moneyBar);
+        carryHbox.getChildren().addAll(carryingCapacityLabel, carryBar);
+        healthHbox.getChildren().addAll(healthLabel, healthBar);
+        thirstHbox.getChildren().addAll(thirstLabel, thirstBar);
+        hungerHbox.getChildren().addAll(hungerLabel, hungerBar);
+
 
         VBox charStatsVbox = new VBox(1);
-        charStatsVbox.getChildren().addAll(stat1,stat2,stat3,stat4,stat5,stat6,stat7,stat8,stat9,stat10,stat11);
+        charStatsVbox.getChildren().addAll(charStatsHbox,strengthHbox,luckHbox,smartsHbox,agilityHbox,perceptionHbox,enduranceHbox,moneyHbox,carryHbox,healthHbox,thirstHbox,hungerHbox);
         gridPane.add(charStatsVbox, 2, 3, 1, 10);
 
         borderPane.setCenter(gridPane);
         borderPane.setTop(hBox);
 
-        comboBox.setOnAction(event -> getCharacterDescription(comboBox.getValue(), characterDescriptionArea, stat1Label,
-                stat2Label, stat3Label, stat4Label, stat5Label, stat6Label, stat7Label, stat8Label, stat9Label,
-                stat10Label, stat11Label));
+        comboBox.setOnAction(event -> getCharacterDescription(comboBox.getValue(), characterDescriptionArea, strengthWrapper,
+                luckWrapper, smartWrapper, agilityWrapper, perceptionWrapper, enduranceWrapper, moneyWrapper, carryWrapper,
+                healthWrapper, thirstWrapper, hungerWrapper));
 
         //Get the width and height from the previous scene.
         height = Main.getPrimaryStage().getScene().getHeight();
@@ -179,104 +239,107 @@ public class NewGameView {
 
     }
 
-    private static void getCharacterDescription(String character, TextArea textArea, Label stat1, Label stat2,
-                                                Label stat3, Label stat4, Label stat5, Label stat6, Label stat7,
-                                                Label stat8, Label stat9, Label stat10, Label stat11){
+    private static void getCharacterDescription(String character, TextArea textArea, ReadOnlyDoubleWrapper strength,
+                                                ReadOnlyDoubleWrapper luck, ReadOnlyDoubleWrapper smarts,
+                                                ReadOnlyDoubleWrapper agility, ReadOnlyDoubleWrapper perception,
+                                                ReadOnlyDoubleWrapper endurance, ReadOnlyDoubleWrapper money,
+                                                ReadOnlyDoubleWrapper carry, ReadOnlyDoubleWrapper health,
+                                                ReadOnlyDoubleWrapper thirst, ReadOnlyDoubleWrapper hunger){
         switch (character) {
             case "Banker":{
                 Banker banker = new Banker();
                 textArea.setText(banker.getDescription());
-                stat1.setText(String.valueOf(banker.getStrength()));
-                stat2.setText(String.valueOf(banker.getLuck()));
-                stat3.setText(String.valueOf(banker.getSmarts()));
-                stat4.setText(String.valueOf(banker.getAgility()));
-                stat5.setText(String.valueOf(banker.getPerception()));
-                stat6.setText(String.valueOf(banker.getEndurance()));
-                stat7.setText(String.valueOf(banker.getStartingMoney()));
-                stat8.setText(String.valueOf(banker.getCarryingCapacity()));
-                stat9.setText(String.valueOf(banker.getHealth()));
-                stat10.setText(String.valueOf(banker.getThirstConsume()));
-                stat11.setText(String.valueOf(banker.getHungerConsume()));
+                strength.setValue(banker.getStrength());
+                luck.setValue(banker.getLuck());
+                smarts.setValue(banker.getSmarts());
+                agility.setValue(banker.getAgility());
+                perception.setValue(banker.getPerception());
+                endurance.setValue(banker.getEndurance());
+                money.setValue(banker.getStartingMoney());
+                carry.setValue(banker.getCarryingCapacity());
+                health.setValue(banker.getHealth());
+                thirst.setValue(banker.getThirstConsume());
+                hunger.setValue(banker.getHungerConsume());
                 break;
             }
             case "Genius":{
                 Genius genius = new Genius();
                 textArea.setText(genius.getDescription());
-                stat1.setText(String.valueOf(genius.getStrength()));
-                stat2.setText(String.valueOf(genius.getLuck()));
-                stat3.setText(String.valueOf(genius.getSmarts()));
-                stat4.setText(String.valueOf(genius.getAgility()));
-                stat5.setText(String.valueOf(genius.getPerception()));
-                stat6.setText(String.valueOf(genius.getEndurance()));
-                stat7.setText(String.valueOf(genius.getStartingMoney()));
-                stat8.setText(String.valueOf(genius.getCarryingCapacity()));
-                stat9.setText(String.valueOf(genius.getHealth()));
-                stat10.setText(String.valueOf(genius.getThirstConsume()));
-                stat11.setText(String.valueOf(genius.getHungerConsume()));
+                strength.setValue(genius.getStrength());
+                luck.setValue(genius.getLuck());
+                smarts.setValue(genius.getSmarts());
+                agility.setValue(genius.getAgility());
+                perception.setValue(genius.getPerception());
+                endurance.setValue(genius.getEndurance());
+                money.setValue(genius.getStartingMoney());
+                carry.setValue(genius.getCarryingCapacity());
+                health.setValue(genius.getHealth());
+                thirst.setValue(genius.getThirstConsume());
+                hunger.setValue(genius.getHungerConsume());
                 break;
             }
             case "Hunter":{
                 Hunter hunter = new Hunter();
                 textArea.setText(hunter.getDescription());
-                stat1.setText(String.valueOf(hunter.getStrength()));
-                stat2.setText(String.valueOf(hunter.getLuck()));
-                stat3.setText(String.valueOf(hunter.getSmarts()));
-                stat4.setText(String.valueOf(hunter.getAgility()));
-                stat5.setText(String.valueOf(hunter.getPerception()));
-                stat6.setText(String.valueOf(hunter.getEndurance()));
-                stat7.setText(String.valueOf(hunter.getStartingMoney()));
-                stat8.setText(String.valueOf(hunter.getCarryingCapacity()));
-                stat9.setText(String.valueOf(hunter.getHealth()));
-                stat10.setText(String.valueOf(hunter.getThirstConsume()));
-                stat11.setText(String.valueOf(hunter.getHungerConsume()));
+                strength.setValue(hunter.getStrength());
+                luck.setValue(hunter.getLuck());
+                smarts.setValue(hunter.getSmarts());
+                agility.setValue(hunter.getAgility());
+                perception.setValue(hunter.getPerception());
+                endurance.setValue(hunter.getEndurance());
+                money.setValue(hunter.getStartingMoney());
+                carry.setValue(hunter.getCarryingCapacity());
+                health.setValue(hunter.getHealth());
+                thirst.setValue(hunter.getThirstConsume());
+                hunger.setValue(hunter.getHungerConsume());
                 break;
             }
             case "Jack of All Trades":{
                 JackOfAllTrades jack = new JackOfAllTrades();
                 textArea.setText(jack.getDescription());
-                stat1.setText(String.valueOf(jack.getStrength()));
-                stat2.setText(String.valueOf(jack.getLuck()));
-                stat3.setText(String.valueOf(jack.getSmarts()));
-                stat4.setText(String.valueOf(jack.getAgility()));
-                stat5.setText(String.valueOf(jack.getPerception()));
-                stat6.setText(String.valueOf(jack.getEndurance()));
-                stat7.setText(String.valueOf(jack.getStartingMoney()));
-                stat8.setText(String.valueOf(jack.getCarryingCapacity()));
-                stat9.setText(String.valueOf(jack.getHealth()));
-                stat10.setText(String.valueOf(jack.getThirstConsume()));
-                stat11.setText(String.valueOf(jack.getHungerConsume()));
+                strength.setValue(jack.getStrength());
+                luck.setValue(jack.getLuck());
+                smarts.setValue(jack.getSmarts());
+                agility.setValue(jack.getAgility());
+                perception.setValue(jack.getPerception());
+                endurance.setValue(jack.getEndurance());
+                money.setValue(jack.getStartingMoney());
+                carry.setValue(jack.getCarryingCapacity());
+                health.setValue(jack.getHealth());
+                thirst.setValue(jack.getThirstConsume());
+                hunger.setValue(jack.getHungerConsume());
                 break;
             }
             case "Lucky MF":{
                 LuckyMF lucky = new LuckyMF();
-                textArea.setText(lucky.getDescription());
-                stat1.setText(String.valueOf(lucky.getStrength()));
-                stat2.setText(String.valueOf(lucky.getLuck()));
-                stat3.setText(String.valueOf(lucky.getSmarts()));
-                stat4.setText(String.valueOf(lucky.getAgility()));
-                stat5.setText(String.valueOf(lucky.getPerception()));
-                stat6.setText(String.valueOf(lucky.getEndurance()));
-                stat7.setText(String.valueOf(lucky.getStartingMoney()));
-                stat8.setText(String.valueOf(lucky.getCarryingCapacity()));
-                stat9.setText(String.valueOf(lucky.getHealth()));
-                stat10.setText(String.valueOf(lucky.getThirstConsume()));
-                stat11.setText(String.valueOf(lucky.getHungerConsume()));
+                textArea.setText(lucky.getDescription());strength.setValue(lucky.getStrength());
+                strength.setValue(lucky.getStrength());
+                luck.setValue(lucky.getLuck());
+                smarts.setValue(lucky.getSmarts());
+                agility.setValue(lucky.getAgility());
+                perception.setValue(lucky.getPerception());
+                endurance.setValue(lucky.getEndurance());
+                money.setValue(lucky.getStartingMoney());
+                carry.setValue(lucky.getCarryingCapacity());
+                health.setValue(lucky.getHealth());
+                thirst.setValue(lucky.getThirstConsume());
+                hunger.setValue(lucky.getHungerConsume());
                 break;
             }
             case "Survivalist":{
                 Survivalist survival = new Survivalist();
                 textArea.setText(survival.getDescription());
-                stat1.setText("\t\t" + String.valueOf(survival.getStrength()) + "/25");
-                stat2.setText("\t\t\t" + String.valueOf(survival.getLuck()) + "/25");
-                stat3.setText("\t\t" + String.valueOf(survival.getSmarts()) + "/25");
-                stat4.setText("\t\t" + String.valueOf(survival.getAgility()) + "/25");
-                stat5.setText("\t\t" + String.valueOf(survival.getPerception()) + "/25");
-                stat6.setText("\t\t" + String.valueOf(survival.getEndurance()) + "/25");
-                stat7.setText("\t\t" + "$"+String.valueOf(survival.getStartingMoney()) + "/1000.00");
-                stat8.setText("\t\t" + String.valueOf(survival.getCarryingCapacity()));
-                stat9.setText("\t\t" + String.valueOf(survival.getHealth()));
-                stat10.setText("\t\t" + String.valueOf(survival.getThirstConsume()));
-                stat11.setText("\t\t" + String.valueOf(survival.getHungerConsume()));
+                strength.setValue(survival.getStrength());
+                luck.setValue(survival.getLuck());
+                smarts.setValue(survival.getSmarts());
+                agility.setValue(survival.getAgility());
+                perception.setValue(survival.getPerception());
+                endurance.setValue(survival.getEndurance());
+                money.setValue(survival.getStartingMoney());
+                carry.setValue(survival.getCarryingCapacity());
+                health.setValue(survival.getHealth());
+                thirst.setValue(survival.getThirstConsume());
+                hunger.setValue(survival.getHungerConsume());
                 break;
             }
 

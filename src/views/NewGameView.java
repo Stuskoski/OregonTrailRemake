@@ -77,7 +77,7 @@ public class NewGameView {
         gridPane.add(name1Label, 0, 4);
         gridPane.add(name1Field, 1, 4);
 
-        Label name2Label = new Label("Wife's Name");
+        Label name2Label = new Label("Spouse's Name");
         TextField name2Field = new TextField();
         name2Field.setPromptText("Wife's Name");
         gridPane.add(name2Label, 0, 5);
@@ -241,6 +241,33 @@ public class NewGameView {
                 luckWrapper, smartWrapper, agilityWrapper, perceptionWrapper, enduranceWrapper, moneyWrapper, carryWrapper,
                 healthWrapper, thirstWrapper, hungerWrapper));
 
+        createChar.setOnAction(event -> {
+            Boolean flag = true;
+            if(name1Field.getText().length() == 0){
+                flag = false;
+            }
+            if(name2Field.getText().length() == 0){
+                flag = false;
+            }
+            if(name3Field.getText().length() == 0){
+                flag = false;
+            }
+            if(name4Field.getText().length() == 0){
+                flag = false;
+            }
+            if(name5Field.getText().length() == 0){
+                flag = false;
+            }
+            if(comboBox.getValue() == null){
+                flag = false;
+            }
+
+            if(flag) {
+                createCharacter(name1Field.getText(), name2Field.getText(), name3Field.getText(),
+                        name4Field.getText(), name5Field.getText(), comboBox.getValue());
+            }
+        });
+
         //Get the width and height from the previous scene.
         height = Main.getPrimaryStage().getScene().getHeight();
         width = Main.getPrimaryStage().getScene().getWidth();
@@ -356,6 +383,15 @@ public class NewGameView {
             }
 
         }
+    }
+
+    private static void createCharacter(String charName, String spouseName, String child1, String child2, String child3, String characterType){
+        System.out.println(charName);
+        System.out.println(spouseName);
+        System.out.println(child1);
+        System.out.println(child2);
+        System.out.println(child3);
+        System.out.println(characterType);
     }
 
     public static void setNewGameView(Scene scene){newGameScene = scene;}

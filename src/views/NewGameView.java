@@ -13,11 +13,15 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
+import javafx.stage.*;
 import javafx.stage.Popup;
+import javafx.stage.Window;
 import main.Main;
+import models.InstantiateProfile;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 /**
  * Created by augustus on 2/13/16.
@@ -243,30 +247,46 @@ public class NewGameView {
 
         createChar.setOnAction(event -> {
             Boolean flag = true;
+            ArrayList<String> errorList = new ArrayList<>();
             if(name1Field.getText().length() == 0){
                 flag = false;
+                errorList.add("Character Name");
             }
             if(name2Field.getText().length() == 0){
                 flag = false;
+                errorList.add("Spouse's Name");
             }
             if(name3Field.getText().length() == 0){
+                errorList.add("Child 1's Name");
                 flag = false;
             }
             if(name4Field.getText().length() == 0){
+                errorList.add("Child 2's Name");
                 flag = false;
             }
             if(name5Field.getText().length() == 0){
+                errorList.add("Child 3's Name");
                 flag = false;
             }
             if(comboBox.getValue() == null){
+                errorList.add("Character Type");
                 flag = false;
             }
 
             if(flag) {
                 createCharacter(name1Field.getText(), name2Field.getText(), name3Field.getText(),
                         name4Field.getText(), name5Field.getText(), comboBox.getValue());
+            }else{
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Character Creation Error");
+                alert.setContentText("The following fields are empty:");
+                alert.setHeaderText(null);
+                alert.showAndWait();
+                errorList.clear();
             }
         });
+
+
 
         //Get the width and height from the previous scene.
         height = Main.getPrimaryStage().getScene().getHeight();
@@ -386,6 +406,38 @@ public class NewGameView {
     }
 
     private static void createCharacter(String charName, String spouseName, String child1, String child2, String child3, String characterType){
+
+        InstantiateProfile profile = new InstantiateProfile();
+        switch (characterType){
+            case "Banker":{
+                profile.createProfile(new Banker(), charName);
+                break;
+            }
+            case "Genius":{
+                profile.createProfile(new Genius(), charName);
+                break;
+            }
+            case "Hunter":{
+                profile.createProfile(new Hunter(), charName);
+                break;
+            }
+            case "Jack of All Trades":{
+                profile.createProfile(new JackOfAllTrades(), charName);
+                break;
+            }
+            case "Lucky MF":{
+                profile.createProfile(new LuckyMF(), charName);
+                break;
+            }
+            case "Survivalist":{
+                profile.createProfile(new Survivalist(), charName);
+                break;
+            }
+            default:{
+                break;
+            }
+        }
+
         System.out.println(charName);
         System.out.println(spouseName);
         System.out.println(child1);

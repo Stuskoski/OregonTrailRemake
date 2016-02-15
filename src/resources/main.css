@@ -3,6 +3,7 @@
     -fx-background-image: url("homescreenBackground.jpg");
     -fx-background-repeat: stretch;
     -fx-background-position: center center;
+    -fx-background-color: black;
 }
 #mainScreenBtn{
     -fx-background-color:

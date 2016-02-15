@@ -34,11 +34,12 @@ public class NewGameView {
 
     public static void createNewGameView(){
         double height, width;
-        final int statMax25 = 25;
-        final int cashMax1000 = 1000;
-        final int carryMax150 = 150;
-        final int healthMax120 = 120;
-        final String WORK_DONE_LABEL_FORMAT = "%.0f";
+        final double statMax25 = 25.0;
+        final double cashMax1000 = 1000;
+        final double carryMax150 = 150;
+        final double healthMax120 = 120;
+        final double consumeMax1 = 1;
+        final String WORK_DONE_LABEL_FORMAT = "%.2f";
         final ReadOnlyDoubleWrapper strengthWrapper = new ReadOnlyDoubleWrapper();
         final ReadOnlyDoubleWrapper luckWrapper = new ReadOnlyDoubleWrapper();
         final ReadOnlyDoubleWrapper smartWrapper = new ReadOnlyDoubleWrapper();
@@ -60,7 +61,7 @@ public class NewGameView {
 
         hBox.setAlignment(Pos.CENTER);
         gridPane.setHgap(40);
-        gridPane.setVgap(10);
+        gridPane.setVgap(20);
         gridPane.setPadding(new Insets(25, 25, 25, 25));
 
         Label characterLabel = new Label("Select A Character");
@@ -137,72 +138,83 @@ public class NewGameView {
         HBox thirstHbox = new HBox(10);
         HBox hungerHbox = new HBox(10);
 
-        Label strengthLabel = new Label("Strength: ");
-        Label luckLabel = new Label("Luck: ");
-        Label smartsLabel = new Label("Smarts: ");
-        Label agilityLabel = new Label("Agility: ");
-        Label perceptionLabel = new Label("Perception: ");
-        Label enduranceLabel = new Label("Endurance: ");
-        Label startingMoneyLabel = new Label("Starting Money: ");
-        Label carryingCapacityLabel = new Label("Carrying Capacity: ");
-        Label healthLabel = new Label("Health: ");
-        Label thirstLabel = new Label("Thirst: ");
-        Label hungerLabel = new Label("Hunger: ");
+        Label strengthLabel = new Label("Strength:\t\t\t");
+        Label luckLabel = new Label("Luck:\t\t\t");
+        Label smartsLabel = new Label("Smarts:\t\t\t");
+        Label agilityLabel = new Label("Agility:\t\t\t");
+        Label perceptionLabel = new Label("Perception:\t\t");
+        Label enduranceLabel = new Label("Endurance:\t\t");
+        Label startingMoneyLabel = new Label("Starting Money:\t");
+        Label carryingCapacityLabel = new Label("Carrying Capacity:\t");
+        Label healthLabel = new Label("Health:\t\t\t");
+        Label thirstLabel = new Label("Thirst:\t\t\t");
+        Label hungerLabel = new Label("Hunger:\t\t\t");
 
         final ProgressIndicatorBar strBar = new ProgressIndicatorBar(
                 strengthWrapper.getReadOnlyProperty(),
                 statMax25,
-                WORK_DONE_LABEL_FORMAT
+                WORK_DONE_LABEL_FORMAT,
+                false
         );
         final ProgressIndicatorBar luckBar = new ProgressIndicatorBar(
                 luckWrapper.getReadOnlyProperty(),
                 statMax25,
-                WORK_DONE_LABEL_FORMAT
+                WORK_DONE_LABEL_FORMAT,
+                false
         );
         final ProgressIndicatorBar agilityBar = new ProgressIndicatorBar(
                 agilityWrapper.getReadOnlyProperty(),
                 statMax25,
-                WORK_DONE_LABEL_FORMAT
+                WORK_DONE_LABEL_FORMAT,
+                false
         );
         final ProgressIndicatorBar smartsBar = new ProgressIndicatorBar(
                 smartWrapper.getReadOnlyProperty(),
                 statMax25,
-                WORK_DONE_LABEL_FORMAT
+                WORK_DONE_LABEL_FORMAT,
+                false
         );
         final ProgressIndicatorBar perceptionBar = new ProgressIndicatorBar(
                 perceptionWrapper.getReadOnlyProperty(),
                 statMax25,
-                WORK_DONE_LABEL_FORMAT
+                WORK_DONE_LABEL_FORMAT,
+                false
         );
         final ProgressIndicatorBar enduranceBar = new ProgressIndicatorBar(
                 enduranceWrapper.getReadOnlyProperty(),
                 statMax25,
-                WORK_DONE_LABEL_FORMAT
+                WORK_DONE_LABEL_FORMAT,
+                false
         );
         final ProgressIndicatorBar moneyBar = new ProgressIndicatorBar(
                 moneyWrapper.getReadOnlyProperty(),
                 cashMax1000,
-                WORK_DONE_LABEL_FORMAT
+                WORK_DONE_LABEL_FORMAT,
+                true
         );
         final ProgressIndicatorBar carryBar = new ProgressIndicatorBar(
                 carryWrapper.getReadOnlyProperty(),
                 carryMax150,
-                WORK_DONE_LABEL_FORMAT
+                WORK_DONE_LABEL_FORMAT,
+                false
         );
         final ProgressIndicatorBar healthBar = new ProgressIndicatorBar(
                 healthWrapper.getReadOnlyProperty(),
                 healthMax120,
-                WORK_DONE_LABEL_FORMAT
+                WORK_DONE_LABEL_FORMAT,
+                false
         );
         final ProgressIndicatorBar thirstBar = new ProgressIndicatorBar(
                 thirstWrapper.getReadOnlyProperty(),
-                statMax25,
-                WORK_DONE_LABEL_FORMAT
+                consumeMax1,
+                WORK_DONE_LABEL_FORMAT,
+                false
         );
         final ProgressIndicatorBar hungerBar = new ProgressIndicatorBar(
                 hungerWrapper.getReadOnlyProperty(),
-                statMax25,
-                WORK_DONE_LABEL_FORMAT
+                consumeMax1,
+                WORK_DONE_LABEL_FORMAT,
+                false
         );
 
         strengthHbox.getChildren().addAll(strengthLabel, strBar);

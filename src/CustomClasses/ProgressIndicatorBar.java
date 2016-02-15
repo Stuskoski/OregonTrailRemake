@@ -17,15 +17,15 @@ public class ProgressIndicatorBar extends StackPane {
 
     final private static int DEFAULT_LABEL_PADDING = 5;
 
-    public ProgressIndicatorBar(final ReadOnlyDoubleProperty workDone, final double totalWork, final String labelFormatSpecifier) {
+    public ProgressIndicatorBar(final ReadOnlyDoubleProperty workDone, final double totalWork, final String labelFormatSpecifier, boolean moneyFlag) {
         this.workDone  = workDone;
         this.totalWork = totalWork;
         this.labelFormatSpecifier = labelFormatSpecifier;
 
-        syncProgress();
+        syncProgress(moneyFlag);
         workDone.addListener(new ChangeListener<Number>() {
             @Override public void changed(ObservableValue<? extends Number> observableValue, Number number, Number number2) {
-                syncProgress();
+                syncProgress(moneyFlag);
             }
         });
 
@@ -35,16 +35,22 @@ public class ProgressIndicatorBar extends StackPane {
     }
 
     // synchronizes the progress indicated with the work done.
-    private void syncProgress() {
+    private void syncProgress(boolean moneyFlag) {
         if (workDone == null || totalWork == 0) {
             text.setText("");
             bar.setProgress(ProgressBar.INDETERMINATE_PROGRESS);
         } else {
-            text.setText(String.format(labelFormatSpecifier, Math.ceil(workDone.get())));
-            bar.setProgress(workDone.get() / totalWork);
+            if(moneyFlag){
+                text.setText("$"+String.format(labelFormatSpecifier, workDone.get()));
+                bar.setProgress(workDone.get() / totalWork);
+            }else{
+                text.setText(String.format(labelFormatSpecifier, workDone.get()));
+                bar.setProgress(workDone.get() / totalWork);
+            }
+
         }
 
-        bar.setMinHeight(text.getBoundsInLocal().getHeight() + DEFAULT_LABEL_PADDING * 2);
-        bar.setMinWidth (text.getBoundsInLocal().getWidth()  + DEFAULT_LABEL_PADDING * 2);
+        bar.setMinHeight(text.getBoundsInLocal().getHeight() + DEFAULT_LABEL_PADDING);
+        bar.setMinWidth (text.getBoundsInLocal().getWidth()  + DEFAULT_LABEL_PADDING);
     }
 }

@@ -22,7 +22,7 @@ public class Main extends Application {
         MainScreenView.createLoginScene();
         mainPrimaryStage.setTitle("Oregon Trail - Remake");
         mainPrimaryStage.setScene(MainScreenView.getLoginScene());
-        mainPrimaryStage.setResizable(false);
+       // mainPrimaryStage.setResizable(false);
         mainPrimaryStage.show();
     }
 

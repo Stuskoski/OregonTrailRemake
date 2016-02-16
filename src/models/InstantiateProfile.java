@@ -1,7 +1,7 @@
 package models;
 
 import Characters.Characteristics;
-import main.Profile;
+import CharacterObjects.Profile;
 
 /**
  * Created by augustus on 2/5/16.
@@ -29,5 +29,11 @@ public class InstantiateProfile {
         Profile.setCarryingCapactity(character.getCarryingCapacity());
         Profile.setCharClass(character.getCharClass());
         Profile.setName(name);
+        createNPCs();
+    }
+
+    //Create the objects for the spouse and the three kids
+    private static void createNPCs(){
+
     }
 }

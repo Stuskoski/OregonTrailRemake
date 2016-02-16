@@ -124,6 +124,7 @@ public class NewGameView {
         borderPane.setBottom(createCharHbox);
 
         Button back = new Button("Back");
+
         gridPane.add(back, 0, 0);
 
        // gridPane.setGridLinesVisible(true);
@@ -275,6 +276,7 @@ public class NewGameView {
                 errorList.add("Child Three's Name");
                 flag = false;
             }
+
             if(flag) {
                 createCharacter(name1Field.getText(), name2Field.getText(), name3Field.getText(),
                         name4Field.getText(), name5Field.getText(), comboBox.getValue());

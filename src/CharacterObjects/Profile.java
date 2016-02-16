@@ -1,4 +1,4 @@
-package main;
+package CharacterObjects;
 
 /**
  * Created by augustus on 1/28/16. THis is the main profile

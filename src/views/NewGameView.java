@@ -123,6 +123,9 @@ public class NewGameView {
         createCharHbox.setPadding(new Insets(25,0,25,0));
         borderPane.setBottom(createCharHbox);
 
+        Button back = new Button("Back");
+        gridPane.add(back, 0, 0);
+
        // gridPane.setGridLinesVisible(true);
 
         HBox charStatsHbox = new HBox();
@@ -248,43 +251,50 @@ public class NewGameView {
         createChar.setOnAction(event -> {
             Boolean flag = true;
             ArrayList<String> errorList = new ArrayList<>();
+            if(comboBox.getValue() == null){
+                errorList.add("Character Type");
+                flag = false;
+            }
             if(name1Field.getText().length() == 0){
                 flag = false;
-                errorList.add("Character Name");
+                errorList.add("Your Name");
             }
             if(name2Field.getText().length() == 0){
                 flag = false;
                 errorList.add("Spouse's Name");
             }
             if(name3Field.getText().length() == 0){
-                errorList.add("Child 1's Name");
+                errorList.add("Child One's Name");
                 flag = false;
             }
             if(name4Field.getText().length() == 0){
-                errorList.add("Child 2's Name");
+                errorList.add("Child Two's Name");
                 flag = false;
             }
             if(name5Field.getText().length() == 0){
-                errorList.add("Child 3's Name");
+                errorList.add("Child Three's Name");
                 flag = false;
             }
-            if(comboBox.getValue() == null){
-                errorList.add("Character Type");
-                flag = false;
-            }
-
             if(flag) {
                 createCharacter(name1Field.getText(), name2Field.getText(), name3Field.getText(),
                         name4Field.getText(), name5Field.getText(), comboBox.getValue());
             }else{
+                String errorStr = "";
+                for (String str: errorList) {
+                    errorStr += str + "\n";
+                }
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Character Creation Error");
-                alert.setContentText("The following fields are empty:");
+                alert.setContentText("The following fields are empty:\n" + errorStr);
                 alert.setHeaderText(null);
                 alert.showAndWait();
                 errorList.clear();
             }
         });
+
+        //Back button to go back to home screen.
+        //Need testing to see if Garbage collector will clear home scene and leave you with a null scene.
+        back.setOnAction(event -> Main.getPrimaryStage().setScene(MainScreenView.getLoginScene()));
 
 
 

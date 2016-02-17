@@ -304,6 +304,7 @@ public class NewGameView {
         //Back button to go back to home screen.
         //Need testing to see if Garbage collector will clear home scene and leave you with a null scene.
         back.setOnAction(event -> Main.getPrimaryStage().setScene(MainScreenView.getLoginScene()));
+        //need to add code for removing existing profile characteristics...maybe(should go to next screen if button hit not back)
 
 
 

@@ -1,7 +1,12 @@
 package models;
 
+import CharacterObjects.*;
 import Characters.Characteristics;
-import CharacterObjects.Profile;
+
+import java.awt.peer.ScrollbarPeer;
+import java.security.SecureRandom;
+import java.text.DecimalFormat;
+import java.util.Random;
 
 /**
  * Created by augustus on 2/5/16.
@@ -29,11 +34,27 @@ public class InstantiateProfile {
         Profile.setCarryingCapactity(character.getCarryingCapacity());
         Profile.setCharClass(character.getCharClass());
         Profile.setName(name);
-        createNPCs();
+        createFamily();
     }
 
     //Create the objects for the spouse and the three kids
-    private static void createNPCs(){
+    //Also set their starting death chance.
+    private static void createFamily(){
+        Spouse spouse = new Spouse(getStartingChance());
+        Child1 child1 = new Child1(getStartingChance());
+        Child2 child2 = new Child2(getStartingChance());
+        Child3 child3 = new Child3(getStartingChance());
+    }
 
+    private static double getStartingChance(){
+        double low = 0.00;
+        double high = 5.00;
+
+        Random r = new Random();
+        double randomValue = low + (high - low) * r.nextDouble();
+
+        DecimalFormat df = new DecimalFormat("#.##");
+
+        return randomValue;
     }
 }

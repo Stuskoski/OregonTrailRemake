@@ -246,29 +246,42 @@ public class NewGameView {
         createChar.setOnAction(event -> {
             Boolean flag = true;
             ArrayList<String> errorList = new ArrayList<>();
+            comboBox.setStyle("-fx-border-color: none");
+            name1Field.setStyle("-fx-border-color: none");
+            name2Field.setStyle("-fx-border-color: none");
+            name3Field.setStyle("-fx-border-color: none");
+            name4Field.setStyle("-fx-border-color: none");
+            name5Field.setStyle("-fx-border-color: none");
             if(comboBox.getValue() == null){
-                errorList.add("Character Type");
                 flag = false;
+                errorList.add("Character Type");
+                comboBox.setStyle("-fx-border-color: red");
             }
             if(name1Field.getText().length() == 0){
                 flag = false;
                 errorList.add("Your Name");
+                name1Field.setStyle("-fx-border-color: red");
+
             }
             if(name2Field.getText().length() == 0){
                 flag = false;
                 errorList.add("Spouse's Name");
+                name2Field.setStyle("-fx-border-color: red");
             }
             if(name3Field.getText().length() == 0){
-                errorList.add("Child One's Name");
                 flag = false;
+                errorList.add("Child One's Name");
+                name3Field.setStyle("-fx-border-color: red");
             }
             if(name4Field.getText().length() == 0){
-                errorList.add("Child Two's Name");
                 flag = false;
+                errorList.add("Child Two's Name");
+                name4Field.setStyle("-fx-border-color: red");
             }
             if(name5Field.getText().length() == 0){
-                errorList.add("Child Three's Name");
                 flag = false;
+                errorList.add("Child Three's Name");
+                name5Field.setStyle("-fx-border-color: red");
             }
 
             if(flag) {
@@ -299,6 +312,8 @@ public class NewGameView {
         width = Main.getPrimaryStage().getScene().getWidth();
 
         Scene newScene = new Scene(borderPane, width, height);
+
+        newScene.getStylesheets().add("resources/main.css");
 
         Main.getPrimaryStage().setScene(newScene);
 
@@ -443,13 +458,6 @@ public class NewGameView {
                 break;
             }
         }
-
-        System.out.println(charName);
-        System.out.println(spouseName);
-        System.out.println(child1);
-        System.out.println(child2);
-        System.out.println(child3);
-        System.out.println(characterType);
     }
 
     public static void setNewGameView(Scene scene){newGameScene = scene;}

@@ -34,6 +34,7 @@ public class InstantiateProfile {
         Profile.setCharClass(character.getCharClass());
         Profile.setName(name);
         createFamily(spouseName, child1Name, child2Name, child3Name);
+        System.out.println("Profile Created");
     }
 
     //Create the objects for the spouse and the three kids

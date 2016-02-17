@@ -21,9 +21,7 @@ public class Profile {
     public static int getHealth() {
         return health;
     }
-    public static void setHealth(int health) {
-        Profile.health = health;
-    }
+    public static void setHealth(int health) {Profile.health = health;}
 
 
     public static double getThirst() {

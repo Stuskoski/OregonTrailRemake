@@ -4,7 +4,7 @@ package CharacterObjects;
  * Created by augustus on 2/16/16.
  */
 public class Spouse {
-    private static boolean isAlive = true;
+    private static boolean isAlive = true; //Initially alive of course
     private static double chanceOfDying;
     private static String healthStatus;
     private static String name;

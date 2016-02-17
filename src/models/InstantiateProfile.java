@@ -3,8 +3,6 @@ package models;
 import CharacterObjects.*;
 import Characters.Characteristics;
 
-import java.awt.peer.ScrollbarPeer;
-import java.security.SecureRandom;
 import java.text.DecimalFormat;
 import java.util.Random;
 
@@ -18,7 +16,8 @@ import java.util.Random;
  */
 public class InstantiateProfile {
 
-    public void createProfile(Characteristics character, String name){
+    public void createProfile(Characteristics character, String name, String spouseName, String child1Name,
+                              String child2Name, String child3Name){
         Profile.setHealth(character.getHealth());
         Profile.setThirst(100.00);
         Profile.setHunger(100.00);
@@ -31,19 +30,19 @@ public class InstantiateProfile {
         Profile.setPerception(character.getPerception());
         Profile.setEndurance(character.getEndurance());
         Profile.setMoney(character.getStartingMoney());
-        Profile.setCarryingCapactity(character.getCarryingCapacity());
+        Profile.setCarryingCapacity(character.getCarryingCapacity());
         Profile.setCharClass(character.getCharClass());
         Profile.setName(name);
-        createFamily();
+        createFamily(spouseName, child1Name, child2Name, child3Name);
     }
 
     //Create the objects for the spouse and the three kids
-    //Also set their starting death chance.
-    private static void createFamily(){
-        Spouse spouse = new Spouse(getStartingChance());
-        Child1 child1 = new Child1(getStartingChance());
-        Child2 child2 = new Child2(getStartingChance());
-        Child3 child3 = new Child3(getStartingChance());
+    //Also set their starting death chance and health status
+    private static void createFamily(String spouseName, String child1Name, String child2Name, String child3Name){
+        Profile.setSpouse(new Spouse(getStartingChance(), "healthy", spouseName));
+        Profile.setChild1(new Child1(getStartingChance(), "healthy", child1Name));
+        Profile.setChild2(new Child2(getStartingChance(), "healthy", child2Name));
+        Profile.setChild3(new Child3(getStartingChance(), "healthy", child3Name));
     }
 
     private static double getStartingChance(){

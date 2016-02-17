@@ -416,27 +416,27 @@ public class NewGameView {
         InstantiateProfile profile = new InstantiateProfile();
         switch (characterType){
             case "Banker":{
-                profile.createProfile(new Banker(), charName);
+                profile.createProfile(new Banker(), charName, spouseName, child1, child2, child3);
                 break;
             }
             case "Genius":{
-                profile.createProfile(new Genius(), charName);
+                profile.createProfile(new Genius(), charName, spouseName, child1, child2, child3);
                 break;
             }
             case "Hunter":{
-                profile.createProfile(new Hunter(), charName);
+                profile.createProfile(new Hunter(), charName, spouseName, child1, child2, child3);
                 break;
             }
             case "Jack of All Trades":{
-                profile.createProfile(new JackOfAllTrades(), charName);
+                profile.createProfile(new JackOfAllTrades(), charName, spouseName, child1, child2, child3);
                 break;
             }
             case "Lucky MF":{
-                profile.createProfile(new LuckyMF(), charName);
+                profile.createProfile(new LuckyMF(), charName, spouseName, child1, child2, child3);
                 break;
             }
             case "Survivalist":{
-                profile.createProfile(new Survivalist(), charName);
+                profile.createProfile(new Survivalist(), charName, spouseName, child1, child2, child3);
                 break;
             }
             default:{

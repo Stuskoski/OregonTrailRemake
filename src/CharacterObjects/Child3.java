@@ -8,9 +8,13 @@ package CharacterObjects;
 public class Child3 {
     private static boolean isAlive = true;
     private static double chanceOfDying;
+    private static String healthStatus;
+    private static String name;
 
-    public Child3(double chanceOfDying){
+    public Child3(double chanceOfDying, String healthStatus, String name){
         Child3.chanceOfDying = chanceOfDying;
+        Child3.healthStatus = healthStatus;
+        Child3.name = name;
     }
 
     public double isChanceOfDying() {return chanceOfDying;}
@@ -19,5 +23,8 @@ public class Child3 {
     public boolean isAlive() {return isAlive;}
     public void setIsAlive(boolean isAlive) {Child3.isAlive = isAlive;}
 
+    public static String getHealthStatus() {return healthStatus;}
+    public static void setHealthStatus(String healthStatus) {Child3.healthStatus = healthStatus;}
 
+    public static String getName() {return name;}
 }

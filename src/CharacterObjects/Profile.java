@@ -10,21 +10,13 @@ package CharacterObjects;
  */
 public class Profile {
 
-    private static int health;
-    private static double thirst;
-    private static double hunger;
-    private static double thirstReduce;
-    private static double hungerReduce;
-    private static int strength;
-    private static int luck;
-    private static int smarts;
-    private static int agility;
-    private static int perception;
-    private static int endurance;
-    private static double money;
-    private static double carryingCapactity;
-    private static String charClass;
-    private static String name;
+    private static double thirst, hunger, thirstReduce, hungerReduce, money, carryingCapacity;
+    private static int health, strength, luck, smarts, agility, perception, endurance;
+    private static String charClass, name;
+    private static Spouse spouse;
+    private static Child1 child1;
+    private static Child2 child2;
+    private static Child3 child3;
 
     public static int getHealth() {
         return health;
@@ -110,8 +102,8 @@ public class Profile {
     public static void setMoney(double money) {Profile.money = money;}
 
 
-    public static double getCarryingCapactity() {return carryingCapactity;}
-    public static void setCarryingCapactity(double carryingCapactity) {Profile.carryingCapactity = carryingCapactity;}
+    public static double getCarryingCapacity() {return carryingCapacity;}
+    public static void setCarryingCapacity(double carryingCapacity) {Profile.carryingCapacity = carryingCapacity;}
 
 
     public static String getCharClass() {
@@ -128,4 +120,20 @@ public class Profile {
     public static void setName(String name) {
         Profile.name = name;
     }
+
+
+    public static Spouse getSpouse() {return spouse;}
+    public static void setSpouse(Spouse spouse) {Profile.spouse = spouse;}
+
+
+    public static Child1 getChild1() {return child1;}
+    public static void setChild1(Child1 child1) {Profile.child1 = child1;}
+
+
+    public static Child2 getChild2() {return child2;}
+    public static void setChild2(Child2 child2) {Profile.child2 = child2;}
+
+
+    public static Child3 getChild3() {return child3;}
+    public static void setChild3(Child3 child3) {Profile.child3 = child3;}
 }

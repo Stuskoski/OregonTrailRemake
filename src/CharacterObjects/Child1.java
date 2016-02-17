@@ -6,9 +6,13 @@ package CharacterObjects;
 public class Child1 {
     private static boolean isAlive = true;
     private static double chanceOfDying;
+    private static String healthStatus;
+    private static String name;
 
-    public Child1(double chanceOfDying){
+    public Child1(double chanceOfDying, String healthStatus, String name){
         Child1.chanceOfDying = chanceOfDying;
+        Child1.healthStatus = healthStatus;
+        Child1.name = name;
     }
 
     public double isChanceOfDying() {return chanceOfDying;}
@@ -16,4 +20,9 @@ public class Child1 {
 
     public static boolean isAlive() {return isAlive;}
     public static void setIsAlive(boolean isAlive) {Child1.isAlive = isAlive;}
+
+    public static String getHealthStatus() {return healthStatus;}
+    public static void setHealthStatus(String healthStatus) {Child1.healthStatus = healthStatus;}
+
+    public static String getName() {return name;}
 }

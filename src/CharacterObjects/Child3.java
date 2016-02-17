@@ -1,5 +1,8 @@
 package CharacterObjects;
 
+import java.text.DecimalFormat;
+import java.util.Random;
+
 /**
  * Created by augustus on 2/16/16.
  * This is the child3 object.  This
@@ -17,11 +20,11 @@ public class Child3 {
         Child3.name = name;
     }
 
-    public double isChanceOfDying() {return chanceOfDying;}
+    public double getChanceOfDying() {return chanceOfDying;}
     public void setChanceOfDying(double chanceOfDying) {Child3.chanceOfDying = chanceOfDying;}
 
-    public boolean isAlive() {return isAlive;}
-    public void setIsAlive(boolean isAlive) {Child3.isAlive = isAlive;}
+    public static boolean isAlive() {return isAlive;}
+    public static void setIsAlive(boolean isAlive) {Child3.isAlive = isAlive;}
 
     public static String getHealthStatus() {return healthStatus;}
     public static void setHealthStatus(String healthStatus) {Child3.healthStatus = healthStatus;}

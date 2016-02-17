@@ -34,7 +34,6 @@ public class InstantiateProfile {
         Profile.setCharClass(character.getCharClass());
         Profile.setName(name);
         createFamily(spouseName, child1Name, child2Name, child3Name);
-        System.out.println("Profile Created");
     }
 
     //Create the objects for the spouse and the three kids
@@ -48,13 +47,13 @@ public class InstantiateProfile {
 
     private static double getStartingChance(){
         double low = 0.00;
-        double high = 5.00;
+        double high = 2.00;
 
         Random r = new Random();
         double randomValue = low + (high - low) * r.nextDouble();
 
         DecimalFormat df = new DecimalFormat("#.##");
 
-        return randomValue;
+        return Double.parseDouble(df.format(randomValue));
     }
 }

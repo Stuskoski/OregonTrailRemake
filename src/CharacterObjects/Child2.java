@@ -1,7 +1,12 @@
 package CharacterObjects;
 
+import java.text.DecimalFormat;
+import java.util.Random;
+
 /**
  * Created by augustus on 2/16/16.
+ * This is the child2 object.  This
+ * has the status, and stats etc.
  */
 public class Child2 {
     private static boolean isAlive = true;
@@ -15,7 +20,7 @@ public class Child2 {
         Child2.name = name;
     }
 
-    public double isChanceOfDying() {return chanceOfDying;}
+    public double getChanceOfDying() {return chanceOfDying;}
     public void setChanceOfDying(double chanceOfDying) {Child2.chanceOfDying = chanceOfDying;}
 
     public static boolean isAlive() {return isAlive;}

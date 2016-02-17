@@ -1,7 +1,12 @@
 package CharacterObjects;
 
+import java.text.DecimalFormat;
+import java.util.Random;
+
 /**
  * Created by augustus on 2/16/16.
+ * This is the Spouse object.  This
+ * has the status, and stats etc.
  */
 public class Spouse {
     private static boolean isAlive = true; //Initially alive of course
@@ -15,7 +20,7 @@ public class Spouse {
         Spouse.name = name;
     }
 
-    public double isChanceOfDying() {return chanceOfDying;}
+    public double getChanceOfDying() {return chanceOfDying;}
     public void setChanceOfDying(double chanceOfDying) {Spouse.chanceOfDying = chanceOfDying;}
 
     public static boolean isAlive() {return isAlive;}

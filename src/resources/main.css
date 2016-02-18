@@ -42,6 +42,7 @@
 /*----------------------Starting Game Info Screen------------------*/
 #startingGameInfoViewBackground{
     -fx-background-color: black;
+    -fx-background-image: url("starryNightBackground.jpg");
 }
 #topLabelStartingGameInfoView{
     -fx-text-fill: yellow;

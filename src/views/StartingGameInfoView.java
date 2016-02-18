@@ -10,6 +10,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.TextAlignment;
 import main.Main;
 
 import java.io.File;
@@ -38,10 +39,11 @@ public class StartingGameInfoView {
 
         gridPane.add(canvas, 0, 0);
 
+        gc.setTextAlign(TextAlignment.CENTER);
         gc.setFill(Color.YELLOW);
         gc.setFont(new Font(20));
-        gc.fillText("The Oregon Trail", (Main.getPrimaryStage().getWidth()/2)-80 ,15);
-        gc.fillText("---Press any button to continue---", (Main.getPrimaryStage().getWidth()/2)-170 ,Main.getPrimaryStage().getHeight()-400);
+        gc.fillText("The Oregon Trail", (Main.getPrimaryStage().getWidth()/2) ,15);
+        gc.fillText("---Press any button to continue---", (Main.getPrimaryStage().getWidth()/2) ,Main.getPrimaryStage().getHeight()-400);
 
         timer.schedule(new scrollTextTimer(), 0, 35);
 
@@ -82,6 +84,7 @@ public class StartingGameInfoView {
         gc.setFont(new Font(20));
         x++;
         gc.clearRect(0, height-x-10, width, 500);
+        gc.setTextAlign(TextAlignment.CENTER);
         gc.fillText("Welcome to Oregon Trail Remade!\n" +
                 "The Oregon Trail is a 2,200-mile\n" +
                 "historic east–west large-wheeled\n" +
@@ -100,11 +103,11 @@ public class StartingGameInfoView {
                 "it might end up costing you or your\n" +
                 "families life.\n" +
                 "Anyways....I hope you enjoy the game\n" +
-                "and good luck ;)\n" , (width/2)-160 ,height+10-x);
+                "and good luck ;)\n" , (width/2) ,height+10-x);
 
         //Execution finished code
         if(height+30-x <= -450){
-            gc.fillText("---Press any button to continue---", (width/2)-170 ,height-400);
+            gc.fillText("---Press any button to continue---", (width/2) ,height-400);
             timer.cancel();
         }
     }

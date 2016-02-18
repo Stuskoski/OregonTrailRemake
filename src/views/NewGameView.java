@@ -108,6 +108,7 @@ public class NewGameView {
         gridPane.add(name5Field, 1, 8);
 
         characterDescriptionArea.setPrefWidth(350);
+        characterDescriptionArea.setStyle("-fx-border-radius: 10 10 10 10; -fx-border-insets: -6 -9 -8 -8;");
         characterDescriptionArea.setEditable(false);
         HBox charDescriptionLabelHbox = new HBox();
         Label characterDescriptionLabel = new Label("Character Description");

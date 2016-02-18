@@ -54,6 +54,7 @@ public class NewGameView {
         BorderPane borderPane = new BorderPane();
         GridPane gridPane = new GridPane();
         Label title = new Label("Create A Character");
+        title.setStyle("-fx-font-size: 24;-fx-font-weight: bold;");
         HBox hBox = new HBox(title);
         VBox vBox = new VBox(10);
         TextArea characterDescriptionArea = new TextArea();
@@ -64,6 +65,7 @@ public class NewGameView {
         gridPane.setPadding(new Insets(25, 25, 25, 25));
 
         Label characterLabel = new Label("Select A Character");
+        characterLabel.setId("boldText");
         ComboBox<String> comboBox = new ComboBox<>();
         comboBox.setPromptText("Select Character Type");
         comboBox.getItems().addAll("Banker", "Genius", "Hunter", "Jack of All Trades", "Lucky MF", "Survivalist");
@@ -71,30 +73,35 @@ public class NewGameView {
         gridPane.add(comboBox, 1, 1);
 
         Label name1Label = new Label("Your Name");
+        name1Label.setId("boldText");
         TextField name1Field = new TextField();
         name1Field.setPromptText("Your Name");
         gridPane.add(name1Label, 0, 4);
         gridPane.add(name1Field, 1, 4);
 
         Label name2Label = new Label("Spouse's Name");
+        name2Label.setId("boldText");
         TextField name2Field = new TextField();
         name2Field.setPromptText("Wife's Name");
         gridPane.add(name2Label, 0, 5);
         gridPane.add(name2Field, 1, 5);
 
         Label name3Label = new Label("Child One's Name");
+        name3Label.setId("boldText");
         TextField name3Field = new TextField();
         name3Field.setPromptText("Child One's Name");
         gridPane.add(name3Label, 0, 6);
         gridPane.add(name3Field, 1, 6);
 
         Label name4Label = new Label("Child Two's Name");
+        name4Label.setId("boldText");
         TextField name4Field = new TextField();
         name4Field.setPromptText("Child Two's Name");
         gridPane.add(name4Label, 0, 7);
         gridPane.add(name4Field, 1, 7);
 
         Label name5Label = new Label("Child Three's Name");
+        name5Label.setId("boldText");
         TextField name5Field = new TextField();
         name5Field.setPromptText("Child Three's Name");
         gridPane.add(name5Label, 0, 8);
@@ -104,6 +111,7 @@ public class NewGameView {
         characterDescriptionArea.setEditable(false);
         HBox charDescriptionLabelHbox = new HBox();
         Label characterDescriptionLabel = new Label("Character Description");
+        characterDescriptionLabel.setId("boldText");
         charDescriptionLabelHbox.setAlignment(Pos.CENTER);
         charDescriptionLabelHbox.getChildren().add(characterDescriptionLabel);
         characterDescriptionArea.setTooltip(new Tooltip("Description of the selected character"));
@@ -111,21 +119,24 @@ public class NewGameView {
         gridPane.add(vBox, 2, 1);
 
         HBox createCharHbox = new HBox();
-        Button createChar = new Button("Create Character");
-        createChar.setTooltip(new Tooltip("Submit Character Creation"));
-        createCharHbox.getChildren().add(createChar);
+        Button createCharBtn = new Button("Create Character");
+        createCharBtn.setId("mainScreenBtn");
+        createCharBtn.setTooltip(new Tooltip("Submit Character Creation"));
+        createCharHbox.getChildren().add(createCharBtn);
         createCharHbox.setAlignment(Pos.CENTER);
         createCharHbox.setPadding(new Insets(25,0,25,0));
         borderPane.setBottom(createCharHbox);
 
-        Button back = new Button("Back");
+        Button backBtn = new Button("Back");
+        backBtn.setId("mainScreenBtn");
 
-        gridPane.add(back, 0, 0);
+        gridPane.add(backBtn, 0, 0);
 
        // gridPane.setGridLinesVisible(true);
 
         HBox charStatsHbox = new HBox();
         Label charStatsLabel = new Label("Character Stats");
+        charStatsLabel.setId("boldText");
         charStatsHbox.getChildren().add(charStatsLabel);
         charStatsHbox.setAlignment(Pos.CENTER);
 
@@ -142,16 +153,27 @@ public class NewGameView {
         HBox hungerHbox = new HBox(10);
 
         Label strengthLabel = new Label("Strength:\t\t\t");
+        strengthLabel.setId("boldText");
         Label luckLabel = new Label("Luck:\t\t\t");
+        luckLabel.setId("boldText");
         Label smartsLabel = new Label("Smarts:\t\t\t");
+        smartsLabel.setId("boldText");
         Label agilityLabel = new Label("Agility:\t\t\t");
+        agilityLabel.setId("boldText");
         Label perceptionLabel = new Label("Perception:\t\t");
+        perceptionLabel.setId("boldText");
         Label enduranceLabel = new Label("Endurance:\t\t");
+        enduranceLabel.setId("boldText");
         Label startingMoneyLabel = new Label("Starting Money:\t");
+        startingMoneyLabel.setId("boldText");
         Label carryingCapacityLabel = new Label("Carrying Capacity:\t");
+        carryingCapacityLabel.setId("boldText");
         Label healthLabel = new Label("Health:\t\t\t");
+        healthLabel.setId("boldText");
         Label thirstLabel = new Label("Thirst:\t\t\t");
+        thirstLabel.setId("boldText");
         Label hungerLabel = new Label("Hunger:\t\t\t");
+        hungerLabel.setId("boldText");
 
         final ProgressIndicatorBar strBar = new ProgressIndicatorBar(
                 strengthWrapper.getReadOnlyProperty(),
@@ -252,7 +274,7 @@ public class NewGameView {
          * Only enable red outlining of TextFields if
          * the create char button has been tried once.
          */
-        createChar.setOnAction(event -> {
+        createCharBtn.setOnAction(event -> {
             //Adds or removes red outlines for empty/non-empty fields
             name1Field.setOnKeyReleased(event1 -> {
                 if (name1Field.getText().length() > 0) {
@@ -349,13 +371,15 @@ public class NewGameView {
 
         //Back button to go back to home screen.
         //Need testing to see if Garbage collector will clear home scene and leave you with a null scene.
-        back.setOnAction(event -> Main.getPrimaryStage().setScene(MainScreenView.getLoginScene()));
+        backBtn.setOnAction(event -> Main.getPrimaryStage().setScene(MainScreenView.getLoginScene()));
         //need to add code for removing existing profile characteristics...maybe(should go to next screen if button hit not back)
 
 
         //Get the width and height from the previous scene.
         height = Main.getPrimaryStage().getScene().getHeight();
         width = Main.getPrimaryStage().getScene().getWidth();
+
+        borderPane.setId("newGameScreen");
 
         Scene newScene = new Scene(borderPane, width, height);
 

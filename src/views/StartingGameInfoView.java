@@ -13,6 +13,8 @@ import javafx.scene.text.Font;
 import main.Main;
 
 import java.io.File;
+import java.net.URI;
+import java.net.URL;
 import java.nio.file.Path;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -51,11 +53,18 @@ public class StartingGameInfoView {
             timer.cancel();
         });
 
-        String path = "starWars.mp3";
-        Media media = new Media(new File(path).toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(media);
-        mediaPlayer.setAutoPlay(true);
-        MediaView mediaView = new MediaView(mediaPlayer);
+  //      final Media media = new Media(new File("src/resources/starWars.mp3").toURI().toString());
+ //       final MediaPlayer mediaPlayer = new MediaPlayer(media);
+//        mediaPlayer.play();
+
+       // String path = "resources/starWars.mp3";
+       // String path = ("src/resources/starWars.mp3");
+        //Media media = new Media(new File(path).toURI().toString());
+        //MediaPlayer mediaPlayer = new MediaPlayer(media);
+        //mediaPlayer.play();
+        //mediaPlayer.setAutoPlay(true);
+        //MediaView mediaView = new MediaView(mediaPlayer);
+        //gridPane.add(mediaView,5,5);
 
 
         Main.getPrimaryStage().setScene(scene);

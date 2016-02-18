@@ -49,6 +49,7 @@ public class NewGameView {
         final ReadOnlyDoubleWrapper healthWrapper = new ReadOnlyDoubleWrapper();
         final ReadOnlyDoubleWrapper thirstWrapper = new ReadOnlyDoubleWrapper();
         final ReadOnlyDoubleWrapper hungerWrapper = new ReadOnlyDoubleWrapper();
+        boolean creatCharBtnHit;
 
         BorderPane borderPane = new BorderPane();
         GridPane gridPane = new GridPane();
@@ -239,11 +240,56 @@ public class NewGameView {
         borderPane.setCenter(gridPane);
         borderPane.setTop(hBox);
 
-        comboBox.setOnAction(event -> getCharacterDescription(comboBox.getValue(), characterDescriptionArea, strengthWrapper,
-                luckWrapper, smartWrapper, agilityWrapper, perceptionWrapper, enduranceWrapper, moneyWrapper, carryWrapper,
-                healthWrapper, thirstWrapper, hungerWrapper));
+        comboBox.setOnAction(event -> {
+            getCharacterDescription(comboBox.getValue(), characterDescriptionArea, strengthWrapper,
+                    luckWrapper, smartWrapper, agilityWrapper, perceptionWrapper, enduranceWrapper, moneyWrapper, carryWrapper,
+                    healthWrapper, thirstWrapper, hungerWrapper);
+            comboBox.setStyle("-fx-border-color: none");
+        });
 
+        /**
+         * Action listener to check for empty fields.
+         * Only enable red outlining of TextFields if
+         * the create char button has been tried once.
+         */
         createChar.setOnAction(event -> {
+            //Adds or removes red outlines for empty/non-empty fields
+            name1Field.setOnKeyReleased(event1 -> {
+                if (name1Field.getText().length() > 0) {
+                    name1Field.setStyle("-fx-border-color: none");
+                } else {
+                    name1Field.setStyle("-fx-border-color: red");
+                }
+            });
+            name2Field.setOnKeyReleased(event1 -> {
+                if (name2Field.getText().length() > 0) {
+                    name2Field.setStyle("-fx-border-color: none");
+                } else {
+                    name2Field.setStyle("-fx-border-color: red");
+                }
+            });
+            name3Field.setOnKeyReleased(event1 -> {
+                if (name3Field.getText().length() > 0) {
+                    name3Field.setStyle("-fx-border-color: none");
+                } else {
+                    name3Field.setStyle("-fx-border-color: red");
+                }
+            });
+            name4Field.setOnKeyReleased(event1 -> {
+                if (name4Field.getText().length() > 0) {
+                    name4Field.setStyle("-fx-border-color: none");
+                } else {
+                    name4Field.setStyle("-fx-border-color: red");
+                }
+            });
+            name5Field.setOnKeyReleased(event1 -> {
+                if (name5Field.getText().length() > 0) {
+                    name5Field.setStyle("-fx-border-color: none");
+                } else {
+                    name5Field.setStyle("-fx-border-color: red");
+                }
+            });
+
             Boolean flag = true;
             ArrayList<String> errorList = new ArrayList<>();
             comboBox.setStyle("-fx-border-color: none");
@@ -305,7 +351,6 @@ public class NewGameView {
         //Need testing to see if Garbage collector will clear home scene and leave you with a null scene.
         back.setOnAction(event -> Main.getPrimaryStage().setScene(MainScreenView.getLoginScene()));
         //need to add code for removing existing profile characteristics...maybe(should go to next screen if button hit not back)
-
 
 
         //Get the width and height from the previous scene.

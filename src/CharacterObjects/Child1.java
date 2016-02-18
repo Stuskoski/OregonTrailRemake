@@ -20,8 +20,8 @@ public class Child1 {
         Child1.name = name;
     }
 
-    public double getChanceOfDying() {return chanceOfDying;}
-    public void setChanceOfDying(double chanceOfDying) {Child1.chanceOfDying = chanceOfDying;}
+    public static double getChanceOfDying() {return chanceOfDying;}
+    public static void setChanceOfDying(double chanceOfDying) {Child1.chanceOfDying = chanceOfDying;}
 
     public static boolean isAlive() {return isAlive;}
     public static void setIsAlive(boolean isAlive) {Child1.isAlive = isAlive;}

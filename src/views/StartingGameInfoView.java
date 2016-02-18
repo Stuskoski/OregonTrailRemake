@@ -53,12 +53,17 @@ public class StartingGameInfoView {
             timer.cancel();
         });
 
-  //      final Media media = new Media(new File("src/resources/starWars.mp3").toURI().toString());
- //       final MediaPlayer mediaPlayer = new MediaPlayer(media);
-//        mediaPlayer.play();
+        try{
+            final Media media = new Media(new File("src/resources/sw.mp3").toURI().toString());
+            final MediaPlayer mediaPlayer = new MediaPlayer(media);
+            mediaPlayer.play();
+        }catch (Exception e){
+            System.out.println("Unable to play intro music for ya.");
+        }
+
 
        // String path = "resources/starWars.mp3";
-       // String path = ("src/resources/starWars.mp3");
+        //String path = ("src/resources/starWars.mp3");
         //Media media = new Media(new File(path).toURI().toString());
         //MediaPlayer mediaPlayer = new MediaPlayer(media);
         //mediaPlayer.play();

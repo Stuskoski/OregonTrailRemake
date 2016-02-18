@@ -4,8 +4,10 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import sun.nio.ch.sctp.SctpNet;
 
@@ -21,12 +23,20 @@ public class MainScreenView {
      */
     public static void createLoginScene(){
         GridPane gridPane = new GridPane();
-        VBox vBox = new VBox(10);
+        VBox vBox = new VBox(15);
+        HBox hBox = new HBox();
 
         gridPane.setAlignment(Pos.CENTER);
         gridPane.setHgap(10);
         gridPane.setVgap(10);
         gridPane.setPadding(new Insets(25, 25, 25, 25));
+
+        Label title = new Label("The Oregon Trail");
+        title.setStyle("-fx-font-weight: bold; -fx-font-size: 16; -fx-text-fill: white");
+        hBox.getChildren().add(title);
+        hBox.setAlignment(Pos.CENTER);
+
+        gridPane.add(hBox, 0, 0);
 
         Button newGame = new Button("New Game");
         Button loadGame = new Button("Load Game");
@@ -35,10 +45,13 @@ public class MainScreenView {
         newGame.setId("mainScreenBtn");
         loadGame.setId("mainScreenBtn");
         exit.setId("mainScreenBtn");
+        newGame.setPrefWidth(120);
+        loadGame.setPrefWidth(120);
+        exit.setPrefWidth(120);
 
         vBox.getChildren().addAll(newGame, loadGame, exit);
 
-        gridPane.add(vBox, 0, 0);
+        gridPane.add(vBox, 0, 2);
 
         Scene newScene = new Scene(gridPane, 900, 700);
 

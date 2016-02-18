@@ -36,7 +36,22 @@
     -fx-font-weight: bold;
     -fx-text-fill: white;
 }
-/*---------------------------------------------------------------*/
+#charDescriptionArea{
+    -fx-border-radius: 10px;
+}
+/*----------------------Starting Game Info Screen------------------*/
+#startingGameInfoViewBackground{
+    -fx-background-color: black;
+}
+#topLabelStartingGameInfoView{
+    -fx-text-fill: yellow;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+#bottomLabelStartingGameInfoView{
+    -fx-text-fill: yellow;
+    -fx-font-size: 14;
+}
 /*---------------------------------------------------------------*/
 /*---------------------------------------------------------------*/
 /*---------------------------------------------------------------*/

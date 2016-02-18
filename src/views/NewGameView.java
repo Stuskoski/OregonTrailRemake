@@ -108,7 +108,7 @@ public class NewGameView {
         gridPane.add(name5Field, 1, 8);
 
         characterDescriptionArea.setPrefWidth(350);
-        characterDescriptionArea.setStyle("-fx-border-radius: 10 10 10 10; -fx-border-insets: -6 -9 -8 -8;");
+        characterDescriptionArea.setId("charDescriptionArea");
         characterDescriptionArea.setEditable(false);
         HBox charDescriptionLabelHbox = new HBox();
         Label characterDescriptionLabel = new Label("Character Description");
@@ -353,9 +353,11 @@ public class NewGameView {
                 name5Field.setStyle("-fx-border-color: red");
             }
 
+            //No errors proceed to create the character and go to next scene.
             if(flag) {
                 createCharacter(name1Field.getText(), name2Field.getText(), name3Field.getText(),
                         name4Field.getText(), name5Field.getText(), comboBox.getValue());
+                StartingGameInfoView.createStartingGameInfoView();
             }else{
                 String errorStr = "";
                 for (String str: errorList) {

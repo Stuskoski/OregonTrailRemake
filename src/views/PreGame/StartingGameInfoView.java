@@ -1,4 +1,4 @@
-package views;
+package views.PreGame;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -11,6 +11,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import main.Main;
+import views.StartingTown.StartingTownView;
+
 import java.io.File;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -100,7 +102,7 @@ public class StartingGameInfoView {
 
         //Execution finished code
         if(height+30-x <= -450){
-            gc.fillText("---Press any button to continue---", (width/2) ,height-400);
+            gc.fillText("---Press any button to continue---", (width/2) ,height-(height/2));
             timer.cancel();
         }
     }

@@ -1,15 +1,10 @@
-package views;
+package views.StartingTown;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
-import javafx.scene.shape.Circle;
 import main.Main;
 
 import java.io.File;
@@ -84,7 +79,21 @@ public class StartingTownView {
             mediaPlayer.play();
         });
 
-        //BackgroundImage backgroundImage = new BackgroundImage(new Image("resources/startingTown.jpg"), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+
+        //Action listeners for on click to go to next scene.
+        storeBtn.setOnAction(event -> {
+            //new scene
+        });
+        hitTheTrailBtn.setOnAction(event -> {
+            //new scene
+        });
+        stableBtn.setOnAction(event -> {
+            //new scene
+        });
+        saloonBtn.setOnAction(event -> {
+            //new scene
+        });
+
 
         Main.getPrimaryStage().setScene(scene);
     }

@@ -1,4 +1,4 @@
-package views;
+package views.PreGame;
 
 import Characters.*;
 import CustomClasses.ProgressIndicatorBar;

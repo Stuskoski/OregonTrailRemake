@@ -2,7 +2,7 @@ package main;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import views.MainScreenView;
+import views.PreGame.MainScreenView;
 
 public class Main extends Application {
 

@@ -1,4 +1,4 @@
-package views;
+package views.PreGame;
 
 /**
  * Created by augustus on 2/13/16.

@@ -5,14 +5,14 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import sun.nio.ch.sctp.SctpNet;
 
 /**
  * Created by augustus on 2/11/16.
+ * The main screen the user will see
+ * whenever they open the application.
  */
 public class MainScreenView {
     private static Scene loginScene;

@@ -7,16 +7,11 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.GridPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.scene.media.MediaView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import main.Main;
-
 import java.io.File;
-import java.net.URI;
-import java.net.URL;
-import java.nio.file.Path;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -51,28 +46,26 @@ public class StartingGameInfoView {
 
         scene.getStylesheets().add("resources/main.css");
 
-        scene.setOnKeyReleased(event -> {
-            timer.cancel();
-        });
-
-        try{
+        //try{
             final Media media = new Media(new File("src/resources/sw.mp3").toURI().toString());
             final MediaPlayer mediaPlayer = new MediaPlayer(media);
             mediaPlayer.play();
-        }catch (Exception e){
-            System.out.println("Unable to play intro music for ya.");
-        }
+           // mediaPlayer.setCycleCount(99);
 
+           // scene.setOnKeyReleased(event -> {
+           //     mediaPlayer.setMute(true);
+           //     System.out.println("muted");
+           // });
+        //}catch (Exception e){
+        //    System.out.println("Unable to play intro music for ya.");
+        //}
 
-       // String path = "resources/starWars.mp3";
-        //String path = ("src/resources/starWars.mp3");
-        //Media media = new Media(new File(path).toURI().toString());
-        //MediaPlayer mediaPlayer = new MediaPlayer(media);
-        //mediaPlayer.play();
-        //mediaPlayer.setAutoPlay(true);
-        //MediaView mediaView = new MediaView(mediaPlayer);
-        //gridPane.add(mediaView,5,5);
-
+        scene.setOnKeyPressed(event -> {
+            mediaPlayer.setMute(true);
+            timer.cancel();
+            StartingTownView.createStartingTownView(); //move on to the next scene
+            StartingGameInfoView.setStartingGameInfoView(null);
+        });
 
         Main.getPrimaryStage().setScene(scene);
     }

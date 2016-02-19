@@ -21,7 +21,7 @@
 }
 /*-----------------------New Game Screen-------------------------*/
 #newGameScreen{
-    -fx-background-image: url("arizonaBackground.jpg");
+    -fx-background-image: url("cartoonDesertBackground.png");
     -fx-background-repeat: stretch;
     -fx-background-size: cover;
     -fx-background-position: center center;
@@ -34,7 +34,7 @@
 #boldText{
     -fx-font-size: 16;
     -fx-font-weight: bold;
-    -fx-text-fill: white;
+    -fx-text-fill: #1a1a1a;
 }
 #charDescriptionArea{
     -fx-border-radius: 10px;
@@ -53,7 +53,14 @@
     -fx-text-fill: yellow;
     -fx-font-size: 14;
 }
-/*---------------------------------------------------------------*/
+/*-----------------------Starting Town Screen-----------------------*/
+#startingTownPane{
+    -fx-background-image: url("startingTown.jpg");
+    -fx-background-repeat: stretch;
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+    -fx-background-color: black;
+}
 /*---------------------------------------------------------------*/
 /*---------------------------------------------------------------*/
 /*---------------------------------------------------------------*/

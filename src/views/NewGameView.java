@@ -358,6 +358,7 @@ public class NewGameView {
                 createCharacter(name1Field.getText(), name2Field.getText(), name3Field.getText(),
                         name4Field.getText(), name5Field.getText(), comboBox.getValue());
                 StartingGameInfoView.createStartingGameInfoView();
+                NewGameView.setNewGameView(null); //****Possible to create errors maybe? Need to check if user wants to restart a game.
             }else{
                 String errorStr = "";
                 for (String str: errorList) {

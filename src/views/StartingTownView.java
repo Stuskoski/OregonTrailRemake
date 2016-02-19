@@ -1,9 +1,15 @@
 package views;
 
 import javafx.scene.Scene;
-import javafx.scene.layout.GridPane;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+import javafx.scene.shape.Circle;
 import main.Main;
 
 import java.io.File;
@@ -20,8 +26,11 @@ public class StartingTownView {
     public static void createStartingTownView(){
         GridPane gridPane = new GridPane();
         gridPane.setId("startingTownPane");
+        gridPane.setHgap(10); //need to add gaps so you can move with grid positions.
+        gridPane.setVgap(10);
+        //gridPane.setGridLinesVisible(true);
 
-        Scene scene = new Scene(gridPane, Main.getPrimaryStage().getScene().getWidth(), Main.getPrimaryStage().getScene().getHeight());
+        Scene scene = new Scene(gridPane, Main.getPrimaryStage().getScene().getWidth()+200, Main.getPrimaryStage().getScene().getHeight()+100);
 
         scene.getStylesheets().add("resources/main.css");
 
@@ -29,6 +38,53 @@ public class StartingTownView {
         final MediaPlayer mediaPlayer = new MediaPlayer(media);
         mediaPlayer.play();
         mediaPlayer.setCycleCount(99);
+
+        Button storeBtn = new Button("Country Store");
+        storeBtn.setId("startTownBtn");
+        gridPane.add(storeBtn, 0, 35, 8, 3);
+
+        Button hitTheTrailBtn = new Button("Hit The Trail");
+        hitTheTrailBtn.setId("startTownBtn");
+        gridPane.add(hitTheTrailBtn, 59, 35);
+
+        Button saloonBtn = new Button("Saloon");
+        saloonBtn.setId("startTownBtn");
+        gridPane.add(saloonBtn, 35, 39);
+
+        Button stableBtn = new Button("Stable");
+        stableBtn.setId("startTownBtn");
+        gridPane.add(stableBtn, 79, 38); //left/right ----  up/down
+
+        /**
+         * Add sounds for entering buttons the scene.
+         */
+        storeBtn.setOnMouseEntered(event -> {
+            final Media doorMedia = new Media(new File("src/resources/doorOpen.mp3").toURI().toString());
+            final MediaPlayer doorMP = new MediaPlayer(doorMedia);
+            doorMP.play();
+            mediaPlayer.play();//make sure to restart other mediaplayer after sound played
+
+        });
+        hitTheTrailBtn.setOnMouseEntered(event -> {
+            final Media doorMedia = new Media(new File("src/resources/windBlowShort.mp3").toURI().toString());
+            final MediaPlayer doorMP = new MediaPlayer(doorMedia);
+            doorMP.play();
+            mediaPlayer.play();
+        });
+        stableBtn.setOnMouseEntered(event -> {
+            final Media doorMedia = new Media(new File("src/resources/horseSnort.mp3").toURI().toString());
+            final MediaPlayer doorMP = new MediaPlayer(doorMedia);
+            doorMP.play();
+            mediaPlayer.play();
+        });
+        saloonBtn.setOnMouseEntered(event -> {
+            final Media doorMedia = new Media(new File("src/resources/barSoundShort.mp3").toURI().toString());
+            final MediaPlayer doorMP = new MediaPlayer(doorMedia);
+            doorMP.play();
+            mediaPlayer.play();
+        });
+
+        //BackgroundImage backgroundImage = new BackgroundImage(new Image("resources/startingTown.jpg"), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 
         Main.getPrimaryStage().setScene(scene);
     }

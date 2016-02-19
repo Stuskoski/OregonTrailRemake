@@ -37,7 +37,7 @@ public class StartingGameInfoView {
         gc.setTextAlign(TextAlignment.CENTER);
         gc.setFill(Color.YELLOW);
         gc.setFont(new Font(20));
-        gc.fillText("The Oregon Trail", (Main.getPrimaryStage().getWidth()/2) ,15);
+       // gc.fillText("The Oregon Trail", (Main.getPrimaryStage().getWidth()/2) ,15);
         gc.fillText("---Press any button to continue---", (Main.getPrimaryStage().getWidth()/2) ,Main.getPrimaryStage().getHeight()-400);
 
         timer.schedule(new scrollTextTimer(), 0, 35);

@@ -56,10 +56,19 @@
 /*-----------------------Starting Town Screen-----------------------*/
 #startingTownPane{
     -fx-background-image: url("startingTown.jpg");
-    -fx-background-repeat: stretch;
-    -fx-background-size: cover;
     -fx-background-position: center center;
     -fx-background-color: black;
+    -fx-background-repeat: no-repeat;
+}
+#startTownBtn{
+    -fx-background-color: rgba(51, 26, 0, 0.8);
+    -fx-background-radius: 30;
+    -fx-background-insets: 0;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+#startTownBtn:hover{
+    -fx-text-fill: saddlebrown;
 }
 /*---------------------------------------------------------------*/
 /*---------------------------------------------------------------*/

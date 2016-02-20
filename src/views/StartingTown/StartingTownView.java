@@ -6,6 +6,7 @@ import javafx.scene.layout.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import main.Main;
+import models.RandomizeStoreContents;
 
 import java.io.File;
 
@@ -63,6 +64,7 @@ public class StartingTownView {
 
         });
         hitTheTrailBtn.setOnMouseEntered(event -> {
+            RandomizeStoreContents.startingTown(); //test
             final Media doorMedia = new Media(new File("src/resources/windBlowShort.mp3").toURI().toString());
             final MediaPlayer trailMP = new MediaPlayer(doorMedia);
             trailMP.setVolume(100);

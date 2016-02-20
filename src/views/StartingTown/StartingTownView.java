@@ -17,6 +17,8 @@ import java.io.File;
  */
 public class StartingTownView {
     private static Scene startingTownView;
+    static final Media media = new Media(new File("src/resources/startingTown.mp3").toURI().toString());
+    static final MediaPlayer mediaPlayer = new MediaPlayer(media);
 
     public static void createStartingTownView(){
         GridPane gridPane = new GridPane();
@@ -29,10 +31,9 @@ public class StartingTownView {
 
         scene.getStylesheets().add("resources/main.css");
 
-        final Media media = new Media(new File("src/resources/startingTown.mp3").toURI().toString());
-        final MediaPlayer mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.setVolume(35);
         mediaPlayer.play();
-        mediaPlayer.setCycleCount(99);
+        mediaPlayer.setCycleCount(99999);
 
         Button storeBtn = new Button("Country Store");
         storeBtn.setId("startTownBtn");
@@ -56,48 +57,59 @@ public class StartingTownView {
         storeBtn.setOnMouseEntered(event -> {
             final Media doorMedia = new Media(new File("src/resources/doorOpen.mp3").toURI().toString());
             final MediaPlayer doorMP = new MediaPlayer(doorMedia);
+            doorMP.setVolume(100);
             doorMP.play();
             mediaPlayer.play();//make sure to restart other mediaplayer after sound played
 
         });
         hitTheTrailBtn.setOnMouseEntered(event -> {
             final Media doorMedia = new Media(new File("src/resources/windBlowShort.mp3").toURI().toString());
-            final MediaPlayer doorMP = new MediaPlayer(doorMedia);
-            doorMP.play();
+            final MediaPlayer trailMP = new MediaPlayer(doorMedia);
+            trailMP.setVolume(100);
+            trailMP.play();
             mediaPlayer.play();
         });
         stableBtn.setOnMouseEntered(event -> {
             final Media doorMedia = new Media(new File("src/resources/horseSnort.mp3").toURI().toString());
-            final MediaPlayer doorMP = new MediaPlayer(doorMedia);
-            doorMP.play();
+            final MediaPlayer stableMP = new MediaPlayer(doorMedia);
+            stableMP.setVolume(100);
+            stableMP.play();
             mediaPlayer.play();
         });
         saloonBtn.setOnMouseEntered(event -> {
             final Media doorMedia = new Media(new File("src/resources/barSoundShort.mp3").toURI().toString());
-            final MediaPlayer doorMP = new MediaPlayer(doorMedia);
-            doorMP.play();
+            final MediaPlayer saloonMP = new MediaPlayer(doorMedia);
+            saloonMP.setVolume(100);
+            saloonMP.play();
             mediaPlayer.play();
         });
 
 
         //Action listeners for on click to go to next scene.
-        storeBtn.setOnAction(event -> {
-            //new scene
+        storeBtn.setOnMouseClicked(event -> {
+            mediaPlayer.stop();
+            StartTownStoreView.createStartTownStoreView();
         });
-        hitTheTrailBtn.setOnAction(event -> {
-            //new scene
+        hitTheTrailBtn.setOnMouseClicked(event -> {
+            //HitTheTrailView.createStartTownTrailView();
         });
-        stableBtn.setOnAction(event -> {
-            //new scene
+        stableBtn.setOnMouseClicked(event -> {
+            mediaPlayer.stop();
+            StartTownStableView.createStartTownStableView();
         });
-        saloonBtn.setOnAction(event -> {
-            //new scene
+        saloonBtn.setOnMouseClicked(event -> {
+            mediaPlayer.stop();
+            StartTownSaloonView.createStartTownSaloonView();
         });
 
-
+        setStartingTownView(scene);
         Main.getPrimaryStage().setScene(scene);
     }
 
-    public static Scene getStartingTownView() {return startingTownView;}
+    public static Scene getStartingTownView() {
+        //restart the music too
+         mediaPlayer.play();
+        return startingTownView;
+    }
     public static void setStartingTownView(Scene startingTownView) {StartingTownView.startingTownView = startingTownView;}
 }

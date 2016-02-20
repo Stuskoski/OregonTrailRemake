@@ -64,7 +64,6 @@ public class StartingTownView {
 
         });
         hitTheTrailBtn.setOnMouseEntered(event -> {
-            RandomizeStoreContents.startingTown(); //test
             final Media doorMedia = new Media(new File("src/resources/windBlowShort.mp3").toURI().toString());
             final MediaPlayer trailMP = new MediaPlayer(doorMedia);
             trailMP.setVolume(100);
@@ -93,6 +92,7 @@ public class StartingTownView {
             StartTownStoreView.createStartTownStoreView();
         });
         hitTheTrailBtn.setOnMouseClicked(event -> {
+            RandomizeStoreContents.startingTown(); //test
             //HitTheTrailView.createStartTownTrailView();
         });
         stableBtn.setOnMouseClicked(event -> {

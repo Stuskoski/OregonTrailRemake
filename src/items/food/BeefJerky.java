@@ -7,6 +7,11 @@ import items.ItemInterface;
  * Mmm mm BeefJerky
  */
 public class BeefJerky implements ItemInterface {
+    private int quantity;
+
+    public BeefJerky(int quantity){
+        this.quantity = quantity;
+    }
     @Override
     public double getWeight() {return 0.5;}
 
@@ -23,5 +28,10 @@ public class BeefJerky implements ItemInterface {
     @Override
     public String getName() {
         return "BeefJerky";
+    }
+
+    @Override
+    public int getQuantity() {
+        return quantity;
     }
 }

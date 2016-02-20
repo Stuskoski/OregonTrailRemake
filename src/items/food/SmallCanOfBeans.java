@@ -6,6 +6,11 @@ import items.ItemInterface;
  * Created by augustus on 1/28/16.
  */
 public class SmallCanOfBeans implements ItemInterface {
+    private int quantity;
+
+    public SmallCanOfBeans(int quantity){
+        this.quantity = quantity;
+    }
     @Override
     public double getWeight() {
         return 0.75;
@@ -24,5 +29,10 @@ public class SmallCanOfBeans implements ItemInterface {
     @Override
     public String getName() {
         return null;
+    }
+
+    @Override
+    public int getQuantity() {
+        return quantity;
     }
 }

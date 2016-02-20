@@ -9,6 +9,8 @@ import items.ItemInterface;
  * to mouse click.
  */
 public class AlienRifle implements GunInterface {
+    private int quantity;
+
     @Override
     public double getWeight() {
         return 2.00;
@@ -44,5 +46,10 @@ public class AlienRifle implements GunInterface {
     @Override
     public int reloadTime() {
         return 1;
+    }
+
+    @Override
+    public int getQuantity() {
+        return quantity;
     }
 }

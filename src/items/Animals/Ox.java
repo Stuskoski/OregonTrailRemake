@@ -7,6 +7,8 @@ import items.ItemInterface;
  * The powerful Oxen
  */
 public class Ox implements ItemInterface {
+    private int quantity;
+
     @Override
     public double getWeight() {return 1000.0;}
 
@@ -27,5 +29,10 @@ public class Ox implements ItemInterface {
 
     public double getWeightCapacityIncrease(){
         return 50.00;
+    }
+
+    @Override
+    public int getQuantity() {
+        return quantity;
     }
 }

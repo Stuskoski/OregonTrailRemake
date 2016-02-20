@@ -8,6 +8,8 @@ import items.ItemInterface;
  * a better firing rate.
  */
 public class Rifle implements GunInterface {
+    private int quantity;
+
     @Override
     public double getWeight() {
         return 5.00;
@@ -42,5 +44,10 @@ public class Rifle implements GunInterface {
     @Override
     public int reloadTime() {
         return 4;
+    }
+
+    @Override
+    public int getQuantity() {
+        return quantity;
     }
 }

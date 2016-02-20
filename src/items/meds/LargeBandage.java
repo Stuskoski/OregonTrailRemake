@@ -5,7 +5,9 @@ import items.ItemInterface;
 /**
  * Created by augustus on 2/9/16.
  */
-public class LargeBandage implements ItemInterface {
+public class LargeBandage implements ItemInterface{
+    private int quantity;
+
     @Override
     public double getWeight() {
         return 0;
@@ -24,5 +26,10 @@ public class LargeBandage implements ItemInterface {
     @Override
     public String getName() {
         return null;
+    }
+
+    @Override
+    public int getQuantity() {
+        return quantity;
     }
 }

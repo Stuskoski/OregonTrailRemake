@@ -7,6 +7,8 @@ import items.ItemInterface;
  * Cheap weapon that has a slow rate of fire and a slow bullet.
  */
 public class FlintlockPistol implements GunInterface {
+    private int quantity;
+
     @Override
     public double getWeight() {
         return 3.00;
@@ -41,6 +43,11 @@ public class FlintlockPistol implements GunInterface {
     @Override
     public int reloadTime() {
         return 8;
+    }
+
+    @Override
+    public int getQuantity() {
+        return quantity;
     }
 
 

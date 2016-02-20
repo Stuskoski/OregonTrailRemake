@@ -7,6 +7,8 @@ import items.ItemInterface;
  * Slow firing rifle that is cheap.
  */
 public class Musket implements GunInterface {
+    private int quantity;
+
     @Override
     public double getWeight() {
         return 5.00;
@@ -41,5 +43,10 @@ public class Musket implements GunInterface {
     @Override
     public int reloadTime() {
         return 7;
+    }
+
+    @Override
+    public int getQuantity() {
+        return quantity;
     }
 }

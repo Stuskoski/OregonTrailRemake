@@ -6,6 +6,8 @@ import items.ItemInterface;
  * Created by augustus on 1/28/16.
  */
 public class Horse implements ItemInterface {
+    private int quantity;
+
     @Override
     public double getWeight() {return 800.00;}
 
@@ -26,5 +28,10 @@ public class Horse implements ItemInterface {
 
     public double getWeightCapacityIncrease(){
         return 40.00;
+    }
+
+    @Override
+    public int getQuantity() {
+        return quantity;
     }
 }

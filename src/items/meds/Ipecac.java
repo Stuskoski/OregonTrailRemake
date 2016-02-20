@@ -6,6 +6,8 @@ import items.ItemInterface;
  * Created by augustus on 2/9/16.
  */
 public class Ipecac implements ItemInterface {
+    private int quantity;
+
     @Override
     public double getWeight() {
         return 0;
@@ -24,5 +26,10 @@ public class Ipecac implements ItemInterface {
     @Override
     public String getName() {
         return null;
+    }
+
+    @Override
+    public int getQuantity() {
+        return quantity;
     }
 }

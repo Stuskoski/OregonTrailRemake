@@ -8,6 +8,11 @@ import items.ItemInterface;
  * Implements interface to get the main qualities.
  */
 public class CampBread implements ItemInterface {
+    private int quantity;
+
+    public CampBread(int quantity){
+        this.quantity = quantity;
+    }
 
     @Override
     public double getWeight() {
@@ -27,5 +32,10 @@ public class CampBread implements ItemInterface {
     @Override
     public String getName() {
         return "Camp Bread";
+    }
+
+    @Override
+    public int getQuantity() {
+        return quantity;
     }
 }

@@ -8,5 +8,6 @@ public interface ItemInterface {
     String getDescription();
     double getPrice();
     String getName();
+    int    getQuantity();
 
 }

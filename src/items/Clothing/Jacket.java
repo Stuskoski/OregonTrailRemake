@@ -6,6 +6,11 @@ import items.ItemInterface;
  * Created by augustus on 2/9/16.
  */
 public class Jacket implements ItemInterface {
+    private int quantity;
+
+    public Jacket(int quantity){
+        this.quantity = quantity;
+    }
     @Override
     public double getWeight() {
         return 0;
@@ -23,6 +28,11 @@ public class Jacket implements ItemInterface {
 
     @Override
     public String getName() {
-        return null;
+        return "Jacket";
+    }
+
+    @Override
+    public int getQuantity() {
+        return quantity;
     }
 }

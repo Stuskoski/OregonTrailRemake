@@ -8,6 +8,8 @@ import items.ItemInterface;
  * One down the middle and one to the left/right.
  */
 public class ShotGun implements GunInterface {
+    private int quantity;
+
     @Override
     public double getWeight() {
         return 6.00;
@@ -41,5 +43,10 @@ public class ShotGun implements GunInterface {
     @Override
     public int reloadTime() {
         return 5;
+    }
+
+    @Override
+    public int getQuantity() {
+        return quantity;
     }
 }

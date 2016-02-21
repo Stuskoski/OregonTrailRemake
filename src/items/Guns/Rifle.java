@@ -10,6 +10,10 @@ import items.ItemInterface;
 public class Rifle implements GunInterface {
     private int quantity;
 
+    public Rifle(int quantity){
+        this.quantity = quantity;
+    }
+
     @Override
     public double getWeight() {
         return 5.00;

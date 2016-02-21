@@ -8,6 +8,10 @@ import items.ItemInterface;
 public class PainKillers implements ItemInterface {
     private int quantity;
 
+    public PainKillers(int quantity){
+        this.quantity = quantity;
+    }
+
     @Override
     public double getWeight() {
         return 0;
@@ -25,7 +29,7 @@ public class PainKillers implements ItemInterface {
 
     @Override
     public String getName() {
-        return null;
+        return "Pain Killers";
     }
 
     @Override

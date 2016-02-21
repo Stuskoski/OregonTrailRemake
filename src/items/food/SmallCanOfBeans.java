@@ -28,7 +28,7 @@ public class SmallCanOfBeans implements ItemInterface {
 
     @Override
     public String getName() {
-        return null;
+        return "Small Can of Beans";
     }
 
     @Override

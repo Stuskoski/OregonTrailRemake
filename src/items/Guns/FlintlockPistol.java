@@ -9,6 +9,10 @@ import items.ItemInterface;
 public class FlintlockPistol implements GunInterface {
     private int quantity;
 
+    public FlintlockPistol(int quantity){
+        this.quantity = quantity;
+    }
+
     @Override
     public double getWeight() {
         return 3.00;
@@ -26,7 +30,7 @@ public class FlintlockPistol implements GunInterface {
 
     @Override
     public String getName() {
-        return "Flintlock Pistols";
+        return "Flintlock Pistol";
     }
 
     @Override

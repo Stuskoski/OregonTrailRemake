@@ -8,6 +8,10 @@ import items.ItemInterface;
 public class Ipecac implements ItemInterface {
     private int quantity;
 
+    public Ipecac(int quantity){
+        this.quantity = quantity;
+    }
+
     @Override
     public double getWeight() {
         return 0;
@@ -25,7 +29,7 @@ public class Ipecac implements ItemInterface {
 
     @Override
     public String getName() {
-        return null;
+        return "Ipecac";
     }
 
     @Override

@@ -11,6 +11,10 @@ import items.ItemInterface;
 public class AlienRifle implements GunInterface {
     private int quantity;
 
+    public AlienRifle(int quantity){
+        this.quantity = quantity;
+    }
+
     @Override
     public double getWeight() {
         return 2.00;
@@ -18,7 +22,7 @@ public class AlienRifle implements GunInterface {
 
     @Override
     public String getDescription() {
-        return "Rifle of unknown origin.  Aliens seem to have dropped" +
+        return "Rifle of unknown origin.  Did aliens drop" +
                 "it on their last visit.";
     }
 

@@ -1,14 +1,14 @@
-package items.meds;
+package items.Clothing;
 
 import items.ItemInterface;
 
 /**
- * Created by augustus on 2/9/16.
+ * Created by augustus on 2/20/16.
  */
-public class Antibiotics implements ItemInterface {
-    private int quantity;
+public class Boots implements ItemInterface {
+    int quantity;
 
-    public Antibiotics(int quantity){
+    public Boots(int quantity){
         this.quantity = quantity;
     }
 
@@ -29,7 +29,7 @@ public class Antibiotics implements ItemInterface {
 
     @Override
     public String getName() {
-        return "Antibiotics";
+        return null;
     }
 
     @Override

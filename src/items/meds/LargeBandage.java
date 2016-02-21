@@ -8,6 +8,10 @@ import items.ItemInterface;
 public class LargeBandage implements ItemInterface{
     private int quantity;
 
+    public LargeBandage(int quantity){
+        this.quantity = quantity;
+    }
+
     @Override
     public double getWeight() {
         return 0;
@@ -25,7 +29,7 @@ public class LargeBandage implements ItemInterface{
 
     @Override
     public String getName() {
-        return null;
+        return "Large Bandage";
     }
 
     @Override

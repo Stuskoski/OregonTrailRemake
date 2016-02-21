@@ -8,6 +8,10 @@ import items.ItemInterface;
 public class Splint implements ItemInterface {
     private int quantity;
 
+    public Splint(int quantity){
+        this.quantity = quantity;
+    }
+
     @Override
     public double getWeight() {
         return 0;
@@ -25,7 +29,7 @@ public class Splint implements ItemInterface {
 
     @Override
     public String getName() {
-        return null;
+        return "Splint";
     }
 
     @Override

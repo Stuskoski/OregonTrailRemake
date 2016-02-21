@@ -1,9 +1,11 @@
 package models;
 
 import items.Clothing.*;
+import items.Guns.FlintlockPistol;
+import items.Guns.Rifle;
 import items.ItemInterface;
-import items.food.BeefJerky;
-import items.food.LargeBottleOfWater;
+import items.food.*;
+import items.meds.SmallBandage;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -19,7 +21,7 @@ public class RandomizeStoreContents {
     //private static ItemInterface item1;
 
     public static ArrayList<ItemInterface> startingTown(){
-        ArrayList<ItemInterface> list = new ArrayList<>();
+        ArrayList<ItemInterface> list = new ArrayList<>();//use interface as the array list so you get the functions of that interface
         int randInt;
         Random random = new Random();
         boolean bool0=true;
@@ -33,7 +35,17 @@ public class RandomizeStoreContents {
         boolean bool8=true;
         boolean bool9=true;
 
-        for (int i = 0; i < 10; i++) {
+        //Items that are always available
+        list.add(new SmallBottleOfWater(99));
+        list.add(new BeefJerky(99));
+        list.add(new CampBread(99));
+        list.add(new Shirt(99));
+        list.add(new Pants(99));
+        list.add(new Boots(99));
+        list.add(new FlintlockPistol(1));
+
+
+        for (int i = 0; i < 5; i++) {
             randInt = random.nextInt(10);
 
             //add static items first to the list.
@@ -68,14 +80,14 @@ public class RandomizeStoreContents {
                 }
                 case 4: {
                     if(bool4) {
-                        list.add(new Pants(random.nextInt(3) + 1));
+                        list.add(new Rifle(1));
                         bool4 = false;
                     }
                     break;
                 }
                 case 5: {
                     if(bool5) {
-                        list.add(new Shirt(random.nextInt(3) + 1));
+                        list.add(new SmallBandage(random.nextInt(3) + 1));
                         bool5 = false;
                     }
                     break;
@@ -96,7 +108,7 @@ public class RandomizeStoreContents {
                 }
                 case 8: {
                     if(bool8) {
-                        list.add(new BeefJerky(random.nextInt(3) + 1));
+                        list.add(new TurkeyJerky(random.nextInt(3) + 1));
                         bool8 = false;
                     }
                     break;

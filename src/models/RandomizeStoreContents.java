@@ -36,7 +36,7 @@ public class RandomizeStoreContents {
         boolean bool9=true;
 
         //Items that are always available
-        startTownList.add(new SmallBottleOfWater(99));
+        startTownList.add(new SmallBottleofWater(99));
         startTownList.add(new BeefJerky(99));
         startTownList.add(new CampBread(99));
         startTownList.add(new Shirt(99));
@@ -115,7 +115,7 @@ public class RandomizeStoreContents {
                 }
                 case 9: {
                     if(bool9) {
-                        startTownList.add(new LargeBottleOfWater(random.nextInt(3) + 1));
+                        startTownList.add(new LargeBottleofWater(random.nextInt(3) + 1));
                         bool9 = false;
                     }
                     break;

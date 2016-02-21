@@ -55,6 +55,11 @@ public class FlintlockPistol implements GunInterface {
     }
 
     @Override
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    @Override
     public String getCategory() {
         return "guns";
     }

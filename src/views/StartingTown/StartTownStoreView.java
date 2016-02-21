@@ -36,7 +36,9 @@ public class StartTownStoreView {
 
         //create the tree root
         TreeItem<Label> root = new TreeItem<>(new Label("Store Inventory"));
-        root.setExpanded(false);
+        root.setExpanded(true);
+        TreeView<Label> treeView = new TreeView<>(root);
+        treeView.setId("treeStyle");
 
         //create the categories for the tree
         TreeItem<Label> food = new TreeItem<>(new Label("Food"));
@@ -86,15 +88,40 @@ public class StartTownStoreView {
                 }
             }
 
+            //When user double clicks the item decrement it in the list.  Add to the cart(need to code)
             itemName.setOnMouseClicked(event -> {
-                if (event.getClickCount() == 2) {
-                    System.out.println("double clicked");
+                //Double click
+                if(event.getClickCount() == 2) {
+                    for (ItemInterface item : RandomizeStoreContents.getStartTownList()) {
+                        if(itemName.getText().replace("\t", "").replaceAll("[0-9]+", "").equals(item.getName())){
+                            item.setQuantity(item.getQuantity()-1);
+                        }
+                    }
+                    itemName.setText(obj.getName() + "\t\t\t" + obj.getQuantity());
+                    //treeView.refresh();
                 }
             });
         }
 
-        TreeView<Label> treeView = new TreeView<>(root);
-        treeView.setId("treeStyle");
+        if(clothing.getChildren().isEmpty()){
+            clothing.getChildren().add(new TreeItem<>(new Label("Empty")));
+        }
+        if(food.getChildren().isEmpty()){
+            food.getChildren().add(new TreeItem<>(new Label("Empty")));
+        }
+        if(guns.getChildren().isEmpty()){
+            guns.getChildren().add(new TreeItem<>(new Label("Empty")));
+        }
+        if(medicine.getChildren().isEmpty()){
+            medicine.getChildren().add(new TreeItem<>(new Label("Empty")));
+        }
+        if(wagonSupplies.getChildren().isEmpty()){
+            wagonSupplies.getChildren().add(new TreeItem<>(new Label("Empty")));
+        }
+        if(misc.getChildren().isEmpty()){
+            misc.getChildren().add(new TreeItem<>(new Label("Empty")));
+        }
+
 
         gridPane.add(treeView, 5, 5);
 

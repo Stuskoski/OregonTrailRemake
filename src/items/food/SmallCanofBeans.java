@@ -5,35 +5,40 @@ import items.ItemInterface;
 /**
  * Created by augustus on 1/28/16.
  */
-public class LargeBottleOfWater implements ItemInterface {
+public class SmallCanofBeans implements ItemInterface {
     private int quantity;
 
-    public LargeBottleOfWater(int quantity){
+    public SmallCanofBeans(int quantity){
         this.quantity = quantity;
     }
     @Override
     public double getWeight() {
-        return 1.25;
+        return 0.75;
     }
 
     @Override
     public String getDescription() {
-        return "A large bottle of water.  Now that's refreshing!";
+        return null;
     }
 
     @Override
     public double getPrice() {
-        return 3.00;
+        return 0;
     }
 
     @Override
     public String getName() {
-        return "Large Bottle of Water";
+        return "Small Can of Beans";
     }
 
     @Override
     public int getQuantity() {
         return quantity;
+    }
+
+    @Override
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     @Override

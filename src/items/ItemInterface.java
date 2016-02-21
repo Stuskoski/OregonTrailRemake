@@ -9,6 +9,6 @@ public interface ItemInterface {
     double getPrice();
     String getName();
     int    getQuantity();
+    void   setQuantity(int quantity);
     String getCategory();
-
 }

@@ -38,6 +38,11 @@ public class SmallBandage implements ItemInterface {
     }
 
     @Override
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    @Override
     public String getCategory() {
         return "meds";
     }

@@ -5,10 +5,10 @@ import items.ItemInterface;
 /**
  * Created by augustus on 1/28/16.
  */
-public class SmallBottleOfWater implements ItemInterface {
+public class SmallBottleofWater implements ItemInterface {
     private int quantity;
 
-    public SmallBottleOfWater(int quantity){
+    public SmallBottleofWater(int quantity){
         this.quantity = quantity;
     }
     @Override
@@ -34,6 +34,11 @@ public class SmallBottleOfWater implements ItemInterface {
     @Override
     public int getQuantity() {
         return quantity;
+    }
+
+    @Override
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     @Override

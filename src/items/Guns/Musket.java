@@ -53,4 +53,9 @@ public class Musket implements GunInterface {
     public int getQuantity() {
         return quantity;
     }
+
+    @Override
+    public String getCategory() {
+        return "guns";
+    }
 }

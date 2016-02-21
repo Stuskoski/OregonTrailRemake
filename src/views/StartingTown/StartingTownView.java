@@ -92,7 +92,6 @@ public class StartingTownView {
             StartTownStoreView.createStartTownStoreView();
         });
         hitTheTrailBtn.setOnMouseClicked(event -> {
-            RandomizeStoreContents.startingTown(); //test
             //HitTheTrailView.createStartTownTrailView();
         });
         stableBtn.setOnMouseClicked(event -> {

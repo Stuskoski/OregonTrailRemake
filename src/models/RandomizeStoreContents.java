@@ -17,11 +17,11 @@ import java.util.Random;
  * as the default ones.
  */
 public class RandomizeStoreContents {
+    private static ArrayList<ItemInterface> startTownList = new ArrayList<>();//use interface as the array startTownList so you get the functions of that interface
 
     //private static ItemInterface item1;
 
     public static ArrayList<ItemInterface> startingTown(){
-        ArrayList<ItemInterface> list = new ArrayList<>();//use interface as the array list so you get the functions of that interface
         int randInt;
         Random random = new Random();
         boolean bool0=true;
@@ -36,86 +36,86 @@ public class RandomizeStoreContents {
         boolean bool9=true;
 
         //Items that are always available
-        list.add(new SmallBottleOfWater(99));
-        list.add(new BeefJerky(99));
-        list.add(new CampBread(99));
-        list.add(new Shirt(99));
-        list.add(new Pants(99));
-        list.add(new Boots(99));
-        list.add(new FlintlockPistol(1));
+        startTownList.add(new SmallBottleOfWater(99));
+        startTownList.add(new BeefJerky(99));
+        startTownList.add(new CampBread(99));
+        startTownList.add(new Shirt(99));
+        startTownList.add(new Pants(99));
+        startTownList.add(new Boots(99));
+        startTownList.add(new FlintlockPistol(1));
 
 
         for (int i = 0; i < 5; i++) {
             randInt = random.nextInt(10);
 
-            //add static items first to the list.
+            //add static items first to the startTownList.
             switch (randInt) {
                 case 0: {
                     if(bool0) {
-                        list.add(new Chaps(random.nextInt(3) + 1));
+                        startTownList.add(new Chaps(random.nextInt(3) + 1));
                         bool0 = false;
                     }
                     break;
                 }
                 case 1: {
                     if(bool1) {
-                        list.add(new Hat(random.nextInt(3) + 1));
+                        startTownList.add(new Hat(random.nextInt(3) + 1));
                         bool1 = false;
                     }
                     break;
                 }
                 case 2: {
                     if(bool2) {
-                        list.add(new Jacket(random.nextInt(3) + 1));
+                        startTownList.add(new Jacket(random.nextInt(3) + 1));
                         bool2 = false;
                     }
                     break;
                 }
                 case 3: {
                     if(bool3) {
-                        list.add(new LeatherVest(random.nextInt(3) + 1));
+                        startTownList.add(new LeatherVest(random.nextInt(3) + 1));
                         bool3 = false;
                     }
                     break;
                 }
                 case 4: {
                     if(bool4) {
-                        list.add(new Rifle(1));
+                        startTownList.add(new Rifle(1));
                         bool4 = false;
                     }
                     break;
                 }
                 case 5: {
                     if(bool5) {
-                        list.add(new SmallBandage(random.nextInt(3) + 1));
+                        startTownList.add(new SmallBandage(random.nextInt(3) + 1));
                         bool5 = false;
                     }
                     break;
                 }
                 case 6: {
                     if(bool6) {
-                        list.add(new Socks(random.nextInt(3) + 1));
+                        startTownList.add(new Socks(random.nextInt(3) + 1));
                         bool6 = false;
                     }
                     break;
                 }
                 case 7: {
                     if(bool7) {
-                        list.add(new TrenchCoat(random.nextInt(3) + 1));
+                        startTownList.add(new TrenchCoat(random.nextInt(3) + 1));
                         bool7 = false;
                     }
                     break;
                 }
                 case 8: {
                     if(bool8) {
-                        list.add(new TurkeyJerky(random.nextInt(3) + 1));
+                        startTownList.add(new TurkeyJerky(random.nextInt(3) + 1));
                         bool8 = false;
                     }
                     break;
                 }
                 case 9: {
                     if(bool9) {
-                        list.add(new LargeBottleOfWater(random.nextInt(3) + 1));
+                        startTownList.add(new LargeBottleOfWater(random.nextInt(3) + 1));
                         bool9 = false;
                     }
                     break;
@@ -124,11 +124,14 @@ public class RandomizeStoreContents {
 
         }
 
-        for (ItemInterface obj : list) {
+        for (ItemInterface obj : startTownList) {
             System.out.println(obj.getName() + " " + obj.getQuantity());
         }
 
-        return list;
+        return startTownList;
     }
+
+    public static ArrayList<ItemInterface> getStartTownList(){ return startTownList; }
+    public static void setStartTownList(ArrayList<ItemInterface> list){ startTownList = list; }
 
 }

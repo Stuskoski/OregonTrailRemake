@@ -36,4 +36,9 @@ public class Ipecac implements ItemInterface {
     public int getQuantity() {
         return quantity;
     }
+
+    @Override
+    public String getCategory() {
+        return "meds";
+    }
 }

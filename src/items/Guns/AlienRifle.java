@@ -56,4 +56,9 @@ public class AlienRifle implements GunInterface {
     public int getQuantity() {
         return quantity;
     }
+
+    @Override
+    public String getCategory() {
+        return "guns";
+    }
 }

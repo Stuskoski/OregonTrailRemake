@@ -35,4 +35,9 @@ public class LeatherVest implements ItemInterface {
     public int getQuantity() {
         return quantity;
     }
+
+    @Override
+    public String getCategory() {
+        return "clothing";
+    }
 }

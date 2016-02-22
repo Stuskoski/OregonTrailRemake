@@ -27,7 +27,7 @@ public class BeefJerky implements ItemInterface {
 
     @Override
     public String getName() {
-        return "BeefJerky";
+        return "Beef Jerky";
     }
 
     @Override

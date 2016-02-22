@@ -1,6 +1,7 @@
 package views.StartingTown;
 
 import items.ItemInterface;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
@@ -23,8 +24,8 @@ public class StartTownStoreView {
 
     public static void createStartTownStoreView(){
         GridPane gridPane = new GridPane();
-        gridPane.setHgap(1);
-        gridPane.setVgap(1);
+        gridPane.setHgap(5);
+        gridPane.setVgap(5);
         gridPane.setId("startTownStoreGrid");
 
         if(canRun) { //might need to reset when user wants to start a new game
@@ -35,10 +36,17 @@ public class StartTownStoreView {
         //ArrayList<ItemInterface> inventory = RandomizeStoreContents.getStartTownList();
 
         //create the tree root
-        TreeItem<Label> root = new TreeItem<>(new Label("Store Inventory"));
-        root.setExpanded(true);
-        TreeView<Label> treeView = new TreeView<>(root);
-        treeView.setId("treeStyle");
+        TreeItem<Label> inventoryRoot = new TreeItem<>(new Label("Store Inventory"));
+        inventoryRoot.setExpanded(true);
+        TreeView<Label> inventoryTreeView = new TreeView<>(inventoryRoot);
+        inventoryTreeView.setShowRoot(false);
+        inventoryTreeView.setId("treeStyle");
+
+        HBox inventoryHeader = new HBox(new Label("Store Inventory"));
+        inventoryHeader.setId("startStoreHeaders");
+        inventoryHeader.setAlignment(Pos.CENTER);
+        gridPane.add(inventoryHeader, 5, 4);
+        gridPane.add(inventoryTreeView, 5, 5);
 
         //create the categories for the tree
         TreeItem<Label> food = new TreeItem<>(new Label("Food"));
@@ -49,17 +57,12 @@ public class StartTownStoreView {
         TreeItem<Label> misc = new TreeItem<>(new Label("Miscellaneous"));
 
 
-        root.getChildren().addAll(food, clothing, medicine, guns, wagonSupplies, misc);
+        inventoryRoot.getChildren().addAll(food, clothing, medicine, guns, wagonSupplies, misc);
 
         //This creates the tree and adds the listeners to it
         for (ItemInterface obj : RandomizeStoreContents.getStartTownList()) {
-            HBox hBox = new HBox(5);
-            Label itemName = new Label(obj.getName() + "\t\t\t" + obj.getQuantity());
-            //Label itemNum = new Label(String.valueOf(obj.getQuantity()));
-            //hBox.getChildren().addAll(itemName, itemNum);
-            //hBox.setOnMouseClicked(event -> {
-            //    System.out.println("clicked");
-            //});
+            Label itemName = new Label(obj.getQuantity() + "\t" + obj.getName());
+
             switch (obj.getCategory()){
                 case "clothing":{
                     clothing.getChildren().add(new TreeItem<>(itemName));
@@ -87,7 +90,6 @@ public class StartTownStoreView {
                     break;
                 }
             }
-
             //When user double clicks the item decrement it in the list.  Add to the cart(need to code)
             itemName.setOnMouseClicked(event -> {
                 //Double click
@@ -97,8 +99,8 @@ public class StartTownStoreView {
                             item.setQuantity(item.getQuantity()-1);
                         }
                     }
-                    itemName.setText(obj.getName() + "\t\t\t" + obj.getQuantity());
-                    //treeView.refresh();
+                    itemName.setText(obj.getQuantity() + "\t" + obj.getName());
+                    //treeView.refresh(); don't think refresh is needed
                 }
             });
         }
@@ -122,8 +124,17 @@ public class StartTownStoreView {
             misc.getChildren().add(new TreeItem<>(new Label("Empty")));
         }
 
+      //  TreeItem<Label> cartRoot = new TreeItem<>(new Label("Store Inventory"));
+      //  inventoryRoot.setExpanded(true);
+      //  TreeView<Label> cartTreeView = new TreeView<>(inventoryRoot);
+      //  inventoryTreeView.setShowRoot(false);
+      //  inventoryTreeView.setId("treeStyle");
 
-        gridPane.add(treeView, 5, 5);
+        HBox cartHeader = new HBox(new Label("Cart"));
+      //  cartHeader.setAlignment(Pos.CENTER);
+        gridPane.add(cartHeader, 10, 4);
+      //  gridPane.add(cartTreeView, 10, 5);
+
 
         Button backBtn = new Button("Back");
         gridPane.add(backBtn, 0, 0);

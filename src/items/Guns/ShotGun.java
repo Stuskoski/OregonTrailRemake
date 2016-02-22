@@ -1,5 +1,6 @@
 package items.Guns;
 
+import items.Clothing.Shirt;
 import items.ItemInterface;
 
 /**
@@ -62,5 +63,10 @@ public class ShotGun implements GunInterface {
     @Override
     public String getCategory() {
         return "guns";
+    }
+
+    @Override
+    public ItemInterface cloneObject() {
+        return new ShotGun(1);
     }
 }

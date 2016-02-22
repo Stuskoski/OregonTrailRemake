@@ -64,4 +64,9 @@ public class Rifle implements GunInterface {
     public String getCategory() {
         return "guns";
     }
+
+    @Override
+    public ItemInterface cloneObject() {
+        return new Rifle(1);
+    }
 }

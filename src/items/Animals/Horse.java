@@ -8,6 +8,10 @@ import items.ItemInterface;
 public class Horse implements ItemInterface {
     private int quantity;
 
+    public Horse(int quantity) {
+        this.quantity = quantity;
+    }
+
     @Override
     public double getWeight() {return 800.00;}
 
@@ -43,5 +47,10 @@ public class Horse implements ItemInterface {
     @Override
     public String getCategory() {
         return "animal";
+    }
+
+    @Override
+    public ItemInterface cloneObject() {
+        return new Horse(1);
     }
 }

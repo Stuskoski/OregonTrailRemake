@@ -53,6 +53,7 @@ public class StartTownStoreView {
         HBox cartHeader = new HBox(new Label("Cart"));
         gridPane.add(cartHeader, 15, 4);
         VBox cart = new VBox(5);
+        cart.setPrefWidth(300);
         cart.setId("startStoreCart");
         gridPane.add(cart, 15, 5);
 
@@ -102,20 +103,14 @@ public class StartTownStoreView {
             itemName.setOnMouseClicked(event -> {
                 //Double click
                 if(event.getClickCount() == 2) {
-                    for (ItemInterface item : RandomizeStoreContents.getStartTownList()) {
-                        if(itemName.getText().replace("\t", "").replaceAll("[0-9]+", "").equals(item.getName())){//maybe boolean to see if real item
-                            item.setQuantity(item.getQuantity()-1);
-                            try {
-                                ItemInterface newItem = item.getClass().getConstructor().newInstance();
-
-                                cartList.add(newItem);
-                            } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
-                                e.printStackTrace();
+                    for (ItemInterface item : RandomizeStoreContents.getStartTownList())
+                        if (itemName.getText().replace("\t", "").replaceAll("[0-9]+", "").equals(item.getName())) {//maybe boolean to see if real item
+                            if(item.getQuantity() > 0) {
+                                item.setQuantity(item.getQuantity() - 1);
+                                cartList.add(item.cloneObject());
+                                updateCart(cart, cartList);
                             }
-
-                            updateCart(cart, cartList);
                         }
-                    }
                     itemName.setText(obj.getQuantity() + "\t" + obj.getName());
                     //treeView.refresh(); don't think refresh is needed
                 }

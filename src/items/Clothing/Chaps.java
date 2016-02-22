@@ -45,4 +45,9 @@ public class Chaps implements ItemInterface {
     public String getCategory() {
         return "clothing";
     }
+
+    @Override
+    public ItemInterface cloneObject() {
+        return new Chaps(1);
+    }
 }

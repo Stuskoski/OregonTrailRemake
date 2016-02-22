@@ -45,4 +45,11 @@ public class SmallCanofBeans implements ItemInterface {
     public String getCategory() {
         return "food";
     }
+
+    @Override
+    public ItemInterface cloneObject() {
+        return new SmallCanofBeans(1);
+    }
+
+
 }

@@ -46,4 +46,9 @@ public class PainKillers implements ItemInterface {
     public String getCategory() {
         return "meds";
     }
+
+    @Override
+    public ItemInterface cloneObject() {
+        return new PainKillers(1);
+    }
 }

@@ -46,4 +46,9 @@ public class Ipecac implements ItemInterface {
     public String getCategory() {
         return "meds";
     }
+
+    @Override
+    public ItemInterface cloneObject() {
+        return new Ipecac(1);
+    }
 }

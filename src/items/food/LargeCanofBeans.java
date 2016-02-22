@@ -45,4 +45,9 @@ public class LargeCanofBeans implements ItemInterface {
     public String getCategory() {
         return "food";
     }
+
+    @Override
+    public ItemInterface cloneObject() {
+        return new LargeCanofBeans(1);
+    }
 }

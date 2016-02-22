@@ -63,4 +63,8 @@ public class Musket implements GunInterface {
     public String getCategory() {
         return "guns";
     }
+
+    @Override
+    public ItemInterface cloneObject() {
+        return new Musket(1);    }
 }

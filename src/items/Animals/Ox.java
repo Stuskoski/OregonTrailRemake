@@ -9,6 +9,10 @@ import items.ItemInterface;
 public class Ox implements ItemInterface {
     private int quantity;
 
+    public Ox(int quantity) {
+        this.quantity = quantity;
+    }
+
     @Override
     public double getWeight() {return 1000.0;}
 
@@ -44,5 +48,10 @@ public class Ox implements ItemInterface {
     @Override
     public String getCategory() {
         return "animal";
+    }
+
+    @Override
+    public ItemInterface cloneObject() {
+        return new Ox(1);
     }
 }

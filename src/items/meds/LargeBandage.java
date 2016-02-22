@@ -46,4 +46,9 @@ public class LargeBandage implements ItemInterface{
     public String getCategory() {
         return "meds";
     }
+
+    @Override
+    public ItemInterface cloneObject() {
+        return new LargeBandage(1);
+    }
 }

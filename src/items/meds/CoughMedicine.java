@@ -46,4 +46,9 @@ public class CoughMedicine implements ItemInterface {
     public String getCategory() {
         return "meds";
     }
+
+    @Override
+    public ItemInterface cloneObject() {
+        return new CoughMedicine(1);
+    }
 }

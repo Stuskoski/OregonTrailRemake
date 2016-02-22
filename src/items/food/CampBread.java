@@ -48,4 +48,9 @@ public class CampBread implements ItemInterface {
     public String getCategory() {
         return "food";
     }
+
+    @Override
+    public ItemInterface cloneObject() {
+        return new CampBread(1);
+    }
 }

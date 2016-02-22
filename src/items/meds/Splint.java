@@ -46,4 +46,9 @@ public class Splint implements ItemInterface {
     public String getCategory() {
         return "meds";
     }
+
+    @Override
+    public ItemInterface cloneObject() {
+        return new Splint(1);
+    }
 }

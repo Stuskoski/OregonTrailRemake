@@ -45,4 +45,9 @@ public class Hat implements ItemInterface {
     public String getCategory() {
         return "clothing";
     }
+
+    @Override
+    public ItemInterface cloneObject() {
+        return new Hat(1);
+    }
 }

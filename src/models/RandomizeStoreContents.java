@@ -124,9 +124,9 @@ public class RandomizeStoreContents {
 
         }
 
-        for (ItemInterface obj : startTownList) {
-            System.out.println(obj.getName() + " " + obj.getQuantity());
-        }
+      //  for (ItemInterface obj : startTownList) {
+      //      System.out.println(obj.getName() + " " + obj.getQuantity());
+      //  }
 
         return startTownList;
     }

@@ -45,4 +45,9 @@ public class TrenchCoat implements ItemInterface {
     public String getCategory() {
         return "clothing";
     }
+
+    @Override
+    public ItemInterface cloneObject() {
+        return new TrenchCoat(1);
+    }
 }

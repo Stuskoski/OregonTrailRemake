@@ -64,4 +64,9 @@ public class FlintlockPistol implements GunInterface {
         return "guns";
     }
 
+    @Override
+    public ItemInterface cloneObject() {
+        return new FlintlockPistol(1);
+    }
+
 }

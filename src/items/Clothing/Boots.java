@@ -46,4 +46,11 @@ public class Boots implements ItemInterface {
     public String getCategory() {
         return "clothing";
     }
+
+    @Override
+    public ItemInterface cloneObject() {
+        return new Boots(1);
+    }
+
+
 }

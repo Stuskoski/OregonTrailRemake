@@ -46,4 +46,9 @@ public class Antibiotics implements ItemInterface {
     public String getCategory() {
         return "meds";
     }
+
+    @Override
+    public ItemInterface cloneObject() {
+        return new Antibiotics(1);
+    }
 }

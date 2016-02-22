@@ -45,4 +45,9 @@ public class Socks implements ItemInterface {
     public String getCategory() {
         return "clothing";
     }
+
+    @Override
+    public ItemInterface cloneObject() {
+        return new Socks(1);
+    }
 }

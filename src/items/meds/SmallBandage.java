@@ -1,6 +1,7 @@
 package items.meds;
 
 import items.ItemInterface;
+import items.food.SmallCanofBeans;
 
 /**
  * Created by augustus on 2/9/16.
@@ -45,5 +46,10 @@ public class SmallBandage implements ItemInterface {
     @Override
     public String getCategory() {
         return "meds";
+    }
+
+    @Override
+    public ItemInterface cloneObject() {
+        return new SmallBandage(1);
     }
 }

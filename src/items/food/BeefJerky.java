@@ -44,4 +44,9 @@ public class BeefJerky implements ItemInterface {
     public String getCategory() {
         return "food";
     }
+
+    @Override
+    public ItemInterface cloneObject() {
+        return new BeefJerky(1);
+    }
 }

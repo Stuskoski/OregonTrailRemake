@@ -45,4 +45,9 @@ public class SmallBottleofWater implements ItemInterface {
     public String getCategory() {
         return "food";
     }
+
+    @Override
+    public ItemInterface cloneObject() {
+        return new SmallBottleofWater(1);
+    }
 }

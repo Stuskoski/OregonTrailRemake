@@ -11,4 +11,5 @@ public interface ItemInterface {
     int    getQuantity();
     void   setQuantity(int quantity);
     String getCategory();
+    //ItemInterface clone();
 }

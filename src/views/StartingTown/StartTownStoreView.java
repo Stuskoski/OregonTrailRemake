@@ -6,11 +6,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import main.Main;
 import models.RandomizeStoreContents;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
-import java.util.Optional;
 
 /**
  * Created by augustus on 2/19/16.
@@ -23,6 +24,7 @@ public class StartTownStoreView {
     private static boolean canRun = true;
 
     public static void createStartTownStoreView(){
+        ArrayList<ItemInterface> cartList = new ArrayList<>();
         GridPane gridPane = new GridPane();
         gridPane.setHgap(5);
         gridPane.setVgap(5);
@@ -47,6 +49,12 @@ public class StartTownStoreView {
         inventoryHeader.setAlignment(Pos.CENTER);
         gridPane.add(inventoryHeader, 5, 4);
         gridPane.add(inventoryTreeView, 5, 5);
+
+        HBox cartHeader = new HBox(new Label("Cart"));
+        gridPane.add(cartHeader, 15, 4);
+        VBox cart = new VBox(5);
+        cart.setId("startStoreCart");
+        gridPane.add(cart, 15, 5);
 
         //create the categories for the tree
         TreeItem<Label> food = new TreeItem<>(new Label("Food"));
@@ -95,8 +103,17 @@ public class StartTownStoreView {
                 //Double click
                 if(event.getClickCount() == 2) {
                     for (ItemInterface item : RandomizeStoreContents.getStartTownList()) {
-                        if(itemName.getText().replace("\t", "").replaceAll("[0-9]+", "").equals(item.getName())){
+                        if(itemName.getText().replace("\t", "").replaceAll("[0-9]+", "").equals(item.getName())){//maybe boolean to see if real item
                             item.setQuantity(item.getQuantity()-1);
+                            try {
+                                ItemInterface newItem = item.getClass().getConstructor().newInstance();
+
+                                cartList.add(newItem);
+                            } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
+                                e.printStackTrace();
+                            }
+
+                            updateCart(cart, cartList);
                         }
                     }
                     itemName.setText(obj.getQuantity() + "\t" + obj.getName());
@@ -124,18 +141,6 @@ public class StartTownStoreView {
             misc.getChildren().add(new TreeItem<>(new Label("Empty")));
         }
 
-      //  TreeItem<Label> cartRoot = new TreeItem<>(new Label("Store Inventory"));
-      //  inventoryRoot.setExpanded(true);
-      //  TreeView<Label> cartTreeView = new TreeView<>(inventoryRoot);
-      //  inventoryTreeView.setShowRoot(false);
-      //  inventoryTreeView.setId("treeStyle");
-
-        HBox cartHeader = new HBox(new Label("Cart"));
-      //  cartHeader.setAlignment(Pos.CENTER);
-        gridPane.add(cartHeader, 10, 4);
-      //  gridPane.add(cartTreeView, 10, 5);
-
-
         Button backBtn = new Button("Back");
         gridPane.add(backBtn, 0, 0);
 
@@ -151,7 +156,14 @@ public class StartTownStoreView {
         Main.getPrimaryStage().setScene(scene);
     }
 
-
+    private static void updateCart(VBox vBox, ArrayList<ItemInterface> arrayList){
+        vBox.getChildren().clear();
+        for (ItemInterface obj : arrayList) {
+            HBox hbox = new HBox(5);
+            hbox.getChildren().addAll(new Label(String.valueOf(obj.getQuantity()), new Label(obj.getName())));
+            vBox.getChildren().add(hbox);
+        }
+    }
     //getters and setters
     public static void setStartStore(Scene scene){StartTownStoreView.startStore = scene;}
     public static Scene getStartStore(){return StartTownStoreView.startStore;}

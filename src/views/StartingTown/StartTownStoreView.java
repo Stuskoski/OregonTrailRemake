@@ -11,6 +11,7 @@ import main.Main;
 import models.RandomizeStoreContents;
 
 import java.lang.reflect.InvocationTargetException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -64,6 +65,13 @@ public class StartTownStoreView {
         gridPane.add(cart, 50, 25);
         cart.setPrefWidth(350);
 
+        HBox cartTotal = new HBox();
+        cartTotal.setAlignment(Pos.CENTER);
+        Label cartTotalLabel = new Label("$0.00");
+        cartTotalLabel.setId("cartTotalLabel");
+        cartTotal.getChildren().add(cartTotalLabel);
+        gridPane.add(cartTotal, 50, 26);
+
         //create the categories for the tree
         TreeItem<Label> food = new TreeItem<>(new Label("Food"));
         TreeItem<Label> clothing = new TreeItem<>(new Label("Clothing"));
@@ -115,7 +123,7 @@ public class StartTownStoreView {
                             if(item.getQuantity() > 0) {
                                 item.setQuantity(item.getQuantity() - 1);
                                 //cartList.add(item.cloneObject());
-                                updateCart(cart, cartList, item.cloneObject());
+                                updateCart(cart, cartList, item.cloneObject(), cartTotalLabel);
                             }
                         }
                     itemName.setText(obj.getQuantity() + "\t" + obj.getName());
@@ -160,7 +168,7 @@ public class StartTownStoreView {
     }
 
     //This method is used to update the cart when adding items.  It's a little sloppy
-    private static void updateCart(VBox vBox, ArrayList<ItemInterface> arrayList, ItemInterface item){
+    private static void updateCart(VBox vBox, ArrayList<ItemInterface> arrayList, ItemInterface item, Label cartTotalLabel){
         ArrayList<ItemInterface> toAdd = new ArrayList<>();
         int counter = 0;
 
@@ -197,10 +205,10 @@ public class StartTownStoreView {
             vBox.getChildren().add(hbox);
         }
 
-        updateCartPrice(arrayList);
+        updateCartPrice(arrayList, cartTotalLabel);
     }
 
-    public static void updateCartPrice(ArrayList<ItemInterface> arrayList){
+    public static void updateCartPrice(ArrayList<ItemInterface> arrayList, Label cartTotalLabel){
         double price = 0;
 
         for (ItemInterface obj : arrayList) {
@@ -208,7 +216,12 @@ public class StartTownStoreView {
             price += obj.getPrice() * obj.getQuantity();
         }
 
-        System.out.println(price);
+        DecimalFormat df = new DecimalFormat("#.##");
+
+       // price = Double.parseDouble(df.format(price));
+
+        cartTotalLabel.setText("$"+String.format("%.2f",price));
+        //System.out.println(price);
     }
     //getters and setters
     public static void setStartStore(Scene scene){StartTownStoreView.startStore = scene;}

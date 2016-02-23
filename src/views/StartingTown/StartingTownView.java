@@ -9,6 +9,7 @@ import main.Main;
 import models.RandomizeStoreContents;
 
 import java.io.File;
+import java.net.URL;
 
 /**
  * Created by augustus on 2/18/16.
@@ -17,8 +18,9 @@ import java.io.File;
  * game gets started
  */
 public class StartingTownView {
+    private static URL url = StartingTownView.class.getClassLoader().getResource("resources/startingTown.mp3");
     private static Scene startingTownView;
-    static final Media media = new Media(new File("src/resources/startingTown.mp3").toURI().toString());
+    static final Media media = new Media(url.toString());
     static final MediaPlayer mediaPlayer = new MediaPlayer(media);
 
     public static void createStartingTownView(){
@@ -56,7 +58,8 @@ public class StartingTownView {
          * Add sounds for entering buttons the scene.
          */
         storeBtn.setOnMouseEntered(event -> {
-            final Media doorMedia = new Media(new File("src/resources/doorOpen.mp3").toURI().toString());
+            URL url = StartingTownView.class.getClassLoader().getResource("resources/doorOpen.mp3");
+            final Media doorMedia = new Media(url.toString());
             final MediaPlayer doorMP = new MediaPlayer(doorMedia);
             doorMP.setVolume(100);
             doorMP.play();
@@ -64,21 +67,24 @@ public class StartingTownView {
 
         });
         hitTheTrailBtn.setOnMouseEntered(event -> {
-            final Media doorMedia = new Media(new File("src/resources/windBlowShort.mp3").toURI().toString());
+            URL url = StartingTownView.class.getClassLoader().getResource("resources/windBlowShort.mp3");
+            final Media doorMedia = new Media(url.toString());
             final MediaPlayer trailMP = new MediaPlayer(doorMedia);
             trailMP.setVolume(100);
             trailMP.play();
             mediaPlayer.play();
         });
         stableBtn.setOnMouseEntered(event -> {
-            final Media doorMedia = new Media(new File("src/resources/horseSnort.mp3").toURI().toString());
+            URL url = StartingTownView.class.getClassLoader().getResource("resources/horseSnort.mp3");
+            final Media doorMedia = new Media(url.toString());
             final MediaPlayer stableMP = new MediaPlayer(doorMedia);
             stableMP.setVolume(100);
             stableMP.play();
             mediaPlayer.play();
         });
         saloonBtn.setOnMouseEntered(event -> {
-            final Media doorMedia = new Media(new File("src/resources/barSoundShort.mp3").toURI().toString());
+            URL url = StartingTownView.class.getClassLoader().getResource("resources/barSoundShort.mp3");
+            final Media doorMedia = new Media(url.toString());
             final MediaPlayer saloonMP = new MediaPlayer(doorMedia);
             saloonMP.setVolume(100);
             saloonMP.play();

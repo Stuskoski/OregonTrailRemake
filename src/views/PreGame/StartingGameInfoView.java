@@ -14,6 +14,10 @@ import main.Main;
 import views.StartingTown.StartingTownView;
 
 import java.io.File;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URI;
+import java.net.URL;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -48,10 +52,14 @@ public class StartingGameInfoView {
 
         scene.getStylesheets().add("resources/main.css");
 
-        //try{
-            final Media media = new Media(new File("src/resources/sw.mp3").toURI().toString());
-            final MediaPlayer mediaPlayer = new MediaPlayer(media);
-            mediaPlayer.play();
+        URL url = StartingGameInfoView.class.getClassLoader().getResource("resources/sw.mp3");
+//        InputStreamReader inputStreamReader = new InputStreamReader(is);
+
+        //final Media media = new Media(new File("src/resources/sw.mp3").toURI().toString());
+        assert url != null;
+        final Media media = new Media(url.toString());
+        final MediaPlayer mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.play();
            // mediaPlayer.setCycleCount(99);
 
            // scene.setOnKeyReleased(event -> {

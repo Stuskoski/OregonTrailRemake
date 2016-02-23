@@ -36,12 +36,12 @@ public class RandomizeStoreContents {
         boolean bool9=true;
 
         //Items that are always available
-        startTownList.add(new SmallBottleofWater(99));
-        startTownList.add(new BeefJerky(99));
-        startTownList.add(new CampBread(99));
-        startTownList.add(new Shirt(99));
-        startTownList.add(new Pants(99));
-        startTownList.add(new Boots(99));
+        startTownList.add(new SmallBottleofWater(10));
+        startTownList.add(new BeefJerky(10));
+        startTownList.add(new CampBread(10));
+        startTownList.add(new Shirt(10));
+        startTownList.add(new Pants(10));
+        startTownList.add(new Boots(10));
         startTownList.add(new FlintlockPistol(1));
 
 

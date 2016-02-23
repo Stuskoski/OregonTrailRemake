@@ -12,6 +12,7 @@ import models.RandomizeStoreContents;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * Created by augustus on 2/19/16.
@@ -43,19 +44,25 @@ public class StartTownStoreView {
         TreeView<Label> inventoryTreeView = new TreeView<>(inventoryRoot);
         inventoryTreeView.setShowRoot(false);
         inventoryTreeView.setId("treeStyle");
+        inventoryTreeView.setPrefWidth(350);
 
-        HBox inventoryHeader = new HBox(new Label("Store Inventory"));
-        inventoryHeader.setId("startStoreHeaders");
+        Label cartInventoryLabel = new Label("Store Inventory");
+        HBox inventoryHeader = new HBox(cartInventoryLabel);
+        cartInventoryLabel.setId("startStoreHeaders");
         inventoryHeader.setAlignment(Pos.CENTER);
-        gridPane.add(inventoryHeader, 5, 4);
-        gridPane.add(inventoryTreeView, 5, 5);
+        gridPane.add(inventoryHeader, 10, 24);//col row
+        gridPane.add(inventoryTreeView, 10, 25);
 
-        HBox cartHeader = new HBox(new Label("Cart"));
-        gridPane.add(cartHeader, 15, 4);
+        Label cartHeaderLabel = new Label("Cart");
+        HBox cartHeader = new HBox(cartHeaderLabel);
+        cartHeaderLabel.setId("startStoreHeaders");
+        cartHeader.setAlignment(Pos.CENTER);
         VBox cart = new VBox(5);
         cart.setPrefWidth(300);
         cart.setId("startStoreCart");
-        gridPane.add(cart, 15, 5);
+        gridPane.add(cartHeader, 50, 24);
+        gridPane.add(cart, 50, 25);
+        cart.setPrefWidth(350);
 
         //create the categories for the tree
         TreeItem<Label> food = new TreeItem<>(new Label("Food"));
@@ -107,8 +114,8 @@ public class StartTownStoreView {
                         if (itemName.getText().replace("\t", "").replaceAll("[0-9]+", "").equals(item.getName())) {//maybe boolean to see if real item
                             if(item.getQuantity() > 0) {
                                 item.setQuantity(item.getQuantity() - 1);
-                                cartList.add(item.cloneObject());
-                                updateCart(cart, cartList);
+                                //cartList.add(item.cloneObject());
+                                updateCart(cart, cartList, item.cloneObject());
                             }
                         }
                     itemName.setText(obj.getQuantity() + "\t" + obj.getName());
@@ -137,7 +144,8 @@ public class StartTownStoreView {
         }
 
         Button backBtn = new Button("Back");
-        gridPane.add(backBtn, 0, 0);
+        gridPane.add(backBtn, 1, 1);
+        backBtn.setId("mainScreenBtn");
 
         backBtn.setOnAction(event -> {
             Main.getPrimaryStage().setScene(StartingTownView.getStartingTownView());
@@ -151,13 +159,56 @@ public class StartTownStoreView {
         Main.getPrimaryStage().setScene(scene);
     }
 
-    private static void updateCart(VBox vBox, ArrayList<ItemInterface> arrayList){
+    //This method is used to update the cart when adding items.  It's a little sloppy
+    private static void updateCart(VBox vBox, ArrayList<ItemInterface> arrayList, ItemInterface item){
+        ArrayList<ItemInterface> toAdd = new ArrayList<>();
+        int counter = 0;
+
+        //Remove all objects
+        toAdd.clear();
         vBox.getChildren().clear();
+
+        //if array list is empty add the item, if not check if item exists, if so add to quantity, if not just add item
+        if(arrayList.isEmpty()){
+            arrayList.add(item);
+        }else {
+            for (ItemInterface check : arrayList) {
+                    if(check.getName().equals(item.getName())){//match
+                        check.setQuantity(check.getQuantity()+1);
+                    }else{
+                        counter++;
+                    }
+                }
+        }
+
+        //If the counter has the same number as the size of the arraylist then the item was not found so add to list
+        if(counter == arrayList.size()){
+            arrayList.add(item);
+        }
+
         for (ItemInterface obj : arrayList) {
-            HBox hbox = new HBox(5);
-            hbox.getChildren().addAll(new Label(String.valueOf(obj.getQuantity()), new Label(obj.getName())));
+            HBox hbox = new HBox(10);
+            Label quantity = new Label(String.valueOf(obj.getQuantity()));
+            quantity.setId("cartItems");
+            Label name = new Label(obj.getName());
+            name.setId("cartItems");
+            hbox.getChildren().addAll(quantity, name);
+            hbox.setAlignment(Pos.CENTER);
             vBox.getChildren().add(hbox);
         }
+
+        updateCartPrice(arrayList);
+    }
+
+    public static void updateCartPrice(ArrayList<ItemInterface> arrayList){
+        double price = 0;
+
+        for (ItemInterface obj : arrayList) {
+            System.out.println(obj.getName());
+            price += obj.getPrice() * obj.getQuantity();
+        }
+
+        System.out.println(price);
     }
     //getters and setters
     public static void setStartStore(Scene scene){StartTownStoreView.startStore = scene;}

@@ -23,7 +23,7 @@ public class TrenchCoat implements ItemInterface {
 
     @Override
     public double getPrice() {
-        return 0;
+        return 3.00;
     }
 
     @Override

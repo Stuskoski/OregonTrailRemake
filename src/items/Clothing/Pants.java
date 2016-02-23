@@ -23,7 +23,7 @@ public class Pants implements ItemInterface {
 
     @Override
     public double getPrice() {
-        return 0;
+        return 2.00;
     }
 
     @Override

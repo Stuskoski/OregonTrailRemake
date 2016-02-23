@@ -24,7 +24,7 @@ public class Boots implements ItemInterface {
 
     @Override
     public double getPrice() {
-        return 0;
+        return 1.00;
     }
 
     @Override

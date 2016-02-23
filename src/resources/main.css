@@ -77,12 +77,33 @@
     -fx-background-repeat: no-repeat;
 }
 #startStoreHeaders{
+    -fx-text-fill: black;
     -fx-font-weight: bold;
-    -fx-font-size: 24px;
+    -fx-font-size: 30px;
 }
 #startStoreCart{
-    -fx-background-color: rgba(255, 255, 255, 0.8);
+    -fx-border-color: black;
+    -fx-border-insets: 5;
+    -fx-border-width: 3;
+    -fx-border-style: dashed;
+    -fx-background-image: url("brownBagBack.jpg");
+    -fx-background-color: rgba(0, 0, 0, 0.8);
+    -fx-border-radius: 15;
+    -fx-background-radius: 15;
+}
+#cartItems{
     -fx-text-fill: white;
+    -fx-font-size: 16;
+    -fx-font-weight: bold;
+}
+#treeStyle{
+    -fx-border-color: forestgreen;
+}
+.tree-cell:hover, .tree-cell:selected {
+    -fx-background-color: forestgreen;
+}
+.tree-cell{
+    -fx-font-size: 15;
 }
 /*---------------------------------------------------------------*/
 /*---------------------------------------------------------------*/

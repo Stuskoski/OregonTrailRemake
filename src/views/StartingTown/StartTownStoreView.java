@@ -1,12 +1,15 @@
 package views.StartingTown;
 
 import items.ItemInterface;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import javafx.util.Callback;
 import main.Main;
 import models.RandomizeStoreContents;
 
@@ -24,6 +27,10 @@ import java.util.Iterator;
 public class StartTownStoreView {
     private static Scene startStore;
     private static boolean canRun = true;
+    private static Button checkOut = new Button("");
+    private static TreeItem<Label> inventoryRoot;
+    private static TreeView<Label> inventoryTreeView;
+
 
     public static void createStartTownStoreView(){
         ArrayList<ItemInterface> cartList = new ArrayList<>();
@@ -40,9 +47,10 @@ public class StartTownStoreView {
         //ArrayList<ItemInterface> inventory = RandomizeStoreContents.getStartTownList();
 
         //create the tree root
-        TreeItem<Label> inventoryRoot = new TreeItem<>(new Label("Store Inventory"));
+
+        inventoryRoot = new TreeItem<>(new Label("Store Inventory"));
+        inventoryTreeView = new TreeView<>(inventoryRoot);
         inventoryRoot.setExpanded(true);
-        TreeView<Label> inventoryTreeView = new TreeView<>(inventoryRoot);
         inventoryTreeView.setShowRoot(false);
         inventoryTreeView.setId("treeStyle");
         inventoryTreeView.setPrefWidth(350);
@@ -67,10 +75,12 @@ public class StartTownStoreView {
 
         HBox cartTotal = new HBox();
         cartTotal.setAlignment(Pos.CENTER);
-        Label cartTotalLabel = new Label("$0.00");
-        cartTotalLabel.setId("cartTotalLabel");
-        cartTotal.getChildren().add(cartTotalLabel);
+        //Label cartTotalLabel = new Label("$0.00");
+        checkOut.setText("$0.00 - Checkout");
+        checkOut.setId("mainStoreBtn");
+        cartTotal.getChildren().add(checkOut);
         gridPane.add(cartTotal, 50, 26);
+
 
         //create the categories for the tree
         TreeItem<Label> food = new TreeItem<>(new Label("Food"));
@@ -116,19 +126,16 @@ public class StartTownStoreView {
             }
             //When user double clicks the item decrement it in the list.  Add to the cart(need to code)
             itemName.setOnMouseClicked(event -> {
-                //Double click
-                if(event.getClickCount() == 2) {
-                    for (ItemInterface item : RandomizeStoreContents.getStartTownList())
-                        if (itemName.getText().replace("\t", "").replaceAll("[0-9]+", "").equals(item.getName())) {//maybe boolean to see if real item
-                            if(item.getQuantity() > 0) {
-                                item.setQuantity(item.getQuantity() - 1);
-                                //cartList.add(item.cloneObject());
-                                updateCart(cart, cartList, item.cloneObject(), cartTotalLabel);
-                            }
+                //Single click
+                for (ItemInterface item : RandomizeStoreContents.getStartTownList())
+                    if (itemName.getText().replace("\t", "").replaceAll("[0-9]+", "").equals(item.getName())) {//maybe boolean to see if real item
+                        if(item.getQuantity() > 0) {
+                            item.setQuantity(item.getQuantity() - 1);
+                            //cartList.add(item.cloneObject());
+                            updateCart(cart, cartList, item.cloneObject(), itemName);
                         }
-                    itemName.setText(obj.getQuantity() + "\t" + obj.getName());
-                    //treeView.refresh(); don't think refresh is needed
-                }
+                    }
+                itemName.setText(obj.getQuantity() + "\t" + obj.getName());
             });
         }
 
@@ -159,6 +166,13 @@ public class StartTownStoreView {
             Main.getPrimaryStage().setScene(StartingTownView.getStartingTownView());
         });
 
+        //Check users money to see if they have enough.
+        //If they do add the items to their cart and make
+        //sure to subtract from their cash
+        checkOut.setOnAction(event -> {
+            System.out.println("OMG");
+        });
+
         Scene scene = new Scene(gridPane, Main.getPrimaryStage().getScene().getWidth(), Main.getPrimaryStage().getScene().getHeight());
 
         scene.getStylesheets().add("resources/main.css");
@@ -168,7 +182,7 @@ public class StartTownStoreView {
     }
 
     //This method is used to update the cart when adding items.  It's a little sloppy
-    private static void updateCart(VBox vBox, ArrayList<ItemInterface> arrayList, ItemInterface item, Label cartTotalLabel){
+    private static void updateCart(VBox vBox, ArrayList<ItemInterface> cartList, ItemInterface item, Label itemName){
         ArrayList<ItemInterface> toAdd = new ArrayList<>();
         int counter = 0;
 
@@ -177,10 +191,10 @@ public class StartTownStoreView {
         vBox.getChildren().clear();
 
         //if array list is empty add the item, if not check if item exists, if so add to quantity, if not just add item
-        if(arrayList.isEmpty()){
-            arrayList.add(item);
+        if(cartList.isEmpty()){
+            cartList.add(item);
         }else {
-            for (ItemInterface check : arrayList) {
+            for (ItemInterface check : cartList) {
                     if(check.getName().equals(item.getName())){//match
                         check.setQuantity(check.getQuantity()+1);
                     }else{
@@ -190,29 +204,62 @@ public class StartTownStoreView {
         }
 
         //If the counter has the same number as the size of the arraylist then the item was not found so add to list
-        if(counter == arrayList.size()){
-            arrayList.add(item);
+        if(counter == cartList.size()){
+            cartList.add(item);
         }
 
-        for (ItemInterface obj : arrayList) {
+        for (ItemInterface obj : cartList) {
             HBox hbox = new HBox(10);
             Label quantity = new Label(String.valueOf(obj.getQuantity()));
             quantity.setId("cartItems");
             Label name = new Label(obj.getName());
             name.setId("cartItems");
+           // Button add = new Button("+");
+            //Button minus = new Button("-");
             hbox.getChildren().addAll(quantity, name);
             hbox.setAlignment(Pos.CENTER);
             vBox.getChildren().add(hbox);
-        }
 
-        updateCartPrice(arrayList, cartTotalLabel);
+
+            hbox.setOnMouseEntered(event -> {
+                quantity.setStyle("-fx-text-fill: darkred;");
+                name.setStyle("-fx-text-fill: darkred;");
+            });
+            hbox.setOnMouseExited(event -> {
+                quantity.setStyle("-fx-text-fill: white;");
+                name.setStyle("-fx-text-fill: white;");
+            });
+
+            /**
+             * BUG ALERT:
+             * Currently works in the background but
+             * in the foreground the item is not updating
+             * correctly if you select another object to
+             * add to the cart.  It goes off the last item
+             * selected and only increments back into inventory
+             * for that item(text wise not the actual list).
+             */
+            //set action event to decrement if they click on their cart items
+            hbox.setOnMouseClicked(event -> {
+                //System.out.println(itemName.getText());
+                obj.setQuantity(obj.getQuantity()-1);
+                updateInventory(obj, itemName);
+                //update cart total also
+                if(obj.getQuantity() > 0){
+                    quantity.setText(String.valueOf(obj.getQuantity()));
+                }else{
+                    vBox.getChildren().remove(hbox);
+                    cartList.remove(obj);
+                }
+            });
+        }
+        updateCartPrice(cartList);
     }
 
-    public static void updateCartPrice(ArrayList<ItemInterface> arrayList, Label cartTotalLabel){
+    public static void updateCartPrice(ArrayList<ItemInterface> arrayList){
         double price = 0;
 
         for (ItemInterface obj : arrayList) {
-            System.out.println(obj.getName());
             price += obj.getPrice() * obj.getQuantity();
         }
 
@@ -220,8 +267,28 @@ public class StartTownStoreView {
 
        // price = Double.parseDouble(df.format(price));
 
-        cartTotalLabel.setText("$"+String.format("%.2f",price));
+        checkOut.setText("$"+String.format("%.2f",price) + " - Checkout");
         //System.out.println(price);
+    }
+
+    public static void updateInventory(ItemInterface obj, Label itemName){
+        ArrayList<ItemInterface> inventory = RandomizeStoreContents.getStartTownList();
+        String test = itemName.getText();
+        test = test.replace("\t", "");
+        test = test.replaceAll("[0-9]", "");
+        System.out.println(test);
+
+        for(ItemInterface check : inventory){
+            if (obj.getName().equals(check.getName())){
+                check.setQuantity(check.getQuantity()+1);
+                for(ItemInterface refresh : RandomizeStoreContents.getStartTownList()) {
+                    if (refresh.getName().equals(test)){
+                        System.out.println("hit");
+                        itemName.setText(refresh.getQuantity() + "\t" + refresh.getName());
+                    }
+                }
+            }
+        }
     }
     //getters and setters
     public static void setStartStore(Scene scene){StartTownStoreView.startStore = scene;}

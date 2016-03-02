@@ -3,6 +3,7 @@ package views.StartingTown;
 import items.ItemInterface;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
@@ -30,6 +31,7 @@ public class StartTownStoreView {
     private static Button checkOut = new Button("");
     private static TreeItem<Label> inventoryRoot;
     private static TreeView<Label> inventoryTreeView;
+    private static ArrayList<Label> treeItems = new ArrayList<>();
 
 
     public static void createStartTownStoreView(){
@@ -98,29 +100,34 @@ public class StartTownStoreView {
             Label itemName = new Label(obj.getQuantity() + "\t" + obj.getName());
 
             switch (obj.getCategory()){
-                case "clothing":{
-                    clothing.getChildren().add(new TreeItem<>(itemName));
-                    //add counter for empty
-                    break;
-                }
                 case "food":{
                     food.getChildren().add(new TreeItem<>(itemName));
+                    treeItems.add(itemName);
+                    break;
+                }
+                case "clothing":{
+                    clothing.getChildren().add(new TreeItem<>(itemName));
+                    treeItems.add(itemName);
                     break;
                 }
                 case "guns":{
                     guns.getChildren().add(new TreeItem<>(itemName));
+                    treeItems.add(itemName);
                     break;
                 }
                 case "meds":{
                     medicine.getChildren().add(new TreeItem<>(itemName));
+                    treeItems.add(itemName);
                     break;
                 }
                 case "supplies":{
                     wagonSupplies.getChildren().add(new TreeItem<>(itemName));
+                    treeItems.add(itemName);
                     break;
                 }
                 case "misc":{
                     misc.getChildren().add(new TreeItem<>(itemName));
+                    treeItems.add(itemName);
                     break;
                 }
             }
@@ -132,7 +139,7 @@ public class StartTownStoreView {
                         if(item.getQuantity() > 0) {
                             item.setQuantity(item.getQuantity() - 1);
                             //cartList.add(item.cloneObject());
-                            updateCart(cart, cartList, item.cloneObject(), itemName);
+                            updateCart(cart, cartList, item.cloneObject());
                         }
                     }
                 itemName.setText(obj.getQuantity() + "\t" + obj.getName());
@@ -162,8 +169,18 @@ public class StartTownStoreView {
         gridPane.add(backBtn, 1, 1);
         backBtn.setId("mainScreenBtn");
 
+        //Make sure to add items back to list whenever exiting the store if they haven't been bought yet.
         backBtn.setOnAction(event -> {
             Main.getPrimaryStage().setScene(StartingTownView.getStartingTownView());
+            for (ItemInterface cartItem : cartList){
+                for(ItemInterface inventoryItem : RandomizeStoreContents.getStartTownList()){
+                    if(cartItem.getName().equals(inventoryItem.getName())){
+                        inventoryItem.setQuantity(inventoryItem.getQuantity() + cartItem.getQuantity());
+                    }
+                }
+            }
+
+            cartList.clear(); // clear your cart
         });
 
         //Check users money to see if they have enough.
@@ -182,13 +199,13 @@ public class StartTownStoreView {
     }
 
     //This method is used to update the cart when adding items.  It's a little sloppy
-    private static void updateCart(VBox vBox, ArrayList<ItemInterface> cartList, ItemInterface item, Label itemName){
+    private static void updateCart(VBox cart, ArrayList<ItemInterface> cartList, ItemInterface item){
         ArrayList<ItemInterface> toAdd = new ArrayList<>();
         int counter = 0;
 
         //Remove all objects
         toAdd.clear();
-        vBox.getChildren().clear();
+        cart.getChildren().clear();
 
         //if array list is empty add the item, if not check if item exists, if so add to quantity, if not just add item
         if(cartList.isEmpty()){
@@ -214,11 +231,9 @@ public class StartTownStoreView {
             quantity.setId("cartItems");
             Label name = new Label(obj.getName());
             name.setId("cartItems");
-           // Button add = new Button("+");
-            //Button minus = new Button("-");
             hbox.getChildren().addAll(quantity, name);
             hbox.setAlignment(Pos.CENTER);
-            vBox.getChildren().add(hbox);
+            cart.getChildren().add(hbox);
 
 
             hbox.setOnMouseEntered(event -> {
@@ -230,62 +245,53 @@ public class StartTownStoreView {
                 name.setStyle("-fx-text-fill: white;");
             });
 
-            /**
-             * BUG ALERT:
-             * Currently works in the background but
-             * in the foreground the item is not updating
-             * correctly if you select another object to
-             * add to the cart.  It goes off the last item
-             * selected and only increments back into inventory
-             * for that item(text wise not the actual list).
-             */
             //set action event to decrement if they click on their cart items
             hbox.setOnMouseClicked(event -> {
                 //System.out.println(itemName.getText());
-                obj.setQuantity(obj.getQuantity()-1);
-                updateInventory(obj, itemName);
+                obj.setQuantity(obj.getQuantity() - 1);
+                updateInventory(obj);
                 //update cart total also
-                if(obj.getQuantity() > 0){
+                updateCartPrice(cartList);
+                if (obj.getQuantity() > 0) {
                     quantity.setText(String.valueOf(obj.getQuantity()));
-                }else{
-                    vBox.getChildren().remove(hbox);
+                } else {
+                    cart.getChildren().remove(hbox);
                     cartList.remove(obj);
                 }
             });
+
         }
         updateCartPrice(cartList);
     }
 
     public static void updateCartPrice(ArrayList<ItemInterface> arrayList){
         double price = 0;
-
         for (ItemInterface obj : arrayList) {
             price += obj.getPrice() * obj.getQuantity();
         }
-
         DecimalFormat df = new DecimalFormat("#.##");
-
-       // price = Double.parseDouble(df.format(price));
-
         checkOut.setText("$"+String.format("%.2f",price) + " - Checkout");
-        //System.out.println(price);
     }
 
-    public static void updateInventory(ItemInterface obj, Label itemName){
+    /**
+     * What a pain this guy was!
+     * Run through inventory and update
+     * quantities.  Then go through a static
+     * list of all the references to labels
+     * in the tree and update them to show
+     * their current values.
+     * @param obj
+     */
+    public static void updateInventory(ItemInterface obj){
         ArrayList<ItemInterface> inventory = RandomizeStoreContents.getStartTownList();
-        String test = itemName.getText();
-        test = test.replace("\t", "");
-        test = test.replaceAll("[0-9]", "");
-        System.out.println(test);
 
         for(ItemInterface check : inventory){
             if (obj.getName().equals(check.getName())){
                 check.setQuantity(check.getQuantity()+1);
-                for(ItemInterface refresh : RandomizeStoreContents.getStartTownList()) {
-                    if (refresh.getName().equals(test)){
-                        System.out.println("hit");
-                        itemName.setText(refresh.getQuantity() + "\t" + refresh.getName());
-                    }
+            }
+            for(Label label : treeItems){
+                if(label.getText().replace("\t", "").replaceAll("[0-9]", "").equals(check.getName())){
+                    label.setText(check.getQuantity() + "\t" + check.getName());
                 }
             }
         }

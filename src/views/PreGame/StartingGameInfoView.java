@@ -86,7 +86,7 @@ public class StartingGameInfoView {
         gc.setFill(Color.YELLOW);
         gc.setFont(new Font(20));
         x++;
-        gc.clearRect(0, height-x-10, width, 500);
+        gc.clearRect(0, height-x-10, width, 510);
         gc.setTextAlign(TextAlignment.CENTER);
         gc.fillText("Welcome to Oregon Trail Remade!\n" +
                 "The Oregon Trail is a 2,200-mile\n" +

@@ -1,5 +1,6 @@
 package views.StartingTown;
 
+import CharacterObjects.Profile;
 import items.ItemInterface;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -12,6 +13,7 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 import main.Main;
+import models.Inventory;
 import models.RandomizeStoreContents;
 
 import java.lang.reflect.InvocationTargetException;
@@ -29,9 +31,11 @@ public class StartTownStoreView {
     private static Scene startStore;
     private static boolean canRun = true;
     private static Button checkOut = new Button("");
+    private static Button userCash = new Button("$0.00");
     private static TreeItem<Label> inventoryRoot;
     private static TreeView<Label> inventoryTreeView;
     private static ArrayList<Label> treeItems = new ArrayList<>();
+    private static double cartTotalValue = 0.00;
 
 
     public static void createStartTownStoreView(){
@@ -75,12 +79,14 @@ public class StartTownStoreView {
         gridPane.add(cart, 50, 25);
         cart.setPrefWidth(350);
 
-        HBox cartTotal = new HBox();
+        HBox cartTotal = new HBox(10);
         cartTotal.setAlignment(Pos.CENTER);
         //Label cartTotalLabel = new Label("$0.00");
         checkOut.setText("$0.00 - Checkout");
         checkOut.setId("mainStoreBtn");
-        cartTotal.getChildren().add(checkOut);
+        userCash.setId("mainStoreUserCashBtn");
+        userCash.setText("$" + String.format("%.2f", Profile.getMoney()) + " - Wallet");
+        cartTotal.getChildren().addAll(checkOut, userCash);
         gridPane.add(cartTotal, 50, 26);
 
 
@@ -187,7 +193,23 @@ public class StartTownStoreView {
         //If they do add the items to their cart and make
         //sure to subtract from their cash
         checkOut.setOnAction(event -> {
-            System.out.println("OMG");
+            if(cartTotalValue > Profile.getMoney()){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Unable to checkout");
+                alert.setHeaderText(null);
+                alert.setContentText("Your cart total exceeds how much cash you have!");
+                alert.showAndWait();
+            }else{
+                for(ItemInterface item : cartList){
+                    Inventory.getInventory().add(item);
+                }
+                Profile.setMoney(Profile.getMoney() - cartTotalValue);
+                cartList.clear();
+                cartTotalValue = 0.00;
+                cart.getChildren().clear();
+                checkOut.setText("$0.00 - Checkout");
+                userCash.setText("$" + String.format("%.2f", Profile.getMoney()) + " - Wallet");
+            }
         });
 
         Scene scene = new Scene(gridPane, Main.getPrimaryStage().getScene().getWidth(), Main.getPrimaryStage().getScene().getHeight());
@@ -270,6 +292,7 @@ public class StartTownStoreView {
             price += obj.getPrice() * obj.getQuantity();
         }
         DecimalFormat df = new DecimalFormat("#.##");
+        cartTotalValue = Double.parseDouble(String.format("%.2f",price));
         checkOut.setText("$"+String.format("%.2f",price) + " - Checkout");
     }
 

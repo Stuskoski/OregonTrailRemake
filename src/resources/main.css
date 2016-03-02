@@ -137,6 +137,13 @@
     -fx-border-insets: 0, 1;
     -fx-border-width: 3;
 }
+
+#startStableGrid{
+    -fx-background-image: url("stablesBackground.jpg");
+    -fx-background-position: center center;
+    -fx-background-color: black;
+    -fx-background-repeat: no-repeat;
+}
 /*---------------------------------------------------------------*/
 /*---------------------------------------------------------------*/
 /*---------------------------------------------------------------*/

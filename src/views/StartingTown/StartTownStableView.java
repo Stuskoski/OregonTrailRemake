@@ -20,6 +20,7 @@ public class StartTownStableView {
         GridPane gridPane = new GridPane();
         gridPane.setHgap(3);
         gridPane.setVgap(3);
+        gridPane.setId("startStableGrid");
 
         Button backBtn = new Button("Back");
         gridPane.add(backBtn, 0, 0);
@@ -29,6 +30,8 @@ public class StartTownStableView {
         });
 
         Scene scene = new Scene(gridPane, Main.getPrimaryStage().getScene().getWidth(), Main.getPrimaryStage().getScene().getHeight());
+
+        scene.getStylesheets().add("resources/main.css");
 
         StartTownSaloonView.setStartSaloon(scene);
         Main.getPrimaryStage().setScene(scene);

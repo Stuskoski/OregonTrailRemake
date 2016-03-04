@@ -5,6 +5,7 @@ import items.Animals.Donkey;
 import items.Animals.Horse;
 import items.Animals.Ox;
 import items.ItemInterface;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -12,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -30,9 +32,6 @@ public class StartTownStableView {
     private static Scene startStable;
 
     public static void createStartTownStableView(){
-        Boolean showDonkey = false;
-        Boolean showOx = false;
-        Boolean showHorse = false;
         Image oxImg = new Image("resources/cow-icon.png");
         Image donkeyImg = new Image("resources/donkey-icon.png");
         Image horseImg = new Image("resources/horse-icon.png");
@@ -53,7 +52,7 @@ public class StartTownStableView {
         gridPane.add(backBtn, 1, 1);
         backBtn.setId("mainScreenBtn");
 
-        VBox animals = new VBox(10);
+        VBox animals = new VBox(15);
         VBox animalsPics = new VBox(15);
 
         animals.setId("stableVbox1");
@@ -226,14 +225,23 @@ public class StartTownStableView {
             //}
         });
 
+
         Scene scene = new Scene(gridPane, Main.getPrimaryStage().getScene().getWidth(), Main.getPrimaryStage().getScene().getHeight());
+
+        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                switch (event.getCode()) {
+                    case I: Inventory.showInventoryScreen(); break;
+                }
+            }
+        });
 
         scene.getStylesheets().add("resources/main.css");
 
         StartTownSaloonView.setStartSaloon(scene);
         Main.getPrimaryStage().setScene(scene);
     }
-
 
     //getters and setters
     public static void setStartStore(Scene scene){StartTownStableView.startStable = scene;}

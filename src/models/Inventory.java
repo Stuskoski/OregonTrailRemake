@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class Inventory {
     private static ArrayList<ItemInterface> inventory = new ArrayList<>();
 
-    public static ArrayList getInventory(){
+    public static ArrayList<ItemInterface> getInventory(){
         return inventory;
     }
     public static void setInventory(ArrayList<ItemInterface> inventorySet){

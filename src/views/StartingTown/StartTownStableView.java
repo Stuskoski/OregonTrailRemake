@@ -18,6 +18,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import main.Main;
+import models.AddKeyListenerToScene;
 import models.Inventory;
 
 /**
@@ -152,6 +153,8 @@ public class StartTownStableView {
                 if(counter == Inventory.getInventory().size()){
                     Inventory.getInventory().add(new Ox(1));
                 }
+
+                Inventory.updateInventoryScreen();
             }else{
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Unable to checkout");
@@ -180,6 +183,8 @@ public class StartTownStableView {
                 if(counter == Inventory.getInventory().size()){
                     Inventory.getInventory().add(new Donkey(1));
                 }
+
+                Inventory.updateInventoryScreen();
             }else{
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Unable to checkout");
@@ -208,6 +213,8 @@ public class StartTownStableView {
                 if(counter == Inventory.getInventory().size()){
                     Inventory.getInventory().add(new Horse(1));
                 }
+
+                Inventory.updateInventoryScreen();
             }else{
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Unable to checkout");
@@ -228,14 +235,7 @@ public class StartTownStableView {
 
         Scene scene = new Scene(gridPane, Main.getPrimaryStage().getScene().getWidth(), Main.getPrimaryStage().getScene().getHeight());
 
-        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                switch (event.getCode()) {
-                    case I: Inventory.showInventoryScreen(); break;
-                }
-            }
-        });
+        AddKeyListenerToScene.addKeyListener(scene);
 
         scene.getStylesheets().add("resources/main.css");
 

@@ -4,6 +4,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import main.Main;
+import models.AddKeyListenerToScene;
 
 /**
  * Created by augustus on 2/19/16.
@@ -31,6 +32,7 @@ public class StartTownSaloonView {
 
         Scene scene = new Scene(gridPane, Main.getPrimaryStage().getScene().getWidth(), Main.getPrimaryStage().getScene().getHeight());
 
+        AddKeyListenerToScene.addKeyListener(scene);
         setStartSaloon(scene);
         Main.getPrimaryStage().setScene(scene);
     }

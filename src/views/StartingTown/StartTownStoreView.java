@@ -1,18 +1,22 @@
 package views.StartingTown;
 
 import CharacterObjects.Profile;
+import items.Animals.Horse;
 import items.ItemInterface;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 import main.Main;
+import models.AddKeyListenerToScene;
 import models.Inventory;
 import models.RandomizeStoreContents;
 
@@ -201,7 +205,22 @@ public class StartTownStoreView {
                 alert.showAndWait();
             }else{
                 for(ItemInterface item : cartList){
-                    Inventory.getInventory().add(item);
+
+                    //Counter to check for an ox
+                    int counter = 0;
+
+                    for(ItemInterface itemCheck : Inventory.getInventory()){
+                        if(itemCheck.getName().equals(item.getName())){
+                            itemCheck.setQuantity(itemCheck.getQuantity()+item.getQuantity());
+                        }else{
+                            counter++;
+                        }
+                    }
+
+                    //If counter is equal to length of the inventory then no ox was found, so add one.
+                    if(counter == Inventory.getInventory().size()){
+                        Inventory.getInventory().add(item);
+                    }
                 }
                 Profile.setMoney(Profile.getMoney() - cartTotalValue);
                 cartList.clear();
@@ -209,10 +228,18 @@ public class StartTownStoreView {
                 cart.getChildren().clear();
                 checkOut.setText("$0.00 - Checkout");
                 userCash.setText("$" + String.format("%.2f", Profile.getMoney()) + " - Wallet");
+
+
+
+
+
+                Inventory.updateInventoryScreen();
             }
         });
 
         Scene scene = new Scene(gridPane, Main.getPrimaryStage().getScene().getWidth(), Main.getPrimaryStage().getScene().getHeight());
+
+        AddKeyListenerToScene.addKeyListener(scene);
 
         scene.getStylesheets().add("resources/main.css");
 

@@ -4,9 +4,14 @@ import items.ItemInterface;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import views.StartingTown.StartTownStoreView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,14 +22,21 @@ import java.util.Collections;
  */
 public class Inventory {
     private static ArrayList<ItemInterface> inventory = new ArrayList<>();
+    private static Stage inventoryStage = new Stage();
+    private static GridPane inventoryGrid = new GridPane();
+    private static ScrollPane inventoryScrollPane = new ScrollPane();
+    private static Scene inventoryScene = new Scene(inventoryGrid, 400, 600);
 
-    public static void showInventoryScreen(){
-        Stage inventoryStage = new Stage();
-        GridPane gridPane = new GridPane();
-        Scene scene = new Scene(gridPane, 400, 600);
+    public static void updateInventoryScreen(){
+        inventoryStage.setResizable(false);
 
-        gridPane.setId("inventoryBackground");
-        gridPane.setAlignment(Pos.CENTER);
+        inventoryGrid.getChildren().clear();
+        inventoryScrollPane.setId("inventoryScrollPane");
+        inventoryScrollPane.setFitToHeight(true);
+        inventoryScrollPane.setPrefViewportWidth(400);
+
+        inventoryGrid.setId("inventoryBackground");
+        inventoryGrid.setAlignment(Pos.CENTER);
 
         VBox vBox = new VBox(5);
 
@@ -36,18 +48,19 @@ public class Inventory {
             vBox.getChildren().add(label);
         }
 
-        gridPane.add(vBox, 0, 0);
+        inventoryScrollPane.setContent(vBox);
 
-        gridPane.getStylesheets().add("resources/main.css");
+        inventoryGrid.add(inventoryScrollPane, 0, 0);
+
+        inventoryGrid.getStylesheets().add("resources/main.css");
         inventoryStage.setTitle("Inventory");
-        inventoryStage.setScene(scene);
-        inventoryStage.show();
+        inventoryStage.setScene(inventoryScene);
     }
 
     public static ArrayList<ItemInterface> getInventory(){
         return inventory;
     }
-    public static void setInventory(ArrayList<ItemInterface> inventorySet){
-        inventory = inventorySet;
-    }
+    public static void setInventory(ArrayList<ItemInterface> inventorySet){inventory = inventorySet;}
+    public static void setInventoryStage(Stage stage){ inventoryStage = stage;}
+    public static Stage getInventoryStage(){return inventoryStage;}
 }

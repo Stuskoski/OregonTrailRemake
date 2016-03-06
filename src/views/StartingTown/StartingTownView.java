@@ -6,6 +6,7 @@ import javafx.scene.layout.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import main.Main;
+import models.AddKeyListenerToScene;
 import models.RandomizeStoreContents;
 
 import java.io.File;
@@ -109,6 +110,7 @@ public class StartingTownView {
             StartTownSaloonView.createStartTownSaloonView();
         });
 
+        AddKeyListenerToScene.addKeyListener(scene);
         setStartingTownView(scene);
         Main.getPrimaryStage().setScene(scene);
     }

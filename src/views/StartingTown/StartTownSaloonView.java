@@ -11,6 +11,7 @@ import main.Main;
 import models.AddKeyListenerToScene;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Timer;
 
 /**
@@ -48,12 +49,7 @@ public class StartTownSaloonView {
 
         scene.getStylesheets().add("resources/main.css");
 
-        backBtn.setOnAction(event -> {
-            Main.getPrimaryStage().setScene(StartingTownView.getStartingTownView());
-            mediaPlayer.stop();
-        });
-
-
+        ArrayList<Tooltip> tooltipArrayList = new ArrayList<>();
 
         AddKeyListenerToScene.addGeneralKeyListener(scene);
         /**
@@ -62,9 +58,48 @@ public class StartTownSaloonView {
          * a toolip to popup.
          */
         scene.setOnMouseClicked(event -> {
-            Tooltip tooltip = new Tooltip("testing node");
-            tooltip.show(gridPane, event.getScreenX(), event.getScreenY());
+            double x = event.getScreenX();
+            double y = event.getScreenY();
+            for (Tooltip eraseTooltip : tooltipArrayList){
+                eraseTooltip.hide();
+            }
+
+
+            if(x>=1312.0 && x<=1371.0 && y>=536.0 && y<=617.0){
+                Tooltip bartender = new Tooltip("What can I get ya?");
+                bartender.show(gridPane, x, y);
+                tooltipArrayList.add(bartender);
+            }
+            //1235.0
+            //550.0
+            //1298.0
+            //552.0
+            //1305.0
+            //655.0
+            //1237.0
+            //649.0
+            if(x>=1235.0 && x<= 1298.0 && y>=550.0 && y<=649.0){
+                Tooltip oldManAtTheBar = new Tooltip("Whiskey, Mmm Mmm Mmm down to my belly, yum yum yum...*hiccup*");
+                oldManAtTheBar.show(gridPane, x, y);
+                tooltipArrayList.add(oldManAtTheBar);
+            }
+
+
+            //Tooltip tooltip = new Tooltip("testing node");
+            //tooltip.show(gridPane, event.getScreenX()+5, event.getScreenY()-15);
+            //tooltipArrayList.add(tooltip);
+            System.out.println(event.getScreenX());
+            System.out.println(event.getScreenY());
             //Timer timer = new Timer(); add timer to remove node in 10 seconds
+        });
+
+        backBtn.setOnAction(event -> {
+            Main.getPrimaryStage().setScene(StartingTownView.getStartingTownView());
+            mediaPlayer.stop();
+            for (Tooltip eraseTooltip : tooltipArrayList){
+                eraseTooltip.hide();
+                eraseTooltip = null;
+            }
         });
 
         setStartSaloon(scene);

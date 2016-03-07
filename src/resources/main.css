@@ -159,6 +159,10 @@
     -fx-background-position: center center;
     -fx-background-color: black;
 }
+#startTownSaloonTooltip{
+    -fx-font-size: 12;
+    -fx-font-weight: bold;
+}
 /*---------------------Inventory Popup---------------------------*/
 #inventoryBackground{
     -fx-background-image: url("inventoryBackground.jpg");

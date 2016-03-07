@@ -1,5 +1,7 @@
 package views.StartingTown;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -9,6 +11,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import main.Main;
 import models.AddKeyListenerToScene;
+import models.Inventory;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -34,6 +37,7 @@ public class StartTownSaloonView {
         gridPane.setId("saloonGridBackground");
 
         Button backBtn = new Button("Back");
+        backBtn.setId("mainScreenBtn");
         gridPane.add(backBtn, 0, 0);
 
         URL url = StartTownSaloonView.class.getClassLoader().getResource("resources/saloonPianoMusic.mp3");
@@ -58,39 +62,69 @@ public class StartTownSaloonView {
          * a toolip to popup.
          */
         scene.setOnMouseClicked(event -> {
-            double x = event.getScreenX();
-            double y = event.getScreenY();
+            double x = event.getX();
+            double y = event.getY();
             for (Tooltip eraseTooltip : tooltipArrayList){
                 eraseTooltip.hide();
             }
 
 
-            if(x>=1312.0 && x<=1371.0 && y>=536.0 && y<=617.0){
+            if(x>=767.0 && x<=814.0 && y>=378.0 && y<=461.0){
                 Tooltip bartender = new Tooltip("What can I get ya?");
-                bartender.show(gridPane, x, y);
+                bartender.setId("startTownSaloonTooltip");
+                bartender.show(gridPane, 776.0+scene.getWindow().getX(), 407.0+scene.getWindow().getY());
                 tooltipArrayList.add(bartender);
             }
-            //1235.0
-            //550.0
-            //1298.0
-            //552.0
-            //1305.0
-            //655.0
-            //1237.0
-            //649.0
-            if(x>=1235.0 && x<= 1298.0 && y>=550.0 && y<=649.0){
+            if(x>=687.0 && x<= 759.0 && y>=387.0 && y<=507.0){
                 Tooltip oldManAtTheBar = new Tooltip("Whiskey, Mmm Mmm Mmm down to my belly, yum yum yum...*hiccup*");
-                oldManAtTheBar.show(gridPane, x, y);
+                oldManAtTheBar.setId("startTownSaloonTooltip");
+                oldManAtTheBar.show(gridPane, 745.0+scene.getWindow().getX(), 432.0+scene.getWindow().getY());
                 tooltipArrayList.add(oldManAtTheBar);
             }
+            if(x>=43.0 && x<= 102.0 && y>=330.0 && y<=545.0){
+                Tooltip banjoPlayerInBack = new Tooltip("Yoddle yoddleeeee yoddleeeeheeeehoooo...");
+                banjoPlayerInBack.setId("startTownSaloonTooltip");
+                banjoPlayerInBack.show(gridPane, 83.0+scene.getWindow().getX(), 356.0+scene.getWindow().getY());
+                tooltipArrayList.add(banjoPlayerInBack);
+            }
+            if(x>=606.0 && x<= 662.0 && y>=383.0 && y<=688.0){
+                Tooltip secretAlienTechHintDude = new Tooltip("I was out in the fields...staring\n" +
+                        "at the sky when suddenly a huge blinding\n" +
+                        "light shot up from the ground. Aliens man\n" +
+                        "I hope they left something behind for me to\n" +
+                        "find!");
+                secretAlienTechHintDude.setId("startTownSaloonTooltip");
+                secretAlienTechHintDude.show(gridPane, 645.0+scene.getWindow().getX(), 428.0+scene.getWindow().getY());
+                tooltipArrayList.add(secretAlienTechHintDude);
+            }
+            if(x>=923.0 && x<= 1029.0 && y>=385.0 && y<=752.0){
+                Tooltip guyHittingOnGirlOnRight = new Tooltip("Sup baby gurrllllll");
+                guyHittingOnGirlOnRight.setId("startTownSaloonTooltip");
+                guyHittingOnGirlOnRight.show(gridPane, 952.0+scene.getWindow().getX(), 427.0+scene.getWindow().getY());
+                tooltipArrayList.add(guyHittingOnGirlOnRight);
+            }
 
+            /**
+             * Set listeners for window drags.
+             * If user drags the window then hide
+             * all the tooltips or they will stay
+             * where they are until user hides them
+             * with the other commands. Aesthetics
+             * only really.
+             */
+            scene.getWindow().xProperty().addListener((observable, oldValue, newValue) -> {
+                for (Tooltip eraseTooltip : tooltipArrayList){
+                    eraseTooltip.hide();
+                }
+            });
+            scene.getWindow().yProperty().addListener((observable, oldValue, newValue) -> {
+                for (Tooltip eraseTooltip : tooltipArrayList){
+                    eraseTooltip.hide();
+                }
+            });
 
-            //Tooltip tooltip = new Tooltip("testing node");
-            //tooltip.show(gridPane, event.getScreenX()+5, event.getScreenY()-15);
-            //tooltipArrayList.add(tooltip);
-            System.out.println(event.getScreenX());
-            System.out.println(event.getScreenY());
-            //Timer timer = new Timer(); add timer to remove node in 10 seconds
+            System.out.println(event.getX());
+            System.out.println(event.getY());
         });
 
         backBtn.setOnAction(event -> {
@@ -101,6 +135,7 @@ public class StartTownSaloonView {
                 eraseTooltip = null;
             }
         });
+
 
         setStartSaloon(scene);
         Main.getPrimaryStage().setScene(scene);

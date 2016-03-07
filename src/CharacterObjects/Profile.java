@@ -13,6 +13,10 @@ public class Profile {
     private static double thirst, hunger, thirstReduce, hungerReduce, money, carryingCapacity;
     private static int health, strength, luck, smarts, agility, perception, endurance;
     private static String charClass, name;
+    private static Child1 child1;
+    private static Child2 child2;
+    private static Child3 child3;
+    private static Spouse spouse;
 
     public static int getHealth() {
         return health;
@@ -114,4 +118,17 @@ public class Profile {
     public static void setName(String name) {
         Profile.name = name;
     }
+
+    public static Child1 getChild1(){return child1;}
+    public static void setChild1(Child1 child){child1 = child;}
+
+    public static Child2 getChild2(){return child2;}
+    public static void setChild2(Child2 child){child2 = child;}
+
+    public static Child3 getChild3(){return child3;}
+    public static void setChild3(Child3 child){child3 = child;}
+
+    public static Spouse getSpouse(){return spouse;}
+    public static void setSpouse(Spouse spouseSet){spouse = spouseSet;}
+
 }

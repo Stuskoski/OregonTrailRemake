@@ -40,10 +40,10 @@ public class InstantiateProfile {
     //Create the objects for the spouse and the three kids
     //Also set their starting death chance and health status
     private static void createFamily(String spouseName, String child1Name, String child2Name, String child3Name){
-        new Spouse(getStartingChance(), "healthy", spouseName);
-        new Child1(getStartingChance(), "healthy", child1Name);
-        new Child2(getStartingChance(), "healthy", child2Name);
-        new Child3(getStartingChance(), "healthy", child3Name);
+        Profile.setSpouse(new Spouse(getStartingChance(), "healthy", spouseName));
+        Profile.setChild1(new Child1(getStartingChance(), "healthy", child1Name));
+        Profile.setChild2(new Child2(getStartingChance(), "healthy", child2Name));
+        Profile.setChild3(new Child3(getStartingChance(), "healthy", child3Name));
     }
 
     private static double getStartingChance(){

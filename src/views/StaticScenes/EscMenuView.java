@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import models.NewGameClearExisiting;
 
 /**
  * Created by augustus on 3/6/16.
@@ -38,12 +39,18 @@ public class EscMenuView {
         load.setPrefWidth(150);
 
         quit.setOnAction(event -> System.exit(0));
+        save.setOnAction(event -> System.out.println("Implement Save Feature!"));
+        newGame.setOnAction(event -> NewGameClearExisiting.startNewGame());
+        load.setOnAction(event -> System.out.println("Implement Load Feature!"));
+
 
         vBox.getChildren().addAll(save, load, newGame, quit);
 
         gridPane.add(vBox, 0, 0);
 
         scene.getStylesheets().add("resources/main.css");
+
+        stage.setResizable(false);
 
         stage.setScene(scene);
 

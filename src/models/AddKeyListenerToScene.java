@@ -11,18 +11,20 @@ import views.StaticScenes.EscMenuView;
  */
 public class AddKeyListenerToScene {
     public static void addKeyListener(Scene scene){
-        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                switch (event.getCode()) {
-                    case I: {
-                        Inventory.updateInventoryScreen();
-                        Inventory.getInventoryStage().show();
-                        break;
-                    }
-                    case ESCAPE:{
-                        EscMenuView.showEscMenu();
-                    }
+        scene.setOnKeyPressed(event -> {
+            switch (event.getCode()) {
+                case I: {
+                    Inventory.updateInventoryScreen();
+                    Inventory.getInventoryStage().show();
+                    break;
+                }
+                case ESCAPE:{
+                    EscMenuView.showEscMenu();
+                    break;
+                }
+                case H:{
+                    System.out.println("Implement Help Screen");
+                    break;
                 }
             }
         });

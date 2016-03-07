@@ -19,6 +19,8 @@ import java.util.Collections;
 /**
  * Created by augustus on 1/28/16.
  * This will be a list that holds all the items.
+ * Lets make the inventory view sort your items
+ * into category for better readability
  */
 public class Inventory {
     private static ArrayList<ItemInterface> inventory = new ArrayList<>();

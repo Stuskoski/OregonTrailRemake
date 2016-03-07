@@ -14,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import main.Main;
 import models.InstantiateProfile;
+import models.Inventory;
 
 import java.util.ArrayList;
 
@@ -49,7 +50,6 @@ public class NewGameView {
         final ReadOnlyDoubleWrapper healthWrapper = new ReadOnlyDoubleWrapper();
         final ReadOnlyDoubleWrapper thirstWrapper = new ReadOnlyDoubleWrapper();
         final ReadOnlyDoubleWrapper hungerWrapper = new ReadOnlyDoubleWrapper();
-        boolean creatCharBtnHit;
 
         BorderPane borderPane = new BorderPane();
         GridPane gridPane = new GridPane();
@@ -373,6 +373,7 @@ public class NewGameView {
             }
         });
 
+
         //Back button to go back to home screen.
         //Need testing to see if Garbage collector will clear home scene and leave you with a null scene.
         backBtn.setOnAction(event -> Main.getPrimaryStage().setScene(MainScreenView.getLoginScene()));
@@ -386,6 +387,15 @@ public class NewGameView {
         borderPane.setId("newGameScreen");
 
         Scene newScene = new Scene(borderPane, width, height);
+
+        newScene.setOnKeyPressed(event -> {
+            switch (event.getCode()) {
+                case ENTER:{
+                    createCharBtn.fire();
+                    break;
+                }
+            }
+        });
 
         newScene.getStylesheets().add("resources/main.css");
 

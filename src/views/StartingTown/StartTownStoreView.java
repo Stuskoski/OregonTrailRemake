@@ -1,29 +1,20 @@
 package views.StartingTown;
 
 import CharacterObjects.Profile;
-import items.Animals.Horse;
 import items.ItemInterface;
-import javafx.event.EventHandler;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
-import javafx.util.Callback;
 import main.Main;
 import models.AddKeyListenerToScene;
 import models.Inventory;
 import models.RandomizeStoreContents;
 
-import java.lang.reflect.InvocationTargetException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  * Created by augustus on 2/19/16.
@@ -239,7 +230,7 @@ public class StartTownStoreView {
 
         Scene scene = new Scene(gridPane, Main.getPrimaryStage().getScene().getWidth(), Main.getPrimaryStage().getScene().getHeight());
 
-        AddKeyListenerToScene.addKeyListener(scene);
+        AddKeyListenerToScene.addGeneralKeyListener(scene);
 
         scene.getStylesheets().add("resources/main.css");
 

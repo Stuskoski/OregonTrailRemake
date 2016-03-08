@@ -10,6 +10,7 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import main.Main;
 import models.Inventory;
 import views.MiniGames.HuntingGamePackage.HuntingObjects.UsersGun;
@@ -29,19 +30,22 @@ import java.util.Random;
  */
 public class HuntingGame {
     private static Scene scene;
-    public static Canvas canvas = new Canvas(Main.getPrimaryStage().getWidth(), Main.getPrimaryStage().getHeight()-30);
-    public static GraphicsContext gc = canvas.getGraphicsContext2D();
+    public static Canvas canvas1 = new Canvas(Main.getPrimaryStage().getWidth(), Main.getPrimaryStage().getHeight()-30);
+    public static Canvas canvas2 = new Canvas(Main.getPrimaryStage().getWidth(), Main.getPrimaryStage().getHeight()-30);
+    public static GraphicsContext gc1 = canvas1.getGraphicsContext2D();
+    public static GraphicsContext gc2 = canvas2.getGraphicsContext2D();
 
 
     public static void randomizeHuntScreen(){
         BorderPane borderPane = new BorderPane();
         HBox topHbox = new HBox(5);
         Button back = new Button("Back");
+        Pane layeredCanvas = new Pane(canvas1, canvas2);
 
         back.setId("mainScreenBtn");
 
         borderPane.setTop(topHbox);
-        borderPane.setCenter(canvas);
+        borderPane.setCenter(layeredCanvas);
 
         topHbox.getChildren().add(back);
 
@@ -107,7 +111,7 @@ public class HuntingGame {
                         unselectBtns.setSelected(false);
                     }
                     gunBtn.setSelected(true);
-                    UsersGun.drawGun(gc, gunBtn.getText());
+                    UsersGun.drawGun(gc1, gunBtn.getText());
                     UsersGun.startMouseListenerForGun(createScene);
                 }
 

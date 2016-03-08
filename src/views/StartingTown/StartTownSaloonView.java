@@ -1,8 +1,5 @@
 package views.StartingTown;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
@@ -11,11 +8,8 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import main.Main;
 import models.AddKeyListenerToScene;
-import models.Inventory;
-
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Timer;
 
 /**
  * Created by augustus on 2/19/16.

@@ -32,6 +32,8 @@ public class HuntingGame {
         Random random = new Random();
 
 
+
+
         back.setOnAction(event -> {
             switch(random.nextInt(4)){
                 case 0:{

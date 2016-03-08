@@ -7,7 +7,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import main.Main;
 import models.AddKeyListenerToScene;
-import views.MiniGames.HuntingGame;
+import views.MiniGames.HuntingGamePackage.HuntingGame;
 
 import java.net.URL;
 

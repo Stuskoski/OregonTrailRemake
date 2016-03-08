@@ -7,6 +7,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import main.Main;
 import models.AddKeyListenerToScene;
+import views.MiniGames.HuntingGame;
 
 import java.net.URL;
 
@@ -97,6 +98,9 @@ public class StartingTownView {
             StartTownStoreView.createStartTownStoreView();
         });
         hitTheTrailBtn.setOnMouseClicked(event -> {
+            mediaPlayer.stop();
+            HuntingGame.randomizeHuntScreen();
+            Main.getPrimaryStage().setScene(HuntingGame.getScene()); //quick test for hunting game
             //HitTheTrailView.createStartTownTrailView();
         });
         stableBtn.setOnMouseClicked(event -> {

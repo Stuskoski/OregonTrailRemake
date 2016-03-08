@@ -194,5 +194,45 @@
 #escScreenPopup{
     -fx-background-image: url("EscMenuBackground.jpg");
 }
+/*----------------------Hunting MiniGame-------------------------*/
+#huntBackground1{
+    -fx-background-image: url("huntingBackground.jpg");
+    -fx-background-repeat: stretch;
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+    -fx-background-color: black;
+}
+#huntBackground2{
+    -fx-background-image: url("huntingBackground2.png");
+    -fx-background-repeat: stretch;
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+    -fx-background-color: black;
+}
+#huntBackground3{
+    -fx-background-image: url("huntingBackground3.png");
+    -fx-background-repeat: stretch;
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+    -fx-background-color: black;
+}
+#huntBackground4{
+    -fx-background-image: url("huntingBackground4.jpg");
+    -fx-background-repeat: stretch;
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+    -fx-background-color: black;
+}
+
+/*---------------------------------------------------------------*/
+/*---------------------------------------------------------------*/
+/*---------------------------------------------------------------*/
+/*---------------------------------------------------------------*/
+/*---------------------------------------------------------------*/
+/*---------------------------------------------------------------*/
+/*---------------------------------------------------------------*/
+/*---------------------------------------------------------------*/
+/*---------------------------------------------------------------*/
+/*---------------------------------------------------------------*/
 /*---------------------------------------------------------------*/
 /*---------------------------------------------------------------*/

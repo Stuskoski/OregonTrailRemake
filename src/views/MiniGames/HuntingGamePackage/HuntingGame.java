@@ -2,22 +2,24 @@ package views.MiniGames.HuntingGamePackage;
 
 import items.Guns.*;
 import items.ItemInterface;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.util.Duration;
 import main.Main;
 import models.Inventory;
 import views.MiniGames.HuntingGamePackage.HuntingObjects.UsersGun;
 import views.StartingTown.StartingTownView;
-
 import java.util.ArrayList;
 import java.util.Random;
+
 
 /**
  * Created by augustus on 3/8/16.
@@ -36,7 +38,7 @@ public class HuntingGame {
     public static GraphicsContext gc2 = canvas2.getGraphicsContext2D();
 
 
-    public static void randomizeHuntScreen(){
+    public static void randomizeHuntScreen(int secondsToHunt) {
         BorderPane borderPane = new BorderPane();
         HBox topHbox = new HBox(5);
         Button back = new Button("Back");
@@ -51,16 +53,16 @@ public class HuntingGame {
 
         Random random = new Random();
 
-        switch(random.nextInt(3)){
-            case 0:{
+        switch (random.nextInt(3)) {
+            case 0: {
                 borderPane.setId("huntBackground1");
                 break;
             }
-            case 1:{
+            case 1: {
                 borderPane.setId("huntBackground2");
                 break;
             }
-            case 2:{
+            case 2: {
                 borderPane.setId("huntBackground3");
                 break;
             }
@@ -75,8 +77,8 @@ public class HuntingGame {
 
         ArrayList<ToggleButton> gunInventory = new ArrayList<>();
 
-        for (ItemInterface guns : Inventory.getInventory()){
-            if(guns.getCategory().equals("guns")){
+        for (ItemInterface guns : Inventory.getInventory()) {
+            if (guns.getCategory().equals("guns")) {
                 ToggleButton gunBtn = new ToggleButton(guns.getName());
                 //Button gunBtn = new Button(guns.getName());
                 gunBtn.setId("huntingGameGunBtn");
@@ -86,11 +88,9 @@ public class HuntingGame {
         }
 
         //Create Gun Buttons for switching guns.
-        for (ToggleButton gunBtn : gunInventory){
+        for (ToggleButton gunBtn : gunInventory) {
             topHbox.getChildren().add(gunBtn);
         }
-
-
 
 
         back.setOnAction(event -> {
@@ -98,16 +98,16 @@ public class HuntingGame {
         });
 
 
-        Scene createScene = new Scene(borderPane, Main.getPrimaryStage().getScene().getWidth(),Main.getPrimaryStage().getScene().getHeight());
+        Scene createScene = new Scene(borderPane, Main.getPrimaryStage().getScene().getWidth(), Main.getPrimaryStage().getScene().getHeight());
 
         createScene.getStylesheets().add("resources/main.css");
 
 
         //Create listeners for gun selection
-        for (ToggleButton gunBtn : gunInventory){
+        for (ToggleButton gunBtn : gunInventory) {
             gunBtn.setOnAction(event -> {
-                if(gunBtn.isSelected()){
-                    for (ToggleButton unselectBtns : gunInventory){
+                if (gunBtn.isSelected()) {
+                    for (ToggleButton unselectBtns : gunInventory) {
                         unselectBtns.setSelected(false);
                     }
                     gunBtn.setSelected(true);
@@ -119,6 +119,13 @@ public class HuntingGame {
         }
 
         scene = createScene;
+
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(secondsToHunt), event -> {
+            HuntingSummary.showSummaryScreen(5, 150.0);
+        }));
+        timeline.setCycleCount(1);
+        timeline.play();
+
     }
 
     public static Scene getScene(){return scene;}

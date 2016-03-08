@@ -99,7 +99,7 @@ public class StartingTownView {
         });
         hitTheTrailBtn.setOnMouseClicked(event -> {
             mediaPlayer.stop();
-            HuntingGame.randomizeHuntScreen();
+            HuntingGame.randomizeHuntScreen(30);
             Main.getPrimaryStage().setScene(HuntingGame.getScene()); //quick test for hunting game
             //HitTheTrailView.createStartTownTrailView();
         });

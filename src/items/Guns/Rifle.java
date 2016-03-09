@@ -40,13 +40,13 @@ public class Rifle implements GunInterface {
     }
 
     @Override
-    public int bulletSpeed() {
-        return 5;
+    public double getBulletSpeed() {
+        return 1;
     }
 
     //returns ints as seconds
     @Override
-    public int reloadTime() {
+    public int getReloadTime() {
         return 4;
     }
 

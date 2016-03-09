@@ -39,13 +39,13 @@ public class FlintlockPistol implements GunInterface {
     }
 
     @Override
-    public int bulletSpeed() {
-        return 2;
+    public double getBulletSpeed() {
+        return 4;
     }
 
     //returns ints as seconds
     @Override
-    public int reloadTime() {
+    public int getReloadTime() {
         return 8;
     }
 

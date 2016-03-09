@@ -39,10 +39,14 @@ public class HuntingGame {
 
 
     public static void randomizeHuntScreen(int secondsToHunt) {
+        int animalsKilled = 0;
+        double poundsHunted = 0;
+
         BorderPane borderPane = new BorderPane();
         HBox topHbox = new HBox(5);
         Button back = new Button("Back");
         Pane layeredCanvas = new Pane(canvas1, canvas2);
+
 
         back.setId("mainScreenBtn");
 
@@ -111,8 +115,7 @@ public class HuntingGame {
                         unselectBtns.setSelected(false);
                     }
                     gunBtn.setSelected(true);
-                    UsersGun.drawGun(gc1, gunBtn.getText());
-                    UsersGun.startMouseListenerForGun(createScene);
+                    UsersGun.drawGun(gc1, gunBtn.getText(), createScene);
                 }
 
             });
@@ -121,7 +124,7 @@ public class HuntingGame {
         scene = createScene;
 
         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(secondsToHunt), event -> {
-            HuntingSummary.showSummaryScreen(5, 150.0);
+            HuntingSummary.showSummaryScreen(animalsKilled, poundsHunted);
         }));
         timeline.setCycleCount(1);
         timeline.play();

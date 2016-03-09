@@ -7,7 +7,7 @@ import items.ItemInterface;
  */
 public interface GunInterface extends ItemInterface {
     int getBulletsShot();
-    int bulletSpeed();
-    int reloadTime();
+    double getBulletSpeed();
+    int getReloadTime();
     int getQuantity();
 }

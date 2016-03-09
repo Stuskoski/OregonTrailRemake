@@ -42,13 +42,13 @@ public class AlienRifle implements GunInterface {
     }
 
     @Override
-    public int bulletSpeed() {
-        return 10;
+    public double getBulletSpeed() {
+        return 0.5;
     }
 
     //returns ints as seconds
     @Override
-    public int reloadTime() {
+    public int getReloadTime() {
         return 1;
     }
 

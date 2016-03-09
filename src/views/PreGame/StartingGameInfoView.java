@@ -1,5 +1,8 @@
 package views.PreGame;
 
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -10,13 +13,9 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
+import javafx.util.Duration;
 import main.Main;
 import views.StartingTown.StartingTownView;
-
-import java.io.File;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URI;
 import java.net.URL;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -25,13 +24,18 @@ import java.util.TimerTask;
  * Created by augustus on 2/18/16.
  * Quick view that gives an introduction
  * in a star wars manner
+ *
+ * Added a timeline to replace timer.
+ * Keeping timer code just for reference.
  */
 public class StartingGameInfoView {
     public static Scene startingGameInfoView;
     public static Canvas canvas = new Canvas(Main.getPrimaryStage().getWidth(), Main.getPrimaryStage().getHeight()-30);
     public static GraphicsContext gc = canvas.getGraphicsContext2D();
     public static int x = 0;
-    private static Timer timer = new Timer();
+    //private static Timer timer = new Timer();
+    private static Timeline timeline;
+
 
     public static void createStartingGameInfoView(){
         GridPane gridPane = new GridPane();
@@ -46,7 +50,13 @@ public class StartingGameInfoView {
        // gc.fillText("The Oregon Trail", (Main.getPrimaryStage().getWidth()/2) ,15);
         gc.fillText("---Press any button to continue---", (Main.getPrimaryStage().getWidth()/2) ,Main.getPrimaryStage().getHeight()-400);
 
-        timer.schedule(new scrollTextTimer(), 0, 35);
+        timeline = new Timeline(new KeyFrame(Duration.millis(35), event -> {
+            scrollText();
+        }));
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
+
+        //timer.schedule(new scrollTextTimer(), 0, 35);
 
         Scene scene = new Scene(gridPane, Main.getPrimaryStage().getScene().getWidth(), Main.getPrimaryStage().getScene().getHeight());
 
@@ -72,7 +82,8 @@ public class StartingGameInfoView {
 
         scene.setOnKeyPressed(event -> {
             mediaPlayer.setMute(true);
-            timer.cancel();
+            timeline.stop();
+            //timer.cancel();
             StartingTownView.createStartingTownView(); //move on to the next scene
             StartingGameInfoView.setStartingGameInfoView(null);
         });
@@ -111,7 +122,8 @@ public class StartingGameInfoView {
         //Execution finished code
         if(height+30-x <= -450){
             gc.fillText("---Press any button to continue---", (width/2) ,height-(height/2));
-            timer.cancel();
+            //timer.cancel();
+            timeline.stop();
         }
     }
     public static void setStartingGameInfoView(Scene scene){StartingGameInfoView.startingGameInfoView = scene;}

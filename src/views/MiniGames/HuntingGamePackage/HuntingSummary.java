@@ -7,6 +7,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import main.Main;
+import views.PreGame.StartingGameInfoView;
+import views.StartingTown.StartingTownView;
 
 import java.util.TimerTask;
 
@@ -34,7 +36,7 @@ public class HuntingSummary{
 
 
         continueBtn.setOnAction(event -> {
-            //go back to trail
+            Main.getPrimaryStage().setScene(StartingTownView.getStartingTownView());
 
         });
 

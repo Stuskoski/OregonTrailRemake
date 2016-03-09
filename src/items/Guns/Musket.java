@@ -39,13 +39,13 @@ public class Musket implements GunInterface {
     }
 
     @Override
-    public int bulletSpeed() {
+    public double getBulletSpeed() {
         return 3;
     }
 
     //returns ints as seconds
     @Override
-    public int reloadTime() {
+    public int getReloadTime() {
         return 7;
     }
 

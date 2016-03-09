@@ -5,22 +5,22 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.image.Image;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import views.StartingTown.StartTownStoreView;
-
 import java.util.ArrayList;
-import java.util.Collections;
 
 /**
  * Created by augustus on 1/28/16.
  * This will be a list that holds all the items.
  * Lets make the inventory view sort your items
  * into category for better readability
+ *
+ * To-Do:
+ * Add delete buttons for deleting items from inventory
+ * Add how much their inventory weighs
+ * Add checks when adding stuff to inventory to check if
+ * they have the necessary carrying capacity
  */
 public class Inventory {
     private static ArrayList<ItemInterface> inventory = new ArrayList<>();

@@ -79,7 +79,7 @@ public class HuntingGame {
 
         Inventory.getInventory().clear();
 
-        Inventory.getInventory().add(new Bullets(50));
+        Inventory.getInventory().add(new Bullets(100));
 
         for(ItemInterface bulletCheck : Inventory.getInventory()){
             if(bulletCheck.getName().equals("Bullet")){

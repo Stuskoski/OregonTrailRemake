@@ -3,11 +3,14 @@ package views.MiniGames.HuntingGamePackage.HuntingObjects;
 import CharacterObjects.Profile;
 import items.Guns.*;
 import items.ItemInterface;
+import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.*;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
@@ -17,6 +20,8 @@ import views.MiniGames.HuntingGamePackage.HuntingGame;
 import views.MiniGames.HuntingGamePackage.HuntingSummary;
 
 import java.awt.*;
+import java.net.URL;
+import java.util.ArrayList;
 
 /**
  * Created by augustus on 3/8/16.
@@ -73,12 +78,16 @@ public class UsersGun {
         int bulletsShot = gun.getBulletsShot();
         int reloadTime = gun.getReloadTime();
         final int[] bullets = {0};
+        int bulletsIndexInInventory = 0;
 
         for(ItemInterface bulletCheck : Inventory.getInventory()){
             if(bulletCheck.getName().equals("Bullet")){
                 bullets[0] = bulletCheck.getQuantity();
             }
         }
+
+        ArrayList<BulletObject> bulletObjects = new ArrayList<>(); //add the bullets into here when they are shot
+        ArrayList<ItemInterface> Animals = new ArrayList<>(); //add the animals into here when they are across the screen
 
         huntingScene.setOnMouseMoved(event1 -> {
             gc1.clearRect(0, HuntingGame.getScene().getHeight()-150, HuntingGame.getScene().getWidth(), 175);
@@ -88,50 +97,105 @@ public class UsersGun {
                 huntingScene.setOnMouseClicked(event2 -> {
                     if(bullets[0] > 0) {
                         bullets[0]--;
+                        for(ItemInterface bulletCheck : Inventory.getInventory()){ //Make sure to get rid of the bullets in the inventory also
+                            if(bulletCheck.getName().equals("Bullet")){
+                                bulletCheck.setQuantity(bulletCheck.getQuantity()-1);
+                            }
+                        }
                         HuntingGame.getNumOfBullets().setText("Bullets: " + bullets[0]);
+
+                        //Gun sounds switch
+                        switch (gun.getName()) {
+                            case "Alien Rifle": {
+                                URL url = UsersGun.class.getClassLoader().getResource("resources/HuntingMiniGame/laserFiring.mp3");
+                                assert url != null;
+                                final Media media = new Media(url.toString());
+                                final MediaPlayer mediaPlayer = new MediaPlayer(media);
+                                mediaPlayer.setVolume(25);
+                                mediaPlayer.setCycleCount(1);
+                                mediaPlayer.play();
+                                break;
+                            }
+                            case "Flintlock Pistol": {
+
+                                break;
+                            }
+                            case "Musket": {
+
+                                break;
+                            }
+                            case "Rifle": {
+
+                                break;
+                            }
+                            case "Shotgun": {
+
+                                break;
+                            }
+                        }
+
+
+                        //Make the bullet object here so the loop doesn't create a lot of them.  Then go and set the values
+                        BulletObject bulletObject = new BulletObject(event2.getX(), HuntingGame.getScene().getHeight() - 155, 1, 1);
+                        bulletObjects.add(bulletObject);
                         final int[] x = {0};
+                        final int[] counter = {0};
                         Timeline timeline = new Timeline(new KeyFrame(Duration.millis(bulletSpeed), timelineEvent -> {
                             switch (gun.getName()) {
                                 case "Alien Rifle": {
-                                    gc1.clearRect(event2.getX(), HuntingGame.getScene().getHeight() - 155 - x[0], 3, 15);
+                                    bulletObject.w = 4;
+                                    bulletObject.h = 30;
+                                    gc1.clearRect(bulletObject.x, bulletObject.y-x[0], bulletObject.w, bulletObject.h);
                                     x[0]++;
                                     gc1.setFill(Color.web("#ff1aff"));
-                                    gc1.fillRect(event2.getX(), HuntingGame.getScene().getHeight() - 155 - x[0], 3, 15);
+                                    gc1.fillRect(bulletObject.x, bulletObject.y-x[0], bulletObject.w, bulletObject.h);
                                     break;
                                 }
                                 case "Flintlock Pistol": {
-                                    gc1.clearRect(event2.getX(), HuntingGame.getScene().getHeight() - 155 - x[0], 4, 4);
+                                    bulletObject.w = 4;
+                                    bulletObject.h = 4;
+                                    gc1.clearRect(bulletObject.x, bulletObject.y-x[0], bulletObject.w, bulletObject.h);
                                     x[0]++;
                                     gc1.setFill(Color.BLACK);
-                                    gc1.fillOval(event2.getX(), HuntingGame.getScene().getHeight() - 155 - x[0], 4, 4);
+                                    gc1.fillOval(bulletObject.x, bulletObject.y-x[0], bulletObject.w, bulletObject.h);
                                     break;
                                 }
                                 case "Musket": {
-                                    gc1.clearRect(event2.getX(), HuntingGame.getScene().getHeight() - 155 - x[0], 12, 12);
+                                    bulletObject.w = 12;
+                                    bulletObject.h = 12;
+                                    gc1.clearRect(bulletObject.x, bulletObject.y-x[0], bulletObject.w, bulletObject.h);
                                     x[0]++;
                                     gc1.setFill(Color.BLACK);
-                                    gc1.fillOval(event2.getX(), HuntingGame.getScene().getHeight() - 155 - x[0], 12, 12);
+                                    gc1.fillOval(bulletObject.x, bulletObject.y-x[0], bulletObject.w, bulletObject.h);
                                     break;
                                 }
                                 case "Rifle": {
-                                    gc1.clearRect(event2.getX(), HuntingGame.getScene().getHeight() - 155 - x[0], 3, 8);
+                                    bulletObject.w = 3;
+                                    bulletObject.h = 8;
+                                    gc1.clearRect(bulletObject.x, bulletObject.y-x[0], bulletObject.w, bulletObject.h);
                                     x[0]++;
                                     gc1.setFill(Color.BLACK);
-                                    gc1.fillRect(event2.getX(), HuntingGame.getScene().getHeight() - 155 - x[0], 3, 8);
+                                    gc1.fillRect(bulletObject.x, bulletObject.y-x[0], bulletObject.w, bulletObject.h);
                                     break;
                                 }
                                 case "Shotgun": {
-                                    gc1.clearRect(event2.getX(), HuntingGame.getScene().getHeight() - 155 - x[0], 3, 3);
+                                    bulletObject.w = 3;
+                                    bulletObject.h = 3;
+                                    gc1.clearRect(bulletObject.x, bulletObject.y-x[0], bulletObject.w, bulletObject.h);
                                     x[0]++;
                                     gc1.setFill(Color.BLACK);
-                                    gc1.fillOval(event2.getX(), HuntingGame.getScene().getHeight() - 155 - x[0], 3, 3);
+                                    gc1.fillOval(bulletObject.x, bulletObject.y-x[0], bulletObject.w, bulletObject.h);
                                     break;
                                 }
                             }
 
+                            counter[0]++; // check if end of animation, if so remove the object
+                            if(counter[0] == 700){
+                                bulletObjects.remove(bulletObject);
+                            }
 
                         }));
-                        timeline.setCycleCount(1000);
+                        timeline.setCycleCount(700);
                         timeline.play();
                         System.out.println("Bang!");
                     }

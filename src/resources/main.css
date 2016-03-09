@@ -224,7 +224,11 @@
     -fx-text-fill: white;
     -fx-background-color: black;
 }
-
+#numOfBulletsLabel{
+    -fx-font-size: 14;
+    -fx-font-weight: bold;
+    -fx-text-fill: black;
+}
 
 /*---------------------------------------------------------------*/
 /*---------------------------------------------------------------*/

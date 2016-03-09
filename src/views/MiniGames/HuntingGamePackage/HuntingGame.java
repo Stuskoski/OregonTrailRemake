@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -36,11 +37,13 @@ public class HuntingGame {
     public static Canvas canvas2 = new Canvas(Main.getPrimaryStage().getWidth(), Main.getPrimaryStage().getHeight()-30);
     public static GraphicsContext gc1 = canvas1.getGraphicsContext2D();
     public static GraphicsContext gc2 = canvas2.getGraphicsContext2D();
+    public static Label numOfBullets;
 
 
     public static void randomizeHuntScreen(int secondsToHunt) {
         int animalsKilled = 0;
         double poundsHunted = 0;
+        int bullets = 0;
 
         BorderPane borderPane = new BorderPane();
         HBox topHbox = new HBox(5);
@@ -72,6 +75,16 @@ public class HuntingGame {
             }
         }
 
+        Inventory.getInventory().clear();
+
+        Inventory.getInventory().add(new Bullets(50));
+
+        for(ItemInterface bulletCheck : Inventory.getInventory()){
+            if(bulletCheck.getName().equals("Bullet")){
+                bullets = bulletCheck.getQuantity();
+            }
+        }
+
         Inventory.getInventory().add(new AlienRifle(1));
         Inventory.getInventory().add(new Rifle(1));
         Inventory.getInventory().add(new ShotGun(1));
@@ -93,13 +106,14 @@ public class HuntingGame {
 
         //Create Gun Buttons for switching guns.
         for (ToggleButton gunBtn : gunInventory) {
-            topHbox.getChildren().add(gunBtn);
+            if(!gunBtn.getText().equals("Bullet")) {
+                topHbox.getChildren().add(gunBtn);
+            }
         }
 
-
-        back.setOnAction(event -> {
-            Main.getPrimaryStage().setScene(StartingTownView.getStartingTownView());
-        });
+        numOfBullets = new Label("Bullets: " + bullets);
+        numOfBullets.setId("numOfBulletsLabel");
+        topHbox.getChildren().add(numOfBullets);
 
 
         Scene createScene = new Scene(borderPane, Main.getPrimaryStage().getScene().getWidth(), Main.getPrimaryStage().getScene().getHeight());
@@ -129,7 +143,14 @@ public class HuntingGame {
         timeline.setCycleCount(1);
         timeline.play();
 
+        back.setOnAction(event -> {
+            timeline.stop();
+            HuntingSummary.showSummaryScreen(animalsKilled, poundsHunted);
+           // Main.getPrimaryStage().setScene(StartingTownView.getStartingTownView());
+        });
+
     }
 
     public static Scene getScene(){return scene;}
+    public static Label getNumOfBullets(){return numOfBullets;}
 }

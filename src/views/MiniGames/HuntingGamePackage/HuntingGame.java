@@ -2,6 +2,7 @@ package views.MiniGames.HuntingGamePackage;
 
 import items.Guns.*;
 import items.ItemInterface;
+import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.Scene;
@@ -13,6 +14,7 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import main.Main;
 import models.Inventory;
@@ -142,6 +144,28 @@ public class HuntingGame {
         }));
         timeline.setCycleCount(1);
         timeline.play();
+
+        final boolean[] forward = {true};
+        final int[] test = {0};
+        Timeline timeline2 = new Timeline(new KeyFrame(Duration.millis(6), timelineEvent -> {
+            gc1.clearRect(test[0], 200, 200, 35);
+            if(test[0] == 1000){
+                forward[0] = false;
+            }
+            if(test[0] == -1){
+                forward[0] = true;
+            }
+            if(forward[0]){
+                test[0]++;
+            }else{
+                test[0]--;
+            }
+
+            gc1.setFill(Color.web("#ff1aff"));
+            gc1.fillRect(test[0], 200, 30, 30);
+        }));
+        timeline2.setCycleCount(Animation.INDEFINITE);
+        timeline2.play();
 
         back.setOnAction(event -> {
             timeline.stop();

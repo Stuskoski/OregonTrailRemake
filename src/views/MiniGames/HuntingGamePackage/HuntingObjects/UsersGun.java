@@ -219,7 +219,6 @@ public class UsersGun {
                         }));
                         timeline.setCycleCount(700);
                         timeline.play();
-                        System.out.println("Bang!");
                     }
                 });
         });

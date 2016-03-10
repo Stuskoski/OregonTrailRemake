@@ -46,7 +46,6 @@ public class RandomCreateGameObjects {
                                     gc2.clearRect(wild1.getX(), wild1.getY(), 45, 45);
                                     wild1.setX(wild1.getX()+1);
                                     gc2.setFill(Color.web("#ff1aff"));
-                                    //gc2.fillRect(wild1.getX(), wild1.getY(), 30, 30);
                                     gc2.drawImage(wild1.getImage(), wild1.getX(), wild1.getY(), 40, 40);
                                 }));
                                 timeline2.setCycleCount(Animation.INDEFINITE);
@@ -57,13 +56,14 @@ public class RandomCreateGameObjects {
                             break;
                         }
                         case 1:{//right
+                            wild1.setImage(new Image("resources/HuntingMiniGame/birdFlying1Backwards.gif")); ///Make sure you put these here so it animates!
+                            wild1.setX(HuntingGame.getScene().getWidth());
+                            wild1.setY(yToStart);
                             Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(wild1Start1), event -> {
-                                final int[] backward = {0};
                                 Timeline timeline2 = new Timeline(new KeyFrame(Duration.millis(animalSpeed), event2 -> {
-                                    gc2.clearRect(HuntingGame.getScene().getWidth()-backward[0], yToStart, 45, 45);
-                                    backward[0]++;
-                                    gc2.setFill(Color.web("#ff1aff"));
-                                    gc2.fillRect(HuntingGame.getScene().getWidth()-backward[0], yToStart, 40, 40);
+                                    gc2.clearRect(wild1.getX(), wild1.getY(), 45, 45);
+                                    wild1.setX(wild1.getX()-1);
+                                    gc2.drawImage(wild1.getImage(), wild1.getX(), wild1.getY(), 40, 40);
                                 }));
                                 timeline2.setCycleCount(Animation.INDEFINITE);
                                 timeline2.play();

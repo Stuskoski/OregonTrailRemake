@@ -12,7 +12,9 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import models.Inventory;
+import views.MiniGames.HuntingGamePackage.CheckForHuntingGameCollision;
 import views.MiniGames.HuntingGamePackage.HuntingGame;
+import views.MiniGames.HuntingGamePackage.RandomCreateGameObjects;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -28,37 +30,37 @@ import java.util.ArrayList;
  */
 public class UsersGun {
     private static GraphicsContext localGc;
-    public static void drawGun(GraphicsContext gc1, String gun, Scene huntingScene){
+    public static void drawGun(GraphicsContext gc1, String gun, Scene huntingScene, int secondsToHunt){
         localGc = gc1;
         ItemInterface userGun;
         switch (gun){
             case "Alien Rifle":{
                 userGun = new AlienRifle(1);
-                startMouseListenerForGun(gc1, huntingScene, (GunInterface) userGun);
+                startMouseListenerForGun(gc1, huntingScene, (GunInterface) userGun, secondsToHunt);
                 gc1.clearRect(0, HuntingGame.getScene().getHeight()-150, HuntingGame.getScene().getWidth(), 175);
                 break;
             }
             case "Flintlock Pistol":{
                 userGun = new FlintlockPistol(1);
-                startMouseListenerForGun(gc1, huntingScene, (GunInterface) userGun);
+                startMouseListenerForGun(gc1, huntingScene, (GunInterface) userGun, secondsToHunt);
                 gc1.clearRect(0, HuntingGame.getScene().getHeight()-150, HuntingGame.getScene().getWidth(), 175);
                 break;
             }
             case "Musket":{
                 userGun = new Musket(1);
-                startMouseListenerForGun(gc1, huntingScene, (GunInterface) userGun);
+                startMouseListenerForGun(gc1, huntingScene, (GunInterface) userGun, secondsToHunt);
                 gc1.clearRect(0, HuntingGame.getScene().getHeight()-150, HuntingGame.getScene().getWidth(), 175);
                 break;
             }
             case "Rifle":{
                 userGun = new Rifle(1);
-                startMouseListenerForGun(gc1, huntingScene, (GunInterface) userGun);
+                startMouseListenerForGun(gc1, huntingScene, (GunInterface) userGun, secondsToHunt);
                 gc1.clearRect(0, HuntingGame.getScene().getHeight()-150, HuntingGame.getScene().getWidth(), 175);
                 break;
             }
             case "Shotgun":{
                 userGun = new ShotGun(1);
-                startMouseListenerForGun(gc1, huntingScene, (GunInterface) userGun);
+                startMouseListenerForGun(gc1, huntingScene, (GunInterface) userGun, secondsToHunt);
                 gc1.clearRect(0, HuntingGame.getScene().getHeight()-150, HuntingGame.getScene().getWidth(), 175);
                 //Image image = new Image("resources/HuntingMiniGame/shotgun.png");
                 //gc.drawImage(image, MouseInfo.getPointerInfo().getLocation().getX(), HuntingGame.getScene().getHeight()-125);
@@ -67,7 +69,7 @@ public class UsersGun {
         }
     }
 
-    private static void startMouseListenerForGun(GraphicsContext gc1, Scene huntingScene, GunInterface gun) {
+    private static void startMouseListenerForGun(GraphicsContext gc1, Scene huntingScene, GunInterface gun, int secondsToHunt) {
         double bulletSpeed = gun.getBulletSpeed();
         int bulletsShot = gun.getBulletsShot();
         int reloadTime = gun.getReloadTime();
@@ -81,7 +83,8 @@ public class UsersGun {
         }
 
         ArrayList<BulletObject> bulletObjects = new ArrayList<>(); //add the bullets into here when they are shot
-        ArrayList<ItemInterface> Animals = new ArrayList<>(); //add the animals into here when they are across the screen
+
+        //CheckForHuntingGameCollision.checkForCollision(bulletObjects, RandomCreateGameObjects.wildGame, secondsToHunt); // start the collision detection.
 
         huntingScene.setOnMouseMoved(event1 -> {
             gc1.clearRect(0, HuntingGame.getScene().getHeight()-150, HuntingGame.getScene().getWidth(), 175);
@@ -146,44 +149,83 @@ public class UsersGun {
                             bulletObjects.remove(bulletObject3);
                         }
 
-                        final double[] x = {0.00};
                         final int[] counter = {0};
                         Timeline timeline = new Timeline(new KeyFrame(Duration.millis(bulletSpeed), timelineEvent -> {
                             switch (gun.getName()) {
                                 case "Alien Rifle": {
                                     bulletObject.w = 4;
                                     bulletObject.h = 30;
-                                    gc1.clearRect(bulletObject.x, bulletObject.y-x[0], bulletObject.w, bulletObject.h);
-                                    x[0]++;
+                                    gc1.clearRect(bulletObject.x, bulletObject.y, bulletObject.w, bulletObject.h);
+                                    bulletObject.y -= 1;
+
+                                    for (WildGameObject wildGame : RandomCreateGameObjects.wildGame){
+                                        if((((bulletObject.y+(bulletObject.y+bulletObject.h))/2) <= wildGame.getY()+wildGame.getH() && (((bulletObject.y+(bulletObject.y+bulletObject.h))/2) >= wildGame.getY()))){ //height check
+                                            if((((bulletObject.x+(bulletObject.x+bulletObject.w))/2) >= wildGame.getX()) && (((bulletObject.x+(bulletObject.x+bulletObject.w))/2) <= wildGame.getX()+wildGame.getW())){
+                                                wildGame.setImage(new Image("resources/HuntingMiniGame/skull-icon.png"));
+                                            }
+                                        }
+                                    }
+
                                     gc1.setFill(Color.web("#ff1aff"));
-                                    gc1.fillRect(bulletObject.x, bulletObject.y-x[0], bulletObject.w, bulletObject.h);
+                                    gc1.fillRect(bulletObject.x, bulletObject.y, bulletObject.w, bulletObject.h);
                                     break;
                                 }
                                 case "Flintlock Pistol": {
                                     bulletObject.w = 4;
                                     bulletObject.h = 4;
-                                    gc1.clearRect(bulletObject.x, bulletObject.y-x[0], bulletObject.w, bulletObject.h);
-                                    x[0]++;
+                                    gc1.clearRect(bulletObject.x, bulletObject.y, bulletObject.w, bulletObject.h);
+                                    bulletObject.y -= 1;
+
+
+                                    for (WildGameObject wildGame : RandomCreateGameObjects.wildGame){
+                                        if((((bulletObject.y+(bulletObject.y+bulletObject.h))/2) <= wildGame.getY()+wildGame.getH() && (((bulletObject.y+(bulletObject.y+bulletObject.h))/2) >= wildGame.getY()))){ //height check
+                                            if((((bulletObject.x+(bulletObject.x+bulletObject.w))/2) >= wildGame.getX()) && (((bulletObject.x+(bulletObject.x+bulletObject.w))/2) <= wildGame.getX()+wildGame.getW())){
+                                                wildGame.setImage(new Image("resources/HuntingMiniGame/skull-icon.png"));
+                                            }
+                                        }
+                                    }
+
                                     gc1.setFill(Color.BLACK);
-                                    gc1.fillOval(bulletObject.x, bulletObject.y-x[0], bulletObject.w, bulletObject.h);
+                                    gc1.fillOval(bulletObject.x, bulletObject.y, bulletObject.w, bulletObject.h);
                                     break;
                                 }
                                 case "Musket": {
                                     bulletObject.w = 12;
                                     bulletObject.h = 12;
-                                    gc1.clearRect(bulletObject.x, bulletObject.y-x[0], bulletObject.w, bulletObject.h);
-                                    x[0]++;
+                                    gc1.clearRect(bulletObject.x, bulletObject.y, bulletObject.w, bulletObject.h);
+                                    bulletObject.y -= 1;
+
+
+                                    for (WildGameObject wildGame : RandomCreateGameObjects.wildGame){
+                                        if((((bulletObject.y+(bulletObject.y+bulletObject.h))/2) <= wildGame.getY()+wildGame.getH() && (((bulletObject.y+(bulletObject.y+bulletObject.h))/2) >= wildGame.getY()))){ //height check
+                                            if((((bulletObject.x+(bulletObject.x+bulletObject.w))/2) >= wildGame.getX()) && (((bulletObject.x+(bulletObject.x+bulletObject.w))/2) <= wildGame.getX()+wildGame.getW())){
+                                                wildGame.setImage(new Image("resources/HuntingMiniGame/skull-icon.png"));
+                                            }
+                                        }
+                                    }
+
+
                                     gc1.setFill(Color.BLACK);
-                                    gc1.fillOval(bulletObject.x, bulletObject.y-x[0], bulletObject.w, bulletObject.h);
+                                    gc1.fillOval(bulletObject.x, bulletObject.y, bulletObject.w, bulletObject.h);
                                     break;
                                 }
                                 case "Rifle": {
                                     bulletObject.w = 3;
                                     bulletObject.h = 8;
-                                    gc1.clearRect(bulletObject.x, bulletObject.y-x[0], bulletObject.w, bulletObject.h);
-                                    x[0]++;
+                                    gc1.clearRect(bulletObject.x, bulletObject.y, bulletObject.w, bulletObject.h);
+                                    bulletObject.y -= 1;
+
+                                    for (WildGameObject wildGame : RandomCreateGameObjects.wildGame){
+                                        if((((bulletObject.y+(bulletObject.y+bulletObject.h))/2) <= wildGame.getY()+wildGame.getH() && (((bulletObject.y+(bulletObject.y+bulletObject.h))/2) >= wildGame.getY()))){ //height check
+                                            if((((bulletObject.x+(bulletObject.x+bulletObject.w))/2) >= wildGame.getX()) && (((bulletObject.x+(bulletObject.x+bulletObject.w))/2) <= wildGame.getX()+wildGame.getW())){
+                                                wildGame.setImage(new Image("resources/HuntingMiniGame/skull-icon.png"));
+                                            }
+                                        }
+                                    }
+
+
                                     gc1.setFill(Color.BLACK);
-                                    gc1.fillRect(bulletObject.x, bulletObject.y-x[0], bulletObject.w, bulletObject.h);
+                                    gc1.fillRect(bulletObject.x, bulletObject.y, bulletObject.w, bulletObject.h);
                                     break;
                                 }
                                 //Need three bullets here for the shotgun.  Should I make it consume 3 bullets or nah?
@@ -194,14 +236,43 @@ public class UsersGun {
                                     bulletObject2.h = 3;
                                     bulletObject3.w = 3;
                                     bulletObject3.h = 3;
-                                    gc1.clearRect(bulletObject.x-(x[0]/9), bulletObject.y-x[0], bulletObject.w, bulletObject.h);
-                                    gc1.clearRect(bulletObject.x, bulletObject.y-x[0], bulletObject.w, bulletObject.h);
-                                    gc1.clearRect(bulletObject.x+(x[0]/9), bulletObject.y-x[0], bulletObject.w, bulletObject.h);
-                                    x[0]++;
+                                    gc1.clearRect(bulletObject2.x, bulletObject2.y, bulletObject2.w, bulletObject2.h);
+                                    gc1.clearRect(bulletObject.x, bulletObject.y, bulletObject.w, bulletObject.h);
+                                    gc1.clearRect(bulletObject3.x, bulletObject3.y, bulletObject3.w, bulletObject3.h);
+                                    bulletObject.y -= 1;
+                                    bulletObject2.y -= 1;
+                                    bulletObject3.y -= 1;
+                                    bulletObject2.x = bulletObject2.x - (0.1);
+                                    bulletObject3.x = bulletObject3.x + (0.1);
+
+
+                                    for (WildGameObject wildGame : RandomCreateGameObjects.wildGame){
+                                        if((((bulletObject.y+(bulletObject.y+bulletObject.h))/2) <= wildGame.getY()+wildGame.getH() && (((bulletObject.y+(bulletObject.y+bulletObject.h))/2) >= wildGame.getY()))){ //height check
+                                            if((((bulletObject.x+(bulletObject.x+bulletObject.w))/2) >= wildGame.getX()) && (((bulletObject.x+(bulletObject.x+bulletObject.w))/2) <= wildGame.getX()+wildGame.getW())){
+                                                wildGame.setImage(new Image("resources/HuntingMiniGame/skull-icon.png"));
+                                            }
+                                        }
+                                    }
+                                    for (WildGameObject wildGame : RandomCreateGameObjects.wildGame){
+                                        if((((bulletObject2.y+(bulletObject2.y+bulletObject2.h))/2) <= wildGame.getY()+wildGame.getH() && (((bulletObject2.y+(bulletObject2.y+bulletObject2.h))/2) >= wildGame.getY()))){ //height check
+                                            if((((bulletObject2.x+(bulletObject2.x+bulletObject2.w))/2) >= wildGame.getX()) && (((bulletObject2.x+(bulletObject2.x+bulletObject2.w))/2) <= wildGame.getX()+wildGame.getW())){
+                                                wildGame.setImage(new Image("resources/HuntingMiniGame/skull-icon.png"));
+                                            }
+                                        }
+                                    }
+                                    for (WildGameObject wildGame : RandomCreateGameObjects.wildGame){
+                                        if((((bulletObject3.y+(bulletObject3.y+bulletObject3.h))/2) <= wildGame.getY()+wildGame.getH() && (((bulletObject3.y+(bulletObject3.y+bulletObject3.h))/2) >= wildGame.getY()))){ //height check
+                                            if((((bulletObject3.x+(bulletObject3.x+bulletObject3.w))/2) >= wildGame.getX()) && (((bulletObject3.x+(bulletObject3.x+bulletObject3.w))/2) <= wildGame.getX()+wildGame.getW())){
+                                                wildGame.setImage(new Image("resources/HuntingMiniGame/skull-icon.png"));
+                                            }
+                                        }
+                                    }
+
+
                                     gc1.setFill(Color.BLACK);
-                                    gc1.fillOval(bulletObject.x-(x[0]/9), bulletObject.y-x[0], bulletObject.w, bulletObject.h);
-                                    gc1.fillOval(bulletObject.x, bulletObject.y-x[0], bulletObject.w, bulletObject.h);
-                                    gc1.fillOval(bulletObject.x+(x[0]/9), bulletObject.y-x[0], bulletObject.w, bulletObject.h);
+                                    gc1.fillOval(bulletObject2.x, bulletObject2.y, bulletObject2.w, bulletObject2.h);
+                                    gc1.fillOval(bulletObject.x, bulletObject.y, bulletObject.w, bulletObject.h);
+                                    gc1.fillOval(bulletObject3.x, bulletObject3.y, bulletObject3.w, bulletObject3.h);
                                     break;
                                 }
                             }

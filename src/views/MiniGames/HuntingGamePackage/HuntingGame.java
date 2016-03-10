@@ -131,7 +131,7 @@ public class HuntingGame {
                         unselectBtns.setSelected(false);
                     }
                     gunBtn.setSelected(true);
-                    UsersGun.drawGun(gc1, gunBtn.getText(), createScene);
+                    UsersGun.drawGun(gc1, gunBtn.getText(), createScene, secondsToHunt);
                 }
 
             });

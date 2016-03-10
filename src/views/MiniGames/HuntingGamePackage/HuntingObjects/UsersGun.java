@@ -1,9 +1,7 @@
 package views.MiniGames.HuntingGamePackage.HuntingObjects;
 
-import CharacterObjects.Profile;
 import items.Guns.*;
 import items.ItemInterface;
-import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.Scene;
@@ -11,15 +9,11 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.scene.paint.*;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
-import main.Main;
 import models.Inventory;
 import views.MiniGames.HuntingGamePackage.HuntingGame;
-import views.MiniGames.HuntingGamePackage.HuntingSummary;
 
-import java.awt.*;
 import java.net.URL;
 import java.util.ArrayList;
 
@@ -137,8 +131,22 @@ public class UsersGun {
 
                         //Make the bullet object here so the loop doesn't create a lot of them.  Then go and set the values
                         BulletObject bulletObject = new BulletObject(event2.getX(), HuntingGame.getScene().getHeight() - 155, 1, 1);
+                        BulletObject bulletObject2 = new BulletObject(event2.getX(), HuntingGame.getScene().getHeight() - 155, 1, 1);
+                        BulletObject bulletObject3 = new BulletObject(event2.getX(), HuntingGame.getScene().getHeight() - 155, 1, 1);
+
+
+                        //Add the bullets to a list to check for collisions later, two extra bullets for shotgun added but removed if uneeded
                         bulletObjects.add(bulletObject);
-                        final int[] x = {0};
+                        bulletObjects.add(bulletObject2);
+                        bulletObjects.add(bulletObject3);
+
+                        //remove the bullets if you are not using a shotgun
+                        if(!gun.getName().equals("Shotgun")){
+                            bulletObjects.remove(bulletObject2);
+                            bulletObjects.remove(bulletObject3);
+                        }
+
+                        final double[] x = {0.00};
                         final int[] counter = {0};
                         Timeline timeline = new Timeline(new KeyFrame(Duration.millis(bulletSpeed), timelineEvent -> {
                             switch (gun.getName()) {
@@ -178,13 +186,22 @@ public class UsersGun {
                                     gc1.fillRect(bulletObject.x, bulletObject.y-x[0], bulletObject.w, bulletObject.h);
                                     break;
                                 }
+                                //Need three bullets here for the shotgun.  Should I make it consume 3 bullets or nah?
                                 case "Shotgun": {
                                     bulletObject.w = 3;
                                     bulletObject.h = 3;
+                                    bulletObject2.w = 3;
+                                    bulletObject2.h = 3;
+                                    bulletObject3.w = 3;
+                                    bulletObject3.h = 3;
+                                    gc1.clearRect(bulletObject.x-(x[0]/9), bulletObject.y-x[0], bulletObject.w, bulletObject.h);
                                     gc1.clearRect(bulletObject.x, bulletObject.y-x[0], bulletObject.w, bulletObject.h);
+                                    gc1.clearRect(bulletObject.x+(x[0]/9), bulletObject.y-x[0], bulletObject.w, bulletObject.h);
                                     x[0]++;
                                     gc1.setFill(Color.BLACK);
+                                    gc1.fillOval(bulletObject.x-(x[0]/9), bulletObject.y-x[0], bulletObject.w, bulletObject.h);
                                     gc1.fillOval(bulletObject.x, bulletObject.y-x[0], bulletObject.w, bulletObject.h);
+                                    gc1.fillOval(bulletObject.x+(x[0]/9), bulletObject.y-x[0], bulletObject.w, bulletObject.h);
                                     break;
                                 }
                             }
@@ -192,6 +209,11 @@ public class UsersGun {
                             counter[0]++; // check if end of animation, if so remove the object
                             if(counter[0] == 700){
                                 bulletObjects.remove(bulletObject);
+
+                                if(gun.getName().equals("Shotgun")){
+                                    bulletObjects.remove(bulletObject2);
+                                    bulletObjects.remove(bulletObject3);
+                                }
                             }
 
                         }));

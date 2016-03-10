@@ -145,27 +145,7 @@ public class HuntingGame {
         timeline.setCycleCount(1);
         timeline.play();
 
-        final boolean[] forward = {true};
-        final int[] test = {0};
-        Timeline timeline2 = new Timeline(new KeyFrame(Duration.millis(6), timelineEvent -> {
-            gc1.clearRect(test[0], 200, 200, 35);
-            if(test[0] == 1000){
-                forward[0] = false;
-            }
-            if(test[0] == -1){
-                forward[0] = true;
-            }
-            if(forward[0]){
-                test[0]++;
-            }else{
-                test[0]--;
-            }
-
-            gc1.setFill(Color.web("#ff1aff"));
-            gc1.fillRect(test[0], 200, 30, 30);
-        }));
-        timeline2.setCycleCount(Animation.INDEFINITE);
-        timeline2.play();
+        RandomCreateGameObjects.createGameObjects(gc2, secondsToHunt);
 
         back.setOnAction(event -> {
             timeline.stop();

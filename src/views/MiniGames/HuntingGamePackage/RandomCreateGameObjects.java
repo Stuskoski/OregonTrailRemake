@@ -7,6 +7,8 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import views.MiniGames.HuntingGamePackage.HuntingObjects.WildGameObject;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -16,6 +18,7 @@ import java.util.Random;
  */
 public class RandomCreateGameObjects {
     public static ArrayList<WildGameObject> wildGame = new ArrayList<>();
+    public static ArrayList<Timeline> timelines = new ArrayList<>();
 
     public static void createGameObjects(GraphicsContext gc2, int secondsToHunt){
         Random random = new Random();

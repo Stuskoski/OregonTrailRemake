@@ -10,6 +10,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -42,8 +43,10 @@ public class HuntingGame {
     public static Label numOfBullets;
     public static double poundsHunted = 0;
     public static int animalsKilled = 0;
+    public static ProgressBar progressBar = new ProgressBar(1.0);
 
     public static void randomizeHuntScreen(int secondsToHunt) {
+
         int bullets = 0;
 
         BorderPane borderPane = new BorderPane();
@@ -114,7 +117,7 @@ public class HuntingGame {
 
         numOfBullets = new Label("Bullets: " + bullets);
         numOfBullets.setId("numOfBulletsLabel");
-        topHbox.getChildren().add(numOfBullets);
+        topHbox.getChildren().addAll(numOfBullets, progressBar);
 
 
         Scene createScene = new Scene(borderPane, Main.getPrimaryStage().getScene().getWidth(), Main.getPrimaryStage().getScene().getHeight());
@@ -157,6 +160,8 @@ public class HuntingGame {
     }
 
     public static Scene getScene(){return scene;}
+    public static void setScene(Scene sceneSet){scene = sceneSet;}
+
     public static Label getNumOfBullets(){return numOfBullets;}
 
     public static double getPoundsHunted(){return poundsHunted;}
@@ -164,5 +169,8 @@ public class HuntingGame {
 
     public static int getAnimalsKilled(){return animalsKilled;}
     public static void setAnimalsKilled(int killed){ animalsKilled = killed;}
+
+    public static ProgressBar getProgressBar(){return progressBar;}
+    public static void setProgressBar(ProgressBar setProg){progressBar = setProg;}
 }
 

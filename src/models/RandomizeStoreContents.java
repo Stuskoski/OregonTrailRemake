@@ -44,7 +44,7 @@ public class RandomizeStoreContents {
         startTownList.add(new Pants(10));
         startTownList.add(new Boots(10));
         startTownList.add(new FlintlockPistol(1));
-        startTownList.add(new Bullets(100));
+        startTownList.add(new Bullets(20));
 
 
         for (int i = 0; i < 5; i++) {

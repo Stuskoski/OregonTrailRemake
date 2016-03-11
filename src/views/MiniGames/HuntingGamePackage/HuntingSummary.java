@@ -10,7 +10,10 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import main.Main;
 import models.Inventory;
+import views.MiniGames.HuntingGamePackage.HuntingObjects.WildGameObject;
 import views.StartingTown.StartingTownView;
+
+import java.util.Random;
 
 
 /**
@@ -48,12 +51,9 @@ public class HuntingSummary{
         final double finalPoundsHunted = poundsHunted;
         continueBtn.setOnAction(event -> {
             Main.getPrimaryStage().setScene(StartingTownView.getStartingTownView());
-            double weight = 0.0;
             int counter=0;
             for (ItemInterface weightCheck : Inventory.getInventory()){
                 if(weightCheck.getName().equals("Game Meat")){
-                    weight = weightCheck.getWeight();
-                    System.out.println(weight);
                     weightCheck.setWeight(weightCheck.getWeight()+finalPoundsHunted);
                 }else{
                     counter++;
@@ -64,6 +64,12 @@ public class HuntingSummary{
             }
 
             Inventory.updateInventoryScreen();
+            HuntingGame.setScene(null);
+            for (WildGameObject obj : RandomCreateGameObjects.wildGame){
+                obj.setImage(null);
+                obj.setHasBeenHit(true);
+            }
+            //RandomCreateGameObjects.wildGame.clear();
         });
 
         Scene scene = new Scene(gridPane, Main.getPrimaryStage().getScene().getWidth(), Main.getPrimaryStage().getScene().getHeight());

@@ -6,14 +6,12 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import models.Inventory;
-import views.MiniGames.HuntingGamePackage.CheckForHuntingGameCollision;
 import views.MiniGames.HuntingGamePackage.HuntingGame;
 import views.MiniGames.HuntingGamePackage.RandomCreateGameObjects;
 
@@ -31,6 +29,7 @@ import java.util.ArrayList;
  */
 public class UsersGun {
     private static GraphicsContext localGc;
+    private static final boolean[] reloadTimeBoolean = {true};
     public static void drawGun(GraphicsContext gc1, String gun, Scene huntingScene, int secondsToHunt){
         localGc = gc1;
         ItemInterface userGun;
@@ -73,9 +72,13 @@ public class UsersGun {
     private static void startMouseListenerForGun(GraphicsContext gc1, Scene huntingScene, GunInterface gun, int secondsToHunt) {
         double bulletSpeed = gun.getBulletSpeed();
         int bulletsShot = gun.getBulletsShot();
-        int reloadTime = gun.getReloadTime();
+        double reloadTime = gun.getReloadTime();
         final int[] bullets = {0};
         int bulletsIndexInInventory = 0;
+
+        if(gun.getName().equals("Alien Rifle")){//work around for laser
+            reloadTime = 0.25;
+        }
 
         for(ItemInterface bulletCheck : Inventory.getInventory()){
             if(bulletCheck.getName().equals("Bullet")){
@@ -85,33 +88,38 @@ public class UsersGun {
 
         ArrayList<BulletObject> bulletObjects = new ArrayList<>(); //add the bullets into here when they are shot
 
-        final boolean[] reloadTimeBoolean = {true};
 
+        final double finalReloadTime1 = reloadTime;
         huntingScene.setOnMouseMoved(event1 -> {
             gc1.clearRect(0, HuntingGame.getScene().getHeight()-150, HuntingGame.getScene().getWidth(), 175);
             Image image = new Image("resources/HuntingMiniGame/shotgun.png");
             gc1.drawImage(image, event1.getX()-45, HuntingGame.getScene().getHeight()-125);
 
-                huntingScene.setOnMouseClicked(event2 -> {
+            final double finalReloadTime = finalReloadTime1;
+            huntingScene.setOnMouseClicked(event2 -> {
                     if (reloadTimeBoolean[0]){
 
                         //Controls the reload speed of the gun.  Draws the reload
                         reloadTimeBoolean[0] = false;
                         final double[] interval = new double[2];
                         interval[0] = 0.0;
-                        interval[1] = 1.0/reloadTime; //divide it up
-                        System.out.println(interval[1]);
+                        interval[1] = 1.0/1000.0; //divide it up
                         HuntingGame.getProgressBar().setProgress(0.0);
 
                         //need to have 2 times lines here
-                        Timeline reloadTimeline = new Timeline(new KeyFrame(Duration.seconds(reloadTime), timelineEvent -> {
-                            reloadTimeBoolean[0] = true;
+                        Timeline reloadTimeline = new Timeline(new KeyFrame(Duration.seconds((double) finalReloadTime /1000), timelineEvent -> {
                             interval[0] += interval[1];
-                            System.out.println("0:" + interval[0]);
                             HuntingGame.getProgressBar().setProgress(interval[0]);
                         }));
-                        reloadTimeline.setCycleCount(1);
+                        reloadTimeline.setCycleCount(1000);
                         reloadTimeline.play();
+
+                        //need to have 2 times lines here
+                        Timeline reloadTimeline2 = new Timeline(new KeyFrame(Duration.seconds(finalReloadTime), timelineEvent -> {
+                            reloadTimeBoolean[0] = true;
+                        }));
+                        reloadTimeline2.setCycleCount(1);
+                        reloadTimeline2.play();
 
 
                         if (bullets[0] > 0) {
@@ -130,25 +138,49 @@ public class UsersGun {
                                     assert url != null;
                                     final Media media = new Media(url.toString());
                                     final MediaPlayer mediaPlayer = new MediaPlayer(media);
-                                    mediaPlayer.setVolume(25);
+                                    mediaPlayer.setVolume(50);
                                     mediaPlayer.setCycleCount(1);
                                     mediaPlayer.play();
                                     break;
                                 }
                                 case "Flintlock Pistol": {
-
+                                    URL url = UsersGun.class.getClassLoader().getResource("resources/HuntingMiniGame/flintlockFiring.mp3");
+                                    assert url != null;
+                                    final Media media = new Media(url.toString());
+                                    final MediaPlayer mediaPlayer = new MediaPlayer(media);
+                                    mediaPlayer.setVolume(50);
+                                    mediaPlayer.setCycleCount(1);
+                                    mediaPlayer.play();
                                     break;
                                 }
                                 case "Musket": {
-
+                                    URL url = UsersGun.class.getClassLoader().getResource("resources/HuntingMiniGame/musketFiring.mp3");
+                                    assert url != null;
+                                    final Media media = new Media(url.toString());
+                                    final MediaPlayer mediaPlayer = new MediaPlayer(media);
+                                    mediaPlayer.setVolume(50);
+                                    mediaPlayer.setCycleCount(1);
+                                    mediaPlayer.play();
                                     break;
                                 }
                                 case "Rifle": {
-
+                                    URL url = UsersGun.class.getClassLoader().getResource("resources/HuntingMiniGame/rifleFiring.mp3");
+                                    assert url != null;
+                                    final Media media = new Media(url.toString());
+                                    final MediaPlayer mediaPlayer = new MediaPlayer(media);
+                                    mediaPlayer.setVolume(50);
+                                    mediaPlayer.setCycleCount(1);
+                                    mediaPlayer.play();
                                     break;
                                 }
                                 case "Shotgun": {
-
+                                    URL url = UsersGun.class.getClassLoader().getResource("resources/HuntingMiniGame/shotgunFiring.mp3");
+                                    assert url != null;
+                                    final Media media = new Media(url.toString());
+                                    final MediaPlayer mediaPlayer = new MediaPlayer(media);
+                                    mediaPlayer.setVolume(50);
+                                    mediaPlayer.setCycleCount(1);
+                                    mediaPlayer.play();
                                     break;
                                 }
                             }
@@ -186,7 +218,12 @@ public class UsersGun {
                                                     if (!wildGame.getHasBeenHit()) {
                                                         HuntingGame.poundsHunted = HuntingGame.poundsHunted + wildGame.getWeight();
                                                         HuntingGame.animalsKilled = HuntingGame.animalsKilled + 1;
+                                                        if(wildGame.getW() == 69 && wildGame.getH() == 69){
+                                                            Inventory.getInventory().add(new AlienRifle(1));
+                                                        }
                                                         wildGame.setImage(new Image("resources/HuntingMiniGame/skull-icon.png"));
+
+
                                                     }
                                                     wildGame.setHasBeenHit(true);
                                                     //RandomCreateGameObjects.wildGame.remove(wildGame);
@@ -211,6 +248,9 @@ public class UsersGun {
                                                     if (!wildGame.getHasBeenHit()) {
                                                         HuntingGame.poundsHunted = HuntingGame.poundsHunted + wildGame.getWeight();
                                                         HuntingGame.animalsKilled = HuntingGame.animalsKilled + 1;
+                                                        if(wildGame.getW() == 69 && wildGame.getH() == 69){
+                                                            Inventory.getInventory().add(new AlienRifle(1));
+                                                        }
                                                         wildGame.setImage(new Image("resources/HuntingMiniGame/skull-icon.png"));
                                                     }
                                                     wildGame.setHasBeenHit(true);
@@ -236,6 +276,9 @@ public class UsersGun {
                                                     if (!wildGame.getHasBeenHit()) {
                                                         HuntingGame.poundsHunted = HuntingGame.poundsHunted + wildGame.getWeight();
                                                         HuntingGame.animalsKilled = HuntingGame.animalsKilled + 1;
+                                                        if(wildGame.getW() == 69 && wildGame.getH() == 69){
+                                                            Inventory.getInventory().add(new AlienRifle(1));
+                                                        }
                                                         wildGame.setImage(new Image("resources/HuntingMiniGame/skull-icon.png"));
                                                     }
                                                     wildGame.setHasBeenHit(true);
@@ -261,6 +304,9 @@ public class UsersGun {
                                                     if (!wildGame.getHasBeenHit()) {
                                                         HuntingGame.poundsHunted = HuntingGame.poundsHunted + wildGame.getWeight();
                                                         HuntingGame.animalsKilled = HuntingGame.animalsKilled + 1;
+                                                        if(wildGame.getW() == 69 && wildGame.getH() == 69){
+                                                            Inventory.getInventory().add(new AlienRifle(1));
+                                                        }
                                                         wildGame.setImage(new Image("resources/HuntingMiniGame/skull-icon.png"));
                                                     }
                                                     wildGame.setHasBeenHit(true);
@@ -298,6 +344,9 @@ public class UsersGun {
                                                     if (!wildGame.getHasBeenHit()) {
                                                         HuntingGame.poundsHunted = HuntingGame.poundsHunted + wildGame.getWeight();
                                                         HuntingGame.animalsKilled = HuntingGame.animalsKilled + 1;
+                                                        if(wildGame.getW() == 69 && wildGame.getH() == 69){
+                                                            Inventory.getInventory().add(new AlienRifle(1));
+                                                        }
                                                         wildGame.setImage(new Image("resources/HuntingMiniGame/skull-icon.png"));
                                                     }
                                                     wildGame.setHasBeenHit(true);
@@ -311,6 +360,9 @@ public class UsersGun {
                                                     if (!wildGame.getHasBeenHit()) {
                                                         HuntingGame.poundsHunted = HuntingGame.poundsHunted + wildGame.getWeight();
                                                         HuntingGame.animalsKilled = HuntingGame.animalsKilled + 1;
+                                                        if(wildGame.getW() == 69 && wildGame.getH() == 69){
+                                                            Inventory.getInventory().add(new AlienRifle(1));
+                                                        }
                                                         wildGame.setImage(new Image("resources/HuntingMiniGame/skull-icon.png"));
                                                     }
                                                     wildGame.setHasBeenHit(true);
@@ -324,6 +376,9 @@ public class UsersGun {
                                                     if (!wildGame.getHasBeenHit()) {
                                                         HuntingGame.poundsHunted = HuntingGame.poundsHunted + wildGame.getWeight();
                                                         HuntingGame.animalsKilled = HuntingGame.animalsKilled + 1;
+                                                        if(wildGame.getW() == 69 && wildGame.getH() == 69){
+                                                            Inventory.getInventory().add(new AlienRifle(1));
+                                                        }
                                                         wildGame.setImage(new Image("resources/HuntingMiniGame/skull-icon.png"));
                                                     }
                                                     wildGame.setHasBeenHit(true);
@@ -357,13 +412,5 @@ public class UsersGun {
                     }
                 });
         });
-    }
-
-    private static void startMouseListenerForBullet(GraphicsContext gc1, Scene huntingScene, GunInterface gun){
-
-
-        // add check for users bullet inventory, get the parameter
-        //passed from the trail to the minigame
-
     }
 }

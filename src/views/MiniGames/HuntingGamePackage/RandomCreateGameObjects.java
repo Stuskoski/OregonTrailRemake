@@ -7,8 +7,6 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import views.MiniGames.HuntingGamePackage.HuntingObjects.WildGameObject;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -21,13 +19,16 @@ public class RandomCreateGameObjects {
     public static ArrayList<Timeline> timelines = new ArrayList<>();
 
     public static void createGameObjects(GraphicsContext gc2, int secondsToHunt){
+        boolean alienEvent = false;
         Random random = new Random();
 
+        //alienEvent = true;
+
         //Get the number of animals to create
-        int numOfAnimals = random.nextInt(7);
+        int numOfAnimals = random.nextInt(8);
 
         for(int i = 0; i<numOfAnimals; i++){
-            int animalSpeed = random.nextInt(15-14) + 14;
+            int animalSpeed = random.nextInt(15-5) + 5;
             int yToStart = random.nextInt(((int)HuntingGame.getScene().getHeight()-300)) + 100; // (high - low) + low for numbers between x and y
             int wild1Start1 = random.nextInt(secondsToHunt);
 
@@ -36,13 +37,24 @@ public class RandomCreateGameObjects {
                     WildGameObject wild1 = new WildGameObject(0,0,0,0,new Image("resources/HuntingMiniGame/birdFlying1.gif-c200"));
                     wild1.setWeight( 5 + (40 - 5) * random.nextDouble()); //Formula = rangeMin + (rangeMax - rangeMin) * r.nextDouble();
                     wildGame.add(wild1);
-
                     //Quick check to decide if object going from left or going from right
                     switch (random.nextInt(2)){
                         case 0:{//left
                             wild1.setY(yToStart);
                             wild1.setW(45);
                             wild1.setH(45);
+
+                            //Random alien event
+                            switch (random.nextInt(100)){
+                                case 69:{
+                                    alienEvent = true;
+                                }
+                            }
+                            if(alienEvent){
+                                wild1.setImage(new Image("resources/HuntingMiniGame/alienship.gif"));
+                                wild1.setW(69);
+                                wild1.setH(69);
+                            }
                             Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(wild1Start1), event -> {
                                 final int[] counter = {0};
                                 Timeline timeline2 = new Timeline(new KeyFrame(Duration.millis(animalSpeed), event2 -> {
@@ -69,6 +81,19 @@ public class RandomCreateGameObjects {
                             wild1.setY(yToStart);
                             wild1.setW(45);
                             wild1.setH(45);
+
+                            //Random alien event
+                            switch (random.nextInt(100)){
+                                case 69:{
+                                    alienEvent = true;
+                                }
+                            }
+                            if(alienEvent){
+                                wild1.setImage(new Image("resources/HuntingMiniGame/alienship.gif"));
+                                wild1.setW(69);
+                                wild1.setH(69);
+                            }
+
                             Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(wild1Start1), event -> {
                                 final int[] counter = {0};
                                 Timeline timeline2 = new Timeline(new KeyFrame(Duration.millis(animalSpeed), event2 -> {
@@ -101,6 +126,19 @@ public class RandomCreateGameObjects {
                             wild2.setY(yToStart);
                             wild2.setW(45);
                             wild2.setH(45);
+
+                            //Random alien event
+                            switch (random.nextInt(100)){
+                                case 69:{
+                                    alienEvent = true;
+                                }
+                            }
+                            if(alienEvent){
+                                wild2.setImage(new Image("resources/HuntingMiniGame/alienship.gif"));
+                                wild2.setW(69);
+                                wild2.setH(69);
+                            }
+
                             Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(wild1Start1), event -> {
                                 final int[] counter = {0};
                                 Timeline timeline2 = new Timeline(new KeyFrame(Duration.millis(animalSpeed), event2 -> {
@@ -126,6 +164,19 @@ public class RandomCreateGameObjects {
                             wild2.setY(yToStart);
                             wild2.setW(45);
                             wild2.setH(45);
+
+                            //Random alien event
+                            switch (random.nextInt(100)){
+                                case 69:{
+                                    alienEvent = true;
+                                }
+                            }
+                            if(alienEvent){
+                                wild2.setImage(new Image("resources/HuntingMiniGame/alienship.gif"));
+                                wild2.setW(69);
+                                wild2.setH(69);
+                            }
+
                             Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(wild1Start1), event -> {
                                 final int[] counter = {0};
                                 Timeline timeline2 = new Timeline(new KeyFrame(Duration.millis(animalSpeed), event2 -> {
@@ -158,6 +209,19 @@ public class RandomCreateGameObjects {
                             wild3.setY(yToStart);
                             wild3.setW(45);
                             wild3.setH(45);
+
+                            //Random alien event
+                            switch (random.nextInt(100)){
+                                case 69:{
+                                    alienEvent = true;
+                                }
+                            }
+                            if(alienEvent){
+                                wild3.setImage(new Image("resources/HuntingMiniGame/alienship.gif"));
+                                wild3.setW(69);
+                                wild3.setH(69);
+                            }
+
                             Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(wild1Start1), event -> {
                                 final int[] counter = {0};
                                 Timeline timeline2 = new Timeline(new KeyFrame(Duration.millis(animalSpeed), event2 -> {
@@ -183,6 +247,19 @@ public class RandomCreateGameObjects {
                             wild3.setY(yToStart);
                             wild3.setW(45);
                             wild3.setH(45);
+
+                            //Random alien event
+                            switch (random.nextInt(100)){
+                                case 69:{
+                                    alienEvent = true;
+                                }
+                            }
+                            if(alienEvent){
+                                wild3.setImage(new Image("resources/HuntingMiniGame/alienship.gif"));
+                                wild3.setW(69);
+                                wild3.setH(69);
+                            }
+
                             Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(wild1Start1), event -> {
                                 final int[] counter = {0};
                                 Timeline timeline2 = new Timeline(new KeyFrame(Duration.millis(animalSpeed), event2 -> {
@@ -215,6 +292,19 @@ public class RandomCreateGameObjects {
                             wild4.setY(yToStart);
                             wild4.setW(45);
                             wild4.setH(45);
+
+                            //Random alien event
+                            switch (random.nextInt(100)){
+                                case 69:{
+                                    alienEvent = true;
+                                }
+                            }
+                            if(alienEvent){
+                                wild4.setImage(new Image("resources/HuntingMiniGame/alienship.gif"));
+                                wild4.setW(69);
+                                wild4.setH(69);
+                            }
+
                             Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(wild1Start1), event -> {
                                 final int[] counter = {0};
                                 Timeline timeline2 = new Timeline(new KeyFrame(Duration.millis(animalSpeed), event2 -> {
@@ -239,6 +329,19 @@ public class RandomCreateGameObjects {
                             wild4.setY(yToStart);
                             wild4.setW(45);
                             wild4.setH(45);
+
+                            //Random alien event
+                            switch (random.nextInt(100)){
+                                case 69:{
+                                    alienEvent = true;
+                                }
+                            }
+                            if(alienEvent){
+                                wild4.setImage(new Image("resources/HuntingMiniGame/alienship.gif"));
+                                wild4.setW(69);
+                                wild4.setH(69);
+                            }
+
                             Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(wild1Start1), event -> {
                                 final int[] counter = {0};
                                 Timeline timeline2 = new Timeline(new KeyFrame(Duration.millis(animalSpeed), event2 -> {

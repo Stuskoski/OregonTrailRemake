@@ -7,6 +7,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import main.Main;
 import models.AddKeyListenerToScene;
+import views.HittingTheTrail.TrailControlPanel;
 import views.MiniGames.HuntingGamePackage.HuntingGame;
 
 import java.net.URL;
@@ -99,8 +100,9 @@ public class StartingTownView {
         });
         hitTheTrailBtn.setOnMouseClicked(event -> {
             mediaPlayer.stop();
-            HuntingGame.randomizeHuntScreen(30);
-            Main.getPrimaryStage().setScene(HuntingGame.getScene()); //quick test for hunting game
+            TrailControlPanel.showControlPane();
+            //HuntingGame.randomizeHuntScreen(30);
+            //Main.getPrimaryStage().setScene(HuntingGame.getScene()); //quick test for hunting game
             //HitTheTrailView.createStartTownTrailView();
         });
         stableBtn.setOnMouseClicked(event -> {

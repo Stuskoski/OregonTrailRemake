@@ -46,14 +46,11 @@ public class HuntingGame {
     public static ProgressBar progressBar = new ProgressBar(1.0);
 
     public static void randomizeHuntScreen(int secondsToHunt) {
-
         int bullets = 0;
-
         BorderPane borderPane = new BorderPane();
         HBox topHbox = new HBox(5);
         Button back = new Button("Back");
         Pane layeredCanvas = new Pane(canvas1, canvas2);
-
 
         back.setId("mainScreenBtn");
 
@@ -117,7 +114,11 @@ public class HuntingGame {
 
         numOfBullets = new Label("Bullets: " + bullets);
         numOfBullets.setId("numOfBulletsLabel");
-        topHbox.getChildren().addAll(numOfBullets, progressBar);
+        HBox progressBarHbox = new HBox(3);
+        Label reloadLabel = new Label("\tReload Timer:");
+        reloadLabel.setId("huntingGameReloadLabel");
+        progressBarHbox.getChildren().addAll(reloadLabel, progressBar);
+        topHbox.getChildren().addAll(numOfBullets, progressBarHbox);
 
 
         Scene createScene = new Scene(borderPane, Main.getPrimaryStage().getScene().getWidth(), Main.getPrimaryStage().getScene().getHeight());
@@ -139,6 +140,7 @@ public class HuntingGame {
             });
         }
 
+
         scene = createScene;
 
         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(secondsToHunt), event -> {
@@ -149,12 +151,13 @@ public class HuntingGame {
 
         RandomCreateGameObjects.createGameObjects(gc2, secondsToHunt);
 
+        gc1.clearRect(0, HuntingGame.getScene().getHeight()-150, HuntingGame.getScene().getWidth(), 175);
+
         back.setOnAction(event -> {
             timeline.stop();
             HuntingSummary.showSummaryScreen(animalsKilled, poundsHunted);
             setPoundsHunted(0);
             setAnimalsKilled(0);
-           // Main.getPrimaryStage().setScene(StartingTownView.getStartingTownView());
         });
 
     }

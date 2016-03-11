@@ -69,6 +69,7 @@ public class HuntingSummary{
                 obj.setImage(null);
                 obj.setHasBeenHit(true);
             }
+            HuntingGame.getProgressBar().setProgress(1.0);
             //RandomCreateGameObjects.wildGame.clear();
         });
 

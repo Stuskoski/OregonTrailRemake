@@ -30,7 +30,6 @@ public class Inventory {
     private static Scene inventoryScene = new Scene(inventoryGrid, 400, 600);
 
     public static void updateInventoryScreen(){
-        System.out.println("Size of inventory = " + inventory.size());
         inventoryStage.setResizable(false);
 
         inventoryGrid.getChildren().clear();
@@ -47,6 +46,9 @@ public class Inventory {
 
         for (ItemInterface item : inventory){
             if(item.getName().equals("Game Meat")){
+                item.setWeight(item.getWeight()*100);
+                item.setWeight((double)Math.round(item.getWeight()));
+                item.setWeight(item.getWeight()/100);
                 Label label = new Label(item.getWeight()+"lbs of" + " " + item.getName());
                 label.setId("inventoryItemLabel");
                 vBox.getChildren().add(label);

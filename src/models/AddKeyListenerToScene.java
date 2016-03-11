@@ -1,6 +1,7 @@
 package models;
 
 import javafx.scene.Scene;
+import views.HittingTheTrail.TrailControlPanel;
 import views.StaticScenes.EscMenuView;
 
 /**
@@ -21,6 +22,10 @@ public class AddKeyListenerToScene {
                 }
                 case H:{
                     System.out.println("Implement Help Screen");
+                    break;
+                }
+                case C:{
+                    TrailControlPanel.showControlPane();
                     break;
                 }
             }

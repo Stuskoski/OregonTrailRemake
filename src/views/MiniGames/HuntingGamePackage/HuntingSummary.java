@@ -1,6 +1,5 @@
 package views.MiniGames.HuntingGamePackage;
 
-import CharacterObjects.Profile;
 import items.ItemInterface;
 import items.food.GameMeat;
 import javafx.geometry.Pos;
@@ -11,12 +10,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import main.Main;
 import models.Inventory;
-import views.PreGame.StartingGameInfoView;
 import views.StartingTown.StartingTownView;
 
-import java.text.DecimalFormat;
-import java.util.TimerTask;
-import java.util.regex.Matcher;
 
 /**
  * Created by augustus on 3/8/16.

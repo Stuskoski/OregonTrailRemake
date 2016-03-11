@@ -76,7 +76,7 @@ public class HuntingGame {
             }
         }
 
-        Inventory.getInventory().clear();
+        Inventory.getInventory().clear(); // Causes a bug with the meat adding to inventory.  No biggy though this isnt permanent
 
         Inventory.getInventory().add(new Bullets(100));
 

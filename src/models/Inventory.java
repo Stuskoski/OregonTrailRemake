@@ -30,6 +30,7 @@ public class Inventory {
     private static Scene inventoryScene = new Scene(inventoryGrid, 400, 600);
 
     public static void updateInventoryScreen(){
+        System.out.println("Size of inventory = " + inventory.size());
         inventoryStage.setResizable(false);
 
         inventoryGrid.getChildren().clear();

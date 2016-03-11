@@ -20,6 +20,11 @@ public class CampBread implements ItemInterface {
     }
 
     @Override
+    public void setWeight(double weight) {
+
+    }
+
+    @Override
     public String getDescription() {
         return "Delicious Camp Bread.  Goes great with butter!";
     }

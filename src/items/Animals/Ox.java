@@ -8,6 +8,7 @@ import items.ItemInterface;
  */
 public class Ox implements ItemInterface {
     private int quantity;
+    private double weight;
 
     public Ox(int quantity) {
         this.quantity = quantity;
@@ -15,6 +16,11 @@ public class Ox implements ItemInterface {
 
     @Override
     public double getWeight() {return 1000.0;}
+
+    @Override
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
 
     @Override
     public String getDescription() {

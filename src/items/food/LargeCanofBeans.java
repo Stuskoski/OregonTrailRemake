@@ -17,6 +17,11 @@ public class LargeCanofBeans implements ItemInterface {
     }
 
     @Override
+    public void setWeight(double weight) {
+
+    }
+
+    @Override
     public String getDescription() {
         return "One large can of beans.  Careful where you sleep!";
     }

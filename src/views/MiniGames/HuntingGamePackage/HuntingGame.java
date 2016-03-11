@@ -76,9 +76,9 @@ public class HuntingGame {
             }
         }
 
-        Inventory.getInventory().clear(); // Causes a bug with the meat adding to inventory.  No biggy though this isnt permanent
+        //Inventory.getInventory().clear(); // Causes a bug with the meat adding to inventory.  No biggy though this isnt permanent
 
-        Inventory.getInventory().add(new Bullets(100));
+        //Inventory.getInventory().add(new Bullets(100));
 
         for(ItemInterface bulletCheck : Inventory.getInventory()){
             if(bulletCheck.getName().equals("Bullet")){
@@ -86,11 +86,11 @@ public class HuntingGame {
             }
         }
 
-        Inventory.getInventory().add(new AlienRifle(1));
-        Inventory.getInventory().add(new Rifle(1));
-        Inventory.getInventory().add(new ShotGun(1));
-        Inventory.getInventory().add(new FlintlockPistol(1));
-        Inventory.getInventory().add(new Musket(1));
+        //Inventory.getInventory().add(new AlienRifle(1));
+        //Inventory.getInventory().add(new Rifle(1));
+        //Inventory.getInventory().add(new ShotGun(1));
+        //Inventory.getInventory().add(new FlintlockPistol(1));
+        //Inventory.getInventory().add(new Musket(1));
 
 
         ArrayList<ToggleButton> gunInventory = new ArrayList<>();

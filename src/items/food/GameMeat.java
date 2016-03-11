@@ -22,6 +22,7 @@ public class GameMeat implements ItemInterface {
         return this.weight;
     }
 
+    @Override
     public void setWeight(double weight){
         this.weight = weight;
     }

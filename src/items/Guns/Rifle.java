@@ -20,6 +20,11 @@ public class Rifle implements GunInterface {
     }
 
     @Override
+    public void setWeight(double weight) {
+
+    }
+
+    @Override
     public String getDescription() {
         return "Balanced rifle with a good rate of fire.";
     }

@@ -17,6 +17,11 @@ public class LargeBottleofWater implements ItemInterface {
     }
 
     @Override
+    public void setWeight(double weight) {
+
+    }
+
+    @Override
     public String getDescription() {
         return "A large bottle of water.  Now that's refreshing!";
     }

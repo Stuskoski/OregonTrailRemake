@@ -20,6 +20,11 @@ public class ShotGun implements GunInterface {
     }
 
     @Override
+    public void setWeight(double weight) {
+
+    }
+
+    @Override
     public String getDescription() {
         return "Standard shotgun, low rate of fire but multiple bullets.";
     }

@@ -8,6 +8,7 @@ import items.ItemInterface;
  */
 public class Donkey implements ItemInterface {
     private int quantity;
+    private double weight;
 
     public Donkey(int quantity) {
         this.quantity = quantity;
@@ -16,6 +17,11 @@ public class Donkey implements ItemInterface {
     @Override
     public double getWeight() {
         return 400.00;
+    }
+
+    @Override
+    public void setWeight(double weight) {
+        this.weight = weight;
     }
 
     @Override

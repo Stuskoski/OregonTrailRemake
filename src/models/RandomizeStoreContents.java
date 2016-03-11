@@ -1,6 +1,7 @@
 package models;
 
 import items.Clothing.*;
+import items.Guns.Bullets;
 import items.Guns.FlintlockPistol;
 import items.Guns.Rifle;
 import items.ItemInterface;
@@ -43,6 +44,7 @@ public class RandomizeStoreContents {
         startTownList.add(new Pants(10));
         startTownList.add(new Boots(10));
         startTownList.add(new FlintlockPistol(1));
+        startTownList.add(new Bullets(100));
 
 
         for (int i = 0; i < 5; i++) {

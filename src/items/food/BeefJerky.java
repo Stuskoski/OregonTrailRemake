@@ -16,6 +16,11 @@ public class BeefJerky implements ItemInterface {
     public double getWeight() {return 0.5;}
 
     @Override
+    public void setWeight(double weight) {
+
+    }
+
+    @Override
     public String getDescription() {
         return "Tasty BeefJerky";
     }

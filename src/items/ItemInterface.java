@@ -5,6 +5,7 @@ package items;
  */
 public interface ItemInterface{
     double getWeight();
+    void   setWeight(double weight);
     String getDescription();
     double getPrice();
     String getName();

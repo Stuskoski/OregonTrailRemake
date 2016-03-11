@@ -21,6 +21,11 @@ public class AlienRifle implements GunInterface {
     }
 
     @Override
+    public void setWeight(double weight) {
+
+    }
+
+    @Override
     public String getDescription() {
         return "Rifle of unknown origin.  Did aliens drop" +
                 "it on their last visit.";

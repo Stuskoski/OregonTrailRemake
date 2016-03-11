@@ -18,6 +18,11 @@ public class Bullets implements ItemInterface {
     }
 
     @Override
+    public void setWeight(double weight) {
+
+    }
+
+    @Override
     public String getDescription() {
         return "Just a regular lead bullet.";
     }

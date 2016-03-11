@@ -44,8 +44,8 @@ public class HuntingSummary{
 
 
 
+        //Add the pounds to your inventory, first check if it exists tho.
         final double finalPoundsHunted = poundsHunted;
-        final double finalPoundsHunted1 = poundsHunted;
         continueBtn.setOnAction(event -> {
             Main.getPrimaryStage().setScene(StartingTownView.getStartingTownView());
             double weight = 0.0;
@@ -54,14 +54,12 @@ public class HuntingSummary{
                 if(weightCheck.getName().equals("Game Meat")){
                     weight = weightCheck.getWeight();
                     System.out.println(weight);
-                    weightCheck = new GameMeat(1, weight + finalPoundsHunted1);
+                    weightCheck.setWeight(weightCheck.getWeight()+finalPoundsHunted);
                 }else{
                     counter++;
                 }
             }
             if(counter == Inventory.getInventory().size()){
-                System.out.println(counter);
-                System.out.println(Inventory.getInventory().size());
                 Inventory.getInventory().add(new GameMeat(1,finalPoundsHunted));
             }
 

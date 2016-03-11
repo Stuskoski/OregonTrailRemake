@@ -18,6 +18,11 @@ public class LargeBandage implements ItemInterface{
     }
 
     @Override
+    public void setWeight(double weight) {
+
+    }
+
+    @Override
     public String getDescription() {
         return null;
     }

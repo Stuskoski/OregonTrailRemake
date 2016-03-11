@@ -19,6 +19,11 @@ public class FlintlockPistol implements GunInterface {
     }
 
     @Override
+    public void setWeight(double weight) {
+
+    }
+
+    @Override
     public String getDescription() {
         return "Standard flintlock pistol. Cheap but fires slow.";
     }

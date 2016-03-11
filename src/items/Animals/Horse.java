@@ -7,6 +7,7 @@ import items.ItemInterface;
  */
 public class Horse implements ItemInterface {
     private int quantity;
+    private double weight;
 
     public Horse(int quantity) {
         this.quantity = quantity;
@@ -14,6 +15,11 @@ public class Horse implements ItemInterface {
 
     @Override
     public double getWeight() {return 800.00;}
+
+    @Override
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
 
     @Override
     public String getDescription() {

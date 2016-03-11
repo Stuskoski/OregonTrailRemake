@@ -19,6 +19,11 @@ public class Musket implements GunInterface {
     }
 
     @Override
+    public void setWeight(double weight) {
+
+    }
+
+    @Override
     public String getDescription() {
         return "Is that a freaking musket? Yes that's a freaking musket.";
     }

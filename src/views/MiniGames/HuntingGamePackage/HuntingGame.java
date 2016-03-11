@@ -40,11 +40,10 @@ public class HuntingGame {
     public static GraphicsContext gc1 = canvas1.getGraphicsContext2D();
     public static GraphicsContext gc2 = canvas2.getGraphicsContext2D();
     public static Label numOfBullets;
-
+    public static double poundsHunted = 0;
 
     public static void randomizeHuntScreen(int secondsToHunt) {
         int animalsKilled = 0;
-        double poundsHunted = 0;
         int bullets = 0;
 
         BorderPane borderPane = new BorderPane();
@@ -157,4 +156,7 @@ public class HuntingGame {
 
     public static Scene getScene(){return scene;}
     public static Label getNumOfBullets(){return numOfBullets;}
+
+    public static double getPoundsHunted(){return poundsHunted;}
+    public static void setPoundsHunted(double pounds){ poundsHunted = pounds;}
 }

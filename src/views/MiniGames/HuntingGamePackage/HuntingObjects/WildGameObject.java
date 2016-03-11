@@ -11,6 +11,8 @@ public class WildGameObject {
     int w;
     int h;
     Image image;
+    boolean hasBeenHit = false;
+    double weight=0.0;
 
     public WildGameObject(double x, double y, int w, int h, Image image){
         this.x = x;
@@ -56,4 +58,12 @@ public class WildGameObject {
     public Image getImage(){ return this.image;}
 
     public void setImage(Image image){ this.image = image;}
+
+    public boolean getHasBeenHit(){return this.hasBeenHit;}
+
+    public void setHasBeenHit(boolean bool){this.hasBeenHit = bool;}
+
+    public double getWeight(){return weight;}
+
+    public void setWeight(double weight){this.weight = weight;}
 }

@@ -31,6 +31,7 @@ public class RandomCreateGameObjects {
             switch (random.nextInt(4)){
                 case 0:{
                     WildGameObject wild1 = new WildGameObject(0,0,0,0,new Image("resources/HuntingMiniGame/birdFlying1.gif-c200"));
+                    wild1.setWeight( 5 + (40 - 5) * random.nextDouble()); //Formula = rangeMin + (rangeMax - rangeMin) * r.nextDouble();
                     wildGame.add(wild1);
 
                     //Quick check to decide if object going from left or going from right

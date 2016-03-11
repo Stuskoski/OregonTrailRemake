@@ -162,6 +162,8 @@ public class UsersGun {
                                         if((((bulletObject.y+(bulletObject.y+bulletObject.h))/2) <= wildGame.getY()+wildGame.getH() && (((bulletObject.y+(bulletObject.y+bulletObject.h))/2) >= wildGame.getY()))){ //height check
                                             if((((bulletObject.x+(bulletObject.x+bulletObject.w))/2) >= wildGame.getX()) && (((bulletObject.x+(bulletObject.x+bulletObject.w))/2) <= wildGame.getX()+wildGame.getW())){
                                                 wildGame.setImage(new Image("resources/HuntingMiniGame/skull-icon.png"));
+                                                wildGame.setHasBeenHit(true);
+                                                HuntingGame.poundsHunted = HuntingGame.poundsHunted + wildGame.getWeight();
                                             }
                                         }
                                     }
@@ -181,6 +183,8 @@ public class UsersGun {
                                         if((((bulletObject.y+(bulletObject.y+bulletObject.h))/2) <= wildGame.getY()+wildGame.getH() && (((bulletObject.y+(bulletObject.y+bulletObject.h))/2) >= wildGame.getY()))){ //height check
                                             if((((bulletObject.x+(bulletObject.x+bulletObject.w))/2) >= wildGame.getX()) && (((bulletObject.x+(bulletObject.x+bulletObject.w))/2) <= wildGame.getX()+wildGame.getW())){
                                                 wildGame.setImage(new Image("resources/HuntingMiniGame/skull-icon.png"));
+                                                wildGame.setHasBeenHit(true);
+                                                HuntingGame.poundsHunted = HuntingGame.poundsHunted + wildGame.getWeight();
                                             }
                                         }
                                     }
@@ -200,6 +204,8 @@ public class UsersGun {
                                         if((((bulletObject.y+(bulletObject.y+bulletObject.h))/2) <= wildGame.getY()+wildGame.getH() && (((bulletObject.y+(bulletObject.y+bulletObject.h))/2) >= wildGame.getY()))){ //height check
                                             if((((bulletObject.x+(bulletObject.x+bulletObject.w))/2) >= wildGame.getX()) && (((bulletObject.x+(bulletObject.x+bulletObject.w))/2) <= wildGame.getX()+wildGame.getW())){
                                                 wildGame.setImage(new Image("resources/HuntingMiniGame/skull-icon.png"));
+                                                wildGame.setHasBeenHit(true);
+                                                HuntingGame.poundsHunted = HuntingGame.poundsHunted + wildGame.getWeight();
                                             }
                                         }
                                     }
@@ -219,6 +225,8 @@ public class UsersGun {
                                         if((((bulletObject.y+(bulletObject.y+bulletObject.h))/2) <= wildGame.getY()+wildGame.getH() && (((bulletObject.y+(bulletObject.y+bulletObject.h))/2) >= wildGame.getY()))){ //height check
                                             if((((bulletObject.x+(bulletObject.x+bulletObject.w))/2) >= wildGame.getX()) && (((bulletObject.x+(bulletObject.x+bulletObject.w))/2) <= wildGame.getX()+wildGame.getW())){
                                                 wildGame.setImage(new Image("resources/HuntingMiniGame/skull-icon.png"));
+                                                wildGame.setHasBeenHit(true);
+                                                HuntingGame.poundsHunted = HuntingGame.poundsHunted + wildGame.getWeight();
                                             }
                                         }
                                     }
@@ -250,6 +258,8 @@ public class UsersGun {
                                         if((((bulletObject.y+(bulletObject.y+bulletObject.h))/2) <= wildGame.getY()+wildGame.getH() && (((bulletObject.y+(bulletObject.y+bulletObject.h))/2) >= wildGame.getY()))){ //height check
                                             if((((bulletObject.x+(bulletObject.x+bulletObject.w))/2) >= wildGame.getX()) && (((bulletObject.x+(bulletObject.x+bulletObject.w))/2) <= wildGame.getX()+wildGame.getW())){
                                                 wildGame.setImage(new Image("resources/HuntingMiniGame/skull-icon.png"));
+                                                wildGame.setHasBeenHit(true);
+                                                HuntingGame.poundsHunted = HuntingGame.poundsHunted + wildGame.getWeight();
                                             }
                                         }
                                     }
@@ -257,6 +267,8 @@ public class UsersGun {
                                         if((((bulletObject2.y+(bulletObject2.y+bulletObject2.h))/2) <= wildGame.getY()+wildGame.getH() && (((bulletObject2.y+(bulletObject2.y+bulletObject2.h))/2) >= wildGame.getY()))){ //height check
                                             if((((bulletObject2.x+(bulletObject2.x+bulletObject2.w))/2) >= wildGame.getX()) && (((bulletObject2.x+(bulletObject2.x+bulletObject2.w))/2) <= wildGame.getX()+wildGame.getW())){
                                                 wildGame.setImage(new Image("resources/HuntingMiniGame/skull-icon.png"));
+                                                wildGame.setHasBeenHit(true);
+                                                HuntingGame.poundsHunted = HuntingGame.poundsHunted + wildGame.getWeight();
                                             }
                                         }
                                     }
@@ -264,6 +276,8 @@ public class UsersGun {
                                         if((((bulletObject3.y+(bulletObject3.y+bulletObject3.h))/2) <= wildGame.getY()+wildGame.getH() && (((bulletObject3.y+(bulletObject3.y+bulletObject3.h))/2) >= wildGame.getY()))){ //height check
                                             if((((bulletObject3.x+(bulletObject3.x+bulletObject3.w))/2) >= wildGame.getX()) && (((bulletObject3.x+(bulletObject3.x+bulletObject3.w))/2) <= wildGame.getX()+wildGame.getW())){
                                                 wildGame.setImage(new Image("resources/HuntingMiniGame/skull-icon.png"));
+                                                wildGame.setHasBeenHit(true);
+                                                HuntingGame.poundsHunted = HuntingGame.poundsHunted + wildGame.getWeight();
                                             }
                                         }
                                     }

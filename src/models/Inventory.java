@@ -45,9 +45,16 @@ public class Inventory {
         //Collections.sort(inventory, ItemInterface);
 
         for (ItemInterface item : inventory){
-            Label label = new Label(item.getQuantity() + " " + item.getName());
-            label.setId("inventoryItemLabel");
-            vBox.getChildren().add(label);
+            if(item.getName().equals("Game Meat")){
+                Label label = new Label(item.getWeight()+"lbs of" + " " + item.getName());
+                label.setId("inventoryItemLabel");
+                vBox.getChildren().add(label);
+            }else{
+                Label label = new Label(item.getQuantity() + " " + item.getName());
+                label.setId("inventoryItemLabel");
+                vBox.getChildren().add(label);
+            }
+
         }
 
         inventoryScrollPane.setContent(vBox);

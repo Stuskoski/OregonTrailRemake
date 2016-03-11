@@ -21,7 +21,7 @@ public class RandomCreateGameObjects {
         Random random = new Random();
 
         //Get the number of animals to create
-        int numOfAnimals = 30;
+        int numOfAnimals = random.nextInt(7);
 
         for(int i = 0; i<numOfAnimals; i++){
             int animalSpeed = random.nextInt(15-14) + 14;
@@ -90,6 +90,7 @@ public class RandomCreateGameObjects {
                 case 1:{
                     WildGameObject wild2 = new WildGameObject(0,0,0,0,new Image("resources/HuntingMiniGame/birdFlying1.gif-c200"));
                     wildGame.add(wild2);
+                    wild2.setWeight( 5 + (40 - 5) * random.nextDouble());
 
                     //Quick check to decide if object going from left or going from right
                     switch (random.nextInt(2)){
@@ -145,6 +146,7 @@ public class RandomCreateGameObjects {
                 }
                 case 2:{
                     WildGameObject wild3 = new WildGameObject(0,0,0,0,new Image("resources/HuntingMiniGame/birdFlying3.gif"));
+                    wild3.setWeight( 5 + (40 - 5) * random.nextDouble());
                     wildGame.add(wild3);
 
                     //Quick check to decide if object going from left or going from right
@@ -202,6 +204,7 @@ public class RandomCreateGameObjects {
                 case 3:{
                     WildGameObject wild4 = new WildGameObject(0,0,0,0,new Image("resources/HuntingMiniGame/birdFlying4.gif"));
                     wildGame.add(wild4);
+                    wild4.setWeight( 5 + (40 - 5) * random.nextDouble());
 
                     //Quick check to decide if object going from left or going from right
                     switch (random.nextInt(2)){

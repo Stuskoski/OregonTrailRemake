@@ -164,6 +164,7 @@ public class UsersGun {
                                                 wildGame.setImage(new Image("resources/HuntingMiniGame/skull-icon.png"));
                                                 if(!wildGame.getHasBeenHit()){
                                                     HuntingGame.poundsHunted = HuntingGame.poundsHunted + wildGame.getWeight();
+                                                    HuntingGame.animalsKilled = HuntingGame.animalsKilled + 1;
                                                 }
                                                 wildGame.setHasBeenHit(true);
                                                 //RandomCreateGameObjects.wildGame.remove(wildGame);
@@ -188,6 +189,7 @@ public class UsersGun {
                                                 wildGame.setImage(new Image("resources/HuntingMiniGame/skull-icon.png"));
                                                 if(!wildGame.getHasBeenHit()){
                                                     HuntingGame.poundsHunted = HuntingGame.poundsHunted + wildGame.getWeight();
+                                                    HuntingGame.animalsKilled = HuntingGame.animalsKilled + 1;
                                                 }
                                                 wildGame.setHasBeenHit(true);
                                                 //RandomCreateGameObjects.wildGame.remove(wildGame);
@@ -212,6 +214,7 @@ public class UsersGun {
                                                 wildGame.setImage(new Image("resources/HuntingMiniGame/skull-icon.png"));
                                                 if(!wildGame.getHasBeenHit()){
                                                     HuntingGame.poundsHunted = HuntingGame.poundsHunted + wildGame.getWeight();
+                                                    HuntingGame.animalsKilled = HuntingGame.animalsKilled + 1;
                                                 }
                                                 wildGame.setHasBeenHit(true);
                                                // RandomCreateGameObjects.wildGame.remove(wildGame);
@@ -236,6 +239,7 @@ public class UsersGun {
                                                 wildGame.setImage(new Image("resources/HuntingMiniGame/skull-icon.png"));
                                                 if(!wildGame.getHasBeenHit()){
                                                     HuntingGame.poundsHunted = HuntingGame.poundsHunted + wildGame.getWeight();
+                                                    HuntingGame.animalsKilled = HuntingGame.animalsKilled + 1;
                                                 }
                                                 wildGame.setHasBeenHit(true);
                                                // RandomCreateGameObjects.wildGame.remove(wildGame);
@@ -272,6 +276,7 @@ public class UsersGun {
                                                 wildGame.setImage(new Image("resources/HuntingMiniGame/skull-icon.png"));
                                                 if(!wildGame.getHasBeenHit()){
                                                     HuntingGame.poundsHunted = HuntingGame.poundsHunted + wildGame.getWeight();
+                                                    HuntingGame.animalsKilled = HuntingGame.animalsKilled + 1;
                                                 }
                                                 wildGame.setHasBeenHit(true);
                                                 //RandomCreateGameObjects.wildGame.remove(wildGame);
@@ -284,6 +289,7 @@ public class UsersGun {
                                                 wildGame.setImage(new Image("resources/HuntingMiniGame/skull-icon.png"));
                                                 if(!wildGame.getHasBeenHit()){
                                                     HuntingGame.poundsHunted = HuntingGame.poundsHunted + wildGame.getWeight();
+                                                    HuntingGame.animalsKilled = HuntingGame.animalsKilled + 1;
                                                 }
                                                 wildGame.setHasBeenHit(true);
                                                 //RandomCreateGameObjects.wildGame.remove(wildGame);
@@ -296,6 +302,7 @@ public class UsersGun {
                                                 wildGame.setImage(new Image("resources/HuntingMiniGame/skull-icon.png"));
                                                 if(!wildGame.getHasBeenHit()){
                                                     HuntingGame.poundsHunted = HuntingGame.poundsHunted + wildGame.getWeight();
+                                                    HuntingGame.animalsKilled = HuntingGame.animalsKilled + 1;
                                                 }
                                                 wildGame.setHasBeenHit(true);
                                                 //RandomCreateGameObjects.wildGame.remove(wildGame);

@@ -41,9 +41,9 @@ public class HuntingGame {
     public static GraphicsContext gc2 = canvas2.getGraphicsContext2D();
     public static Label numOfBullets;
     public static double poundsHunted = 0;
+    public static int animalsKilled = 0;
 
     public static void randomizeHuntScreen(int secondsToHunt) {
-        int animalsKilled = 0;
         int bullets = 0;
 
         BorderPane borderPane = new BorderPane();
@@ -149,6 +149,8 @@ public class HuntingGame {
         back.setOnAction(event -> {
             timeline.stop();
             HuntingSummary.showSummaryScreen(animalsKilled, poundsHunted);
+            setPoundsHunted(0);
+            setAnimalsKilled(0);
            // Main.getPrimaryStage().setScene(StartingTownView.getStartingTownView());
         });
 
@@ -159,4 +161,8 @@ public class HuntingGame {
 
     public static double getPoundsHunted(){return poundsHunted;}
     public static void setPoundsHunted(double pounds){ poundsHunted = pounds;}
+
+    public static int getAnimalsKilled(){return animalsKilled;}
+    public static void setAnimalsKilled(int killed){ animalsKilled = killed;}
 }
+

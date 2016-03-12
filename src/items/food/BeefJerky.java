@@ -8,16 +8,17 @@ import items.ItemInterface;
  */
 public class BeefJerky implements ItemInterface {
     private int quantity;
+    private double weight = 0.5;
 
     public BeefJerky(int quantity){
         this.quantity = quantity;
     }
     @Override
-    public double getWeight() {return 0.5;}
+    public double getWeight() {return weight;}
 
     @Override
     public void setWeight(double weight) {
-
+        this.weight = weight;
     }
 
     @Override

@@ -7,18 +7,19 @@ import items.ItemInterface;
  */
 public class TurkeyJerky implements ItemInterface {
     private int quantity;
+    private double weight = 1.0;
 
     public TurkeyJerky(int quantity){
         this.quantity = quantity;
     }
     @Override
     public double getWeight() {
-        return 0;
+        return weight;
     }
 
     @Override
     public void setWeight(double weight) {
-
+        this.weight = weight;
     }
 
     @Override

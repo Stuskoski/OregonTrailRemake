@@ -243,6 +243,7 @@ public class TrailControlPanel {
         for(ItemInterface food : Inventory.getInventory()){
             switch (food.getName()){
                 case"Beef Jerky":{
+                    System.out.println("Jerky");
                     if(firstConsume) {
                         hasSomethingToEat = true;
                         if (food.getWeight() > 0) {

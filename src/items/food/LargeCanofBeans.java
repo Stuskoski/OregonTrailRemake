@@ -7,6 +7,7 @@ import items.ItemInterface;
  */
 public class LargeCanofBeans implements ItemInterface {
     private int quantity;
+    private double weight;
 
     public LargeCanofBeans(int quantity){
         this.quantity = quantity;
@@ -18,7 +19,7 @@ public class LargeCanofBeans implements ItemInterface {
 
     @Override
     public void setWeight(double weight) {
-
+        this.weight = weight;
     }
 
     @Override

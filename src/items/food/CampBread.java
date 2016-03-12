@@ -9,6 +9,7 @@ import items.ItemInterface;
  */
 public class CampBread implements ItemInterface {
     private int quantity;
+    private double weight = 0.5;
 
     public CampBread(int quantity){
         this.quantity = quantity;
@@ -16,12 +17,12 @@ public class CampBread implements ItemInterface {
 
     @Override
     public double getWeight() {
-        return 1.0;
+        return weight;
     }
 
     @Override
     public void setWeight(double weight) {
-
+        this.weight = weight;
     }
 
     @Override

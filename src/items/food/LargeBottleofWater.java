@@ -7,18 +7,19 @@ import items.ItemInterface;
  */
 public class LargeBottleofWater implements ItemInterface {
     private int quantity;
+    private double weight = 1.25;
 
     public LargeBottleofWater(int quantity){
         this.quantity = quantity;
     }
     @Override
     public double getWeight() {
-        return 1.25;
+        return weight;
     }
 
     @Override
     public void setWeight(double weight) {
-
+        this.weight = weight;
     }
 
     @Override

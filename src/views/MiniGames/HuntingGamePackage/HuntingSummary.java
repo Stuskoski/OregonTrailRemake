@@ -10,6 +10,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import main.Main;
 import models.Inventory;
+import views.HittingTheTrail.TrailControlPanel;
 import views.MiniGames.HuntingGamePackage.HuntingObjects.WildGameObject;
 import views.StartingTown.StartingTownView;
 
@@ -70,6 +71,7 @@ public class HuntingSummary{
                 obj.setHasBeenHit(true);
             }
             HuntingGame.getProgressBar().setProgress(1.0);
+            TrailControlPanel.setCanIstartTimeline(true);
             //RandomCreateGameObjects.wildGame.clear();
         });
 

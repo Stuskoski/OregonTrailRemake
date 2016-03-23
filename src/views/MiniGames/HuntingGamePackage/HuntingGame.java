@@ -1,8 +1,6 @@
 package views.MiniGames.HuntingGamePackage;
 
-import items.Guns.*;
 import items.ItemInterface;
-import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.Scene;
@@ -15,12 +13,11 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import javafx.util.Duration;
-import main.Main;
+import Start.Main;
 import models.Inventory;
 import views.MiniGames.HuntingGamePackage.HuntingObjects.UsersGun;
-import views.StartingTown.StartingTownView;
+
 import java.util.ArrayList;
 import java.util.Random;
 

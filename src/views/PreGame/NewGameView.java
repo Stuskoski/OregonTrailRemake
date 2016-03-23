@@ -12,9 +12,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
-import main.Main;
+import Start.Main;
 import models.InstantiateProfile;
-import models.Inventory;
 
 import java.util.ArrayList;
 

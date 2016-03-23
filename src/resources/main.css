@@ -239,7 +239,17 @@
 #controlPanelGrid{
     -fx-background-color: black;
 }
-/*---------------------------------------------------------------*/
+/*-------------------------The Trail-----------------------------*/
+#TheTrailGridPaneMoving{
+    -fx-background-image: url("OnTheTrail/backgroundMoving.gif");
+    -fx-background-repeat: stretch;
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+    -fx-background-color: black;
+}
+#TheTrailGridPaneStop{
+
+}
 /*---------------------------------------------------------------*/
 /*---------------------------------------------------------------*/
 /*---------------------------------------------------------------*/

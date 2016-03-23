@@ -6,7 +6,7 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.layout.GridPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import main.Main;
+import Start.Main;
 import models.AddKeyListenerToScene;
 import java.net.URL;
 import java.util.ArrayList;

@@ -1,7 +1,7 @@
 package CharacterObjects;
 
 /**
- * Created by augustus on 1/28/16. THis is the main profile
+ * Created by augustus on 1/28/16. THis is the Start profile
  * for the user when he starts a new game.  The majority of
  * these characteristics are pulled from the character
  * templates whenever the user selects a class.  The other

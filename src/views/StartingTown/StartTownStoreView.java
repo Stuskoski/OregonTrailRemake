@@ -8,7 +8,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import main.Main;
+import Start.Main;
 import models.AddKeyListenerToScene;
 import models.Inventory;
 import models.RandomizeStoreContents;

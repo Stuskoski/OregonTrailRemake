@@ -13,7 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import main.Main;
+import Start.Main;
 import models.Inventory;
 import views.MiniGames.HuntingGamePackage.HuntingGame;
 

@@ -1,6 +1,6 @@
 package models;
 
-import main.Main;
+import Start.Main;
 import java.io.File;
 import java.io.IOException;
 import java.lang.management.ManagementFactory;

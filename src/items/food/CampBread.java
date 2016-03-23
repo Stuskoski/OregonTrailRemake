@@ -5,7 +5,7 @@ import items.ItemInterface;
 /**
  * Created by augustus on 1/28/16.
  * This is the model for delicious camp bread.
- * Implements interface to get the main qualities.
+ * Implements interface to get the Start qualities.
  */
 public class CampBread implements ItemInterface {
     private int quantity;

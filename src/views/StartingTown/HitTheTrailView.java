@@ -3,7 +3,7 @@ package views.StartingTown;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
-import main.Main;
+import Start.Main;
 
 /**
  * Created by augustus on 2/19/16.

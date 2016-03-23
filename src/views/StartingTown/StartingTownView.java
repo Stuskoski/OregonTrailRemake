@@ -5,10 +5,10 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import main.Main;
+import Start.Main;
 import models.AddKeyListenerToScene;
+import views.HittingTheTrail.TheTrail;
 import views.HittingTheTrail.TrailControlPanel;
-import views.MiniGames.HuntingGamePackage.HuntingGame;
 
 import java.net.URL;
 
@@ -101,8 +101,9 @@ public class StartingTownView {
         hitTheTrailBtn.setOnMouseClicked(event -> {
             mediaPlayer.stop();
             TrailControlPanel.showControlPane();
+            TheTrail.showTheTrailScene();
             //HuntingGame.randomizeHuntScreen(30);
-            //Main.getPrimaryStage().setScene(HuntingGame.getScene()); //quick test for hunting game
+            //Start.getPrimaryStage().setScene(HuntingGame.getScene()); //quick test for hunting game
             //HitTheTrailView.createStartTownTrailView();
         });
         stableBtn.setOnMouseClicked(event -> {

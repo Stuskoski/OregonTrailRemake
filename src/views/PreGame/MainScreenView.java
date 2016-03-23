@@ -11,7 +11,7 @@ import javafx.scene.layout.VBox;
 
 /**
  * Created by augustus on 2/11/16.
- * The main screen the user will see
+ * The Start screen the user will see
  * whenever they open the application.
  */
 public class MainScreenView {

@@ -14,10 +14,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import javafx.util.Duration;
-import main.Main;
+import Start.Main;
 import views.StartingTown.StartingTownView;
 import java.net.URL;
-import java.util.Timer;
 import java.util.TimerTask;
 
 /**
@@ -47,7 +46,7 @@ public class StartingGameInfoView {
         gc.setTextAlign(TextAlignment.CENTER);
         gc.setFill(Color.YELLOW);
         gc.setFont(new Font(20));
-       // gc.fillText("The Oregon Trail", (Main.getPrimaryStage().getWidth()/2) ,15);
+       // gc.fillText("The Oregon Trail", (Start.getPrimaryStage().getWidth()/2) ,15);
         gc.fillText("---Press any button to continue---", (Main.getPrimaryStage().getWidth()/2) ,Main.getPrimaryStage().getHeight()-400);
 
         timeline = new Timeline(new KeyFrame(Duration.millis(35), event -> {

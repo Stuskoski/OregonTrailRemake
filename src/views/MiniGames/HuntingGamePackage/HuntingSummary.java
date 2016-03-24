@@ -1,5 +1,6 @@
 package views.MiniGames.HuntingGamePackage;
 
+import CharacterObjects.Profile;
 import items.ItemInterface;
 import items.food.GameMeat;
 import javafx.geometry.Pos;
@@ -38,6 +39,8 @@ public class HuntingSummary{
 
         Label animalsKilledLabel = new Label("Animals Killed: " + animalsKilled);
         Label poundsHuntedLabel = new Label("Pounds of Meat Hunted: " + poundsHunted);
+
+        Profile.setAnimalsKilled(Profile.getAnimalsKilled() + animalsKilled);
 
         vBox.getChildren().addAll(animalsKilledLabel, poundsHuntedLabel, continueBtn);
 

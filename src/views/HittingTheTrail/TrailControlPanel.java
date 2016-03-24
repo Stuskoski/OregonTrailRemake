@@ -18,6 +18,7 @@ import javafx.util.Duration;
 import Start.Main;
 import models.Inventory;
 import views.MiniGames.HuntingGamePackage.HuntingGame;
+import views.PostGame.ScoreBoard;
 
 import java.util.Optional;
 
@@ -186,6 +187,7 @@ public class TrailControlPanel {
         });
 
         familyStatus.setOnAction(familyEvent -> {
+            ScoreBoard.showScoreBoard();
             //Spouse.getStatus() etc...
         });
 

@@ -1,6 +1,7 @@
 package Start;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.stage.Stage;
 import views.PreGame.MainScreenView;
 
@@ -23,7 +24,10 @@ public class Main extends Application {
         mainPrimaryStage.setTitle("Oregon Trail - Remake");
         mainPrimaryStage.setScene(MainScreenView.getLoginScene());
         mainPrimaryStage.setResizable(false);
-        mainPrimaryStage.setOnCloseRequest(event -> System.exit(0));
+        mainPrimaryStage.setOnCloseRequest(event -> {
+            Platform.exit();
+            System.exit(0);
+        });
         mainPrimaryStage.show();
     }
 

@@ -17,6 +17,7 @@ public class Profile {
     private static Child2 child2;
     private static Child3 child3;
     private static Spouse spouse;
+    private static int animalsKilled = 0;
 
     public static int getHealth() {return health;}
     public static void setHealth(int health) {Profile.health = health;}
@@ -131,5 +132,8 @@ public class Profile {
 
     public static Spouse getSpouse(){return spouse;}
     public static void setSpouse(Spouse spouseSet){spouse = spouseSet;}
+
+    public static int getAnimalsKilled(){return animalsKilled;}
+    public static void setAnimalsKilled(int killed){animalsKilled=killed;}
 
 }

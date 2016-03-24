@@ -10,12 +10,16 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import Start.Main;
 import models.Inventory;
 import views.MiniGames.HuntingGamePackage.HuntingGame;
+
+import java.util.Optional;
 
 /**
  * Created by augustus on 3/11/16.
@@ -35,6 +39,8 @@ public class TrailControlPanel {
     public static boolean canIstartTimeline = true;
 
     public static void showControlPane(){
+        controlPanelStage.setX(0);//Show the control panel in the upper left corner of screen
+        controlPanelStage.setY(0);
         controlPanelStage.setScene(controlScene);
         controlPanelStage.setResizable(true);
         controlPanelStage.show();
@@ -81,7 +87,7 @@ public class TrailControlPanel {
         gameTimeline = new Timeline(new KeyFrame(Duration.millis(1), timelineEvent -> {
 
         }));
-        gameTimeline.setCycleCount(300000);
+        gameTimeline.setCycleCount(1000000);
         gameTimeline.setOnFinished(event1 -> System.out.println("finished!"));
 
 
@@ -107,9 +113,56 @@ public class TrailControlPanel {
 
 
         rest.setOnAction(restEvent -> {
-            gameTimeline.pause();
-            consumeTimelineSlow.play();
-            consumeTimelineFast.pause();
+
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Rest Menu");
+            alert.setHeaderText("How many days would you like rest for?");
+            alert.setContentText("Choose your option.");
+
+            ButtonType buttonTypeOne = new ButtonType("One");
+            ButtonType buttonTypeTwo = new ButtonType("Two");
+            ButtonType buttonTypeThree = new ButtonType("Three");
+            ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+            alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeTwo, buttonTypeThree, buttonTypeCancel);
+
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == buttonTypeOne){
+                gameTimeline.pause();
+                consumeTimelineSlow.play();
+                consumeTimelineFast.pause();
+                TheTrail.gridPane.setId("TheTrailGridPaneRest");
+                Timeline restTimeline = new Timeline(new KeyFrame(Duration.millis(1), timelineEvent -> {
+
+                }));
+                restTimeline.setCycleCount(3000);
+                restTimeline.setOnFinished(event1 -> carryOn.fire());
+                restTimeline.play();
+            } else if (result.get() == buttonTypeTwo) {
+                gameTimeline.pause();
+                consumeTimelineSlow.play();
+                consumeTimelineFast.pause();
+                TheTrail.gridPane.setId("TheTrailGridPaneRest");
+                Timeline restTimeline = new Timeline(new KeyFrame(Duration.millis(1), timelineEvent -> {
+
+                }));
+                restTimeline.setCycleCount(6000);
+                restTimeline.setOnFinished(event1 -> carryOn.fire());
+                restTimeline.play();
+            } else if (result.get() == buttonTypeThree) {
+                gameTimeline.pause();
+                consumeTimelineSlow.play();
+                consumeTimelineFast.pause();
+                TheTrail.gridPane.setId("TheTrailGridPaneRest");
+                Timeline restTimeline = new Timeline(new KeyFrame(Duration.millis(1), timelineEvent -> {
+
+                }));
+                restTimeline.setCycleCount(9000);
+                restTimeline.setOnFinished(event1 -> carryOn.fire());
+                restTimeline.play();
+            } else {
+                // ... user chose CANCEL or closed the dialog
+            }
         });
 
         carryOn.setOnAction(carryOnEvent -> {
@@ -117,6 +170,7 @@ public class TrailControlPanel {
                 gameTimeline.play();
                 consumeTimelineSlow.pause();
                 consumeTimelineFast.play();
+                TheTrail.gridPane.setId("TheTrailGridPaneMoving");
             }
         });
 

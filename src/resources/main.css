@@ -247,8 +247,12 @@
     -fx-background-position: center center;
     -fx-background-color: black;
 }
-#TheTrailGridPaneStop{
-
+#TheTrailGridPaneRest{
+    -fx-background-image: url("OnTheTrail/nightTime.gif");
+    -fx-background-repeat: stretch;
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+    -fx-background-color: black;
 }
 /*---------------------------------------------------------------*/
 /*---------------------------------------------------------------*/

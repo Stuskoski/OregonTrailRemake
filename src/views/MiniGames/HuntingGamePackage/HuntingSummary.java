@@ -10,6 +10,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import Start.Main;
 import models.Inventory;
+import views.HittingTheTrail.TheTrail;
 import views.HittingTheTrail.TrailControlPanel;
 import views.MiniGames.HuntingGamePackage.HuntingObjects.WildGameObject;
 import views.StartingTown.StartingTownView;
@@ -49,7 +50,7 @@ public class HuntingSummary{
         //Add the pounds to your inventory, first check if it exists tho.
         final double finalPoundsHunted = poundsHunted;
         continueBtn.setOnAction(event -> {
-            Main.getPrimaryStage().setScene(StartingTownView.getStartingTownView());
+            Main.getPrimaryStage().setScene(TheTrail.scene);
             int counter=0;
             for (ItemInterface weightCheck : Inventory.getInventory()){
                 if(weightCheck.getName().equals("Game Meat")){

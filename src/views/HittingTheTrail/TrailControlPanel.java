@@ -21,6 +21,7 @@ import views.HittingTheTrail.TrailObjects.HorseForWagon;
 import views.HittingTheTrail.TrailObjects.Wagon;
 import views.MiniGames.HuntingGamePackage.HuntingGame;
 import views.PostGame.ScoreBoard;
+import views.StaticScenes.FamilyStatus;
 
 import java.util.Optional;
 
@@ -40,6 +41,8 @@ public class TrailControlPanel {
     public static Timeline consumeTimelineFast;
     public static Timeline consumeTimelineSlow;
     public static boolean canIstartTimeline = true;
+    public static Button carryOn;
+    public static Button rest;
 
     public static void showControlPane(){
         controlPanelStage.setX(0);//Show the control panel in the upper left corner of screen
@@ -51,8 +54,8 @@ public class TrailControlPanel {
         controlGridPane.setId("controlPanelGrid");
         controlScene.getStylesheets().add("resources/main.css");
 
-        Button rest = new Button("Rest");
-        Button carryOn = new Button("Carry On");
+        rest = new Button("Rest");
+        carryOn = new Button("Carry On");
         Button goHunt = new Button("Go Hunting");
         Button map = new Button("Map");
         Button familyStatus = new Button("Family Status");
@@ -91,7 +94,7 @@ public class TrailControlPanel {
 
         }));
         gameTimeline.setCycleCount(1000000);
-        gameTimeline.setOnFinished(event1 -> System.out.println("finished!"));
+        gameTimeline.setOnFinished(event1 -> ScoreBoard.showScoreBoard());
 
 
 
@@ -204,7 +207,7 @@ public class TrailControlPanel {
         });
 
         familyStatus.setOnAction(familyEvent -> {
-            ScoreBoard.showScoreBoard();
+            FamilyStatus.showFamilyStatus();
             //Spouse.getStatus() etc...
         });
 
@@ -221,6 +224,11 @@ public class TrailControlPanel {
             alert.setContentText("This menu can be reopened by pressing C on the keyboard.");
             alert.showAndWait();
         });
+
+        gameTimeline.play();
+        //consumeTimelineSlow.pause();
+        consumeTimelineFast.play();
+        //TheTrail.gridPane.setId("TheTrailGridPaneMoving");
     }
 
     private static void consumeWater(){

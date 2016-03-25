@@ -101,6 +101,7 @@ public class StartingTownView {
         });
         hitTheTrailBtn.setOnMouseClicked(event -> {
             mediaPlayer.stop();
+            //TrailControlPanel.carryOn.fire();
             TrailControlPanel.showControlPane();
             TheTrail.showTheTrailScene();
             ScoreBoard.startTimeLine();

@@ -43,8 +43,10 @@ public class TheTrail {
 
         animateTimeline = new Timeline(new KeyFrame(Duration.millis(50), event -> {
             gc1.clearRect(Wagon.x, Wagon.y, Wagon.w+HorseForWagon.w+10+(HorseForWagon.x - Wagon.x), Wagon.h+HorseForWagon.h+10);
+            gc1.strokeLine(Wagon.x+(Wagon.w/2), Wagon.y+162, HorseForWagon.x+HorseForWagon.w/2+25, HorseForWagon.y+HorseForWagon.h/2);
             gc1.drawImage(Wagon.img, Wagon.x, Wagon.y, Wagon.w, Wagon.h);
             gc1.drawImage(HorseForWagon.img, HorseForWagon.x, HorseForWagon.y, HorseForWagon.w, HorseForWagon.h);
+            gc1.strokeLine(Wagon.x+(Wagon.w/2), Wagon.y+165, HorseForWagon.x+HorseForWagon.w/2+25, HorseForWagon.y+HorseForWagon.h/2);
         }));
         animateTimeline.setCycleCount(Animation.INDEFINITE);
         animateTimeline.play();

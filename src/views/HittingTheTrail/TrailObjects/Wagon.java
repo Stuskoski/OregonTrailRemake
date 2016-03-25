@@ -8,9 +8,9 @@ import javafx.scene.image.Image;
  * The wagon for the player.
  */
 public class Wagon {
-    public static int x = (int)Main.getPrimaryStage().getScene().getWidth()/2 - 100;
+    public static int x = (int)Main.getPrimaryStage().getScene().getWidth()/2 - 200;
     public static int y = (int)Main.getPrimaryStage().getScene().getHeight() - 225;
     public static int w = 250;
-    public static int h = 200;
+    public static int h = 250;
     public static Image img = new Image("resources/OnTheTrail/wagon.gif");
 }

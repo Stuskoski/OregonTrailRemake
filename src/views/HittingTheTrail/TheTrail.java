@@ -40,11 +40,13 @@ public class TheTrail {
         Pane layeredCanvas = new Pane(canvas1, canvas2);
 
         final int[] x = {0};
-        final int[] y = {0};
+        final int[] y = {300};
 
         Timeline timeline = new Timeline(new KeyFrame(Duration.millis(50), event -> {
-            gc1.fillOval(x[0]++, y[0]++,10,10);
-            //gc1.drawImage(new Image("resources/OnTheTrail/nightTime.gif"), 0, 0);
+            //gc1.fillOval(x[0]++, y[0]++,10,10);
+            gc1.drawImage(new Image("resources/OnTheTrail/wagon.gif"), x[0]++, y[0]);
+            gc2.clearRect(x[0], y[0], 500, 500);
+            //gc1.drawImage(new Image("resources/HuntingMiniGame/alienship.gif"), 300, 300);
         }));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();

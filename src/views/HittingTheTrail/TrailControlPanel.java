@@ -17,6 +17,8 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import Start.Main;
 import models.Inventory;
+import views.HittingTheTrail.TrailObjects.HorseForWagon;
+import views.HittingTheTrail.TrailObjects.Wagon;
 import views.MiniGames.HuntingGamePackage.HuntingGame;
 import views.PostGame.ScoreBoard;
 
@@ -129,6 +131,8 @@ public class TrailControlPanel {
 
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == buttonTypeOne){
+                TheTrail.gc1.clearRect(Wagon.x, Wagon.y, Wagon.w+HorseForWagon.w+10+(HorseForWagon.x - Wagon.x), Wagon.h+HorseForWagon.h+10);
+                TheTrail.animateTimeline.pause();
                 gameTimeline.pause();
                 consumeTimelineSlow.play();
                 consumeTimelineFast.pause();
@@ -137,9 +141,14 @@ public class TrailControlPanel {
 
                 }));
                 restTimeline.setCycleCount(3000);
-                restTimeline.setOnFinished(event1 -> carryOn.fire());
+                restTimeline.setOnFinished(event1 -> {
+                    carryOn.fire();
+                    TheTrail.animateTimeline.play();
+                });
                 restTimeline.play();
             } else if (result.get() == buttonTypeTwo) {
+                TheTrail.gc1.clearRect(Wagon.x, Wagon.y, Wagon.w+HorseForWagon.w+10+(HorseForWagon.x - Wagon.x), Wagon.h+HorseForWagon.h+10);
+                TheTrail.animateTimeline.pause();
                 gameTimeline.pause();
                 consumeTimelineSlow.play();
                 consumeTimelineFast.pause();
@@ -148,9 +157,14 @@ public class TrailControlPanel {
 
                 }));
                 restTimeline.setCycleCount(6000);
-                restTimeline.setOnFinished(event1 -> carryOn.fire());
+                restTimeline.setOnFinished(event1 -> {
+                    carryOn.fire();
+                    TheTrail.animateTimeline.play();
+                });
                 restTimeline.play();
             } else if (result.get() == buttonTypeThree) {
+                TheTrail.gc1.clearRect(Wagon.x, Wagon.y, Wagon.w+HorseForWagon.w+10+(HorseForWagon.x - Wagon.x), Wagon.h+HorseForWagon.h+10);
+                TheTrail.animateTimeline.pause();
                 gameTimeline.pause();
                 consumeTimelineSlow.play();
                 consumeTimelineFast.pause();
@@ -159,7 +173,10 @@ public class TrailControlPanel {
 
                 }));
                 restTimeline.setCycleCount(9000);
-                restTimeline.setOnFinished(event1 -> carryOn.fire());
+                restTimeline.setOnFinished(event1 -> {
+                    carryOn.fire();
+                    TheTrail.animateTimeline.play();
+                });
                 restTimeline.play();
             } else {
                 // ... user chose CANCEL or closed the dialog

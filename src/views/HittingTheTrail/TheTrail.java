@@ -13,6 +13,8 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
+import views.HittingTheTrail.TrailObjects.HorseForWagon;
+import views.HittingTheTrail.TrailObjects.Wagon;
 
 /**
  * Created by augustus on 3/7/16.
@@ -39,17 +41,13 @@ public class TheTrail {
 
         Pane layeredCanvas = new Pane(canvas1, canvas2);
 
-        final int[] x = {0};
-        final int[] y = {300};
-
-        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(50), event -> {
-            //gc1.fillOval(x[0]++, y[0]++,10,10);
-            gc1.drawImage(new Image("resources/OnTheTrail/wagon.gif"), x[0]++, y[0]);
-            gc2.clearRect(x[0], y[0], 500, 500);
-            //gc1.drawImage(new Image("resources/HuntingMiniGame/alienship.gif"), 300, 300);
+        animateTimeline = new Timeline(new KeyFrame(Duration.millis(50), event -> {
+            gc1.clearRect(Wagon.x, Wagon.y, Wagon.w+HorseForWagon.w+10+(HorseForWagon.x - Wagon.x), Wagon.h+HorseForWagon.h+10);
+            gc1.drawImage(Wagon.img, Wagon.x, Wagon.y, Wagon.w, Wagon.h);
+            gc1.drawImage(HorseForWagon.img, HorseForWagon.x, HorseForWagon.y, HorseForWagon.w, HorseForWagon.h);
         }));
-        timeline.setCycleCount(Animation.INDEFINITE);
-        timeline.play();
+        animateTimeline.setCycleCount(Animation.INDEFINITE);
+        animateTimeline.play();
 
         gridPane.add(layeredCanvas, 0, 0);
 

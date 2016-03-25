@@ -66,7 +66,7 @@ public class StartTownStableView {
         gridPane.add(animalsPics, 15, 5);
 
         ToggleButton oxToggleBtn = new ToggleButton("Ox");
-        ToggleButton horseToggleBtn = new ToggleButton("Horse");
+        ToggleButton horseToggleBtn = new ToggleButton("HorseForWagon");
         ToggleButton donkeyToggleBtn = new ToggleButton("Donkey");
 
         oxToggleBtn.setId("mainStoreBtn");
@@ -83,7 +83,7 @@ public class StartTownStableView {
 
         Button buyOx = new Button("Buy Ox - $" + new Ox(1).getPrice());
         Button buyDonkey = new Button("Buy Donkey - $" + new Donkey(1).getPrice());
-        Button buyHorse = new Button("Buy Horse - $" + new Horse(1).getPrice());
+        Button buyHorse = new Button("Buy HorseForWagon - $" + new Horse(1).getPrice());
         Button wallet = new Button("$" + String.format("%.2f", Profile.getMoney()) + " - Wallet");
 
         buyOx.setId("mainStoreBtn");
@@ -217,7 +217,7 @@ public class StartTownStableView {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Unable to checkout");
                 alert.setHeaderText(null);
-                alert.setContentText("You do not have enough cash to buy a Horse!");
+                alert.setContentText("You do not have enough cash to buy a HorseForWagon!");
                 alert.showAndWait();
             }
         });

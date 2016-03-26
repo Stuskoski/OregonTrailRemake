@@ -161,7 +161,7 @@ public class Profile {
             case "Dead":
                 hashSet.clear();
                 hashSet.add("Dead");
-                ScoreBoard.showScoreBoard();
+                ScoreBoard.showScoreBoard();//change to lost scene not score board
                 break;
             default:
                 hashSet.remove("Healthy");

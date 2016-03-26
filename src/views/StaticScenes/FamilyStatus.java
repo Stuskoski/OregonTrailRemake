@@ -56,11 +56,11 @@ public class FamilyStatus {
 
         gridPane.add(hBox1, 0, 0);
         gridPane.add(hBox2, 1, 0);
-        gridPane.add(vBox1, 0, 5);
-        gridPane.add(vBox2, 1, 5);
+        gridPane.add(vBox1, 0, 2);
+        gridPane.add(vBox2, 1, 2);
 
 
-        scene = new Scene(gridPane, 500, 500);
+        scene = new Scene(gridPane, 450, 175);
         stage.setScene(scene);
         //stage.show();
     }

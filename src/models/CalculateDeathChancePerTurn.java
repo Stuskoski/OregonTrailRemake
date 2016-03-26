@@ -61,7 +61,7 @@ public class CalculateDeathChancePerTurn {
 
         for (String str : healthStatus) {
             switch (str.toLowerCase()){
-                case "diseased":{
+                case "small pox":{
                     healthStatusReduction += 30.0;
                     break;
                 }
@@ -78,6 +78,18 @@ public class CalculateDeathChancePerTurn {
                     break;
                 }
                 case "hungry":{
+                    healthStatusReduction += 10.0;
+                    break;
+                }
+                case "syphilis":{
+                    healthStatusReduction += 10.0;
+                    break;
+                }
+                case "chicken pox":{
+                    healthStatusReduction += 10.0;
+                    break;
+                }
+                case "herpes":{
                     healthStatusReduction += 10.0;
                     break;
                 }

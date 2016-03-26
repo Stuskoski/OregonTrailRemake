@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import Start.Main;
 import models.CalculateDeathChancePerTurn;
+import models.CalculateRandomChanceForHealth;
 import models.Inventory;
 import views.HittingTheTrail.TrailObjects.HorseForWagon;
 import views.HittingTheTrail.TrailObjects.Wagon;
@@ -46,6 +47,7 @@ public class TrailControlPanel {
     public static boolean canIstartTimeline = true;
     public static Button carryOn;
     public static Button rest;
+    public static int counterForMap = 0;
 
     public static void showControlPane(){
         controlPanelStage.setX(0);//Show the control panel in the upper left corner of screen
@@ -94,12 +96,10 @@ public class TrailControlPanel {
          * Timeline that controls when the game ends.
          */
         gameTimeline = new Timeline(new KeyFrame(Duration.millis(3000), timelineEvent -> {
-            CalculateDeathChancePerTurn.CalculateDeaths();
-            Timeline test = new Timeline(new KeyFrame(Duration.seconds(5), timelineEvent2 -> {
-                Inventory.getInventory().add(new LargeBottleofWater(1));
-            }));
-            test.setCycleCount(1);
-            test.play();
+            CalculateDeathChancePerTurn.CalculateDeaths();//Every 3 seconds is considered a turn.
+            CalculateRandomChanceForHealth.checkLifeAndThenCalc();
+            CalculateRandomChanceForHealth.checkForAddingDyingStatus();
+            counterForMap++;
         }));
         gameTimeline.setCycleCount(334);
         gameTimeline.setOnFinished(event1 -> ScoreBoard.showScoreBoard());

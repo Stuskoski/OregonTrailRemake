@@ -13,11 +13,13 @@ import javafx.stage.Stage;
  * Created by augustus on 3/25/16.
  */
 public class FamilyStatus {
-    public static GridPane gridPane = new GridPane();
+    public static GridPane gridPane;
     public static Scene scene;
-    public static Stage stage = new Stage();
+    public static Stage stage;
 
     public static void showFamilyStatus(){
+        gridPane = new GridPane();
+        stage = new Stage();
         gridPane.setHgap(100);
         gridPane.setVgap(10);
         gridPane.setAlignment(Pos.CENTER);
@@ -44,11 +46,11 @@ public class FamilyStatus {
 
         vBox1.getChildren().addAll(you, spouse, child1, child2, child3);
 
-        Label youStatus = new Label(Profile.getHealthStatus());
-        Label spouseStatus = new Label(Spouse.getHealthStatus());
-        Label child1Status = new Label(Child1.getHealthStatus());
-        Label child2Status = new Label(Child2.getHealthStatus());
-        Label child3Status = new Label(Child3.getHealthStatus());
+        Label youStatus = new Label(Profile.returnHealthStatusAsString());
+        Label spouseStatus = new Label(Spouse.returnHealthStatusAsString());
+        Label child1Status = new Label(Child1.returnHealthStatusAsString());
+        Label child2Status = new Label(Child2.returnHealthStatusAsString());
+        Label child3Status = new Label(Child3.returnHealthStatusAsString());
 
         vBox2.getChildren().addAll(youStatus, spouseStatus, child1Status, child2Status, child3Status);
 

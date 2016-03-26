@@ -1,5 +1,10 @@
 package CharacterObjects;
 
+import views.PostGame.ScoreBoard;
+
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Created by augustus on 1/28/16. THis is the Start profile
  * for the user when he starts a new game.  The majority of
@@ -13,6 +18,7 @@ public class Profile {
     private static double thirst, hunger, thirstReduce, hungerReduce, money, carryingCapacity;
     private static int health, strength, luck, smarts, agility, perception, endurance;
     private static String charClass, name, healthStatus;
+    private static Set<String> hashSet = new HashSet<>();
     private static Child1 child1;
     private static Child2 child2;
     private static Child3 child3;
@@ -135,5 +141,31 @@ public class Profile {
 
     public static int getAnimalsKilled(){return animalsKilled;}
     public static void setAnimalsKilled(int killed){animalsKilled=killed;}
+
+    public static String returnHealthStatusAsString(){
+        String temp = "";
+        String temp2;
+        for (String str: hashSet) {
+            temp += (str+",");
+        }
+        temp2 = temp.substring(0, temp.length());
+
+        return temp2;
+    }
+    public static void addHealthStatusWithChecks(String healthstatus){
+        switch (healthstatus) {
+            case "healthy":
+                hashSet.clear();
+                hashSet.add(healthstatus);
+                break;
+            case "dead":
+                ScoreBoard.showScoreBoard();
+                break;
+            default:
+                hashSet.remove("healthy");
+                hashSet.add(healthstatus);
+                break;
+        }
+    }
 
 }

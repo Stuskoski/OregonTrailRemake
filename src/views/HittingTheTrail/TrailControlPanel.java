@@ -16,6 +16,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import Start.Main;
+import models.CalculateDeathChancePerTurn;
 import models.Inventory;
 import views.HittingTheTrail.TrailObjects.HorseForWagon;
 import views.HittingTheTrail.TrailObjects.Wagon;
@@ -90,10 +91,10 @@ public class TrailControlPanel {
         /**
          * Timeline that controls when the game ends.
          */
-        gameTimeline = new Timeline(new KeyFrame(Duration.millis(1), timelineEvent -> {
-
+        gameTimeline = new Timeline(new KeyFrame(Duration.millis(3000), timelineEvent -> {
+            CalculateDeathChancePerTurn.CalculateDeaths();
         }));
-        gameTimeline.setCycleCount(1000000);
+        gameTimeline.setCycleCount(334);
         gameTimeline.setOnFinished(event1 -> ScoreBoard.showScoreBoard());
 
 
@@ -297,16 +298,16 @@ public class TrailControlPanel {
             Profile.setHealthStatus("Thirsty");
 
             if(Spouse.isAlive()){
-                Spouse.setHealthStatus("Thirsty");
+                Spouse.addHealthStatusWithChecks("Thirsty");
             }
             if(Child1.isAlive()){
-                Child1.setHealthStatus("Thirsty");
+                Child1.addHealthStatusWithChecks("Thirsty");
             }
             if(Child2.isAlive()){
-                Child2.setHealthStatus("Thirsty");
+                Child2.addHealthStatusWithChecks("Thirsty");
             }
             if(Child3.isAlive()){
-                Child3.setHealthStatus("Thirsty");
+                Child3.addHealthStatusWithChecks("Thirsty");
             }
 
         }
@@ -381,16 +382,16 @@ public class TrailControlPanel {
             Profile.setHealthStatus("Hungry");
 
             if(Spouse.isAlive()){
-                Spouse.setHealthStatus("Hungry");
+                Spouse.addHealthStatusWithChecks("Hungry");
             }
             if(Child1.isAlive()){
-                Child1.setHealthStatus("Hungry");
+                Child1.addHealthStatusWithChecks("Hungry");
             }
             if(Child2.isAlive()){
-                Child2.setHealthStatus("Hungry");
+                Child2.addHealthStatusWithChecks("Hungry");
             }
             if(Child3.isAlive()){
-                Child3.setHealthStatus("Hungry");
+                Child3.addHealthStatusWithChecks("Hungry");
             }
 
         }

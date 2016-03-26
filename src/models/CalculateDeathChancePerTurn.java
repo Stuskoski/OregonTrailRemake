@@ -14,24 +14,28 @@ public class CalculateDeathChancePerTurn {
         if(Spouse.isAlive()){
             if(calcDidIDie(Spouse.getChanceOfDying(), Profile.getLuck(), Spouse.getHealthStatus())){
                 Spouse.setIsAlive(false);
+                Spouse.setHealthStatus("Dead");
                 System.out.println(Spouse.getName()+" has died.");
             }
         }
         if(Child1.isAlive()){
             if(calcDidIDie(Child1.getChanceOfDying(), Profile.getLuck(), Child1.getHealthStatus())){
                 Child1.setIsAlive(false);
+                Child1.setHealthStatus("Dead");
                 System.out.println(Child1.getName()+" has died.");
             }
         }
         if(Child2.isAlive()){
             if(calcDidIDie(Child2.getChanceOfDying(), Profile.getLuck(), Child2.getHealthStatus())){
                 Child2.setIsAlive(false);
+                Child2.setHealthStatus("Dead");
                 System.out.println(Child2.getName()+" has died.");
             }
         }
         if(Child3.isAlive()){
             if(calcDidIDie(Child3.getChanceOfDying(), Profile.getLuck(), Child3.getHealthStatus())){
                 Child3.setIsAlive(false);
+                Child3.setHealthStatus("Dead");
                 System.out.println(Child3.getName()+" has died.");
             }
         }
@@ -42,7 +46,7 @@ public class CalculateDeathChancePerTurn {
         double low = 0.00;
         double high = 100.00 + luck;
         Random random = new Random();
-        double healthStatusReduction = 0;
+        double healthStatusReduction;
 
         switch (healthStatus){
             case "diseased":{

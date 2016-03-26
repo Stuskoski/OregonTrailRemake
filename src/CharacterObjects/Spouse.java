@@ -16,7 +16,7 @@ public class Spouse {
     private static boolean isAlive = true; //Initially alive of course
     private static double chanceOfDying;
     //private static String healthStatus;
-    private static Set<String> hashSet = new HashSet<>();
+    public static Set<String> hashSet = new HashSet<>();
     private static String name;
 
     public Spouse(double chanceOfDying, String healthStatus, String name){
@@ -40,21 +40,23 @@ public class Spouse {
         for (String str: hashSet) {
             temp += (str+",");
         }
-        temp2 = temp.substring(0, temp.length());
+        temp2 = temp.substring(0, temp.length()-1);
 
         return temp2;
     }
     public static void addHealthStatusWithChecks(String healthstatus){
         switch (healthstatus) {
-            case "healthy":
+            case "Healthy":
                 hashSet.clear();
                 hashSet.add(healthstatus);
                 break;
-            case "dead":
+            case "Dead":
+                hashSet.clear();
+                hashSet.add("Dead");
                 Spouse.setIsAlive(false);
                 break;
             default:
-                hashSet.remove("healthy");
+                hashSet.remove("Healthy");
                 hashSet.add(healthstatus);
                 break;
         }

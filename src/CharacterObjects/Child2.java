@@ -14,7 +14,7 @@ public class Child2 {
     private static boolean isAlive = true;
     private static double chanceOfDying;
     //private static String healthStatus;
-    private static Set<String> hashSet = new HashSet<>();
+    public static Set<String> hashSet = new HashSet<>();
     private static String name;
 
     public Child2(double chanceOfDying, String healthStatus, String name){
@@ -38,21 +38,23 @@ public class Child2 {
         for (String str: hashSet) {
             temp += (str+",");
         }
-        temp2 = temp.substring(0, temp.length());
+        temp2 = temp.substring(0, temp.length()-1);
 
         return temp2;
     }
     public static void addHealthStatusWithChecks(String healthstatus){
         switch (healthstatus) {
-            case "healthy":
+            case "Healthy":
                 hashSet.clear();
                 hashSet.add(healthstatus);
                 break;
-            case "dead":
-                Spouse.setIsAlive(false);
+            case "Dead":
+                hashSet.clear();
+                hashSet.add("Dead");
+                Child2.setIsAlive(false);
                 break;
             default:
-                hashSet.remove("healthy");
+                hashSet.remove("Healthy");
                 hashSet.add(healthstatus);
                 break;
         }

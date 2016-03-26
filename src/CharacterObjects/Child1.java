@@ -1,5 +1,7 @@
 package CharacterObjects;
 
+import views.StaticScenes.FamilyStatus;
+
 import java.text.DecimalFormat;
 import java.util.HashSet;
 import java.util.Random;
@@ -14,7 +16,7 @@ public class Child1 {
     private static boolean isAlive = true;
     private static double chanceOfDying;
     //private static String healthStatus;
-    private static Set<String> hashSet = new HashSet<>();
+    public static Set<String> hashSet = new HashSet<>();
     private static String name;
 
     public Child1(double chanceOfDying, String healthStatus, String name){
@@ -38,22 +40,45 @@ public class Child1 {
         for (String str: hashSet) {
             temp += (str+",");
         }
-        temp2 = temp.substring(0, temp.length());
+        temp2 = temp.substring(0, temp.length()-1);
 
         return temp2;
     }
     public static void addHealthStatusWithChecks(String healthstatus){
+        if(FamilyStatus.stage.isShowing()){
+
+        }else{
+
+        }
         switch (healthstatus) {
-            case "healthy":
+            case "Healthy":
                 hashSet.clear();
                 hashSet.add(healthstatus);
                 break;
-            case "dead":
-                Spouse.setIsAlive(false);
+            case "Dead":
+                System.out.println("hit");
+                hashSet.clear();
+                hashSet.add("Dead");
+                Child1.setIsAlive(false);
                 break;
             default:
-                hashSet.remove("healthy");
+                hashSet.remove("Healthy");
                 hashSet.add(healthstatus);
+                break;
+        }
+    }
+    public static void removeStatusAfterXTurns(String status){
+        switch (status.toLowerCase()){
+            case "diseased":{
+                break;
+            }
+            case "broken bone":{
+                break;
+            }
+            case "cursed":{
+                break;
+            }
+            default:
                 break;
         }
     }

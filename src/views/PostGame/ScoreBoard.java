@@ -17,6 +17,7 @@ import javafx.util.Duration;
 import models.Inventory;
 import models.NewGameClearExisiting;
 import views.HittingTheTrail.TrailControlPanel;
+import views.StaticScenes.FamilyStatus;
 
 /**
  * Created by augustus on 3/24/16.
@@ -51,6 +52,12 @@ public class ScoreBoard {
         TrailControlPanel.controlPanelStage.hide();
         Main.getPrimaryStage().hide();
         Inventory.getInventoryStage().hide();
+        FamilyStatus.stage.hide();
+
+        //stop all timers
+        TrailControlPanel.consumeTimelineFast.stop();
+        TrailControlPanel.consumeTimelineSlow.stop();
+        TrailControlPanel.gameTimeline.stop();
 
         GridPane gridPane = new GridPane();
 

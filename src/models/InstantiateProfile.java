@@ -19,6 +19,7 @@ public class InstantiateProfile {
     public void createProfile(Characteristics character, String name, String spouseName, String child1Name,
                               String child2Name, String child3Name){
         Profile.setHealth(character.getHealth());
+        Profile.addHealthStatusWithChecks("Healthy");
         Profile.setThirst(100.00);
         Profile.setHunger(100.00);
         Profile.setThirstReduce(character.getThirstConsume());

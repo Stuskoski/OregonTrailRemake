@@ -18,7 +18,7 @@ public class Profile {
     private static double thirst, hunger, thirstReduce, hungerReduce, money, carryingCapacity;
     private static int health, strength, luck, smarts, agility, perception, endurance;
     private static String charClass, name, healthStatus;
-    private static Set<String> hashSet = new HashSet<>();
+    public static Set<String> hashSet = new HashSet<>();
     private static Child1 child1;
     private static Child2 child2;
     private static Child3 child3;
@@ -148,24 +148,27 @@ public class Profile {
         for (String str: hashSet) {
             temp += (str+",");
         }
-        temp2 = temp.substring(0, temp.length());
+        temp2 = temp.substring(0, temp.length()-1);
 
         return temp2;
     }
     public static void addHealthStatusWithChecks(String healthstatus){
         switch (healthstatus) {
-            case "healthy":
+            case "Healthy":
                 hashSet.clear();
                 hashSet.add(healthstatus);
                 break;
-            case "dead":
+            case "Dead":
+                hashSet.clear();
+                hashSet.add("Dead");
                 ScoreBoard.showScoreBoard();
                 break;
             default:
-                hashSet.remove("healthy");
+                hashSet.remove("Healthy");
                 hashSet.add(healthstatus);
                 break;
         }
     }
+
 
 }

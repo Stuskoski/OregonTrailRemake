@@ -15,11 +15,11 @@ import javafx.stage.Stage;
 public class FamilyStatus {
     public static GridPane gridPane;
     public static Scene scene;
-    public static Stage stage;
+    public static Stage stage = new Stage();
 
     public static void showFamilyStatus(){
         gridPane = new GridPane();
-        stage = new Stage();
+        //stage = new Stage();
         gridPane.setHgap(100);
         gridPane.setVgap(10);
         gridPane.setAlignment(Pos.CENTER);
@@ -62,6 +62,6 @@ public class FamilyStatus {
 
         scene = new Scene(gridPane, 500, 500);
         stage.setScene(scene);
-        stage.show();
+        //stage.show();
     }
 }

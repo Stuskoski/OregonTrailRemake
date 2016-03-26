@@ -2,6 +2,7 @@ package views.HittingTheTrail;
 
 import CharacterObjects.*;
 import items.ItemInterface;
+import items.food.LargeBottleofWater;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -24,6 +25,7 @@ import views.MiniGames.HuntingGamePackage.HuntingGame;
 import views.PostGame.ScoreBoard;
 import views.StaticScenes.FamilyStatus;
 
+import java.sql.Time;
 import java.util.Optional;
 
 /**
@@ -93,6 +95,11 @@ public class TrailControlPanel {
          */
         gameTimeline = new Timeline(new KeyFrame(Duration.millis(3000), timelineEvent -> {
             CalculateDeathChancePerTurn.CalculateDeaths();
+            Timeline test = new Timeline(new KeyFrame(Duration.seconds(5), timelineEvent2 -> {
+                Inventory.getInventory().add(new LargeBottleofWater(1));
+            }));
+            test.setCycleCount(1);
+            test.play();
         }));
         gameTimeline.setCycleCount(334);
         gameTimeline.setOnFinished(event1 -> ScoreBoard.showScoreBoard());
@@ -209,7 +216,9 @@ public class TrailControlPanel {
 
         familyStatus.setOnAction(familyEvent -> {
             FamilyStatus.showFamilyStatus();
-            //Spouse.getStatus() etc...
+            if(!FamilyStatus.stage.isShowing()){
+                FamilyStatus.stage.show();
+            }
         });
 
         inventory.setOnAction(inventoryEvent -> {
@@ -295,8 +304,9 @@ public class TrailControlPanel {
          */
         if(!hasSomethingToDrink){
             System.out.println("Out of water");
-            Profile.setHealthStatus("Thirsty");
+           // Profile.setHealthStatus("Thirsty");
 
+            Profile.addHealthStatusWithChecks("Thirsty");
             if(Spouse.isAlive()){
                 Spouse.addHealthStatusWithChecks("Thirsty");
             }
@@ -309,7 +319,22 @@ public class TrailControlPanel {
             if(Child3.isAlive()){
                 Child3.addHealthStatusWithChecks("Thirsty");
             }
-
+            FamilyStatus.showFamilyStatus();
+        }else{
+            Profile.hashSet.remove("Thirsty");
+            if(Spouse.isAlive()){
+                Spouse.hashSet.remove("Thirsty");
+            }
+            if(Child1.isAlive()){
+                Child1.hashSet.remove("Thirsty");
+            }
+            if(Child2.isAlive()){
+                Child2.hashSet.remove("Thirsty");
+            }
+            if(Child3.isAlive()){
+                Child3.hashSet.remove("Thirsty");
+            }
+            FamilyStatus.showFamilyStatus();
         }
     }
     private static void consumeFood(){
@@ -379,8 +404,9 @@ public class TrailControlPanel {
          */
         if(!hasSomethingToEat){
             System.out.println("Out of food");
-            Profile.setHealthStatus("Hungry");
+           // Profile.setHealthStatus("Hungry");
 
+            Profile.addHealthStatusWithChecks("Hungry");
             if(Spouse.isAlive()){
                 Spouse.addHealthStatusWithChecks("Hungry");
             }
@@ -393,7 +419,22 @@ public class TrailControlPanel {
             if(Child3.isAlive()){
                 Child3.addHealthStatusWithChecks("Hungry");
             }
-
+            FamilyStatus.showFamilyStatus();
+        }else{
+            Profile.hashSet.remove("Hungry");
+            if(Spouse.isAlive()){
+                Spouse.hashSet.remove("Hungry");
+            }
+            if(Child1.isAlive()){
+                Child1.hashSet.remove("Hungry");
+            }
+            if(Child2.isAlive()){
+                Child2.hashSet.remove("Hungry");
+            }
+            if(Child3.isAlive()){
+                Child3.hashSet.remove("Hungry");
+            }
+            FamilyStatus.showFamilyStatus();
         }
     }
     public static Timeline getGameTimeLine(){return gameTimeline;}

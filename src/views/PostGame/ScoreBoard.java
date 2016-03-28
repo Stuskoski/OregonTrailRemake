@@ -58,6 +58,7 @@ public class ScoreBoard {
         TrailControlPanel.consumeTimelineFast.stop();
         TrailControlPanel.consumeTimelineSlow.stop();
         TrailControlPanel.gameTimeline.stop();
+        scoreTimeline.stop();
 
         GridPane gridPane = new GridPane();
 

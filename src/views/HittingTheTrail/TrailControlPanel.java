@@ -25,6 +25,7 @@ import views.HittingTheTrail.TrailObjects.Wagon;
 import views.MiniGames.HuntingGamePackage.HuntingGame;
 import views.PostGame.ScoreBoard;
 import views.StaticScenes.FamilyStatus;
+import views.StaticScenes.TimeLineStatusPage;
 
 import java.sql.Time;
 import java.util.Optional;
@@ -39,7 +40,7 @@ import java.util.Optional;
  */
 public class TrailControlPanel {
     public static GridPane controlGridPane = new GridPane();
-    public static Scene controlScene = new Scene(controlGridPane, 500, 135);
+    public static Scene controlScene = new Scene(controlGridPane, 600, 135);
     public static Stage controlPanelStage = new Stage();
     public static Timeline gameTimeline;
     public static Timeline consumeTimelineFast;
@@ -65,6 +66,7 @@ public class TrailControlPanel {
         Button map = new Button("Map");
         Button familyStatus = new Button("Family Status");
         Button inventory = new Button("Inventory");
+        Button timeLine = new Button("TimeLine");
 
         rest.setPrefWidth(125);
         carryOn.setPrefWidth(125);
@@ -72,6 +74,7 @@ public class TrailControlPanel {
         map.setPrefWidth(125);
         familyStatus.setPrefWidth(125);
         inventory.setPrefWidth(125);
+        timeLine.setPrefWidth(125);
 
         rest.setId("mainScreenBtn");
         carryOn.setId("mainScreenBtn");
@@ -79,6 +82,7 @@ public class TrailControlPanel {
         map.setId("mainScreenBtn");
         familyStatus.setId("mainScreenBtn");
         inventory.setId("mainScreenBtn");
+        timeLine.setId("mainScreenBtn");
 
         controlGridPane.setAlignment(Pos.CENTER);
         controlGridPane.setHgap(1);
@@ -86,7 +90,8 @@ public class TrailControlPanel {
         controlGridPane.setPadding(new Insets(20, 20, 20, 20));
 
         controlGridPane.add(carryOn, 10, 5);
-        controlGridPane.add(rest, 5, 5);
+        controlGridPane.add(rest, 5, 5); //7 7
+        controlGridPane.add(timeLine, 7, 7);
         controlGridPane.add(map, 0, 15);
         controlGridPane.add(inventory, 0, 0);
         controlGridPane.add(goHunt, 15, 0);
@@ -226,6 +231,10 @@ public class TrailControlPanel {
             Inventory.getInventoryStage().show();
         });
 
+        timeLine.setOnAction(event1 -> {
+            TimeLineStatusPage.showTimeLineStatusPage();
+        });
+
         //When user closes this menu, need a way to make sure they know how to reopen since this is such a crucial menu
         controlPanelStage.setOnCloseRequest(event -> {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -303,6 +312,7 @@ public class TrailControlPanel {
          * If there is nothing to drink, set that they are thirsty.
          */
         if(!hasSomethingToDrink){
+            TimeLineStatusPage.addMessageToPane("Out of water");
             System.out.println("Out of water");
            // Profile.setHealthStatus("Thirsty");
 
@@ -403,6 +413,7 @@ public class TrailControlPanel {
          * If there is nothing to eat, set that they are hungry/
          */
         if(!hasSomethingToEat){
+            TimeLineStatusPage.addMessageToPane("Out of food");
             System.out.println("Out of food");
            // Profile.setHealthStatus("Hungry");
 

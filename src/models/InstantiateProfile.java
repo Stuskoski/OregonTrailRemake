@@ -50,7 +50,7 @@ public class InstantiateProfile {
 
     private static double getStartingChance(){
         double low = 0.00;
-        double high = 2.00;
+        double high = 1.00;
 
         Random r = new Random();
         double randomValue = low + (high - low) * r.nextDouble();

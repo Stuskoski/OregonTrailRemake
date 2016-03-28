@@ -2,6 +2,7 @@ package models;
 
 import CharacterObjects.*;
 import views.PostGame.ScoreBoard;
+import views.PostGame.YouLoseScreen;
 import views.StaticScenes.FamilyStatus;
 
 import java.text.DecimalFormat;
@@ -10,6 +11,8 @@ import java.util.Set;
 
 /**
  * Created by augustus on 2/17/16.
+ * Calc the death chances for each person that
+ * is alive, per turn.
  */
 public class CalculateDeathChancePerTurn {
 
@@ -48,7 +51,7 @@ public class CalculateDeathChancePerTurn {
             }
         }
         if(calcDidIDie(0.00, Profile.getLuck(), Profile.hashSet)){
-            ScoreBoard.showScoreBoard();
+            YouLoseScreen.showYouLoseScene();
         }
     }
 

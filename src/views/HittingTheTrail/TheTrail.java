@@ -13,6 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
+import models.AddKeyListenerToScene;
 import views.HittingTheTrail.TrailObjects.HorseForWagon;
 import views.HittingTheTrail.TrailObjects.Wagon;
 
@@ -55,6 +56,7 @@ public class TheTrail {
 
         scene = new Scene(gridPane, Main.getPrimaryStage().getScene().getWidth(), Main.getPrimaryStage().getScene().getHeight());
         scene.getStylesheets().addAll("resources/main.css");
+        AddKeyListenerToScene.addGeneralKeyListener(scene);
 
         Main.getPrimaryStage().setScene(scene);
     }

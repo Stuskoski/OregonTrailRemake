@@ -1,6 +1,7 @@
 package CharacterObjects;
 
 import views.PostGame.ScoreBoard;
+import views.PostGame.YouLoseScreen;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -161,7 +162,7 @@ public class Profile {
             case "Dead":
                 hashSet.clear();
                 hashSet.add("Dead");
-                ScoreBoard.showScoreBoard();//change to lost scene not score board
+                YouLoseScreen.showYouLoseScene();
                 break;
             default:
                 hashSet.remove("Healthy");

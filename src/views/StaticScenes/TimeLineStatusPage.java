@@ -24,9 +24,9 @@ public class TimeLineStatusPage {
     public static Stage timeLineStatusStage = new Stage();
 
     public static void showTimeLineStatusPage(){
-        vBox.setOnScrollStarted(event -> {
-            scrollPane.setVvalue(1.0);
-        });
+        //vBox.setOnScrollStarted(event -> {
+        //    scrollPane.setVvalue(1.0);
+       // });
 
 
         timeLineStatusStage.setScene(scene);
@@ -37,9 +37,13 @@ public class TimeLineStatusPage {
         LocalDateTime time = LocalDateTime.now();
         Label label = new Label();
 
-        label.setText(time.format(DateTimeFormatter.ISO_TIME) + ": " + string);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        String text = time.format(formatter);
+        label.setText(time.format(formatter) + "- " + string);
 
-        vBox.getChildren().add(label);
-        scrollPane.setVvalue(1.0);
+        vBox.getChildren().add(0,label);
+
+
+        //scrollPane.setVvalue(1.0);
     }
 }

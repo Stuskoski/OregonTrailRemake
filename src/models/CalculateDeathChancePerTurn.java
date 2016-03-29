@@ -4,6 +4,7 @@ import CharacterObjects.*;
 import views.PostGame.ScoreBoard;
 import views.PostGame.YouLoseScreen;
 import views.StaticScenes.FamilyStatus;
+import views.StaticScenes.TimeLineStatusPage;
 
 import java.text.DecimalFormat;
 import java.util.Random;
@@ -24,6 +25,7 @@ public class CalculateDeathChancePerTurn {
                 Spouse.addHealthStatusWithChecks("Dead");
                 FamilyStatus.showFamilyStatus();
                 System.out.println(Spouse.getName()+" has died.");
+                TimeLineStatusPage.addMessageToPane(Spouse.getName()+" has died.");
             }
         }
         if(Child1.isAlive()){
@@ -32,6 +34,7 @@ public class CalculateDeathChancePerTurn {
                 Child1.addHealthStatusWithChecks("Dead");
                 FamilyStatus.showFamilyStatus();
                 System.out.println(Child1.getName()+" has died.");
+                TimeLineStatusPage.addMessageToPane(Child1.getName()+" has died.");
             }
         }
         if(Child2.isAlive()){
@@ -40,6 +43,7 @@ public class CalculateDeathChancePerTurn {
                 Child2.addHealthStatusWithChecks("Dead");
                 FamilyStatus.showFamilyStatus();
                 System.out.println(Child2.getName()+" has died.");
+                TimeLineStatusPage.addMessageToPane(Child2.getName()+" has died.");
             }
         }
         if(Child3.isAlive()){
@@ -48,6 +52,7 @@ public class CalculateDeathChancePerTurn {
                 Child3.addHealthStatusWithChecks("Dead");
                 FamilyStatus.showFamilyStatus();
                 System.out.println(Child3.getName()+" has died.");
+                TimeLineStatusPage.addMessageToPane(Child3.getName()+" has died.");
             }
         }
         if(calcDidIDie(0.00, Profile.getLuck(), Profile.hashSet)){
@@ -58,7 +63,7 @@ public class CalculateDeathChancePerTurn {
     //returns true if character died.  Will be called once per turn.
     private static boolean calcDidIDie(Double chance, int luck, Set<String> healthStatus){
         double low = 0.00;
-        double high = 100.00 + luck;
+        double high = 120.00 + luck;
         Random random = new Random();
         double healthStatusReduction = 0.0;
 
@@ -81,7 +86,7 @@ public class CalculateDeathChancePerTurn {
                     break;
                 }
                 case "hungry":{
-                    healthStatusReduction += 10.0;
+                    healthStatusReduction += 5.0;
                     break;
                 }
                 case "syphilis":{
@@ -109,13 +114,13 @@ public class CalculateDeathChancePerTurn {
 
 
 
-        double death = low + ((high-healthStatusReduction) - low) * random.nextDouble();
+        double death = low + ((high-low) - low) * random.nextDouble();
 
         DecimalFormat df = new DecimalFormat("#.##");
 
         death = Double.parseDouble(df.format(death));
-
-        if(chance >= death){
+        System.out.println(chance+healthStatusReduction + "     " + death);
+        if((chance + healthStatusReduction) >= death){
             return true; //I died
         }
 

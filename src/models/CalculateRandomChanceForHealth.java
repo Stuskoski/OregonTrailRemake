@@ -3,6 +3,7 @@ package models;
 import CharacterObjects.*;
 import views.PostGame.ScoreBoard;
 import views.StaticScenes.FamilyStatus;
+import views.StaticScenes.TimeLineStatusPage;
 
 import java.util.HashSet;
 import java.util.Random;
@@ -17,30 +18,175 @@ public class CalculateRandomChanceForHealth {
             String temp = calcChance();
             if(!temp.equals("")){
                 Spouse.hashSet.add(temp);
+                switch (temp){
+                    case "Broken Bone":{
+                        TimeLineStatusPage.addMessageToPane(Spouse.getName() + " has a broken bone.");
+                        break;
+                    }
+                    case "Cursed":{
+                        TimeLineStatusPage.addMessageToPane(Spouse.getName() + " has an uneasy feeling...");
+                        break;
+                    }
+                    case "Small Pox":{
+                        TimeLineStatusPage.addMessageToPane(Spouse.getName() + " has contracted Small Pox.");
+                        break;
+                    }
+                    case "Herpes":{
+                        TimeLineStatusPage.addMessageToPane(Spouse.getName() + " has the Herpes.");
+                        break;
+                    }
+                    case "Syphilis":{
+                        TimeLineStatusPage.addMessageToPane(Spouse.getName() + " has contracted Syphilis.");
+                        break;
+                    }
+                    case "Chicken Pox":{
+                        TimeLineStatusPage.addMessageToPane(Spouse.getName() + " has contracted Chicken Pox.");
+                        break;
+                    }
+                    default:{
+                        break;
+                    }
+                }
             }
         }
         if(Child1.isAlive()){
             String temp = calcChance();
             if(!temp.equals("")){
                 Child1.hashSet.add(temp);
+                switch (temp){
+                    case "Broken Bone":{
+                        TimeLineStatusPage.addMessageToPane(Child1.getName() + " has a broken bone.");
+                        break;
+                    }
+                    case "Cursed":{
+                        TimeLineStatusPage.addMessageToPane(Child1.getName() + " has an uneasy feeling...");
+                        break;
+                    }
+                    case "Small Pox":{
+                        TimeLineStatusPage.addMessageToPane(Child1.getName() + " has contracted Small Pox.");
+                        break;
+                    }
+                    case "Herpes":{
+                        TimeLineStatusPage.addMessageToPane(Child1.getName() + " has the Herpes.");
+                        break;
+                    }
+                    case "Syphilis":{
+                        TimeLineStatusPage.addMessageToPane(Child1.getName() + " has contracted Syphilis.");
+                        break;
+                    }
+                    case "Chicken Pox":{
+                        TimeLineStatusPage.addMessageToPane(Child1.getName() + " has contracted Chicken Pox.");
+                        break;
+                    }
+                    default:{
+                        break;
+                    }
+                }
             }
         }
         if(Child2.isAlive()){
             String temp = calcChance();
             if(!temp.equals("")){
                 Child2.hashSet.add(temp);
+                switch (temp){
+                    case "Broken Bone":{
+                        TimeLineStatusPage.addMessageToPane(Child2.getName() + " has a broken bone.");
+                        break;
+                    }
+                    case "Cursed":{
+                        TimeLineStatusPage.addMessageToPane(Child2.getName() + " has an uneasy feeling...");
+                        break;
+                    }
+                    case "Small Pox":{
+                        TimeLineStatusPage.addMessageToPane(Child2.getName() + " has contracted Small Pox.");
+                        break;
+                    }
+                    case "Herpes":{
+                        TimeLineStatusPage.addMessageToPane(Child2.getName() + " has the Herpes.");
+                        break;
+                    }
+                    case "Syphilis":{
+                        TimeLineStatusPage.addMessageToPane(Child2.getName() + " has contracted Syphilis.");
+                        break;
+                    }
+                    case "Chicken Pox":{
+                        TimeLineStatusPage.addMessageToPane(Child2.getName() + " has contracted Chicken Pox.");
+                        break;
+                    }
+                    default:{
+                        break;
+                    }
+                }
             }
         }
         if(Child3.isAlive()){
             String temp = calcChance();
             if(!temp.equals("")){
                 Child3.hashSet.add(temp);
+                switch (temp){
+                    case "Broken Bone":{
+                        TimeLineStatusPage.addMessageToPane(Child3.getName() + " has a broken bone.");
+                        break;
+                    }
+                    case "Cursed":{
+                        TimeLineStatusPage.addMessageToPane(Child3.getName() + " has an uneasy feeling...");
+                        break;
+                    }
+                    case "Small Pox":{
+                        TimeLineStatusPage.addMessageToPane(Child3.getName() + " has contracted Small Pox.");
+                        break;
+                    }
+                    case "Herpes":{
+                        TimeLineStatusPage.addMessageToPane(Child3.getName() + " has the Herpes.");
+                        break;
+                    }
+                    case "Syphilis":{
+                        TimeLineStatusPage.addMessageToPane(Child3.getName() + " has contracted Syphilis.");
+                        break;
+                    }
+                    case "Chicken Pox":{
+                        TimeLineStatusPage.addMessageToPane(Child3.getName() + " has contracted Chicken Pox.");
+                        break;
+                    }
+                    default:{
+                        break;
+                    }
+                }
             }
         }
 
         String temp = calcChance();//always run for profile since game ends if you die
         if(!temp.equals("")){
             Profile.hashSet.add(temp);
+            switch (temp){
+                case "Broken Bone":{
+                    TimeLineStatusPage.addMessageToPane(Profile.getName() + " has a broken bone.");
+                    break;
+                }
+                case "Cursed":{
+                    TimeLineStatusPage.addMessageToPane(Profile.getName() + " has an uneasy feeling...");
+                    break;
+                }
+                case "Small Pox":{
+                    TimeLineStatusPage.addMessageToPane(Profile.getName() + " has contracted Small Pox.");
+                    break;
+                }
+                case "Herpes":{
+                    TimeLineStatusPage.addMessageToPane(Profile.getName() + " has the Herpes.");
+                    break;
+                }
+                case "Syphilis":{
+                    TimeLineStatusPage.addMessageToPane(Profile.getName() + " has contracted Syphilis.");
+                    break;
+                }
+                case "Chicken Pox":{
+                    TimeLineStatusPage.addMessageToPane(Profile.getName() + " has contracted Chicken Pox.");
+                    break;
+                }
+                default:{
+                    break;
+                }
+            }
         }
     }
 

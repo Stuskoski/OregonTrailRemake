@@ -24,12 +24,9 @@ public class TimeLineStatusPage {
     public static Stage timeLineStatusStage = new Stage();
 
     public static void showTimeLineStatusPage(){
-        //vBox.setOnScrollStarted(event -> {
-        //    scrollPane.setVvalue(1.0);
-       // });
-
-
         timeLineStatusStage.setScene(scene);
+        scene.getStylesheets().add("resources/main.css");
+        scrollPane.setId("timeLineStatusPage");
         if(!timeLineStatusStage.isShowing())
             timeLineStatusStage.show();
     }
@@ -37,13 +34,14 @@ public class TimeLineStatusPage {
         LocalDateTime time = LocalDateTime.now();
         Label label = new Label();
 
+        if(string.toLowerCase().contains("died")){
+            label.setId("redLabel");
+        }
+
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
         String text = time.format(formatter);
-        label.setText(time.format(formatter) + "- " + string);
+        label.setText(time.format(formatter) + " - " + string);
 
         vBox.getChildren().add(0,label);
-
-
-        //scrollPane.setVvalue(1.0);
     }
 }

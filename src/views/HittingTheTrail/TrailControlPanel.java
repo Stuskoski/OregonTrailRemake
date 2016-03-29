@@ -107,8 +107,9 @@ public class TrailControlPanel {
             counterForMap++;
             System.out.println(((double)counterForMap/(double)gameTimeline.getCycleCount())*100);
             TimeLineStatusPage.addMessageToPane(String.format("%.2f", (((double)counterForMap/(double)gameTimeline.getCycleCount())*100.00))+"% done");
+            System.out.println("TimeLines: " + CalculateRandomChanceForHealth.healthStatusHashMap.size());
         }));
-        gameTimeline.setCycleCount(200);
+        gameTimeline.setCycleCount(125);
         gameTimeline.setOnFinished(event1 -> ScoreBoard.showScoreBoard());
 
 

@@ -721,6 +721,11 @@ public class CalculateRandomChanceForHealth {
         }
     }
 
+    /**
+     * Boolean flags to let the program
+     * know if a timeline needs to be
+     * stopped and removed.
+     */
     private static boolean p1 = false;
     private static boolean p2 = false;
     private static boolean p3 = false;

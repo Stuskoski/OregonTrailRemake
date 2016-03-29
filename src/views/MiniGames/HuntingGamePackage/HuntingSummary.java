@@ -74,6 +74,7 @@ public class HuntingSummary{
             }
             HuntingGame.getProgressBar().setProgress(1.0);
             TrailControlPanel.setCanIstartTimeline(true);
+            TrailControlPanel.carryOn.fire();
             //RandomCreateGameObjects.wildGame.clear();
         });
 

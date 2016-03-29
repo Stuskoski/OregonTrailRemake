@@ -214,6 +214,8 @@ public class TrailControlPanel {
         goHunt.setOnAction(huntEvent -> {
             canIstartTimeline = false;
             gameTimeline.pause();
+            consumeTimelineFast.pause();
+            consumeTimelineSlow.pause();
             HuntingGame.randomizeHuntScreen(30);
             Main.getPrimaryStage().setScene(HuntingGame.getScene());
             CalculateRandomChanceForHealth.statusRemoveTimeline.pause();

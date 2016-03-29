@@ -31,7 +31,8 @@ public class CalculateRandomChanceForHealth {
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                                 if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
-                                    Spouse.hashSet.remove(temp);
+                                    //Spouse.hashSet.remove(temp);
+                                    Spouse.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     s1 = true;
                                     TimeLineStatusPage.addMessageToPane("The Bone has healed for " + Spouse.getName());
@@ -51,7 +52,7 @@ public class CalculateRandomChanceForHealth {
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                                 if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
-                                    Spouse.hashSet.remove(temp);
+                                    Spouse.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     s2 = true;
                                     TimeLineStatusPage.addMessageToPane("The Curse is lifted for " + Spouse.getName());
@@ -71,7 +72,7 @@ public class CalculateRandomChanceForHealth {
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                                 if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
-                                    Spouse.hashSet.remove(temp);
+                                    Spouse.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     s3 = true;
                                     TimeLineStatusPage.addMessageToPane("Small Pox cured for " + Spouse.getName());
@@ -91,7 +92,7 @@ public class CalculateRandomChanceForHealth {
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                                 if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
-                                    Spouse.hashSet.remove(temp);
+                                    Spouse.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     s4 = true;
                                     TimeLineStatusPage.addMessageToPane("The Herp Derp is no more for " + Spouse.getName());
@@ -111,7 +112,7 @@ public class CalculateRandomChanceForHealth {
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                                 if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
-                                    Spouse.hashSet.remove(temp);
+                                    Spouse.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     s5 = true;
                                     TimeLineStatusPage.addMessageToPane("Syphilis has been cured for " + Spouse.getName());
@@ -131,7 +132,7 @@ public class CalculateRandomChanceForHealth {
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                                 if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
-                                    Spouse.hashSet.remove(temp);
+                                    Spouse.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     s6 = true;
                                     TimeLineStatusPage.addMessageToPane("Chicken Pox has been cured for " + Spouse.getName());
@@ -161,7 +162,8 @@ public class CalculateRandomChanceForHealth {
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                                 if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
-                                    Child1.hashSet.remove(temp);
+                                    //Child1.hashSet.remove(temp);
+                                    Child1.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c1 = true;
                                     TimeLineStatusPage.addMessageToPane("The Bone has healed for " + Child1.getName());
@@ -181,7 +183,7 @@ public class CalculateRandomChanceForHealth {
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                                 if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
-                                    Child1.hashSet.remove(temp);
+                                    Child1.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c2 = true;
                                     TimeLineStatusPage.addMessageToPane("The Curse is lifted for  " + Child1.getName());
@@ -201,7 +203,7 @@ public class CalculateRandomChanceForHealth {
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                                 if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
-                                    Child1.hashSet.remove(temp);
+                                    Child1.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c3 = true;
                                     TimeLineStatusPage.addMessageToPane("Small Pox cured for  " + Child1.getName());
@@ -221,7 +223,7 @@ public class CalculateRandomChanceForHealth {
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                                 if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
-                                    Child1.hashSet.remove(temp);
+                                    Child1.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c4 = true;
                                     TimeLineStatusPage.addMessageToPane("The Herp Derp is no more for " + Child1.getName());
@@ -241,7 +243,7 @@ public class CalculateRandomChanceForHealth {
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                                 if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
-                                    Child1.hashSet.remove(temp);
+                                    Child1.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c5 = true;
                                     TimeLineStatusPage.addMessageToPane("Syphilis has been cured for " + Child1.getName());
@@ -261,7 +263,7 @@ public class CalculateRandomChanceForHealth {
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                                 if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
-                                    Child1.hashSet.remove(temp);
+                                    Child1.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c6 = true;
                                     TimeLineStatusPage.addMessageToPane("Chicken Pox has been cured for " + Child1.getName());
@@ -291,7 +293,8 @@ public class CalculateRandomChanceForHealth {
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                                 if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
-                                    Child2.hashSet.remove(temp);
+                                    //Child2.hashSet.remove(temp);
+                                    Child2.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c2_1 = true;
                                     TimeLineStatusPage.addMessageToPane("The Bone has healed for " + Child2.getName());
@@ -311,7 +314,7 @@ public class CalculateRandomChanceForHealth {
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                                 if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
-                                    Child2.hashSet.remove(temp);
+                                    Child2.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c2_2 = true;
                                     TimeLineStatusPage.addMessageToPane("The Curse is lifted for  " + Child2.getName());
@@ -331,7 +334,7 @@ public class CalculateRandomChanceForHealth {
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                                 if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
-                                    Child2.hashSet.remove(temp);
+                                    Child2.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c2_3 = true;
                                     TimeLineStatusPage.addMessageToPane("Small Pox cured for  " + Child2.getName());
@@ -351,7 +354,7 @@ public class CalculateRandomChanceForHealth {
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                                 if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
-                                    Child2.hashSet.remove(temp);
+                                    Child2.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c2_4 = true;
                                     TimeLineStatusPage.addMessageToPane("The Herp Derp is no more for " + Child2.getName());
@@ -371,7 +374,7 @@ public class CalculateRandomChanceForHealth {
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                                 if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
-                                    Child2.hashSet.remove(temp);
+                                    Child2.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c2_5 = true;
                                     TimeLineStatusPage.addMessageToPane("Syphilis has been cured for " + Child2.getName());
@@ -391,7 +394,7 @@ public class CalculateRandomChanceForHealth {
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                                 if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
-                                    Child2.hashSet.remove(temp);
+                                    Child2.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c2_6 = true;
                                     TimeLineStatusPage.addMessageToPane("Chicken Pox has been cured for " + Child2.getName());
@@ -421,7 +424,8 @@ public class CalculateRandomChanceForHealth {
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                                 if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
-                                    Child3.hashSet.remove(temp);
+                                    //Child3.hashSet.remove(temp);
+                                    Child3.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c3_1 = true;
                                     TimeLineStatusPage.addMessageToPane("The Bone has healed for " + Child3.getName());
@@ -441,7 +445,7 @@ public class CalculateRandomChanceForHealth {
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                                 if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
-                                    Child3.hashSet.remove(temp);
+                                    Child3.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c3_2 = true;
                                     TimeLineStatusPage.addMessageToPane("The Curse is lifted for  " + Child3.getName());
@@ -461,7 +465,7 @@ public class CalculateRandomChanceForHealth {
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                                 if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
-                                    Child3.hashSet.remove(temp);
+                                    Child3.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c3_3 = true;
                                     TimeLineStatusPage.addMessageToPane("Small Pox cured for  " + Child3.getName());
@@ -481,7 +485,7 @@ public class CalculateRandomChanceForHealth {
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                                 if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
-                                    Child3.hashSet.remove(temp);
+                                    Child3.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c3_4 = true;
                                     TimeLineStatusPage.addMessageToPane("The Herp Derp is no more for " + Child3.getName());
@@ -501,7 +505,7 @@ public class CalculateRandomChanceForHealth {
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                                 if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
-                                    Child3.hashSet.remove(temp);
+                                    Child3.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c3_5 = true;
                                     TimeLineStatusPage.addMessageToPane("Syphilis has been cured for " + Child3.getName());
@@ -521,7 +525,7 @@ public class CalculateRandomChanceForHealth {
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                                 if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
-                                    Child3.hashSet.remove(temp);
+                                    Child3.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c3_6 = true;
                                     TimeLineStatusPage.addMessageToPane("Chicken Pox has been cured for " + Child3.getName());
@@ -551,7 +555,8 @@ public class CalculateRandomChanceForHealth {
                         int count = TrailControlPanel.counterForMap;
                         Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                             if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
-                                Profile.hashSet.remove(temp);
+                                //Profile.hashSet.remove(temp);
+                                Profile.removeHealthStatusWithChecks(temp);
                                 FamilyStatus.showFamilyStatus();
                                 p1 = true;
                                 TimeLineStatusPage.addMessageToPane("The Bone has healed for " + Profile.getName());
@@ -571,7 +576,7 @@ public class CalculateRandomChanceForHealth {
                         int count = TrailControlPanel.counterForMap;
                         Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                             if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
-                                Profile.hashSet.remove(temp);
+                                Profile.removeHealthStatusWithChecks(temp);
                                 FamilyStatus.showFamilyStatus();
                                 p2 = true;
                                 TimeLineStatusPage.addMessageToPane("The Curse is lifted for  " + Profile.getName());
@@ -591,7 +596,7 @@ public class CalculateRandomChanceForHealth {
                         int count = TrailControlPanel.counterForMap;
                         Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                             if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
-                                Profile.hashSet.remove(temp);
+                                Profile.removeHealthStatusWithChecks(temp);
                                 FamilyStatus.showFamilyStatus();
                                 p3 = true;
                                 TimeLineStatusPage.addMessageToPane("Small Pox cured for  " + Profile.getName());
@@ -611,7 +616,7 @@ public class CalculateRandomChanceForHealth {
                         int count = TrailControlPanel.counterForMap;
                         Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                             if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
-                                Profile.hashSet.remove(temp);
+                                Profile.removeHealthStatusWithChecks(temp);
                                 FamilyStatus.showFamilyStatus();
                                 p4 = true;
                                 TimeLineStatusPage.addMessageToPane("The Herp Derp is no more for " + Profile.getName());
@@ -631,7 +636,7 @@ public class CalculateRandomChanceForHealth {
                         int count = TrailControlPanel.counterForMap;
                         Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                             if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
-                                Profile.hashSet.remove(temp);
+                                Profile.removeHealthStatusWithChecks(temp);
                                 FamilyStatus.showFamilyStatus();
                                 p5 = true;
                                 TimeLineStatusPage.addMessageToPane("Syphilis has been cured for " + Profile.getName());
@@ -651,7 +656,7 @@ public class CalculateRandomChanceForHealth {
                         int count = TrailControlPanel.counterForMap;
                         Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                             if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
-                                Profile.hashSet.remove(temp);
+                                Profile.removeHealthStatusWithChecks(temp);
                                 FamilyStatus.showFamilyStatus();
                                 p6 = true;
                                 TimeLineStatusPage.addMessageToPane("Chicken Pox has been cured for " + Profile.getName());

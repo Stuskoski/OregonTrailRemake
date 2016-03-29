@@ -82,11 +82,11 @@ public class CalculateDeathChancePerTurn {
                     break;
                 }
                 case "thirsty":{
-                    healthStatusReduction += 7.0;
+                    healthStatusReduction += 0.0;
                     break;
                 }
                 case "hungry":{
-                    healthStatusReduction += 5.0;
+                    healthStatusReduction += 0.0;
                     break;
                 }
                 case "syphilis":{

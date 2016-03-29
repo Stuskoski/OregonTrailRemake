@@ -67,6 +67,14 @@ public class Child1 {
                 break;
         }
     }
+
+    public static void removeHealthStatusWithChecks(String healthstatus){
+        hashSet.remove(healthstatus);
+        if (hashSet.size()==0){
+            addHealthStatusWithChecks("Healthy");
+        }
+    }
+
     public static void removeStatusAfterXTurns(String status){
         switch (status.toLowerCase()){
             case "diseased":{

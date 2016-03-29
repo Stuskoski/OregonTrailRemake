@@ -10,6 +10,7 @@ import views.PostGame.ScoreBoard;
 import views.StaticScenes.FamilyStatus;
 import views.StaticScenes.TimeLineStatusPage;
 
+import java.sql.Time;
 import java.util.*;
 
 /**
@@ -33,6 +34,7 @@ public class CalculateRandomChanceForHealth {
                                     Spouse.hashSet.remove(temp);
                                     FamilyStatus.showFamilyStatus();
                                     s1 = true;
+                                    TimeLineStatusPage.addMessageToPane("The Bone has healed for " + Spouse.getName());
                                 }
                             }));
                             statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -52,6 +54,7 @@ public class CalculateRandomChanceForHealth {
                                     Spouse.hashSet.remove(temp);
                                     FamilyStatus.showFamilyStatus();
                                     s2 = true;
+                                    TimeLineStatusPage.addMessageToPane("The Curse is lifted for " + Spouse.getName());
                                 }
                             }));
                             statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -71,6 +74,7 @@ public class CalculateRandomChanceForHealth {
                                     Spouse.hashSet.remove(temp);
                                     FamilyStatus.showFamilyStatus();
                                     s3 = true;
+                                    TimeLineStatusPage.addMessageToPane("Small Pox cured for " + Spouse.getName());
                                 }
                             }));
                             statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -90,6 +94,7 @@ public class CalculateRandomChanceForHealth {
                                     Spouse.hashSet.remove(temp);
                                     FamilyStatus.showFamilyStatus();
                                     s4 = true;
+                                    TimeLineStatusPage.addMessageToPane("The Herp Derp is no more for " + Spouse.getName());
                                 }
                             }));
                             statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -109,6 +114,7 @@ public class CalculateRandomChanceForHealth {
                                     Spouse.hashSet.remove(temp);
                                     FamilyStatus.showFamilyStatus();
                                     s5 = true;
+                                    TimeLineStatusPage.addMessageToPane("Syphilis has been cured for " + Spouse.getName());
                                 }
                             }));
                             statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -128,6 +134,7 @@ public class CalculateRandomChanceForHealth {
                                     Spouse.hashSet.remove(temp);
                                     FamilyStatus.showFamilyStatus();
                                     s6 = true;
+                                    TimeLineStatusPage.addMessageToPane("Chicken Pox has been cured for " + Spouse.getName());
                                 }
                             }));
                             statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -157,6 +164,7 @@ public class CalculateRandomChanceForHealth {
                                     Child1.hashSet.remove(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c1 = true;
+                                    TimeLineStatusPage.addMessageToPane("The Bone has healed for " + Child1.getName());
                                 }
                             }));
                             statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -176,6 +184,7 @@ public class CalculateRandomChanceForHealth {
                                     Child1.hashSet.remove(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c2 = true;
+                                    TimeLineStatusPage.addMessageToPane("The Curse is lifted for  " + Child1.getName());
                                 }
                             }));
                             statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -195,6 +204,7 @@ public class CalculateRandomChanceForHealth {
                                     Child1.hashSet.remove(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c3 = true;
+                                    TimeLineStatusPage.addMessageToPane("Small Pox cured for  " + Child1.getName());
                                 }
                             }));
                             statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -214,6 +224,7 @@ public class CalculateRandomChanceForHealth {
                                     Child1.hashSet.remove(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c4 = true;
+                                    TimeLineStatusPage.addMessageToPane("The Herp Derp is no more for " + Child1.getName());
                                 }
                             }));
                             statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -233,6 +244,7 @@ public class CalculateRandomChanceForHealth {
                                     Child1.hashSet.remove(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c5 = true;
+                                    TimeLineStatusPage.addMessageToPane("Syphilis has been cured for " + Child1.getName());
                                 }
                             }));
                             statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -252,6 +264,7 @@ public class CalculateRandomChanceForHealth {
                                     Child1.hashSet.remove(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c6 = true;
+                                    TimeLineStatusPage.addMessageToPane("Chicken Pox has been cured for " + Child1.getName());
                                 }
                             }));
                             statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -281,6 +294,7 @@ public class CalculateRandomChanceForHealth {
                                     Child2.hashSet.remove(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c2_1 = true;
+                                    TimeLineStatusPage.addMessageToPane("The Bone has healed for " + Child2.getName());
                                 }
                             }));
                             statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -300,6 +314,7 @@ public class CalculateRandomChanceForHealth {
                                     Child2.hashSet.remove(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c2_2 = true;
+                                    TimeLineStatusPage.addMessageToPane("The Curse is lifted for  " + Child2.getName());
                                 }
                             }));
                             statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -319,6 +334,7 @@ public class CalculateRandomChanceForHealth {
                                     Child2.hashSet.remove(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c2_3 = true;
+                                    TimeLineStatusPage.addMessageToPane("Small Pox cured for  " + Child2.getName());
                                 }
                             }));
                             statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -338,6 +354,7 @@ public class CalculateRandomChanceForHealth {
                                     Child2.hashSet.remove(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c2_4 = true;
+                                    TimeLineStatusPage.addMessageToPane("The Herp Derp is no more for " + Child2.getName());
                                 }
                             }));
                             statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -357,6 +374,7 @@ public class CalculateRandomChanceForHealth {
                                     Child2.hashSet.remove(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c2_5 = true;
+                                    TimeLineStatusPage.addMessageToPane("Syphilis has been cured for " + Child2.getName());
                                 }
                             }));
                             statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -376,6 +394,7 @@ public class CalculateRandomChanceForHealth {
                                     Child2.hashSet.remove(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c2_6 = true;
+                                    TimeLineStatusPage.addMessageToPane("Chicken Pox has been cured for " + Child2.getName());
                                 }
                             }));
                             statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -405,6 +424,7 @@ public class CalculateRandomChanceForHealth {
                                     Child3.hashSet.remove(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c3_1 = true;
+                                    TimeLineStatusPage.addMessageToPane("The Bone has healed for " + Child3.getName());
                                 }
                             }));
                             statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -424,6 +444,7 @@ public class CalculateRandomChanceForHealth {
                                     Child3.hashSet.remove(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c3_2 = true;
+                                    TimeLineStatusPage.addMessageToPane("The Curse is lifted for  " + Child3.getName());
                                 }
                             }));
                             statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -443,6 +464,7 @@ public class CalculateRandomChanceForHealth {
                                     Child3.hashSet.remove(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c3_3 = true;
+                                    TimeLineStatusPage.addMessageToPane("Small Pox cured for  " + Child3.getName());
                                 }
                             }));
                             statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -462,6 +484,7 @@ public class CalculateRandomChanceForHealth {
                                     Child3.hashSet.remove(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c3_4 = true;
+                                    TimeLineStatusPage.addMessageToPane("The Herp Derp is no more for " + Child3.getName());
                                 }
                             }));
                             statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -481,6 +504,7 @@ public class CalculateRandomChanceForHealth {
                                     Child3.hashSet.remove(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c3_5 = true;
+                                    TimeLineStatusPage.addMessageToPane("Syphilis has been cured for " + Child3.getName());
                                 }
                             }));
                             statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -500,6 +524,7 @@ public class CalculateRandomChanceForHealth {
                                     Child3.hashSet.remove(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c3_6 = true;
+                                    TimeLineStatusPage.addMessageToPane("Chicken Pox has been cured for " + Child3.getName());
                                 }
                             }));
                             statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -529,6 +554,7 @@ public class CalculateRandomChanceForHealth {
                                 Profile.hashSet.remove(temp);
                                 FamilyStatus.showFamilyStatus();
                                 p1 = true;
+                                TimeLineStatusPage.addMessageToPane("The Bone has healed for " + Profile.getName());
                             }
                         }));
                         statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -548,6 +574,7 @@ public class CalculateRandomChanceForHealth {
                                 Profile.hashSet.remove(temp);
                                 FamilyStatus.showFamilyStatus();
                                 p2 = true;
+                                TimeLineStatusPage.addMessageToPane("The Curse is lifted for  " + Profile.getName());
                             }
                         }));
                         statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -567,6 +594,7 @@ public class CalculateRandomChanceForHealth {
                                 Profile.hashSet.remove(temp);
                                 FamilyStatus.showFamilyStatus();
                                 p3 = true;
+                                TimeLineStatusPage.addMessageToPane("Small Pox cured for  " + Profile.getName());
                             }
                         }));
                         statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -586,6 +614,7 @@ public class CalculateRandomChanceForHealth {
                                 Profile.hashSet.remove(temp);
                                 FamilyStatus.showFamilyStatus();
                                 p4 = true;
+                                TimeLineStatusPage.addMessageToPane("The Herp Derp is no more for " + Profile.getName());
                             }
                         }));
                         statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -605,6 +634,7 @@ public class CalculateRandomChanceForHealth {
                                 Profile.hashSet.remove(temp);
                                 FamilyStatus.showFamilyStatus();
                                 p5 = true;
+                                TimeLineStatusPage.addMessageToPane("Syphilis has been cured for " + Profile.getName());
                             }
                         }));
                         statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -624,6 +654,7 @@ public class CalculateRandomChanceForHealth {
                                 Profile.hashSet.remove(temp);
                                 FamilyStatus.showFamilyStatus();
                                 p6 = true;
+                                TimeLineStatusPage.addMessageToPane("Chicken Pox has been cured for " + Profile.getName());
                             }
                         }));
                         statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);

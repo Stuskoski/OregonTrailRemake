@@ -64,6 +64,10 @@ public class Child1 {
             default:
                 hashSet.remove("Healthy");
                 hashSet.add(healthstatus);
+                if(!hashSet.contains("Dying")){
+                    if(hashSet.size() >= 3)
+                        hashSet.add("Dying");
+                }
                 break;
         }
     }
@@ -73,21 +77,10 @@ public class Child1 {
         if (hashSet.size()==0){
             addHealthStatusWithChecks("Healthy");
         }
-    }
-
-    public static void removeStatusAfterXTurns(String status){
-        switch (status.toLowerCase()){
-            case "diseased":{
-                break;
+        if(hashSet.contains("Dying")){
+            if((hashSet.size()-1) <= 2){
+                hashSet.remove("Dying");
             }
-            case "broken bone":{
-                break;
-            }
-            case "cursed":{
-                break;
-            }
-            default:
-                break;
         }
     }
 

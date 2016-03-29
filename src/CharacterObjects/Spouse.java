@@ -58,6 +58,10 @@ public class Spouse {
             default:
                 hashSet.remove("Healthy");
                 hashSet.add(healthstatus);
+                if(!hashSet.contains("Dying")){
+                    if(hashSet.size() >= 3)
+                        hashSet.add("Dying");
+                }
                 break;
         }
     }
@@ -66,6 +70,11 @@ public class Spouse {
         hashSet.remove(healthstatus);
         if (hashSet.size()==0){
             addHealthStatusWithChecks("Healthy");
+        }
+        if(hashSet.contains("Dying")){
+            if((hashSet.size()-1) <= 2){
+                hashSet.remove("Dying");
+            }
         }
     }
 

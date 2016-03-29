@@ -63,26 +63,26 @@ public class CalculateDeathChancePerTurn {
     //returns true if character died.  Will be called once per turn.
     private static boolean calcDidIDie(Double chance, int luck, Set<String> healthStatus){
         double low = 0.00;
-        double high = 120.00 + luck;
+        double high = 100.00 + luck;
         Random random = new Random();
         double healthStatusReduction = 0.0;
 
         for (String str : healthStatus) {
             switch (str.toLowerCase()){
                 case "small pox":{
-                    healthStatusReduction += 30.0;
+                    healthStatusReduction += 0.0;
                     break;
                 }
                 case "broken bone":{
-                    healthStatusReduction += 10.0;
+                    healthStatusReduction += 0.0;
                     break;
                 }
                 case "cursed":{
-                    healthStatusReduction += 50.0;
+                    healthStatusReduction += 0.0;
                     break;
                 }
                 case "thirsty":{
-                    healthStatusReduction += 10.0;
+                    healthStatusReduction += 7.0;
                     break;
                 }
                 case "hungry":{
@@ -90,19 +90,19 @@ public class CalculateDeathChancePerTurn {
                     break;
                 }
                 case "syphilis":{
-                    healthStatusReduction += 10.0;
+                    healthStatusReduction += 0.0;
                     break;
                 }
                 case "chicken pox":{
-                    healthStatusReduction += 10.0;
+                    healthStatusReduction += 0.0;
                     break;
                 }
                 case "herpes":{
-                    healthStatusReduction += 10.0;
+                    healthStatusReduction += 0.0;
                     break;
                 }
                 case "dying":{
-                    healthStatusReduction += 90.0;
+                    healthStatusReduction += 0.0;
                     break;
                 }
                 default:{
@@ -112,9 +112,9 @@ public class CalculateDeathChancePerTurn {
             }
         }
 
+       // System.out.println("HERE" + random.nextDouble()*100);
 
-
-        double death = low + ((high-low) - low) * random.nextDouble();
+        double death = low + (high - low) * random.nextDouble();
 
         DecimalFormat df = new DecimalFormat("#.##");
 

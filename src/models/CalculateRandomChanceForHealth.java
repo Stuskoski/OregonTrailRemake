@@ -1,46 +1,122 @@
 package models;
 
 import CharacterObjects.*;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.util.Duration;
+import views.HittingTheTrail.TrailControlPanel;
 import views.PostGame.ScoreBoard;
 import views.StaticScenes.FamilyStatus;
 import views.StaticScenes.TimeLineStatusPage;
 
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by augustus on 3/26/16.
  */
 public class CalculateRandomChanceForHealth {
+    public static HashMap<String, Timeline> healthStatusHashMap = new HashMap<>();
     public static void checkLifeAndThenCalc(){
         if(Spouse.isAlive()){
             String temp = calcChance();
             if(!temp.equals("")){
-                Spouse.hashSet.add(temp);
+                Spouse.addHealthStatusWithChecks(temp);
                 switch (temp){
                     case "Broken Bone":{
                         TimeLineStatusPage.addMessageToPane(Spouse.getName() + " has a broken bone.");
+
+                        int count = TrailControlPanel.counterForMap;
+                        Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
+                            if(TrailControlPanel.counterForMap - count >= 10){ // 10 turns to fix
+                                Spouse.hashSet.remove(temp);
+                                FamilyStatus.showFamilyStatus();
+                                s1 = true;
+                            }
+                        }));
+                        statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
+                        healthStatusHashMap.put("s1", statusRemoveTimeline);
+
                         break;
                     }
                     case "Cursed":{
                         TimeLineStatusPage.addMessageToPane(Spouse.getName() + " has an uneasy feeling...");
+
+                        int count = TrailControlPanel.counterForMap;
+                        Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
+                            if(TrailControlPanel.counterForMap - count >= 10){ // 10 turns to fix
+                                Spouse.hashSet.remove(temp);
+                                FamilyStatus.showFamilyStatus();
+                                s2 = true;
+                            }
+                        }));
+                        statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
+                        healthStatusHashMap.put("s2", statusRemoveTimeline);
+
                         break;
                     }
                     case "Small Pox":{
                         TimeLineStatusPage.addMessageToPane(Spouse.getName() + " has contracted Small Pox.");
+
+                        int count = TrailControlPanel.counterForMap;
+                        Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
+                            if(TrailControlPanel.counterForMap - count >= 10){ // 10 turns to fix
+                                Spouse.hashSet.remove(temp);
+                                FamilyStatus.showFamilyStatus();
+                                s3 = true;
+                            }
+                        }));
+                        statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
+                        healthStatusHashMap.put("s3", statusRemoveTimeline);
+
                         break;
                     }
                     case "Herpes":{
                         TimeLineStatusPage.addMessageToPane(Spouse.getName() + " has the Herpes.");
+
+                        int count = TrailControlPanel.counterForMap;
+                        Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
+                            if(TrailControlPanel.counterForMap - count >= 10){ // 10 turns to fix
+                                Spouse.hashSet.remove(temp);
+                                FamilyStatus.showFamilyStatus();
+                                s4 = true;
+                            }
+                        }));
+                        statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
+                        healthStatusHashMap.put("s4", statusRemoveTimeline);
+
                         break;
                     }
                     case "Syphilis":{
                         TimeLineStatusPage.addMessageToPane(Spouse.getName() + " has contracted Syphilis.");
+
+                        int count = TrailControlPanel.counterForMap;
+                        Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
+                            if(TrailControlPanel.counterForMap - count >= 10){ // 10 turns to fix
+                                Spouse.hashSet.remove(temp);
+                                FamilyStatus.showFamilyStatus();
+                                s5 = true;
+                            }
+                        }));
+                        statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
+                        healthStatusHashMap.put("s5", statusRemoveTimeline);
+
                         break;
                     }
                     case "Chicken Pox":{
                         TimeLineStatusPage.addMessageToPane(Spouse.getName() + " has contracted Chicken Pox.");
+
+                        int count = TrailControlPanel.counterForMap;
+                        Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
+                            if(TrailControlPanel.counterForMap - count >= 10){ // 10 turns to fix
+                                Spouse.hashSet.remove(temp);
+                                FamilyStatus.showFamilyStatus();
+                                s6 = true;
+                            }
+                        }));
+                        statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
+                        healthStatusHashMap.put("s6", statusRemoveTimeline);
+
                         break;
                     }
                     default:{
@@ -52,30 +128,102 @@ public class CalculateRandomChanceForHealth {
         if(Child1.isAlive()){
             String temp = calcChance();
             if(!temp.equals("")){
-                Child1.hashSet.add(temp);
+                Child1.addHealthStatusWithChecks(temp);
                 switch (temp){
                     case "Broken Bone":{
                         TimeLineStatusPage.addMessageToPane(Child1.getName() + " has a broken bone.");
+
+                        int count = TrailControlPanel.counterForMap;
+                        Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
+                            if(TrailControlPanel.counterForMap - count >= 10){ // 10 turns to fix
+                                Child1.hashSet.remove(temp);
+                                FamilyStatus.showFamilyStatus();
+                                c1 = true;
+                            }
+                        }));
+                        statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
+                        healthStatusHashMap.put("c1", statusRemoveTimeline);
+
                         break;
                     }
                     case "Cursed":{
                         TimeLineStatusPage.addMessageToPane(Child1.getName() + " has an uneasy feeling...");
+
+                        int count = TrailControlPanel.counterForMap;
+                        Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
+                            if(TrailControlPanel.counterForMap - count >= 10){ // 10 turns to fix
+                                Child1.hashSet.remove(temp);
+                                FamilyStatus.showFamilyStatus();
+                                c2 = true;
+                            }
+                        }));
+                        statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
+                        healthStatusHashMap.put("c2", statusRemoveTimeline);
+
                         break;
                     }
                     case "Small Pox":{
                         TimeLineStatusPage.addMessageToPane(Child1.getName() + " has contracted Small Pox.");
+
+                        int count = TrailControlPanel.counterForMap;
+                        Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
+                            if(TrailControlPanel.counterForMap - count >= 10){ // 10 turns to fix
+                                Child1.hashSet.remove(temp);
+                                FamilyStatus.showFamilyStatus();
+                                c3 = true;
+                            }
+                        }));
+                        statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
+                        healthStatusHashMap.put("c3", statusRemoveTimeline);
+
                         break;
                     }
                     case "Herpes":{
                         TimeLineStatusPage.addMessageToPane(Child1.getName() + " has the Herpes.");
+
+                        int count = TrailControlPanel.counterForMap;
+                        Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
+                            if(TrailControlPanel.counterForMap - count >= 10){ // 10 turns to fix
+                                Child1.hashSet.remove(temp);
+                                FamilyStatus.showFamilyStatus();
+                                c4 = true;
+                            }
+                        }));
+                        statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
+                        healthStatusHashMap.put("c4", statusRemoveTimeline);
+
                         break;
                     }
                     case "Syphilis":{
                         TimeLineStatusPage.addMessageToPane(Child1.getName() + " has contracted Syphilis.");
+
+                        int count = TrailControlPanel.counterForMap;
+                        Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
+                            if(TrailControlPanel.counterForMap - count >= 10){ // 10 turns to fix
+                                Child1.hashSet.remove(temp);
+                                FamilyStatus.showFamilyStatus();
+                                c5 = true;
+                            }
+                        }));
+                        statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
+                        healthStatusHashMap.put("c5", statusRemoveTimeline);
+
                         break;
                     }
                     case "Chicken Pox":{
                         TimeLineStatusPage.addMessageToPane(Child1.getName() + " has contracted Chicken Pox.");
+
+                        int count = TrailControlPanel.counterForMap;
+                        Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
+                            if(TrailControlPanel.counterForMap - count >= 10){ // 10 turns to fix
+                                Child1.hashSet.remove(temp);
+                                FamilyStatus.showFamilyStatus();
+                                c6 = true;
+                            }
+                        }));
+                        statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
+                        healthStatusHashMap.put("c6", statusRemoveTimeline);
+
                         break;
                     }
                     default:{
@@ -87,30 +235,102 @@ public class CalculateRandomChanceForHealth {
         if(Child2.isAlive()){
             String temp = calcChance();
             if(!temp.equals("")){
-                Child2.hashSet.add(temp);
+                Child2.addHealthStatusWithChecks(temp);
                 switch (temp){
                     case "Broken Bone":{
                         TimeLineStatusPage.addMessageToPane(Child2.getName() + " has a broken bone.");
+
+                        int count = TrailControlPanel.counterForMap;
+                        Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
+                            if(TrailControlPanel.counterForMap - count >= 10){ // 10 turns to fix
+                                Child2.hashSet.remove(temp);
+                                FamilyStatus.showFamilyStatus();
+                                c2_1 = true;
+                            }
+                        }));
+                        statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
+                        healthStatusHashMap.put("c2_1", statusRemoveTimeline);
+
                         break;
                     }
                     case "Cursed":{
                         TimeLineStatusPage.addMessageToPane(Child2.getName() + " has an uneasy feeling...");
+
+                        int count = TrailControlPanel.counterForMap;
+                        Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
+                            if(TrailControlPanel.counterForMap - count >= 10){ // 10 turns to fix
+                                Child2.hashSet.remove(temp);
+                                FamilyStatus.showFamilyStatus();
+                                c2_2 = true;
+                            }
+                        }));
+                        statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
+                        healthStatusHashMap.put("c2_2", statusRemoveTimeline);
+
                         break;
                     }
                     case "Small Pox":{
                         TimeLineStatusPage.addMessageToPane(Child2.getName() + " has contracted Small Pox.");
+
+                        int count = TrailControlPanel.counterForMap;
+                        Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
+                            if(TrailControlPanel.counterForMap - count >= 10){ // 10 turns to fix
+                                Child2.hashSet.remove(temp);
+                                FamilyStatus.showFamilyStatus();
+                                c2_3 = true;
+                            }
+                        }));
+                        statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
+                        healthStatusHashMap.put("c2_3", statusRemoveTimeline);
+
                         break;
                     }
                     case "Herpes":{
                         TimeLineStatusPage.addMessageToPane(Child2.getName() + " has the Herpes.");
+
+                        int count = TrailControlPanel.counterForMap;
+                        Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
+                            if(TrailControlPanel.counterForMap - count >= 10){ // 10 turns to fix
+                                Child2.hashSet.remove(temp);
+                                FamilyStatus.showFamilyStatus();
+                                c2_4 = true;
+                            }
+                        }));
+                        statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
+                        healthStatusHashMap.put("c2_4", statusRemoveTimeline);
+
                         break;
                     }
                     case "Syphilis":{
                         TimeLineStatusPage.addMessageToPane(Child2.getName() + " has contracted Syphilis.");
+
+                        int count = TrailControlPanel.counterForMap;
+                        Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
+                            if(TrailControlPanel.counterForMap - count >= 10){ // 10 turns to fix
+                                Child2.hashSet.remove(temp);
+                                FamilyStatus.showFamilyStatus();
+                                c2_5 = true;
+                            }
+                        }));
+                        statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
+                        healthStatusHashMap.put("c2_5", statusRemoveTimeline);
+
                         break;
                     }
                     case "Chicken Pox":{
                         TimeLineStatusPage.addMessageToPane(Child2.getName() + " has contracted Chicken Pox.");
+
+                        int count = TrailControlPanel.counterForMap;
+                        Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
+                            if(TrailControlPanel.counterForMap - count >= 10){ // 10 turns to fix
+                                Child2.hashSet.remove(temp);
+                                FamilyStatus.showFamilyStatus();
+                                c2_6 = true;
+                            }
+                        }));
+                        statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
+                        healthStatusHashMap.put("c2_6", statusRemoveTimeline);
+
                         break;
                     }
                     default:{
@@ -122,30 +342,102 @@ public class CalculateRandomChanceForHealth {
         if(Child3.isAlive()){
             String temp = calcChance();
             if(!temp.equals("")){
-                Child3.hashSet.add(temp);
+                Child3.addHealthStatusWithChecks(temp);
                 switch (temp){
                     case "Broken Bone":{
                         TimeLineStatusPage.addMessageToPane(Child3.getName() + " has a broken bone.");
+
+                        int count = TrailControlPanel.counterForMap;
+                        Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
+                            if(TrailControlPanel.counterForMap - count >= 10){ // 10 turns to fix
+                                Child3.hashSet.remove(temp);
+                                FamilyStatus.showFamilyStatus();
+                                c3_1 = true;
+                            }
+                        }));
+                        statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
+                        healthStatusHashMap.put("c3_1", statusRemoveTimeline);
+
                         break;
                     }
                     case "Cursed":{
                         TimeLineStatusPage.addMessageToPane(Child3.getName() + " has an uneasy feeling...");
+
+                        int count = TrailControlPanel.counterForMap;
+                        Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
+                            if(TrailControlPanel.counterForMap - count >= 10){ // 10 turns to fix
+                                Child3.hashSet.remove(temp);
+                                FamilyStatus.showFamilyStatus();
+                                c3_2 = true;
+                            }
+                        }));
+                        statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
+                        healthStatusHashMap.put("c3_2", statusRemoveTimeline);
+
                         break;
                     }
                     case "Small Pox":{
                         TimeLineStatusPage.addMessageToPane(Child3.getName() + " has contracted Small Pox.");
+
+                        int count = TrailControlPanel.counterForMap;
+                        Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
+                            if(TrailControlPanel.counterForMap - count >= 10){ // 10 turns to fix
+                                Child3.hashSet.remove(temp);
+                                FamilyStatus.showFamilyStatus();
+                                c3_3 = true;
+                            }
+                        }));
+                        statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
+                        healthStatusHashMap.put("c3_3", statusRemoveTimeline);
+
                         break;
                     }
                     case "Herpes":{
                         TimeLineStatusPage.addMessageToPane(Child3.getName() + " has the Herpes.");
+
+                        int count = TrailControlPanel.counterForMap;
+                        Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
+                            if(TrailControlPanel.counterForMap - count >= 10){ // 10 turns to fix
+                                Child3.hashSet.remove(temp);
+                                FamilyStatus.showFamilyStatus();
+                                c3_4 = true;
+                            }
+                        }));
+                        statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
+                        healthStatusHashMap.put("c3_4", statusRemoveTimeline);
+
                         break;
                     }
                     case "Syphilis":{
                         TimeLineStatusPage.addMessageToPane(Child3.getName() + " has contracted Syphilis.");
+
+                        int count = TrailControlPanel.counterForMap;
+                        Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
+                            if(TrailControlPanel.counterForMap - count >= 10){ // 10 turns to fix
+                                Child3.hashSet.remove(temp);
+                                FamilyStatus.showFamilyStatus();
+                                c3_5 = true;
+                            }
+                        }));
+                        statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
+                        healthStatusHashMap.put("c3_5", statusRemoveTimeline);
+
                         break;
                     }
                     case "Chicken Pox":{
                         TimeLineStatusPage.addMessageToPane(Child3.getName() + " has contracted Chicken Pox.");
+
+                        int count = TrailControlPanel.counterForMap;
+                        Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
+                            if(TrailControlPanel.counterForMap - count >= 10){ // 10 turns to fix
+                                Child3.hashSet.remove(temp);
+                                FamilyStatus.showFamilyStatus();
+                                c3_6 = true;
+                            }
+                        }));
+                        statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
+                        healthStatusHashMap.put("c3_6", statusRemoveTimeline);
+
                         break;
                     }
                     default:{
@@ -157,30 +449,102 @@ public class CalculateRandomChanceForHealth {
 
         String temp = calcChance();//always run for profile since game ends if you die
         if(!temp.equals("")){
-            Profile.hashSet.add(temp);
+            Profile.addHealthStatusWithChecks(temp);
             switch (temp){
                 case "Broken Bone":{
                     TimeLineStatusPage.addMessageToPane(Profile.getName() + " has a broken bone.");
+
+                    int count = TrailControlPanel.counterForMap;
+                    Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
+                        if(TrailControlPanel.counterForMap - count >= 10){ // 10 turns to fix
+                            Profile.hashSet.remove(temp);
+                            FamilyStatus.showFamilyStatus();
+                            p1 = true;
+                        }
+                    }));
+                    statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
+                    healthStatusHashMap.put("p1", statusRemoveTimeline);
+
                     break;
                 }
                 case "Cursed":{
                     TimeLineStatusPage.addMessageToPane(Profile.getName() + " has an uneasy feeling...");
+
+                    int count = TrailControlPanel.counterForMap;
+                    Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
+                        if(TrailControlPanel.counterForMap - count >= 10){ // 10 turns to fix
+                            Profile.hashSet.remove(temp);
+                            FamilyStatus.showFamilyStatus();
+                            p2 = true;
+                        }
+                    }));
+                    statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
+                    healthStatusHashMap.put("p2", statusRemoveTimeline);
+
                     break;
                 }
                 case "Small Pox":{
                     TimeLineStatusPage.addMessageToPane(Profile.getName() + " has contracted Small Pox.");
+
+                    int count = TrailControlPanel.counterForMap;
+                    Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
+                        if(TrailControlPanel.counterForMap - count >= 10){ // 10 turns to fix
+                            Profile.hashSet.remove(temp);
+                            FamilyStatus.showFamilyStatus();
+                            p3 = true;
+                        }
+                    }));
+                    statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
+                    healthStatusHashMap.put("p3", statusRemoveTimeline);
+
                     break;
                 }
                 case "Herpes":{
                     TimeLineStatusPage.addMessageToPane(Profile.getName() + " has the Herpes.");
+
+                    int count = TrailControlPanel.counterForMap;
+                    Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
+                        if(TrailControlPanel.counterForMap - count >= 10){ // 10 turns to fix
+                            Profile.hashSet.remove(temp);
+                            FamilyStatus.showFamilyStatus();
+                            p4 = true;
+                        }
+                    }));
+                    statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
+                    healthStatusHashMap.put("p4", statusRemoveTimeline);
+
                     break;
                 }
                 case "Syphilis":{
                     TimeLineStatusPage.addMessageToPane(Profile.getName() + " has contracted Syphilis.");
+
+                    int count = TrailControlPanel.counterForMap;
+                    Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
+                        if(TrailControlPanel.counterForMap - count >= 10){ // 10 turns to fix
+                            Profile.hashSet.remove(temp);
+                            FamilyStatus.showFamilyStatus();
+                            p5 = true;
+                        }
+                    }));
+                    statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
+                    healthStatusHashMap.put("p5", statusRemoveTimeline);
+
                     break;
                 }
                 case "Chicken Pox":{
                     TimeLineStatusPage.addMessageToPane(Profile.getName() + " has contracted Chicken Pox.");
+
+                    int count = TrailControlPanel.counterForMap;
+                    Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
+                        if(TrailControlPanel.counterForMap - count >= 10){ // 10 turns to fix
+                            Profile.hashSet.remove(temp);
+                            FamilyStatus.showFamilyStatus();
+                            p6 = true;
+                        }
+                    }));
+                    statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
+                    healthStatusHashMap.put("p6", statusRemoveTimeline);
+
                     break;
                 }
                 default:{
@@ -192,29 +556,21 @@ public class CalculateRandomChanceForHealth {
 
     private static String calcChance(){
         Random random = new Random();
-        switch (random.nextInt(100)){
-            case 5:{
-                return "Broken Bone";
-            }
-            case 28:{
-                return "Cursed";
-            }
-            case 45:{
-                return "Small Pox";
-            }
-            case 63:{
-                return "Herpes";
-            }
-            case 82:{
-                return "Syphilis";
-            }
-            case 99:{
-                return "Chicken Pox";
-            }
-            default:{
-                return "";
-            }
-        }
+        int chance = random.nextInt(200);
+
+        if(chance >= 0 && chance <= 3) // a 4 in 200 chance (2%)
+            return "Broken Bone";
+        if(chance == 4) // a 1 in 200 chance (0.5%)
+            return "Cursed";
+        if(chance == 5 || chance == 6) // a 2 in 200 chance (1%)
+            return "Small Pox";
+        if(chance == 7 || chance == 8 || chance == 9) // a 3 in 200 chance (1.75%)
+            return "Herpes";
+        if(chance == 10 || chance == 11) // a 2 in 200 chance (1%)
+            return "Syphilis";
+        if(chance >= 12 && chance <= 15) // a 4 in 200 chance (2%)
+            return "Chicken Pox";
+        return "";
     }
 
     public static void checkForAddingDyingStatus(){
@@ -242,5 +598,210 @@ public class CalculateRandomChanceForHealth {
         if(Profile.hashSet.size() > 3){
             Profile.hashSet.add("Dying");
         }
+    }
+
+    private static boolean p1 = false;
+    private static boolean p2 = false;
+    private static boolean p3 = false;
+    private static boolean p4 = false;
+    private static boolean p5 = false;
+    private static boolean p6 = false;
+
+    private static boolean s1 = false;
+    private static boolean s2 = false;
+    private static boolean s3 = false;
+    private static boolean s4 = false;
+    private static boolean s5 = false;
+    private static boolean s6 = false;
+
+    private static boolean c1 = false;
+    private static boolean c2 = false;
+    private static boolean c3 = false;
+    private static boolean c4 = false;
+    private static boolean c5 = false;
+    private static boolean c6 = false;
+
+    private static boolean c2_1 = false;
+    private static boolean c2_2 = false;
+    private static boolean c2_3 = false;
+    private static boolean c2_4 = false;
+    private static boolean c2_5 = false;
+    private static boolean c2_6 = false;
+
+    private static boolean c3_1 = false;
+    private static boolean c3_2 = false;
+    private static boolean c3_3 = false;
+    private static boolean c3_4 = false;
+    private static boolean c3_5 = false;
+    private static boolean c3_6 = false;
+
+    public static Timeline statusRemoveTimeline;
+
+    public static void constantChecker(){
+        statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5050), timelineEvent -> {
+            //Profile checks
+            if(p1) {
+                healthStatusHashMap.get("p1").stop();
+                p1 = false;
+                healthStatusHashMap.remove("p1");
+            }
+            if(p2) {
+                healthStatusHashMap.get("p2").stop();
+                p2 = false;
+                healthStatusHashMap.remove("p2");
+            }
+            if(p3) {
+                healthStatusHashMap.get("p3").stop();
+                p3 = false;
+                healthStatusHashMap.remove("p3");
+            }
+            if(p4) {
+                healthStatusHashMap.get("p4").stop();
+                p4 = false;
+                healthStatusHashMap.remove("p4");
+            }
+            if(p5) {
+                healthStatusHashMap.get("p5").stop();
+                p5 = false;
+                healthStatusHashMap.remove("p5");
+            }
+            if(p6) {
+                healthStatusHashMap.get("p6").stop();
+                p6 = false;
+                healthStatusHashMap.remove("p16");
+            }
+
+            //Spouse checks
+            if(s1) {
+                healthStatusHashMap.get("s1").stop();
+                s1 = false;
+                healthStatusHashMap.remove("s1");
+            }
+            if(s2) {
+                healthStatusHashMap.get("s2").stop();
+                s2 = false;
+                healthStatusHashMap.remove("s2");
+            }
+            if(s3) {
+                healthStatusHashMap.get("s3").stop();
+                s3 = false;
+                healthStatusHashMap.remove("s3");
+            }
+            if(s4) {
+                healthStatusHashMap.get("s4").stop();
+                s4 = false;
+                healthStatusHashMap.remove("s4");
+            }
+            if(s5) {
+                healthStatusHashMap.get("s5").stop();
+                s5 = false;
+                healthStatusHashMap.remove("s5");
+            }
+            if(s6) {
+                healthStatusHashMap.get("s6").stop();
+                s6 = false;
+                healthStatusHashMap.remove("s6");
+            }
+
+            //Child 1 checks
+            if(c1) {
+                healthStatusHashMap.get("c1").stop();
+                c1 = false;
+                healthStatusHashMap.remove("c1");
+            }
+            if(c2) {
+                healthStatusHashMap.get("c2").stop();
+                c2 = false;
+                healthStatusHashMap.remove("c2");
+            }
+            if(c3) {
+                healthStatusHashMap.get("c3").stop();
+                c3 = false;
+                healthStatusHashMap.remove("c3");
+            }
+            if(c4) {
+                healthStatusHashMap.get("c4").stop();
+                c4 = false;
+                healthStatusHashMap.remove("c4");
+            }
+            if(c5) {
+                healthStatusHashMap.get("c5").stop();
+                c5 = false;
+                healthStatusHashMap.remove("c5");
+            }
+            if(c6) {
+                healthStatusHashMap.get("c6").stop();
+                c6 = false;
+                healthStatusHashMap.remove("c6");
+            }
+
+
+            //Child 2 checks
+            if(c2_1) {
+                healthStatusHashMap.get("c2_1").stop();
+                c2_1 = false;
+                healthStatusHashMap.remove("c2_1");
+            }
+            if(c2_2) {
+                healthStatusHashMap.get("c2_2").stop();
+                c2_2 = false;
+                healthStatusHashMap.remove("c2_2");
+            }
+            if(c2_3) {
+                healthStatusHashMap.get("c2_3").stop();
+                c2_3 = false;
+                healthStatusHashMap.remove("c2_3");
+            }
+            if(c2_4) {
+                healthStatusHashMap.get("c2_4").stop();
+                c2_4 = false;
+                healthStatusHashMap.remove("c2_4");
+            }
+            if(c2_5) {
+                healthStatusHashMap.get("c2_5").stop();
+                c2_5 = false;
+                healthStatusHashMap.remove("c2_5");
+            }
+            if(c2_6) {
+                healthStatusHashMap.get("c2_6").stop();
+                c2_6 = false;
+                healthStatusHashMap.remove("c2_6");
+            }
+
+            //Child 3 checks
+            if(c3_1) {
+                healthStatusHashMap.get("c3_1").stop();
+                c3_1 = false;
+                healthStatusHashMap.remove("c3_1");
+            }
+            if(c3_2) {
+                healthStatusHashMap.get("c3_2").stop();
+                c3_2 = false;
+                healthStatusHashMap.remove("c3_2");
+            }
+            if(c3_3) {
+                healthStatusHashMap.get("c3_3").stop();
+                c3_3 = false;
+                healthStatusHashMap.remove("c3_3");
+            }
+            if(c3_4) {
+                healthStatusHashMap.get("c3_4").stop();
+                c3_4 = false;
+                healthStatusHashMap.remove("c3_4");
+            }
+            if(c3_5) {
+                healthStatusHashMap.get("c3_5").stop();
+                c3_5 = false;
+                healthStatusHashMap.remove("c3_5");
+            }
+            if(c3_6) {
+                healthStatusHashMap.get("c3_6").stop();
+                c3_6 = false;
+                healthStatusHashMap.remove("c3_6");
+            }
+
+        }));
+        statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
+        statusRemoveTimeline.play();
     }
 }

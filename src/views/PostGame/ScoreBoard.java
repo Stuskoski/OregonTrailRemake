@@ -14,6 +14,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import models.CalculateRandomChanceForHealth;
 import models.Inventory;
 import models.NewGameClearExisiting;
 import views.HittingTheTrail.TrailControlPanel;
@@ -59,6 +60,7 @@ public class ScoreBoard {
         TrailControlPanel.consumeTimelineSlow.stop();
         TrailControlPanel.gameTimeline.stop();
         scoreTimeline.stop();
+        CalculateRandomChanceForHealth.statusRemoveTimeline.pause();
 
         GridPane gridPane = new GridPane();
 

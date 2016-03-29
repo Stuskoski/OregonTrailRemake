@@ -62,5 +62,12 @@ public class Spouse {
         }
     }
 
+    public static void removeHealthStatusWithChecks(String healthstatus){
+        hashSet.remove(healthstatus);
+        if (hashSet.size()==0){
+            addHealthStatusWithChecks("Healthy");
+        }
+    }
+
     public static String getName() {return name;}
 }

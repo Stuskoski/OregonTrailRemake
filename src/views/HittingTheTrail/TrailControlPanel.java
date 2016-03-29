@@ -100,13 +100,15 @@ public class TrailControlPanel {
         /**
          * Timeline that controls when the game ends.
          */
-        gameTimeline = new Timeline(new KeyFrame(Duration.millis(3000), timelineEvent -> {
-            CalculateDeathChancePerTurn.CalculateDeaths();//Every 3 seconds is considered a turn.
+        gameTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
+            CalculateDeathChancePerTurn.CalculateDeaths();//Every 5 seconds is considered a turn.
             CalculateRandomChanceForHealth.checkLifeAndThenCalc();
             CalculateRandomChanceForHealth.checkForAddingDyingStatus();
             counterForMap++;
+            System.out.println(((double)counterForMap/(double)gameTimeline.getCycleCount())*100);
+            TimeLineStatusPage.addMessageToPane(String.format("%.2f", (((double)counterForMap/(double)gameTimeline.getCycleCount())*100.00))+"% done");
         }));
-        gameTimeline.setCycleCount(334);
+        gameTimeline.setCycleCount(200);
         gameTimeline.setOnFinished(event1 -> ScoreBoard.showScoreBoard());
 
 
@@ -205,6 +207,7 @@ public class TrailControlPanel {
                 consumeTimelineSlow.pause();
                 consumeTimelineFast.play();
                 TheTrail.gridPane.setId("TheTrailGridPaneMoving");
+                CalculateRandomChanceForHealth.statusRemoveTimeline.play();
             }
         });
 
@@ -213,6 +216,7 @@ public class TrailControlPanel {
             gameTimeline.pause();
             HuntingGame.randomizeHuntScreen(30);
             Main.getPrimaryStage().setScene(HuntingGame.getScene());
+            CalculateRandomChanceForHealth.statusRemoveTimeline.pause();
         });
 
         map.setOnAction(mapEvent -> {
@@ -248,6 +252,7 @@ public class TrailControlPanel {
         //consumeTimelineSlow.pause();
         consumeTimelineFast.play();
         //TheTrail.gridPane.setId("TheTrailGridPaneMoving");
+        CalculateRandomChanceForHealth.constantChecker();
     }
 
     private static void consumeWater(){

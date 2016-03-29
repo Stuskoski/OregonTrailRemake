@@ -8,7 +8,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import models.CalculateRandomChanceForHealth;
 import models.NewGameClearExisiting;
+import views.HittingTheTrail.TrailControlPanel;
 
 /**
  * Created by augustus on 3/28/16.
@@ -23,6 +25,13 @@ public class YouLoseScreen {
         gridPane.setHgap(20);
         gridPane.setVgap(20);
         gridPane.setId("youLoseGridPane");
+
+        //stop timers
+        TrailControlPanel.gameTimeline.stop();
+        TrailControlPanel.consumeTimelineSlow.stop();
+        TrailControlPanel.consumeTimelineFast.stop();
+        ScoreBoard.scoreTimeline.stop();
+        CalculateRandomChanceForHealth.statusRemoveTimeline.pause();
 
         Label label = new Label("You Lose...");
         label.setId("youLoseLabel");

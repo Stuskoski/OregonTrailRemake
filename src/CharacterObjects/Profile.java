@@ -171,5 +171,12 @@ public class Profile {
         }
     }
 
+    public static void removeHealthStatusWithChecks(String healthstatus){
+        hashSet.remove(healthstatus);
+        if (hashSet.size()==0){
+            addHealthStatusWithChecks("Healthy");
+        }
+    }
+
 
 }

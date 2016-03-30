@@ -677,9 +677,9 @@ public class CalculateRandomChanceForHealth {
 
     private static String calcChance(){
         Random random = new Random();
-        int chance = random.nextInt(200);
+        int chance = random.nextInt(1000);
 
-        if(chance >= 0 && chance <= 3) // a 4 in 200 chance (2%)
+        if(chance >= 0 && chance <= 3) // a 4 in 1000 chance (0.004%)
             return "Broken Bone";
         if(chance == 4) // a 1 in 200 chance (0.5%)
             return "Cursed";

@@ -222,8 +222,19 @@ public class TrailControlPanel {
             CalculateRandomChanceForHealth.statusRemoveTimeline.pause();
         });
 
+        //Make sure to change
         map.setOnAction(mapEvent -> {
-
+            Profile.hashSet.clear();
+            Spouse.hashSet.clear();
+            Child1.hashSet.clear();
+            Child2.hashSet.clear();
+            Child3.hashSet.clear();
+            Profile.hashSet.add("Healthy");
+            Spouse.hashSet.add("Healthy");
+            Child1.hashSet.add("Healthy");
+            Child2.hashSet.add("Healthy");
+            Child3.hashSet.add("Healthy");
+            FamilyStatus.showFamilyStatus();
         });
 
         familyStatus.setOnAction(familyEvent -> {

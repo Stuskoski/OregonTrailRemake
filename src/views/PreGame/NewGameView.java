@@ -398,6 +398,15 @@ public class NewGameView {
 
         newScene.getStylesheets().add("resources/main.css");
 
+        //Make sure to remove
+        name1Field.setText("John");
+        name2Field.setText("Mary");
+        name3Field.setText("Matt");
+        name4Field.setText("Henry");
+        name5Field.setText("Rob");
+        comboBox.getSelectionModel().select(1);
+        //remove stop
+
         Main.getPrimaryStage().setScene(newScene);
 
     }

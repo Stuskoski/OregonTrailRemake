@@ -4,6 +4,7 @@ import CharacterObjects.*;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.beans.binding.BooleanBinding;
 import javafx.util.Duration;
 import views.HittingTheTrail.TrailControlPanel;
 import views.PostGame.ScoreBoard;
@@ -30,7 +31,7 @@ public class CalculateRandomChanceForHealth {
 
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
-                                if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
+                                if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
                                     //Spouse.hashSet.remove(temp);
                                     Spouse.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
@@ -51,7 +52,7 @@ public class CalculateRandomChanceForHealth {
 
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
-                                if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
+                                if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
                                     Spouse.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     s2 = true;
@@ -71,7 +72,7 @@ public class CalculateRandomChanceForHealth {
 
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
-                                if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
+                                if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
                                     Spouse.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     s3 = true;
@@ -91,7 +92,7 @@ public class CalculateRandomChanceForHealth {
 
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
-                                if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
+                                if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
                                     Spouse.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     s4 = true;
@@ -111,7 +112,7 @@ public class CalculateRandomChanceForHealth {
 
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
-                                if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
+                                if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
                                     Spouse.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     s5 = true;
@@ -131,7 +132,7 @@ public class CalculateRandomChanceForHealth {
 
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
-                                if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
+                                if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
                                     Spouse.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     s6 = true;
@@ -161,7 +162,7 @@ public class CalculateRandomChanceForHealth {
 
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
-                                if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
+                                if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
                                     //Child1.hashSet.remove(temp);
                                     Child1.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
@@ -182,7 +183,7 @@ public class CalculateRandomChanceForHealth {
 
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
-                                if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
+                                if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
                                     Child1.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c2 = true;
@@ -202,7 +203,7 @@ public class CalculateRandomChanceForHealth {
 
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
-                                if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
+                                if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
                                     Child1.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c3 = true;
@@ -222,7 +223,7 @@ public class CalculateRandomChanceForHealth {
 
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
-                                if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
+                                if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
                                     Child1.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c4 = true;
@@ -242,7 +243,7 @@ public class CalculateRandomChanceForHealth {
 
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
-                                if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
+                                if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
                                     Child1.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c5 = true;
@@ -262,7 +263,7 @@ public class CalculateRandomChanceForHealth {
 
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
-                                if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
+                                if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
                                     Child1.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c6 = true;
@@ -292,7 +293,7 @@ public class CalculateRandomChanceForHealth {
 
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
-                                if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
+                                if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
                                     //Child2.hashSet.remove(temp);
                                     Child2.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
@@ -313,7 +314,7 @@ public class CalculateRandomChanceForHealth {
 
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
-                                if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
+                                if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
                                     Child2.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c2_2 = true;
@@ -333,7 +334,7 @@ public class CalculateRandomChanceForHealth {
 
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
-                                if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
+                                if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
                                     Child2.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c2_3 = true;
@@ -353,7 +354,7 @@ public class CalculateRandomChanceForHealth {
 
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
-                                if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
+                                if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
                                     Child2.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c2_4 = true;
@@ -373,7 +374,7 @@ public class CalculateRandomChanceForHealth {
 
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
-                                if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
+                                if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
                                     Child2.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c2_5 = true;
@@ -393,7 +394,7 @@ public class CalculateRandomChanceForHealth {
 
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
-                                if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
+                                if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
                                     Child2.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c2_6 = true;
@@ -423,7 +424,7 @@ public class CalculateRandomChanceForHealth {
 
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
-                                if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
+                                if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
                                     //Child3.hashSet.remove(temp);
                                     Child3.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
@@ -444,7 +445,7 @@ public class CalculateRandomChanceForHealth {
 
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
-                                if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
+                                if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
                                     Child3.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c3_2 = true;
@@ -464,7 +465,7 @@ public class CalculateRandomChanceForHealth {
 
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
-                                if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
+                                if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
                                     Child3.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c3_3 = true;
@@ -484,7 +485,7 @@ public class CalculateRandomChanceForHealth {
 
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
-                                if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
+                                if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
                                     Child3.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c3_4 = true;
@@ -504,7 +505,7 @@ public class CalculateRandomChanceForHealth {
 
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
-                                if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
+                                if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
                                     Child3.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c3_5 = true;
@@ -524,7 +525,7 @@ public class CalculateRandomChanceForHealth {
 
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
-                                if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
+                                if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
                                     Child3.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c3_6 = true;
@@ -554,7 +555,7 @@ public class CalculateRandomChanceForHealth {
 
                         int count = TrailControlPanel.counterForMap;
                         Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
-                            if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
+                            if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
                                 //Profile.hashSet.remove(temp);
                                 Profile.removeHealthStatusWithChecks(temp);
                                 FamilyStatus.showFamilyStatus();
@@ -575,7 +576,7 @@ public class CalculateRandomChanceForHealth {
 
                         int count = TrailControlPanel.counterForMap;
                         Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
-                            if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
+                            if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
                                 Profile.removeHealthStatusWithChecks(temp);
                                 FamilyStatus.showFamilyStatus();
                                 p2 = true;
@@ -595,7 +596,7 @@ public class CalculateRandomChanceForHealth {
 
                         int count = TrailControlPanel.counterForMap;
                         Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
-                            if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
+                            if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
                                 Profile.removeHealthStatusWithChecks(temp);
                                 FamilyStatus.showFamilyStatus();
                                 p3 = true;
@@ -615,7 +616,7 @@ public class CalculateRandomChanceForHealth {
 
                         int count = TrailControlPanel.counterForMap;
                         Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
-                            if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
+                            if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
                                 Profile.removeHealthStatusWithChecks(temp);
                                 FamilyStatus.showFamilyStatus();
                                 p4 = true;
@@ -635,7 +636,7 @@ public class CalculateRandomChanceForHealth {
 
                         int count = TrailControlPanel.counterForMap;
                         Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
-                            if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
+                            if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
                                 Profile.removeHealthStatusWithChecks(temp);
                                 FamilyStatus.showFamilyStatus();
                                 p5 = true;
@@ -655,7 +656,7 @@ public class CalculateRandomChanceForHealth {
 
                         int count = TrailControlPanel.counterForMap;
                         Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
-                            if (TrailControlPanel.counterForMap - count >= 10) { // 10 turns to fix
+                            if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
                                 Profile.removeHealthStatusWithChecks(temp);
                                 FamilyStatus.showFamilyStatus();
                                 p6 = true;
@@ -678,18 +679,25 @@ public class CalculateRandomChanceForHealth {
     private static String calcChance(){
         Random random = new Random();
         int chance = random.nextInt(1000);
+        int boneChance = 10;
+        int curseChance = 4;
+        int smallPoxChance = 5;
+        int herpesChance = 10;
+        int syphilisChance = 7;
+        int chickenPoxChance = 8;
+
 
         if(chance >= 0 && chance <= 3) // a 4 in 1000 chance (0.004%)
             return "Broken Bone";
-        if(chance == 4) // a 1 in 200 chance (0.5%)
+        if(chance == 4) // a 1 in 1000 chance (0.5%)
             return "Cursed";
-        if(chance == 5 || chance == 6) // a 2 in 200 chance (1%)
+        if(chance == 5 || chance == 6) // a 2 in 1000 chance (0.001%)
             return "Small Pox";
-        if(chance == 7 || chance == 8 || chance == 9) // a 3 in 200 chance (1.75%)
+        if(chance == 7 || chance == 8 || chance == 9) // a 3 in 1000 chance (0.003%)
             return "Herpes";
-        if(chance == 10 || chance == 11) // a 2 in 200 chance (1%)
+        if(chance == 10 || chance == 11) // a 2 in 1000 chance (0.002%)
             return "Syphilis";
-        if(chance >= 12 && chance <= 15) // a 4 in 200 chance (2%)
+        if(chance >= 12 && chance <= 15) // a 4 in 1000 chance (0.004%)
             return "Chicken Pox";
         return "";
     }

@@ -24,7 +24,7 @@ public class CalculateDeathChancePerTurn {
                 Spouse.setIsAlive(false);
                 Spouse.addHealthStatusWithChecks("Dead");
                 FamilyStatus.showFamilyStatus();
-                System.out.println(Spouse.getName()+" has died.");
+                //System.out.println(Spouse.getName()+" has died.");
                 TimeLineStatusPage.addMessageToPane(Spouse.getName()+" has died.", "red");
             }
         }
@@ -33,7 +33,7 @@ public class CalculateDeathChancePerTurn {
                 Child1.setIsAlive(false);
                 Child1.addHealthStatusWithChecks("Dead");
                 FamilyStatus.showFamilyStatus();
-                System.out.println(Child1.getName()+" has died.");
+                //System.out.println(Child1.getName()+" has died.");
                 TimeLineStatusPage.addMessageToPane(Child1.getName()+" has died.", "red");
             }
         }
@@ -42,7 +42,7 @@ public class CalculateDeathChancePerTurn {
                 Child2.setIsAlive(false);
                 Child2.addHealthStatusWithChecks("Dead");
                 FamilyStatus.showFamilyStatus();
-                System.out.println(Child2.getName()+" has died.");
+                //System.out.println(Child2.getName()+" has died.");
                 TimeLineStatusPage.addMessageToPane(Child2.getName()+" has died.", "red");
             }
         }
@@ -51,7 +51,7 @@ public class CalculateDeathChancePerTurn {
                 Child3.setIsAlive(false);
                 Child3.addHealthStatusWithChecks("Dead");
                 FamilyStatus.showFamilyStatus();
-                System.out.println(Child3.getName()+" has died.");
+                //System.out.println(Child3.getName()+" has died.");
                 TimeLineStatusPage.addMessageToPane(Child3.getName()+" has died.", "red");
             }
         }
@@ -119,7 +119,7 @@ public class CalculateDeathChancePerTurn {
         DecimalFormat df = new DecimalFormat("#.##");
 
         death = Double.parseDouble(df.format(death));
-        System.out.println(chance+healthStatusReduction + "     " + death);
+        //System.out.println(chance+healthStatusReduction + "     " + death);
         if((chance + healthStatusReduction) >= death){
             return true; //I died
         }

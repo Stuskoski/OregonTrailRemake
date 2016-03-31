@@ -103,7 +103,7 @@ public class TrailControlPanel {
          * Timeline that controls when the game ends.
          */
         gameTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
-            CalculateDeathChancePerTurn.CalculateDeaths();//Every 5 seconds is considered a turn.
+           // CalculateDeathChancePerTurn.CalculateDeaths();//Every 5 seconds is considered a turn.
             CalculateRandomChanceForHealth.checkLifeAndThenCalc();
             CalculateRandomChanceForHealth.checkForAddingDyingStatus();
             counterForMap++;
@@ -187,7 +187,7 @@ public class TrailControlPanel {
                         carryOn.fire();
                         TheTrail.animateTimeline.play();
                         canIRestFlag = true;
-                        rest.setDisable(true);
+                        rest.setDisable(false);
                     });
                     restTimeline.play();
                 } else if (result.get() == buttonTypeThree) {
@@ -207,11 +207,11 @@ public class TrailControlPanel {
                         carryOn.fire();
                         TheTrail.animateTimeline.play();
                         canIRestFlag = true;
-                        rest.setDisable(true);
+                        rest.setDisable(false);
                     });
                     restTimeline.play();
                 } else {
-                    // ... user chose CANCEL or closed the dialog
+                    rest.setDisable(false);
                 }
             }
         });
@@ -227,6 +227,7 @@ public class TrailControlPanel {
         });
 
         goHunt.setOnAction(huntEvent -> {
+            rest.setDisable(true);
             canIstartTimeline = false;
             gameTimeline.pause();
             consumeTimelineFast.pause();
@@ -239,7 +240,6 @@ public class TrailControlPanel {
         //Make sure to change
         map.setOnAction(mapEvent -> {
             if(!TrailMap.stage.isShowing()) {
-                TrailMap.showMap();
                 TrailMap.stage.show();
             }
 
@@ -351,7 +351,7 @@ public class TrailControlPanel {
          */
         if(!hasSomethingToDrink){
             TimeLineStatusPage.addMessageToPane("Out of water", "red");
-            System.out.println("Out of water");
+            //System.out.println("Out of water");
            // Profile.setHealthStatus("Thirsty");
 
             Profile.addHealthStatusWithChecks("Thirsty");
@@ -398,7 +398,7 @@ public class TrailControlPanel {
         for(ItemInterface food : Inventory.getInventory()){
             switch (food.getName()){
                 case"Beef Jerky":{
-                    System.out.println("Jerky");
+                    //System.out.println("Jerky");
                     if(firstConsume) {
                         hasSomethingToEat = true;
                         if (food.getWeight() > 0) {
@@ -452,7 +452,7 @@ public class TrailControlPanel {
          */
         if(!hasSomethingToEat){
             TimeLineStatusPage.addMessageToPane("Out of food", "red");
-            System.out.println("Out of food");
+           // System.out.println("Out of food");
            // Profile.setHealthStatus("Hungry");
 
             Profile.addHealthStatusWithChecks("Hungry");

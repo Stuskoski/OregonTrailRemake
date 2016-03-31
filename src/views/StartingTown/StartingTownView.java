@@ -10,6 +10,7 @@ import models.AddKeyListenerToScene;
 import views.HittingTheTrail.TheTrail;
 import views.HittingTheTrail.TrailControlPanel;
 import views.PostGame.ScoreBoard;
+import views.StaticScenes.TrailMap;
 
 import java.net.URL;
 
@@ -105,6 +106,7 @@ public class StartingTownView {
             TrailControlPanel.showControlPane();
             TheTrail.showTheTrailScene();
             ScoreBoard.startTimeLine();
+            TrailMap.showMap();
             //HuntingGame.randomizeHuntScreen(30);
             //Start.getPrimaryStage().setScene(HuntingGame.getScene()); //quick test for hunting game
             //HitTheTrailView.createStartTownTrailView();

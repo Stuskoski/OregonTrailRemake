@@ -54,6 +54,7 @@ public class HuntingSummary{
         final double finalPoundsHunted = poundsHunted;
         continueBtn.setOnAction(event -> {
             Main.getPrimaryStage().setScene(TheTrail.scene);
+            TrailControlPanel.rest.setDisable(false);//reenable the button for resting
             int counter=0;
             for (ItemInterface weightCheck : Inventory.getInventory()){
                 if(weightCheck.getName().equals("Game Meat")){

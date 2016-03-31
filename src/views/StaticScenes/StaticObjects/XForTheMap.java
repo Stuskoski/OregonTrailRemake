@@ -12,10 +12,10 @@ import javafx.scene.image.Image;
  * myself.
  */
 public class XForTheMap {
-    public static int x = 0;
-    public static int y = 0;
-    public static int w = 25;
-    public static int h = 25;
+    public static double x = 488.0 - 23.0;
+    public static double y = 268.0 - 23.0;
+    public static int w = 45;
+    public static int h = 45;
     public static Image img = new Image("resources/StaticSceneResources/xForMap.gif");
 
 }

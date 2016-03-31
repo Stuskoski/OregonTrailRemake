@@ -25,7 +25,7 @@ public class CalculateDeathChancePerTurn {
                 Spouse.addHealthStatusWithChecks("Dead");
                 FamilyStatus.showFamilyStatus();
                 System.out.println(Spouse.getName()+" has died.");
-                TimeLineStatusPage.addMessageToPane(Spouse.getName()+" has died.");
+                TimeLineStatusPage.addMessageToPane(Spouse.getName()+" has died.", "red");
             }
         }
         if(Child1.isAlive()){
@@ -34,7 +34,7 @@ public class CalculateDeathChancePerTurn {
                 Child1.addHealthStatusWithChecks("Dead");
                 FamilyStatus.showFamilyStatus();
                 System.out.println(Child1.getName()+" has died.");
-                TimeLineStatusPage.addMessageToPane(Child1.getName()+" has died.");
+                TimeLineStatusPage.addMessageToPane(Child1.getName()+" has died.", "red");
             }
         }
         if(Child2.isAlive()){
@@ -43,7 +43,7 @@ public class CalculateDeathChancePerTurn {
                 Child2.addHealthStatusWithChecks("Dead");
                 FamilyStatus.showFamilyStatus();
                 System.out.println(Child2.getName()+" has died.");
-                TimeLineStatusPage.addMessageToPane(Child2.getName()+" has died.");
+                TimeLineStatusPage.addMessageToPane(Child2.getName()+" has died.", "red");
             }
         }
         if(Child3.isAlive()){
@@ -52,7 +52,7 @@ public class CalculateDeathChancePerTurn {
                 Child3.addHealthStatusWithChecks("Dead");
                 FamilyStatus.showFamilyStatus();
                 System.out.println(Child3.getName()+" has died.");
-                TimeLineStatusPage.addMessageToPane(Child3.getName()+" has died.");
+                TimeLineStatusPage.addMessageToPane(Child3.getName()+" has died.", "red");
             }
         }
         if(calcDidIDie(0.00, Profile.getLuck(), Profile.hashSet)){
@@ -70,43 +70,43 @@ public class CalculateDeathChancePerTurn {
         for (String str : healthStatus) {
             switch (str.toLowerCase()){
                 case "small pox":{
-                    healthStatusReduction += 15.0;
+                    //healthStatusReduction += 15.0;
                     break;
                 }
                 case "broken bone":{
-                    healthStatusReduction += 10.0;
+                   // healthStatusReduction += 10.0;
                     break;
                 }
                 case "cursed":{
-                    healthStatusReduction += 25.0;
+                   // healthStatusReduction += 25.0;
                     break;
                 }
                 case "thirsty":{
-                    healthStatusReduction += 7.0;
+                    //healthStatusReduction += 7.0;
                     break;
                 }
                 case "hungry":{
-                    healthStatusReduction += 5.0;
+                   // healthStatusReduction += 5.0;
                     break;
                 }
                 case "syphilis":{
-                    healthStatusReduction += 15.0;
+                  //  healthStatusReduction += 15.0;
                     break;
                 }
                 case "chicken pox":{
-                    healthStatusReduction += 10.0;
+                   // healthStatusReduction += 10.0;
                     break;
                 }
                 case "herpes":{
-                    healthStatusReduction += 5.0;
+                   // healthStatusReduction += 5.0;
                     break;
                 }
                 case "dying":{
-                    healthStatusReduction += 50.0;
+                    //healthStatusReduction += 50.0;
                     break;
                 }
                 default:{
-                    healthStatusReduction += 0.0;
+                   // healthStatusReduction += 0.0;
                     break;
                 }
             }

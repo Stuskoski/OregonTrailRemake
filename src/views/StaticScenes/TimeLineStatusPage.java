@@ -30,16 +30,21 @@ public class TimeLineStatusPage {
         if(!timeLineStatusStage.isShowing())
             timeLineStatusStage.show();
     }
-    public static void addMessageToPane(String string){
+    public static void addMessageToPane(String string, String color){
         LocalDateTime time = LocalDateTime.now();
         Label label = new Label();
 
-        if(string.toLowerCase().contains("died")){
-            label.setId("redLabel");
+        switch (color){
+            case "green":
+                label.setId("greenLabel");
+                break;
+            case "red":
+                label.setId("redLabel");
+                break;
         }
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-        String text = time.format(formatter);
+        //String text = time.format(formatter);
         label.setText(time.format(formatter) + " - " + string);
 
         vBox.getChildren().add(0,label);

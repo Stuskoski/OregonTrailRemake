@@ -16,6 +16,11 @@ import java.util.*;
 
 /**
  * Created by augustus on 3/26/16.
+ * Calculate the chance of getting
+ * a disease as well as creating
+ * timers once the diseases are added
+ * to remove them after a set number
+ * of turns.
  */
 public class CalculateRandomChanceForHealth {
     public static HashMap<String, Timeline> healthStatusHashMap = new HashMap<>();
@@ -27,16 +32,17 @@ public class CalculateRandomChanceForHealth {
                     case "Broken Bone":{
                         if(!Spouse.hashSet.contains("Broken Bone")) {
                             Spouse.addHealthStatusWithChecks(temp);
-                            TimeLineStatusPage.addMessageToPane(Spouse.getName() + " has a broken bone.");
+                            TimeLineStatusPage.addMessageToPane(Spouse.getName() + " has a broken bone.", "red");
 
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                                 if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
                                     //Spouse.hashSet.remove(temp);
-                                    Spouse.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     s1 = true;
-                                    TimeLineStatusPage.addMessageToPane("The Bone has healed for " + Spouse.getName());
+                                    if(Spouse.hashSet.contains("Broken Bone"))
+                                        TimeLineStatusPage.addMessageToPane("The Bone has healed for " + Spouse.getName(), "green");
+                                    Spouse.removeHealthStatusWithChecks(temp);
                                 }
                             }));
                             statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -48,15 +54,16 @@ public class CalculateRandomChanceForHealth {
                     case "Cursed":{
                         if(!Spouse.hashSet.contains("Cursed")) {
                             Spouse.addHealthStatusWithChecks(temp);
-                            TimeLineStatusPage.addMessageToPane(Spouse.getName() + " has an uneasy feeling...");
+                            TimeLineStatusPage.addMessageToPane(Spouse.getName() + " has an uneasy feeling...", "red");
 
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                                 if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
-                                    Spouse.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     s2 = true;
-                                    TimeLineStatusPage.addMessageToPane("The Curse is lifted for " + Spouse.getName());
+                                    if(Spouse.hashSet.contains("Cursed"))
+                                        TimeLineStatusPage.addMessageToPane("The Curse is lifted for " + Spouse.getName(), "green");
+                                    Spouse.removeHealthStatusWithChecks(temp);
                                 }
                             }));
                             statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -68,15 +75,16 @@ public class CalculateRandomChanceForHealth {
                     case "Small Pox":{
                         if(!Spouse.hashSet.contains("Small Pox")) {
                             Spouse.addHealthStatusWithChecks(temp);
-                            TimeLineStatusPage.addMessageToPane(Spouse.getName() + " has contracted Small Pox.");
+                            TimeLineStatusPage.addMessageToPane(Spouse.getName() + " has contracted Small Pox.", "red");
 
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                                 if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
-                                    Spouse.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     s3 = true;
-                                    TimeLineStatusPage.addMessageToPane("Small Pox cured for " + Spouse.getName());
+                                    if(Spouse.hashSet.contains("Small Pox"))
+                                        TimeLineStatusPage.addMessageToPane("Small Pox cured for " + Spouse.getName(), "green");
+                                    Spouse.removeHealthStatusWithChecks(temp);
                                 }
                             }));
                             statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -88,15 +96,16 @@ public class CalculateRandomChanceForHealth {
                     case "Herpes":{
                         if(!Spouse.hashSet.contains("Herpes")) {
                             Spouse.addHealthStatusWithChecks(temp);
-                            TimeLineStatusPage.addMessageToPane(Spouse.getName() + " has the Herpes.");
+                            TimeLineStatusPage.addMessageToPane(Spouse.getName() + " has the Herpes.", "red");
 
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                                 if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
-                                    Spouse.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     s4 = true;
-                                    TimeLineStatusPage.addMessageToPane("The Herp Derp is no more for " + Spouse.getName());
+                                    if(Spouse.hashSet.contains("Herpes"))
+                                        TimeLineStatusPage.addMessageToPane("The Herp Derp is no more for " + Spouse.getName(), "green");
+                                    Spouse.removeHealthStatusWithChecks(temp);
                                 }
                             }));
                             statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -108,15 +117,16 @@ public class CalculateRandomChanceForHealth {
                     case "Syphilis":{
                         if(!Spouse.hashSet.contains("Syphilis")) {
                             Spouse.addHealthStatusWithChecks(temp);
-                            TimeLineStatusPage.addMessageToPane(Spouse.getName() + " has contracted Syphilis.");
+                            TimeLineStatusPage.addMessageToPane(Spouse.getName() + " has contracted Syphilis.", "red");
 
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                                 if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
-                                    Spouse.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     s5 = true;
-                                    TimeLineStatusPage.addMessageToPane("Syphilis has been cured for " + Spouse.getName());
+                                    if(Spouse.hashSet.contains("Syphilis"))
+                                        TimeLineStatusPage.addMessageToPane("Syphilis has been cured for " + Spouse.getName(), "green");
+                                    Spouse.removeHealthStatusWithChecks(temp);
                                 }
                             }));
                             statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -128,15 +138,16 @@ public class CalculateRandomChanceForHealth {
                     case "Chicken Pox":{
                         if(!Spouse.hashSet.contains("Chicken Pox")) {
                             Spouse.addHealthStatusWithChecks(temp);
-                            TimeLineStatusPage.addMessageToPane(Spouse.getName() + " has contracted Chicken Pox.");
+                            TimeLineStatusPage.addMessageToPane(Spouse.getName() + " has contracted Chicken Pox.", "red");
 
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                                 if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
-                                    Spouse.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     s6 = true;
-                                    TimeLineStatusPage.addMessageToPane("Chicken Pox has been cured for " + Spouse.getName());
+                                    if(Spouse.hashSet.contains("Chicken Pox"))
+                                        TimeLineStatusPage.addMessageToPane("Chicken Pox has been cured for " + Spouse.getName(), "green");
+                                    Spouse.removeHealthStatusWithChecks(temp);
                                 }
                             }));
                             statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -158,16 +169,17 @@ public class CalculateRandomChanceForHealth {
                     case "Broken Bone":{
                         if(!Child1.hashSet.contains("Broken Bone")) {
                             Child1.addHealthStatusWithChecks(temp);
-                            TimeLineStatusPage.addMessageToPane(Child1.getName() + " has a broken bone.");
+                            TimeLineStatusPage.addMessageToPane(Child1.getName() + " has a broken bone.", "red");
 
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                                 if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
                                     //Child1.hashSet.remove(temp);
-                                    Child1.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c1 = true;
-                                    TimeLineStatusPage.addMessageToPane("The Bone has healed for " + Child1.getName());
+                                    if(Child1.hashSet.contains("Broken Bone"))
+                                        TimeLineStatusPage.addMessageToPane("The Bone has healed for " + Child1.getName(), "green");
+                                    Child1.removeHealthStatusWithChecks(temp);
                                 }
                             }));
                             statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -179,15 +191,16 @@ public class CalculateRandomChanceForHealth {
                     case "Cursed":{
                         if(!Child1.hashSet.contains("Cursed")) {
                             Child1.addHealthStatusWithChecks(temp);
-                            TimeLineStatusPage.addMessageToPane(Child1.getName() + " has an uneasy feeling...");
+                            TimeLineStatusPage.addMessageToPane(Child1.getName() + " has an uneasy feeling...", "red");
 
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                                 if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
-                                    Child1.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c2 = true;
-                                    TimeLineStatusPage.addMessageToPane("The Curse is lifted for  " + Child1.getName());
+                                    if(Child1.hashSet.contains("Cursed"))
+                                        TimeLineStatusPage.addMessageToPane("The Curse is lifted for  " + Child1.getName(), "green");
+                                    Child1.removeHealthStatusWithChecks(temp);
                                 }
                             }));
                             statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -199,15 +212,16 @@ public class CalculateRandomChanceForHealth {
                     case "Small Pox":{
                         if(!Child1.hashSet.contains("Small Pox")) {
                             Child1.addHealthStatusWithChecks(temp);
-                            TimeLineStatusPage.addMessageToPane(Child1.getName() + " has contracted Small Pox.");
+                            TimeLineStatusPage.addMessageToPane(Child1.getName() + " has contracted Small Pox.", "red");
 
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
-                                if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
-                                    Child1.removeHealthStatusWithChecks(temp);
+                                if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix;
                                     FamilyStatus.showFamilyStatus();
                                     c3 = true;
-                                    TimeLineStatusPage.addMessageToPane("Small Pox cured for  " + Child1.getName());
+                                    if(Child1.hashSet.contains("Small Pox"))
+                                        TimeLineStatusPage.addMessageToPane("Small Pox cured for  " + Child1.getName(), "green");
+                                    Child1.removeHealthStatusWithChecks(temp);
                                 }
                             }));
                             statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -219,15 +233,16 @@ public class CalculateRandomChanceForHealth {
                     case "Herpes":{
                         if(!Child1.hashSet.contains("Herpes")) {
                             Child1.addHealthStatusWithChecks(temp);
-                            TimeLineStatusPage.addMessageToPane(Child1.getName() + " has the Herpes.");
+                            TimeLineStatusPage.addMessageToPane(Child1.getName() + " has the Herpes.", "red");
 
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                                 if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
-                                    Child1.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c4 = true;
-                                    TimeLineStatusPage.addMessageToPane("The Herp Derp is no more for " + Child1.getName());
+                                    if(Child1.hashSet.contains("Herpes"))
+                                        TimeLineStatusPage.addMessageToPane("The Herp Derp is no more for " + Child1.getName(), "green");
+                                    Child1.removeHealthStatusWithChecks(temp);
                                 }
                             }));
                             statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -239,15 +254,16 @@ public class CalculateRandomChanceForHealth {
                     case "Syphilis":{
                         if(!Child1.hashSet.contains("Syphilis")) {
                             Child1.addHealthStatusWithChecks(temp);
-                            TimeLineStatusPage.addMessageToPane(Child1.getName() + " has contracted Syphilis.");
+                            TimeLineStatusPage.addMessageToPane(Child1.getName() + " has contracted Syphilis.", "red");
 
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                                 if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
-                                    Child1.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c5 = true;
-                                    TimeLineStatusPage.addMessageToPane("Syphilis has been cured for " + Child1.getName());
+                                    if(Child1.hashSet.contains("Syphilis"))
+                                        TimeLineStatusPage.addMessageToPane("Syphilis has been cured for " + Child1.getName(), "green");
+                                    Child1.removeHealthStatusWithChecks(temp);
                                 }
                             }));
                             statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -259,15 +275,16 @@ public class CalculateRandomChanceForHealth {
                     case "Chicken Pox":{
                         if(!Child1.hashSet.contains("Chicken Pox")) {
                             Child1.addHealthStatusWithChecks(temp);
-                            TimeLineStatusPage.addMessageToPane(Child1.getName() + " has contracted Chicken Pox.");
+                            TimeLineStatusPage.addMessageToPane(Child1.getName() + " has contracted Chicken Pox.", "red");
 
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                                 if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
-                                    Child1.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c6 = true;
-                                    TimeLineStatusPage.addMessageToPane("Chicken Pox has been cured for " + Child1.getName());
+                                    if(Child1.hashSet.contains("Chicken Pox"))
+                                        TimeLineStatusPage.addMessageToPane("Chicken Pox has been cured for " + Child1.getName(), "green");
+                                    Child1.removeHealthStatusWithChecks(temp);
                                 }
                             }));
                             statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -287,18 +304,19 @@ public class CalculateRandomChanceForHealth {
             if(!temp.equals("")){
                 switch (temp){
                     case "Broken Bone":{
-                        if(!Child2.hashSet.contains("Chicken Pox")) {
+                        if(!Child2.hashSet.contains("Broken Bone")) {
                             Child2.addHealthStatusWithChecks(temp);
-                            TimeLineStatusPage.addMessageToPane(Child2.getName() + " has a broken bone.");
+                            TimeLineStatusPage.addMessageToPane(Child2.getName() + " has a broken bone.", "red");
 
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                                 if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
                                     //Child2.hashSet.remove(temp);
-                                    Child2.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c2_1 = true;
-                                    TimeLineStatusPage.addMessageToPane("The Bone has healed for " + Child2.getName());
+                                    if(Child2.hashSet.contains("Broken Bone"))
+                                        TimeLineStatusPage.addMessageToPane("The Bone has healed for " + Child2.getName(), "green");
+                                    Child2.removeHealthStatusWithChecks(temp);
                                 }
                             }));
                             statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -310,15 +328,16 @@ public class CalculateRandomChanceForHealth {
                     case "Cursed":{
                         if(!Child2.hashSet.contains("Cursed")) {
                             Child2.addHealthStatusWithChecks(temp);
-                            TimeLineStatusPage.addMessageToPane(Child2.getName() + " has an uneasy feeling...");
+                            TimeLineStatusPage.addMessageToPane(Child2.getName() + " has an uneasy feeling...", "red");
 
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                                 if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
-                                    Child2.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c2_2 = true;
-                                    TimeLineStatusPage.addMessageToPane("The Curse is lifted for  " + Child2.getName());
+                                    if(Child2.hashSet.contains("Cursed"))
+                                        TimeLineStatusPage.addMessageToPane("The Curse is lifted for  " + Child2.getName(), "green");
+                                    Child2.removeHealthStatusWithChecks(temp);
                                 }
                             }));
                             statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -330,15 +349,16 @@ public class CalculateRandomChanceForHealth {
                     case "Small Pox":{
                         if(!Child2.hashSet.contains("Small Pox")) {
                             Child2.addHealthStatusWithChecks(temp);
-                            TimeLineStatusPage.addMessageToPane(Child2.getName() + " has contracted Small Pox.");
+                            TimeLineStatusPage.addMessageToPane(Child2.getName() + " has contracted Small Pox.", "red");
 
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                                 if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
-                                    Child2.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c2_3 = true;
-                                    TimeLineStatusPage.addMessageToPane("Small Pox cured for  " + Child2.getName());
+                                    if(Child2.hashSet.contains("Small Pox"))
+                                        TimeLineStatusPage.addMessageToPane("Small Pox cured for  " + Child2.getName(), "green");
+                                    Child2.removeHealthStatusWithChecks(temp);
                                 }
                             }));
                             statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -350,15 +370,16 @@ public class CalculateRandomChanceForHealth {
                     case "Herpes":{
                         if(!Child2.hashSet.contains("Herpes")) {
                             Child2.addHealthStatusWithChecks(temp);
-                            TimeLineStatusPage.addMessageToPane(Child2.getName() + " has the Herpes.");
+                            TimeLineStatusPage.addMessageToPane(Child2.getName() + " has the Herpes.", "red");
 
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                                 if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
-                                    Child2.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c2_4 = true;
-                                    TimeLineStatusPage.addMessageToPane("The Herp Derp is no more for " + Child2.getName());
+                                    if(Child2.hashSet.contains("Herpes"))
+                                        TimeLineStatusPage.addMessageToPane("The Herp Derp is no more for " + Child2.getName(), "green");
+                                    Child2.removeHealthStatusWithChecks(temp);
                                 }
                             }));
                             statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -370,15 +391,16 @@ public class CalculateRandomChanceForHealth {
                     case "Syphilis":{
                         if(!Child2.hashSet.contains("Syphilis")) {
                             Child2.addHealthStatusWithChecks(temp);
-                            TimeLineStatusPage.addMessageToPane(Child2.getName() + " has contracted Syphilis.");
+                            TimeLineStatusPage.addMessageToPane(Child2.getName() + " has contracted Syphilis.", "red");
 
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                                 if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
-                                    Child2.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c2_5 = true;
-                                    TimeLineStatusPage.addMessageToPane("Syphilis has been cured for " + Child2.getName());
+                                    if(Child2.hashSet.contains("Syphilis"))
+                                        TimeLineStatusPage.addMessageToPane("Syphilis has been cured for " + Child2.getName(), "green");
+                                    Child2.removeHealthStatusWithChecks(temp);
                                 }
                             }));
                             statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -390,15 +412,16 @@ public class CalculateRandomChanceForHealth {
                     case "Chicken Pox":{
                         if(!Child2.hashSet.contains("Chicken Pox")) {
                             Child2.addHealthStatusWithChecks(temp);
-                            TimeLineStatusPage.addMessageToPane(Child2.getName() + " has contracted Chicken Pox.");
+                            TimeLineStatusPage.addMessageToPane(Child2.getName() + " has contracted Chicken Pox.", "red");
 
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                                 if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
-                                    Child2.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c2_6 = true;
-                                    TimeLineStatusPage.addMessageToPane("Chicken Pox has been cured for " + Child2.getName());
+                                    if(Child2.hashSet.contains("Chicken Pox"))
+                                        TimeLineStatusPage.addMessageToPane("Chicken Pox has been cured for " + Child2.getName(), "green");
+                                    Child2.removeHealthStatusWithChecks(temp);
                                 }
                             }));
                             statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -420,16 +443,17 @@ public class CalculateRandomChanceForHealth {
                     case "Broken Bone":{
                         if(!Child3.hashSet.contains("Broken Bone")) {
                             Child3.addHealthStatusWithChecks(temp);
-                            TimeLineStatusPage.addMessageToPane(Child3.getName() + " has a broken bone.");
+                            TimeLineStatusPage.addMessageToPane(Child3.getName() + " has a broken bone.", "red");
 
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                                 if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
                                     //Child3.hashSet.remove(temp);
-                                    Child3.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c3_1 = true;
-                                    TimeLineStatusPage.addMessageToPane("The Bone has healed for " + Child3.getName());
+                                    if(Child3.hashSet.contains("Broken Bone"))
+                                        TimeLineStatusPage.addMessageToPane("The Bone has healed for " + Child3.getName(), "green");
+                                    Child3.removeHealthStatusWithChecks(temp);
                                 }
                             }));
                             statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -441,15 +465,16 @@ public class CalculateRandomChanceForHealth {
                     case "Cursed":{
                         if(!Child3.hashSet.contains("Cursed")) {
                             Child3.addHealthStatusWithChecks(temp);
-                            TimeLineStatusPage.addMessageToPane(Child3.getName() + " has an uneasy feeling...");
+                            TimeLineStatusPage.addMessageToPane(Child3.getName() + " has an uneasy feeling...", "red");
 
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                                 if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
-                                    Child3.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c3_2 = true;
-                                    TimeLineStatusPage.addMessageToPane("The Curse is lifted for  " + Child3.getName());
+                                    if(Child3.hashSet.contains("Cursed"))
+                                        TimeLineStatusPage.addMessageToPane("The Curse is lifted for  " + Child3.getName(), "green");
+                                    Child3.removeHealthStatusWithChecks(temp);
                                 }
                             }));
                             statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -461,15 +486,16 @@ public class CalculateRandomChanceForHealth {
                     case "Small Pox":{
                         if(!Child3.hashSet.contains("Small Pox")) {
                             Child3.addHealthStatusWithChecks(temp);
-                            TimeLineStatusPage.addMessageToPane(Child3.getName() + " has contracted Small Pox.");
+                            TimeLineStatusPage.addMessageToPane(Child3.getName() + " has contracted Small Pox.", "red");
 
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                                 if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
-                                    Child3.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c3_3 = true;
-                                    TimeLineStatusPage.addMessageToPane("Small Pox cured for  " + Child3.getName());
+                                    if(Child3.hashSet.contains("Small Pox"))
+                                        TimeLineStatusPage.addMessageToPane("Small Pox cured for  " + Child3.getName(), "green");
+                                    Child3.removeHealthStatusWithChecks(temp);
                                 }
                             }));
                             statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -481,15 +507,16 @@ public class CalculateRandomChanceForHealth {
                     case "Herpes":{
                         if(!Child3.hashSet.contains("Herpes")) {
                             Child3.addHealthStatusWithChecks(temp);
-                            TimeLineStatusPage.addMessageToPane(Child3.getName() + " has the Herpes.");
+                            TimeLineStatusPage.addMessageToPane(Child3.getName() + " has the Herpes.", "red");
 
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                                 if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
-                                    Child3.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c3_4 = true;
-                                    TimeLineStatusPage.addMessageToPane("The Herp Derp is no more for " + Child3.getName());
+                                    if(Child3.hashSet.contains("Herpes"))
+                                        TimeLineStatusPage.addMessageToPane("The Herp Derp is no more for " + Child3.getName(), "green");
+                                    Child3.removeHealthStatusWithChecks(temp);
                                 }
                             }));
                             statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -501,15 +528,16 @@ public class CalculateRandomChanceForHealth {
                     case "Syphilis":{
                         if(!Child3.hashSet.contains("Syphilis")) {
                             Child3.addHealthStatusWithChecks(temp);
-                            TimeLineStatusPage.addMessageToPane(Child3.getName() + " has contracted Syphilis.");
+                            TimeLineStatusPage.addMessageToPane(Child3.getName() + " has contracted Syphilis.", "red");
 
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                                 if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
-                                    Child3.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c3_5 = true;
-                                    TimeLineStatusPage.addMessageToPane("Syphilis has been cured for " + Child3.getName());
+                                    if(Child3.hashSet.contains("Syphilis"))
+                                        TimeLineStatusPage.addMessageToPane("Syphilis has been cured for " + Child3.getName(), "green");
+                                    Child3.removeHealthStatusWithChecks(temp);
                                 }
                             }));
                             statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -521,15 +549,16 @@ public class CalculateRandomChanceForHealth {
                     case "Chicken Pox":{
                         if(!Child3.hashSet.contains("Chicken Pox")) {
                             Child3.addHealthStatusWithChecks(temp);
-                            TimeLineStatusPage.addMessageToPane(Child3.getName() + " has contracted Chicken Pox.");
+                            TimeLineStatusPage.addMessageToPane(Child3.getName() + " has contracted Chicken Pox.", "red");
 
                             int count = TrailControlPanel.counterForMap;
                             Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                                 if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
-                                    Child3.removeHealthStatusWithChecks(temp);
                                     FamilyStatus.showFamilyStatus();
                                     c3_6 = true;
-                                    TimeLineStatusPage.addMessageToPane("Chicken Pox has been cured for " + Child3.getName());
+                                    if(Child3.hashSet.contains("Chicken Pox"))
+                                        TimeLineStatusPage.addMessageToPane("Chicken Pox has been cured for " + Child3.getName(), "green");
+                                    Child3.removeHealthStatusWithChecks(temp);
                                 }
                             }));
                             statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -551,16 +580,17 @@ public class CalculateRandomChanceForHealth {
                 case "Broken Bone":{
                     if(!Profile.hashSet.contains("Broken Bone")) {
                         Profile.addHealthStatusWithChecks(temp);
-                        TimeLineStatusPage.addMessageToPane(Profile.getName() + " has a broken bone.");
+                        TimeLineStatusPage.addMessageToPane(Profile.getName() + " has a broken bone.", "red");
 
                         int count = TrailControlPanel.counterForMap;
                         Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                             if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
                                 //Profile.hashSet.remove(temp);
-                                Profile.removeHealthStatusWithChecks(temp);
                                 FamilyStatus.showFamilyStatus();
                                 p1 = true;
-                                TimeLineStatusPage.addMessageToPane("The Bone has healed for " + Profile.getName());
+                                if(Profile.hashSet.contains("Broken Bone"))
+                                    TimeLineStatusPage.addMessageToPane("The Bone has healed for " + Profile.getName(), "green");
+                                Profile.removeHealthStatusWithChecks(temp);
                             }
                         }));
                         statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -572,15 +602,16 @@ public class CalculateRandomChanceForHealth {
                 case "Cursed":{
                     if(!Profile.hashSet.contains("Cursed")) {
                         Profile.addHealthStatusWithChecks(temp);
-                        TimeLineStatusPage.addMessageToPane(Profile.getName() + " has an uneasy feeling...");
+                        TimeLineStatusPage.addMessageToPane(Profile.getName() + " has an uneasy feeling...", "red");
 
                         int count = TrailControlPanel.counterForMap;
                         Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                             if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
-                                Profile.removeHealthStatusWithChecks(temp);
                                 FamilyStatus.showFamilyStatus();
                                 p2 = true;
-                                TimeLineStatusPage.addMessageToPane("The Curse is lifted for  " + Profile.getName());
+                                if(Profile.hashSet.contains("Cursed"))
+                                    TimeLineStatusPage.addMessageToPane("The Curse is lifted for  " + Profile.getName(), "green");
+                                Profile.removeHealthStatusWithChecks(temp);
                             }
                         }));
                         statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -592,15 +623,16 @@ public class CalculateRandomChanceForHealth {
                 case "Small Pox":{
                     if(!Profile.hashSet.contains("Small Pox")) {
                         Profile.addHealthStatusWithChecks(temp);
-                        TimeLineStatusPage.addMessageToPane(Profile.getName() + " has contracted Small Pox.");
+                        TimeLineStatusPage.addMessageToPane(Profile.getName() + " has contracted Small Pox.", "red");
 
                         int count = TrailControlPanel.counterForMap;
                         Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                             if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
-                                Profile.removeHealthStatusWithChecks(temp);
                                 FamilyStatus.showFamilyStatus();
                                 p3 = true;
-                                TimeLineStatusPage.addMessageToPane("Small Pox cured for  " + Profile.getName());
+                                if(Profile.hashSet.contains("Small Pox"))
+                                    TimeLineStatusPage.addMessageToPane("Small Pox cured for  " + Profile.getName(), "green");
+                                Profile.removeHealthStatusWithChecks(temp);
                             }
                         }));
                         statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -612,15 +644,16 @@ public class CalculateRandomChanceForHealth {
                 case "Herpes":{
                     if(!Profile.hashSet.contains("Herpes")) {
                         Profile.addHealthStatusWithChecks(temp);
-                        TimeLineStatusPage.addMessageToPane(Profile.getName() + " has the Herpes.");
+                        TimeLineStatusPage.addMessageToPane(Profile.getName() + " has the Herpes.", "red");
 
                         int count = TrailControlPanel.counterForMap;
                         Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                             if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
-                                Profile.removeHealthStatusWithChecks(temp);
                                 FamilyStatus.showFamilyStatus();
                                 p4 = true;
-                                TimeLineStatusPage.addMessageToPane("The Herp Derp is no more for " + Profile.getName());
+                                if(Profile.hashSet.contains("Herpes"))
+                                    TimeLineStatusPage.addMessageToPane("The Herp Derp is no more for " + Profile.getName(), "green");
+                                Profile.removeHealthStatusWithChecks(temp);
                             }
                         }));
                         statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -632,15 +665,16 @@ public class CalculateRandomChanceForHealth {
                 case "Syphilis":{
                     if(!Profile.hashSet.contains("Syphilis")) {
                         Profile.addHealthStatusWithChecks(temp);
-                        TimeLineStatusPage.addMessageToPane(Profile.getName() + " has contracted Syphilis.");
+                        TimeLineStatusPage.addMessageToPane(Profile.getName() + " has contracted Syphilis.", "red");
 
                         int count = TrailControlPanel.counterForMap;
                         Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                             if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
-                                Profile.removeHealthStatusWithChecks(temp);
                                 FamilyStatus.showFamilyStatus();
                                 p5 = true;
-                                TimeLineStatusPage.addMessageToPane("Syphilis has been cured for " + Profile.getName());
+                                if(Profile.hashSet.contains("Syphilis"))
+                                    TimeLineStatusPage.addMessageToPane("Syphilis has been cured for " + Profile.getName(), "green");
+                                Profile.removeHealthStatusWithChecks(temp);
                             }
                         }));
                         statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);
@@ -652,15 +686,16 @@ public class CalculateRandomChanceForHealth {
                 case "Chicken Pox":{
                     if(!Profile.hashSet.contains("Chicken Pox")) {
                         Profile.addHealthStatusWithChecks(temp);
-                        TimeLineStatusPage.addMessageToPane(Profile.getName() + " has contracted Chicken Pox.");
+                        TimeLineStatusPage.addMessageToPane(Profile.getName() + " has contracted Chicken Pox.", "red");
 
                         int count = TrailControlPanel.counterForMap;
                         Timeline statusRemoveTimeline = new Timeline(new KeyFrame(Duration.millis(5000), timelineEvent -> {
                             if (TrailControlPanel.counterForMap - count >= 5) { // 5 turns to fix
-                                Profile.removeHealthStatusWithChecks(temp);
                                 FamilyStatus.showFamilyStatus();
                                 p6 = true;
-                                TimeLineStatusPage.addMessageToPane("Chicken Pox has been cured for " + Profile.getName());
+                                if(Profile.hashSet.contains("Chicken Pox"))
+                                    TimeLineStatusPage.addMessageToPane("Chicken Pox has been cured for " + Profile.getName(), "green");
+                                Profile.removeHealthStatusWithChecks(temp);
                             }
                         }));
                         statusRemoveTimeline.setCycleCount(Animation.INDEFINITE);

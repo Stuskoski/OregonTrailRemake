@@ -19,6 +19,7 @@ import javafx.util.Duration;
 import Start.Main;
 import models.CalculateDeathChancePerTurn;
 import models.CalculateRandomChanceForHealth;
+import models.ChanceToRemoveAilmentWhenResting;
 import models.Inventory;
 import views.HittingTheTrail.TrailObjects.HorseForWagon;
 import views.HittingTheTrail.TrailObjects.Wagon;
@@ -105,9 +106,7 @@ public class TrailControlPanel {
             CalculateRandomChanceForHealth.checkLifeAndThenCalc();
             CalculateRandomChanceForHealth.checkForAddingDyingStatus();
             counterForMap++;
-            System.out.println(((double)counterForMap/(double)gameTimeline.getCycleCount())*100);
-            TimeLineStatusPage.addMessageToPane(String.format("%.2f", (((double)counterForMap/(double)gameTimeline.getCycleCount())*100.00))+"% done");
-            System.out.println("TimeLines: " + CalculateRandomChanceForHealth.healthStatusHashMap.size());
+            TimeLineStatusPage.addMessageToPane(String.format("%.2f", (((double)counterForMap/(double)gameTimeline.getCycleCount())*100.00))+"% done", "white");
         }));
         gameTimeline.setCycleCount(125);
         gameTimeline.setOnFinished(event1 -> ScoreBoard.showScoreBoard());
@@ -150,48 +149,54 @@ public class TrailControlPanel {
 
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == buttonTypeOne){
+                TimeLineStatusPage.addMessageToPane("You have decided to rest for 1 day.", "white");
                 TheTrail.gc1.clearRect(Wagon.x, Wagon.y, Wagon.w+HorseForWagon.w+10+(HorseForWagon.x - Wagon.x), Wagon.h+HorseForWagon.h+10);
                 TheTrail.animateTimeline.pause();
                 gameTimeline.pause();
                 consumeTimelineSlow.play();
                 consumeTimelineFast.pause();
                 TheTrail.gridPane.setId("TheTrailGridPaneRest");
-                Timeline restTimeline = new Timeline(new KeyFrame(Duration.millis(1), timelineEvent -> {
-
+                Timeline restTimeline = new Timeline(new KeyFrame(Duration.seconds(1), timelineEvent -> {
+                    //add code for chance to remove illness
+                    ChanceToRemoveAilmentWhenResting.checkChanceForAilmentRemoval();
                 }));
-                restTimeline.setCycleCount(3000);
+                restTimeline.setCycleCount(3);
                 restTimeline.setOnFinished(event1 -> {
                     carryOn.fire();
                     TheTrail.animateTimeline.play();
                 });
                 restTimeline.play();
             } else if (result.get() == buttonTypeTwo) {
+                TimeLineStatusPage.addMessageToPane("You have decided to rest for 2 days.", "white");
                 TheTrail.gc1.clearRect(Wagon.x, Wagon.y, Wagon.w+HorseForWagon.w+10+(HorseForWagon.x - Wagon.x), Wagon.h+HorseForWagon.h+10);
                 TheTrail.animateTimeline.pause();
                 gameTimeline.pause();
                 consumeTimelineSlow.play();
                 consumeTimelineFast.pause();
                 TheTrail.gridPane.setId("TheTrailGridPaneRest");
-                Timeline restTimeline = new Timeline(new KeyFrame(Duration.millis(1), timelineEvent -> {
-
+                Timeline restTimeline = new Timeline(new KeyFrame(Duration.seconds(1), timelineEvent -> {
+                    //add code for chance to remove illness
+                    ChanceToRemoveAilmentWhenResting.checkChanceForAilmentRemoval();
                 }));
-                restTimeline.setCycleCount(6000);
+                restTimeline.setCycleCount(6);
                 restTimeline.setOnFinished(event1 -> {
                     carryOn.fire();
                     TheTrail.animateTimeline.play();
                 });
                 restTimeline.play();
             } else if (result.get() == buttonTypeThree) {
+                TimeLineStatusPage.addMessageToPane("You have decided to rest for 3 days.", "white");
                 TheTrail.gc1.clearRect(Wagon.x, Wagon.y, Wagon.w+HorseForWagon.w+10+(HorseForWagon.x - Wagon.x), Wagon.h+HorseForWagon.h+10);
                 TheTrail.animateTimeline.pause();
                 gameTimeline.pause();
                 consumeTimelineSlow.play();
                 consumeTimelineFast.pause();
                 TheTrail.gridPane.setId("TheTrailGridPaneRest");
-                Timeline restTimeline = new Timeline(new KeyFrame(Duration.millis(1), timelineEvent -> {
-
+                Timeline restTimeline = new Timeline(new KeyFrame(Duration.seconds(1), timelineEvent -> {
+                    //add code for chance to remove illness
+                    ChanceToRemoveAilmentWhenResting.checkChanceForAilmentRemoval();
                 }));
-                restTimeline.setCycleCount(9000);
+                restTimeline.setCycleCount(9);
                 restTimeline.setOnFinished(event1 -> {
                     carryOn.fire();
                     TheTrail.animateTimeline.play();
@@ -331,7 +336,7 @@ public class TrailControlPanel {
          * If there is nothing to drink, set that they are thirsty.
          */
         if(!hasSomethingToDrink){
-            TimeLineStatusPage.addMessageToPane("Out of water");
+            TimeLineStatusPage.addMessageToPane("Out of water", "red");
             System.out.println("Out of water");
            // Profile.setHealthStatus("Thirsty");
 
@@ -432,7 +437,7 @@ public class TrailControlPanel {
          * If there is nothing to eat, set that they are hungry/
          */
         if(!hasSomethingToEat){
-            TimeLineStatusPage.addMessageToPane("Out of food");
+            TimeLineStatusPage.addMessageToPane("Out of food", "red");
             System.out.println("Out of food");
            // Profile.setHealthStatus("Hungry");
 

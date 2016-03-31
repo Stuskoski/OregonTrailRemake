@@ -301,8 +301,8 @@
 }
 /*---------------------------Trail Map---------------------------*/
 #mapBackground{
-    -fx-background-image: url("StaticSceneResources/");
-    -fx-background-repeat: stretch;
+    -fx-background-image: url("StaticSceneResources/trailmap.jpg");
+    -fx-background-repeat: no-repeat;
     -fx-background-size: cover;
     -fx-background-position: center center;
     -fx-background-color: black;

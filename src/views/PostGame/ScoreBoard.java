@@ -19,6 +19,7 @@ import models.Inventory;
 import models.NewGameClearExisiting;
 import views.HittingTheTrail.TrailControlPanel;
 import views.StaticScenes.FamilyStatus;
+import views.StaticScenes.TrailMap;
 
 /**
  * Created by augustus on 3/24/16.
@@ -61,6 +62,7 @@ public class ScoreBoard {
         TrailControlPanel.gameTimeline.stop();
         scoreTimeline.stop();
         CalculateRandomChanceForHealth.statusRemoveTimeline.pause();
+        TrailMap.timeline.stop();
 
         GridPane gridPane = new GridPane();
 

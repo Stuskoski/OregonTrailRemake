@@ -11,6 +11,7 @@ import javafx.scene.layout.HBox;
 import models.CalculateRandomChanceForHealth;
 import models.NewGameClearExisiting;
 import views.HittingTheTrail.TrailControlPanel;
+import views.StaticScenes.TrailMap;
 
 /**
  * Created by augustus on 3/28/16.
@@ -32,6 +33,7 @@ public class YouLoseScreen {
         TrailControlPanel.consumeTimelineFast.stop();
         ScoreBoard.scoreTimeline.stop();
         CalculateRandomChanceForHealth.statusRemoveTimeline.pause();
+        TrailMap.timeline.stop();
 
         Label label = new Label("You Lose...");
         label.setId("youLoseLabel");

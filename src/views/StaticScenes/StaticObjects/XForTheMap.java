@@ -14,8 +14,8 @@ import javafx.scene.image.Image;
 public class XForTheMap {
     public static int x = 0;
     public static int y = 0;
-    public static int w = 10;
-    public static int h = 10;
-    public static Image img = new Image("resources/StaticSceneResources");
+    public static int w = 25;
+    public static int h = 25;
+    public static Image img = new Image("resources/StaticSceneResources/xForMap.gif");
 
 }

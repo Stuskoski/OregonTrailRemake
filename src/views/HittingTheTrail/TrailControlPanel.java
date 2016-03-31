@@ -27,6 +27,7 @@ import views.MiniGames.HuntingGamePackage.HuntingGame;
 import views.PostGame.ScoreBoard;
 import views.StaticScenes.FamilyStatus;
 import views.StaticScenes.TimeLineStatusPage;
+import views.StaticScenes.TrailMap;
 
 import java.sql.Time;
 import java.util.Optional;
@@ -237,6 +238,11 @@ public class TrailControlPanel {
 
         //Make sure to change
         map.setOnAction(mapEvent -> {
+            if(!TrailMap.stage.isShowing()) {
+                TrailMap.showMap();
+                TrailMap.stage.show();
+            }
+
             Profile.hashSet.clear();
             Spouse.hashSet.clear();
             Child1.hashSet.clear();

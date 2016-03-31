@@ -299,7 +299,14 @@
 #greenLabel{
     -fx-text-fill: darkgreen;
 }
-/*---------------------------------------------------------------*/
+/*---------------------------Trail Map---------------------------*/
+#mapBackground{
+    -fx-background-image: url("StaticSceneResources/");
+    -fx-background-repeat: stretch;
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+    -fx-background-color: black;
+}
 /*---------------------------------------------------------------*/
 /*---------------------------------------------------------------*/
 /*---------------------------------------------------------------*/

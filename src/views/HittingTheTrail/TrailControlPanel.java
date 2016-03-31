@@ -46,7 +46,7 @@ public class TrailControlPanel {
     public static Timeline gameTimeline;
     public static Timeline consumeTimelineFast;
     public static Timeline consumeTimelineSlow;
-    public static boolean canIstartTimeline = true;
+    public static boolean canIstartTimeline = true, canIRestFlag = true;
     public static Button carryOn;
     public static Button rest;
     public static int counterForMap = 0;
@@ -134,76 +134,84 @@ public class TrailControlPanel {
 
 
         rest.setOnAction(restEvent -> {
+            if(canIRestFlag) { //Prevent multiple clicks on the resting button.
+                rest.setDisable(true);
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Rest Menu");
+                alert.setHeaderText("How many days would you like rest for?");
+                alert.setContentText("Choose your option.");
 
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Rest Menu");
-            alert.setHeaderText("How many days would you like rest for?");
-            alert.setContentText("Choose your option.");
+                ButtonType buttonTypeOne = new ButtonType("One");
+                ButtonType buttonTypeTwo = new ButtonType("Two");
+                ButtonType buttonTypeThree = new ButtonType("Three");
+                ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
 
-            ButtonType buttonTypeOne = new ButtonType("One");
-            ButtonType buttonTypeTwo = new ButtonType("Two");
-            ButtonType buttonTypeThree = new ButtonType("Three");
-            ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+                alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeTwo, buttonTypeThree, buttonTypeCancel);
 
-            alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeTwo, buttonTypeThree, buttonTypeCancel);
-
-            Optional<ButtonType> result = alert.showAndWait();
-            if (result.get() == buttonTypeOne){
-                TimeLineStatusPage.addMessageToPane("You have decided to rest for 1 day.", "white");
-                TheTrail.gc1.clearRect(Wagon.x, Wagon.y, Wagon.w+HorseForWagon.w+10+(HorseForWagon.x - Wagon.x), Wagon.h+HorseForWagon.h+10);
-                TheTrail.animateTimeline.pause();
-                gameTimeline.pause();
-                consumeTimelineSlow.play();
-                consumeTimelineFast.pause();
-                TheTrail.gridPane.setId("TheTrailGridPaneRest");
-                Timeline restTimeline = new Timeline(new KeyFrame(Duration.seconds(1), timelineEvent -> {
-                    //add code for chance to remove illness
-                    ChanceToRemoveAilmentWhenResting.checkChanceForAilmentRemoval();
-                }));
-                restTimeline.setCycleCount(3);
-                restTimeline.setOnFinished(event1 -> {
-                    carryOn.fire();
-                    TheTrail.animateTimeline.play();
-                });
-                restTimeline.play();
-            } else if (result.get() == buttonTypeTwo) {
-                TimeLineStatusPage.addMessageToPane("You have decided to rest for 2 days.", "white");
-                TheTrail.gc1.clearRect(Wagon.x, Wagon.y, Wagon.w+HorseForWagon.w+10+(HorseForWagon.x - Wagon.x), Wagon.h+HorseForWagon.h+10);
-                TheTrail.animateTimeline.pause();
-                gameTimeline.pause();
-                consumeTimelineSlow.play();
-                consumeTimelineFast.pause();
-                TheTrail.gridPane.setId("TheTrailGridPaneRest");
-                Timeline restTimeline = new Timeline(new KeyFrame(Duration.seconds(1), timelineEvent -> {
-                    //add code for chance to remove illness
-                    ChanceToRemoveAilmentWhenResting.checkChanceForAilmentRemoval();
-                }));
-                restTimeline.setCycleCount(6);
-                restTimeline.setOnFinished(event1 -> {
-                    carryOn.fire();
-                    TheTrail.animateTimeline.play();
-                });
-                restTimeline.play();
-            } else if (result.get() == buttonTypeThree) {
-                TimeLineStatusPage.addMessageToPane("You have decided to rest for 3 days.", "white");
-                TheTrail.gc1.clearRect(Wagon.x, Wagon.y, Wagon.w+HorseForWagon.w+10+(HorseForWagon.x - Wagon.x), Wagon.h+HorseForWagon.h+10);
-                TheTrail.animateTimeline.pause();
-                gameTimeline.pause();
-                consumeTimelineSlow.play();
-                consumeTimelineFast.pause();
-                TheTrail.gridPane.setId("TheTrailGridPaneRest");
-                Timeline restTimeline = new Timeline(new KeyFrame(Duration.seconds(1), timelineEvent -> {
-                    //add code for chance to remove illness
-                    ChanceToRemoveAilmentWhenResting.checkChanceForAilmentRemoval();
-                }));
-                restTimeline.setCycleCount(9);
-                restTimeline.setOnFinished(event1 -> {
-                    carryOn.fire();
-                    TheTrail.animateTimeline.play();
-                });
-                restTimeline.play();
-            } else {
-                // ... user chose CANCEL or closed the dialog
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.get() == buttonTypeOne) {
+                    TimeLineStatusPage.addMessageToPane("You have decided to rest for 1 day.", "white");
+                    TheTrail.gc1.clearRect(Wagon.x, Wagon.y, Wagon.w + HorseForWagon.w + 10 + (HorseForWagon.x - Wagon.x), Wagon.h + HorseForWagon.h + 10);
+                    TheTrail.animateTimeline.pause();
+                    gameTimeline.pause();
+                    consumeTimelineSlow.play();
+                    consumeTimelineFast.pause();
+                    TheTrail.gridPane.setId("TheTrailGridPaneRest");
+                    Timeline restTimeline = new Timeline(new KeyFrame(Duration.seconds(1), timelineEvent -> {
+                        //add code for chance to remove illness
+                        ChanceToRemoveAilmentWhenResting.checkChanceForAilmentRemoval();
+                    }));
+                    restTimeline.setCycleCount(3);
+                    restTimeline.setOnFinished(event1 -> {
+                        carryOn.fire();
+                        TheTrail.animateTimeline.play();
+                        canIRestFlag = true;
+                        rest.setDisable(false);
+                    });
+                    restTimeline.play();
+                } else if (result.get() == buttonTypeTwo) {
+                    TimeLineStatusPage.addMessageToPane("You have decided to rest for 2 days.", "white");
+                    TheTrail.gc1.clearRect(Wagon.x, Wagon.y, Wagon.w + HorseForWagon.w + 10 + (HorseForWagon.x - Wagon.x), Wagon.h + HorseForWagon.h + 10);
+                    TheTrail.animateTimeline.pause();
+                    gameTimeline.pause();
+                    consumeTimelineSlow.play();
+                    consumeTimelineFast.pause();
+                    TheTrail.gridPane.setId("TheTrailGridPaneRest");
+                    Timeline restTimeline = new Timeline(new KeyFrame(Duration.seconds(1), timelineEvent -> {
+                        //add code for chance to remove illness
+                        ChanceToRemoveAilmentWhenResting.checkChanceForAilmentRemoval();
+                    }));
+                    restTimeline.setCycleCount(6);
+                    restTimeline.setOnFinished(event1 -> {
+                        carryOn.fire();
+                        TheTrail.animateTimeline.play();
+                        canIRestFlag = true;
+                        rest.setDisable(true);
+                    });
+                    restTimeline.play();
+                } else if (result.get() == buttonTypeThree) {
+                    TimeLineStatusPage.addMessageToPane("You have decided to rest for 3 days.", "white");
+                    TheTrail.gc1.clearRect(Wagon.x, Wagon.y, Wagon.w + HorseForWagon.w + 10 + (HorseForWagon.x - Wagon.x), Wagon.h + HorseForWagon.h + 10);
+                    TheTrail.animateTimeline.pause();
+                    gameTimeline.pause();
+                    consumeTimelineSlow.play();
+                    consumeTimelineFast.pause();
+                    TheTrail.gridPane.setId("TheTrailGridPaneRest");
+                    Timeline restTimeline = new Timeline(new KeyFrame(Duration.seconds(1), timelineEvent -> {
+                        //add code for chance to remove illness
+                        ChanceToRemoveAilmentWhenResting.checkChanceForAilmentRemoval();
+                    }));
+                    restTimeline.setCycleCount(9);
+                    restTimeline.setOnFinished(event1 -> {
+                        carryOn.fire();
+                        TheTrail.animateTimeline.play();
+                        canIRestFlag = true;
+                        rest.setDisable(true);
+                    });
+                    restTimeline.play();
+                } else {
+                    // ... user chose CANCEL or closed the dialog
+                }
             }
         });
 

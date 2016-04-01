@@ -25,6 +25,13 @@ import views.StartingTown.StartingTownView;
  */
 public class HuntingSummary{
     public static void showSummaryScreen(int animalsKilled, double poundsHunted){
+
+        //Erase all the pictures of the hunting game then remove them from array to prevent hit counters.
+        for (WildGameObject wild: RandomCreateGameObjects.wildGame) {
+            wild.setImage(null);
+        }
+        RandomCreateGameObjects.wildGame.clear();
+
         GridPane gridPane = new GridPane();
         VBox vBox = new VBox(10);
         gridPane.setId("summaryBackground");
@@ -57,6 +64,7 @@ public class HuntingSummary{
         //Add the pounds to your inventory, first check if it exists tho.
         final double finalPoundsHunted = poundsHunted;
         continueBtn.setOnAction(event -> {
+            TrailControlPanel.goHunt.setDisable(false);
             Main.getPrimaryStage().setScene(TheTrail.scene);
             TrailControlPanel.rest.setDisable(false);//reenable the button for resting
             int counter=0;
@@ -68,7 +76,8 @@ public class HuntingSummary{
                 }
             }
             if(counter == Inventory.getInventory().size()){
-                Inventory.getInventory().add(new GameMeat(1,finalPoundsHunted));
+                if(!(finalPoundsHunted == 0.00))
+                    Inventory.getInventory().add(new GameMeat(1,finalPoundsHunted));
             }
 
             Inventory.updateInventoryScreen();

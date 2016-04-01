@@ -54,21 +54,19 @@ public class Inventory {
                 Label label = new Label(item.getWeight()+"lbs of" + " " + item.getName());
                 label.setId("inventoryItemLabel");
                 vBox.getChildren().add(label);
+
+                label.setOnMouseEntered(event -> label.setId("inventoryLabelBlack"));
+                label.setOnMouseExited(event1 -> label.setId("inventoryItemLabel"));
+                label.setOnMouseClicked(event -> InventoryItemAction.showActionMenu(item, event.getScreenX(), event.getScreenY()));
             }else{
-                Label label = new Label(item.getQuantity() + " " + item.getName());
+                Label label = new Label(item.getQuantity() + " " + item.getName() +"("+item.getWeight()*item.getQuantity()+" lbs)");
                 label.setId("inventoryItemLabel");
                 vBox.getChildren().add(label);
-                label.setOnMouseEntered(event -> {
-                    label.setId("inventoryLabelBlack");
-                });
-                label.setOnMouseExited(event1 -> {
-                    label.setId("inventoryItemLabel");
-                });
-                label.setOnMouseClicked(event -> {
-                    InventoryItemAction.showActionMenu(item, event.getScreenX(), event.getScreenY());
-                });
-            }
 
+                label.setOnMouseEntered(event -> label.setId("inventoryLabelBlack"));
+                label.setOnMouseExited(event1 -> label.setId("inventoryItemLabel"));
+                label.setOnMouseClicked(event -> InventoryItemAction.showActionMenu(item, event.getScreenX(), event.getScreenY()));
+            }
         }
 
         inventoryScrollPane.setContent(vBox);

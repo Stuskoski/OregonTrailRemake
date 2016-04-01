@@ -6,6 +6,8 @@ import CharacterObjects.Child3;
 import CharacterObjects.Spouse;
 import items.ItemInterface;
 import items.food.BeefJerky;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -13,7 +15,9 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import models.Inventory;
 
 /**
@@ -28,6 +32,8 @@ public class InventoryItemAction {
         VBox vBox = new VBox(3);
         Scene scene = new Scene(vBox, 150, 95);
         Stage stage = new Stage();
+        final Timeline[] timeline = new Timeline[1];
+        timeline[0] = new Timeline();
 
         vBox.setAlignment(Pos.CENTER);
 
@@ -42,13 +48,21 @@ public class InventoryItemAction {
         vBox.setId("actionMenuScreen");
 
 
+        //Action listeners.
+        //After 1 sec, close the window.  Else restart the timer. Beautiful.
         scene.setOnMouseExited(event -> {
-            stage.close();
+            timeline[0] = new Timeline(new KeyFrame(Duration.seconds(1), event2 -> {
+            }));
+            timeline[0].setCycleCount(1);
+            timeline[0].play();
+            timeline[0].setOnFinished(event1 -> {
+                stage.close();
+            });
         });
 
-        delete.setOnAction(event -> {
-            showDelMenu(item, screenX, screenY);
-        });
+        scene.setOnMouseEntered(event1 -> timeline[0].stop());
+
+        delete.setOnAction(event -> showDelMenu(item, screenX, screenY));
 
         vBox.getChildren().addAll(useOnCharacter, delete);
 
@@ -87,12 +101,6 @@ public class InventoryItemAction {
         Label delLabel = new Label("Number to delete:");
         delLabel.setId("inventoryItemLabel");
 
-        ComboBox<Integer> comboBox = new ComboBox<>();
-        comboBox.setPromptText("Select amount");
-        for(int i = 1; i<=item.getQuantity(); i++){
-            comboBox.getItems().add(i);
-        }
-
         Button delete = new Button("Delete");
 
         delete.setPrefWidth(100);
@@ -100,14 +108,37 @@ public class InventoryItemAction {
         delete.setId("mainScreenBtn");
         vBox.setId("actionMenuScreen");
 
-        delete.setOnAction(event -> {
-            if(comboBox.getValue() != null){
-                delItem(item, comboBox.getValue());
-                stage.close();
+        if(item.getName().equals("Game Meat")){ //special case for game meat since it goes by weight not quantity
+            ComboBox<Double> comboBox = new ComboBox<>();
+            comboBox.setPromptText("Select amount");
+            for(double i = 1.00; i<=item.getWeight(); i++){
+                comboBox.getItems().add(i);
             }
-        });
+            comboBox.getItems().add(item.getWeight());
 
-        vBox.getChildren().addAll(delLabel, comboBox, delete);
+            delete.setOnAction(event -> {
+                if(comboBox.getValue() != null){
+                    delItemSpecialCaseForMeat(item, comboBox.getValue());
+                    stage.close();
+                }
+            });
+            vBox.getChildren().addAll(delLabel, comboBox, delete);
+
+        }else{ //every other item
+            ComboBox<Integer> comboBox = new ComboBox<>();
+            comboBox.setPromptText("Select amount");
+            for(int i = 1; i<=item.getQuantity(); i++){
+                comboBox.getItems().add(i);
+            }
+
+            delete.setOnAction(event -> {
+                if(comboBox.getValue() != null){
+                    delItem(item, comboBox.getValue());
+                    stage.close();
+                }
+            });
+            vBox.getChildren().addAll(delLabel, comboBox, delete);
+        }
 
         scene.getStylesheets().add("resources/main.css");
 
@@ -116,13 +147,9 @@ public class InventoryItemAction {
         stage.setResizable(false);
         stage.setX(screenX-50);
         stage.setY(screenY-50);
-        stage.setTitle("Item Deletion");
+        stage.setTitle("Delete Item");
 
         stage.show();
-
-
-
-
     }
 
     private static void delItem(ItemInterface item, int number){
@@ -130,6 +157,15 @@ public class InventoryItemAction {
             Inventory.getInventory().remove(item);
         }else{
             item.setQuantity(item.getQuantity()-number);
+        }
+        Inventory.updateInventoryScreen();
+    }
+
+    private static void delItemSpecialCaseForMeat(ItemInterface item, double number){
+        if(item.getWeight() == number){
+            Inventory.getInventory().remove(item);
+        }else{
+            item.setWeight(item.getWeight()-number);
         }
         Inventory.updateInventoryScreen();
     }

@@ -5,6 +5,7 @@ import items.ItemInterface;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -25,7 +26,7 @@ import java.util.ArrayList;
 public class StartTownStoreView {
     private static Scene startStore;
     private static boolean canRun = true;
-    private static Button checkOut = new Button("");
+    public static Button checkOut = new Button("");
     private static Button userCash = new Button("$0.00");
     private static TreeItem<Label> inventoryRoot;
     private static TreeView<Label> inventoryTreeView;
@@ -220,17 +221,13 @@ public class StartTownStoreView {
                 checkOut.setText("$0.00 - Checkout");
                 userCash.setText("$" + String.format("%.2f", Profile.getMoney()) + " - Wallet");
 
-
-
-
-
                 Inventory.updateInventoryScreen();
             }
         });
 
         Scene scene = new Scene(gridPane, Main.getPrimaryStage().getScene().getWidth(), Main.getPrimaryStage().getScene().getHeight());
 
-        AddKeyListenerToScene.addGeneralKeyListener(scene);
+        AddKeyListenerToScene.addGeneralKeyListenerToStore(scene);
 
         scene.getStylesheets().add("resources/main.css");
 

@@ -49,7 +49,7 @@ public class TrailControlPanel {
     public static Timeline consumeTimelineSlow;
     public static boolean canIstartTimeline = true, canIRestFlag = true;
     public static Button carryOn;
-    public static Button rest;
+    public static Button rest, goHunt;
     public static int counterForMap = 0;
 
     public static void showControlPane(){
@@ -64,7 +64,7 @@ public class TrailControlPanel {
 
         rest = new Button("Rest");
         carryOn = new Button("Carry On");
-        Button goHunt = new Button("Go Hunting");
+        goHunt = new Button("Go Hunting");
         Button map = new Button("Map");
         Button familyStatus = new Button("Family Status");
         Button inventory = new Button("Inventory");
@@ -227,6 +227,7 @@ public class TrailControlPanel {
         });
 
         goHunt.setOnAction(huntEvent -> {
+            goHunt.setDisable(true);
             rest.setDisable(true);
             canIstartTimeline = false;
             gameTimeline.pause();

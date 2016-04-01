@@ -175,7 +175,14 @@
 #inventoryScrollPane{
     -fx-background: transparent;
     -fx-background-color: transparent;
-
+}
+#inventoryLabelBlack{
+    -fx-font-size: 16;
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+}
+#actionMenuScreen{
+    -fx-background-color: black;
 }
 /*---------------------Esc Menu Popup----------------------------*/
 #escScreenBtn{
@@ -233,6 +240,15 @@
     -fx-font-size: 14;
     -fx-font-weight: bold;
     -fx-text-fill: black;
+}
+/*--------------------------Hunting Summary----------------------*/
+#summaryLabel{
+    -fx-font-size: 30;
+    -fx-font-weight: bolder;
+    -fx-text-fill: white;
+}
+#summaryBackground{
+    -fx-background-color: black;
 }
 
 /*--------------------------Control Panel------------------------*/
@@ -307,7 +323,6 @@
     -fx-background-position: center center;
     -fx-background-color: black;
 }
-/*---------------------------------------------------------------*/
 /*---------------------------------------------------------------*/
 /*---------------------------------------------------------------*/
 /*---------------------------------------------------------------*/

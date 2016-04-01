@@ -27,6 +27,7 @@ public class HuntingSummary{
     public static void showSummaryScreen(int animalsKilled, double poundsHunted){
         GridPane gridPane = new GridPane();
         VBox vBox = new VBox(10);
+        gridPane.setId("summaryBackground");
 
         gridPane.setAlignment(Pos.CENTER);
 
@@ -39,6 +40,9 @@ public class HuntingSummary{
 
         Label animalsKilledLabel = new Label("Animals Killed: " + animalsKilled);
         Label poundsHuntedLabel = new Label("Pounds of Meat Hunted: " + poundsHunted);
+
+        animalsKilledLabel.setId("summaryLabel");
+        poundsHuntedLabel.setId("summaryLabel");
 
         Profile.setAnimalsKilled(Profile.getAnimalsKilled() + animalsKilled);
 

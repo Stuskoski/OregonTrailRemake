@@ -29,7 +29,7 @@ public class Main extends Application {
             System.exit(0);
         });
         mainPrimaryStage.show();
-        mainPrimaryStage.setX(900);
+        mainPrimaryStage.setX(850);
         mainPrimaryStage.setY(100);
     }
 

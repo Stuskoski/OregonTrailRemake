@@ -8,6 +8,8 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import views.StaticScenes.InventoryItemAction;
+
 import java.util.ArrayList;
 
 /**
@@ -56,6 +58,15 @@ public class Inventory {
                 Label label = new Label(item.getQuantity() + " " + item.getName());
                 label.setId("inventoryItemLabel");
                 vBox.getChildren().add(label);
+                label.setOnMouseEntered(event -> {
+                    label.setId("inventoryLabelBlack");
+                });
+                label.setOnMouseExited(event1 -> {
+                    label.setId("inventoryItemLabel");
+                });
+                label.setOnMouseClicked(event -> {
+                    InventoryItemAction.showActionMenu(item, event.getScreenX(), event.getScreenY());
+                });
             }
 
         }

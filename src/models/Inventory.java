@@ -1,11 +1,17 @@
 package models;
 
+import CharacterObjects.Profile;
+import items.Animals.Donkey;
+import items.Animals.Horse;
+import items.Animals.Ox;
 import items.ItemInterface;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import views.StaticScenes.InventoryItemAction;
@@ -27,7 +33,7 @@ import java.util.ArrayList;
 public class Inventory {
     private static ArrayList<ItemInterface> inventory = new ArrayList<>();
     private static Stage inventoryStage = new Stage();
-    private static GridPane inventoryGrid = new GridPane();
+    private static BorderPane inventoryGrid = new BorderPane();
     private static ScrollPane inventoryScrollPane = new ScrollPane();
     private static Scene inventoryScene = new Scene(inventoryGrid, 400, 600);
 
@@ -40,7 +46,6 @@ public class Inventory {
         inventoryScrollPane.setPrefViewportWidth(400);
 
         inventoryGrid.setId("inventoryBackground");
-        inventoryGrid.setAlignment(Pos.CENTER);
 
         VBox vBox = new VBox(5);
 
@@ -66,16 +71,54 @@ public class Inventory {
                 label.setOnMouseEntered(event -> label.setId("inventoryLabelBlack"));
                 label.setOnMouseExited(event1 -> label.setId("inventoryItemLabel"));
                 label.setOnMouseClicked(event -> InventoryItemAction.showActionMenu(item, event.getScreenX(), event.getScreenY()));
+                if(item.getName().equals("Donkey")){
+                    Profile.setCarryingCapacity(Profile.getCarryingCapacity() + item.getQuantity() * new Donkey(1).getWeightCapacityIncrease());
+                }
+                if(item.getName().equals("American Pure Bred")){
+                    Profile.setCarryingCapacity(Profile.getCarryingCapacity() + item.getQuantity() * new Horse(1).getWeightCapacityIncrease());
+                }
+                if(item.getName().equals("English Ox")){
+                    Profile.setCarryingCapacity(Profile.getCarryingCapacity() + item.getQuantity() * new Ox(1).getWeightCapacityIncrease());
+                }
+
             }
         }
 
         inventoryScrollPane.setContent(vBox);
 
-        inventoryGrid.add(inventoryScrollPane, 0, 0);
+        HBox hBox1 = new HBox(inventoryScrollPane);
+        hBox1.setAlignment(Pos.CENTER);
+
+        inventoryGrid.setCenter(hBox1);
+
+        HBox hBox = new HBox();
+        hBox.setAlignment(Pos.CENTER);
+
+        Label label = new Label("Carrying Capacity: " + returnInventoryWeight() + "/" + Profile.getCarryingCapacity()+"\n\n\n");
+        hBox.getChildren().add(label);
+        label.setId("inventoryCarryingCapacityLabel");
+
+        inventoryGrid.setTop(hBox);
 
         inventoryGrid.getStylesheets().add("resources/main.css");
         inventoryStage.setTitle("Inventory");
         inventoryStage.setScene(inventoryScene);
+    }
+
+    public static double returnInventoryWeight(){
+        double weight = 0.00;
+
+        for (ItemInterface item : Inventory.getInventory()) {
+            if(!(item.getName().equals("American Pure Bred")) && !(item.getName().equals("English Ox")) && !(item.getName().equals("Donkey"))){
+                if(item.getName().equals("Game Meat")){
+                    weight += item.getWeight();
+                }else{
+                    weight += item.getWeight() * item.getQuantity();
+                }
+            }
+        }
+
+        return weight;
     }
 
     public static ArrayList<ItemInterface> getInventory(){

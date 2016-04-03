@@ -172,6 +172,11 @@
     -fx-text-fill: white;
     -fx-font-weight: bold;
 }
+#inventoryCarryingCapacityLabel{
+    -fx-font-size: 20;
+    -fx-text-fill: white;
+    -fx-font-weight: bolder;
+}
 #inventoryScrollPane{
     -fx-background: transparent;
     -fx-background-color: transparent;

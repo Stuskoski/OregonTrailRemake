@@ -13,7 +13,7 @@ public class Socks implements ItemInterface {
     }
     @Override
     public double getWeight() {
-        return 0;
+        return 0.50;
     }
 
     @Override

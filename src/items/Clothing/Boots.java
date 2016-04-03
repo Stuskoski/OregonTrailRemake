@@ -14,7 +14,7 @@ public class Boots implements ItemInterface {
 
     @Override
     public double getWeight() {
-        return 0;
+        return 3.00;
     }
 
     @Override

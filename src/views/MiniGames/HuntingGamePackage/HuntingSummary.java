@@ -70,14 +70,37 @@ public class HuntingSummary{
             int counter=0;
             for (ItemInterface weightCheck : Inventory.getInventory()){
                 if(weightCheck.getName().equals("Game Meat")){
-                    weightCheck.setWeight(weightCheck.getWeight()+finalPoundsHunted);
+                    //Check weight before adding
+                    if(Inventory.returnInventoryWeight() < Profile.getCarryingCapacity()){
+                        double temp = 0.00;
+
+                        temp = Profile.getCarryingCapacity() - Inventory.returnInventoryWeight(); //100 - 45 = 55     45 - 45 = 0 what you have left = 20 lbs
+
+                        if(temp >= finalPoundsHunted){//if you have more carrying capacity left than the lbs pounds hunted
+                            weightCheck.setWeight(weightCheck.getWeight()+finalPoundsHunted);
+                        }else{
+                            weightCheck.setWeight(weightCheck.getWeight()+temp);
+                        }
+                    }
+
                 }else{
                     counter++;
                 }
             }
             if(counter == Inventory.getInventory().size()){
-                if(!(finalPoundsHunted == 0.00))
-                    Inventory.getInventory().add(new GameMeat(1,finalPoundsHunted));
+                if(!(finalPoundsHunted == 0.00)) {
+                    if(Inventory.returnInventoryWeight() < Profile.getCarryingCapacity()) {
+                        double temp = 0.00;
+
+                        temp = Profile.getCarryingCapacity() - Inventory.returnInventoryWeight();
+
+                        if(temp >= finalPoundsHunted){
+                            Inventory.getInventory().add(new GameMeat(1, finalPoundsHunted));
+                        }else{
+                            Inventory.getInventory().add(new GameMeat(1, temp));
+                        }
+                    }
+                }
             }
 
             Inventory.updateInventoryScreen();

@@ -195,6 +195,12 @@ public class StartTownStoreView {
                 alert.setHeaderText(null);
                 alert.setContentText("Your cart total exceeds how much cash you have!");
                 alert.showAndWait();
+            }else if(returnCartWeight(cartList) + Inventory.returnInventoryWeight() > Profile.getCarryingCapacity()) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Unable to checkout");
+                alert.setHeaderText(null);
+                alert.setContentText("Your cart total weight exceeds how much weight you can carry!");
+                alert.showAndWait();
             }else{
                 for(ItemInterface item : cartList){
 
@@ -233,6 +239,22 @@ public class StartTownStoreView {
 
         setStartStore(scene);
         Main.getPrimaryStage().setScene(scene);
+    }
+
+    private static double returnCartWeight(ArrayList<ItemInterface> cart){
+        double weight = 0.00;
+
+        for (ItemInterface item : cart) {
+            if(!(item.getName().equals("American Pure Bred")) && !(item.getName().equals("English Ox")) && !(item.getName().equals("Donkey"))){
+                if(item.getName().equals("Game Meat")){
+                    weight += item.getWeight();
+                }else{
+                    weight += item.getWeight() * item.getQuantity();
+                }
+            }
+        }
+
+        return weight;
     }
 
     //This method is used to update the cart when adding items.  It's a little sloppy

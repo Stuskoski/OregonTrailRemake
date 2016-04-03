@@ -1,6 +1,9 @@
 package views.HittingTheTrail;
 
 import CharacterObjects.*;
+import items.Clothing.Shirt;
+import items.Guns.AlienRifle;
+import items.Guns.Bullets;
 import items.ItemInterface;
 import items.food.LargeBottleofWater;
 import javafx.animation.Animation;
@@ -244,6 +247,9 @@ public class TrailControlPanel {
                 TrailMap.stage.show();
             }
 
+            Inventory.getInventory().add(new Shirt(42));
+            Inventory.getInventory().add(new AlienRifle(1));
+            Inventory.getInventory().add(new Bullets(20));
             Profile.hashSet.clear();
             Spouse.hashSet.clear();
             Child1.hashSet.clear();

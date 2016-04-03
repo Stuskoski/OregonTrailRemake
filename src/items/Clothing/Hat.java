@@ -13,7 +13,7 @@ public class Hat implements ItemInterface {
     }
     @Override
     public double getWeight() {
-        return 0;
+        return 1.00;
     }
 
     @Override

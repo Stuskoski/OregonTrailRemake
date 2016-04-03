@@ -13,7 +13,7 @@ public class Jacket implements ItemInterface {
     }
     @Override
     public double getWeight() {
-        return 0;
+        return 1.50;
     }
 
     @Override

@@ -13,7 +13,7 @@ public class Chaps implements ItemInterface {
     }
     @Override
     public double getWeight() {
-        return 0;
+        return 2.00;
     }
 
     @Override

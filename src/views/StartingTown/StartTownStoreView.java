@@ -40,6 +40,7 @@ public class StartTownStoreView {
         gridPane.setHgap(5);
         gridPane.setVgap(5);
         gridPane.setId("startTownStoreGrid");
+        Scene scene = new Scene(gridPane, Main.getPrimaryStage().getScene().getWidth(), Main.getPrimaryStage().getScene().getHeight());
 
         if(canRun) { //might need to reset when user wants to start a new game
             RandomizeStoreContents.startingTown();
@@ -146,6 +147,13 @@ public class StartTownStoreView {
                     }
                 itemName.setText(obj.getQuantity() + "\t" + obj.getName());
             });
+
+            Tooltip itemTooltip = new Tooltip(obj.getDescription());
+            itemName.setOnMouseEntered(event -> {
+                itemName.setId("inventoryLabelBlack");
+                itemTooltip.show(gridPane, event.getScreenX()+15, event.getScreenY()-5);
+                hideItemTooltip(itemName, itemTooltip);
+            });
         }
 
         if(clothing.getChildren().isEmpty()){
@@ -231,8 +239,6 @@ public class StartTownStoreView {
             }
         });
 
-        Scene scene = new Scene(gridPane, Main.getPrimaryStage().getScene().getWidth(), Main.getPrimaryStage().getScene().getHeight());
-
         AddKeyListenerToScene.addGeneralKeyListenerToStore(scene);
 
         scene.getStylesheets().add("resources/main.css");
@@ -255,6 +261,13 @@ public class StartTownStoreView {
         }
 
         return weight;
+    }
+
+    private static void hideItemTooltip(Label label, Tooltip itemTooltip){
+        label.setOnMouseExited(event -> {
+            label.setId("");
+            itemTooltip.hide();
+        });
     }
 
     //This method is used to update the cart when adding items.  It's a little sloppy

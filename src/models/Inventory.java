@@ -90,6 +90,7 @@ public class Inventory {
                     Profile.setCarryingCapacity(Profile.getCarryingCapacity() + item.getQuantity() * new Ox(1).getWeightCapacityIncrease());
                 }
 
+                //Sometimes the tooltip gets in the way so it resets....need to offset it
                 Tooltip itemTooltip = new Tooltip(item.getDescription());
                 label.setOnMouseEntered(event -> {
                     label.setId("inventoryLabelBlack");

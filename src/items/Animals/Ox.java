@@ -24,7 +24,10 @@ public class Ox implements ItemInterface {
 
     @Override
     public String getDescription() {
-        return "A large English Ox.  One of the best.  Essential for traveling the Oregon Trail.";
+        return "A large English Ox.  One of the best.  Essential for traveling the Oregon Trail.\n" +
+                "Stats:\n" +
+                "Weight Capacity: +50.00\n" +
+                "Cost: $" + getPrice();
     }
 
     @Override

@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -222,6 +223,26 @@ public class StartTownStableView {
             }
         });
 
+        Tooltip donkeyTooltip = new Tooltip(new Donkey(0).getDescription());
+        buyDonkey.setOnMouseEntered(event1 -> {
+            donkeyTooltip.show(gridPane, event1.getScreenX(), event1.getScreenY()+donkeyTooltip.getHeight()/2);
+            donkeyTooltip.setId("generalToolTip");
+            hideItemTooltip(buyDonkey, donkeyTooltip);
+        });
+        Tooltip horseTooltip = new Tooltip(new Horse(0).getDescription());
+        buyHorse.setOnMouseEntered(event1 -> {
+            horseTooltip.show(gridPane, event1.getScreenX(), event1.getScreenY()+horseTooltip.getHeight()/2);
+            horseTooltip.setId("generalToolTip");
+            hideItemTooltip(buyHorse, horseTooltip);
+        });
+        Tooltip oxTooltip = new Tooltip(new Ox(0).getDescription());
+        buyOx.setOnMouseEntered(event1 -> {
+            oxTooltip.show(gridPane, event1.getScreenX(), event1.getScreenY()+oxTooltip.getHeight()/2);
+            oxTooltip.setId("generalToolTip");
+            hideItemTooltip(buyOx, oxTooltip);
+        });
+
+
 
         backBtn.setOnAction(event -> {
             Main.getPrimaryStage().setScene(StartingTownView.getStartingTownView());
@@ -239,6 +260,12 @@ public class StartTownStableView {
 
         StartTownSaloonView.setStartSaloon(scene);
         Main.getPrimaryStage().setScene(scene);
+    }
+
+    private static void hideItemTooltip(Button button, Tooltip tooltip) {
+        button.setOnMouseExited(event -> {
+            tooltip.hide();
+        });
     }
 
     //getters and setters

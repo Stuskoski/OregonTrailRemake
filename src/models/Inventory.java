@@ -20,6 +20,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import views.StaticScenes.InventoryItemAction;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 /**
@@ -67,13 +68,15 @@ public class Inventory {
                 Tooltip itemTooltip = new Tooltip(item.getDescription());
                 label.setOnMouseEntered(event -> {
                     label.setId("inventoryLabelBlack");
-                    itemTooltip.show(inventoryScrollPane, inventoryScene.getWindow().getX(), inventoryScene.getWindow().getY()+(vBox.getChildren().indexOf(label) * 25 + 75));
+                    itemTooltip.show(inventoryScrollPane, event.getScreenX()+15, event.getScreenY()-5);
+                    itemTooltip.setId("generalToolTip");
                     hideItemTooltip(label, itemTooltip);
                 });
 
                 label.setOnMouseClicked(event -> InventoryItemAction.showActionMenu(item, event.getScreenX(), event.getScreenY()));
             }else{
-                Label label = new Label(item.getQuantity() + " " + item.getName() +"("+item.getWeight()*item.getQuantity()+" lbs)");
+                DecimalFormat df = new DecimalFormat("####0.00");
+                Label label = new Label(item.getQuantity() + " " + item.getName() +"("+df.format(item.getWeight()*item.getQuantity())+" lbs)");
                 label.setId("inventoryItemLabel");
                 vBox.getChildren().add(label);
 
@@ -94,7 +97,9 @@ public class Inventory {
                 Tooltip itemTooltip = new Tooltip(item.getDescription());
                 label.setOnMouseEntered(event -> {
                     label.setId("inventoryLabelBlack");
-                    itemTooltip.show(inventoryScrollPane, inventoryScene.getWindow().getX(), inventoryScene.getWindow().getY()+(vBox.getChildren().indexOf(label) * 25 + 75));
+                    itemTooltip.show(inventoryScrollPane, event.getScreenX()+15, event.getScreenY()-5);
+                    itemTooltip.setId("generalToolTip");
+                    //itemTooltip.show(inventoryScrollPane, inventoryScene.getWindow().getX(), inventoryScene.getWindow().getY()+(vBox.getChildren().indexOf(label) * 25 + 75));
                     hideItemTooltip(label, itemTooltip);
                 });
 

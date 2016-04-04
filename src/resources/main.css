@@ -189,6 +189,10 @@
 #actionMenuScreen{
     -fx-background-color: black;
 }
+#generalToolTip{
+    -fx-font-size: 14;
+    -fx-font-weight: bold;
+}
 /*---------------------Esc Menu Popup----------------------------*/
 #escScreenBtn{
     -fx-background-color:

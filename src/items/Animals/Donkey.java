@@ -26,7 +26,10 @@ public class Donkey implements ItemInterface {
 
     @Override
     public String getDescription() {
-        return "El Burro! Donkeys are great for increasing carrying capacity.";
+        return "El Burro! Donkeys are great for increasing carrying capacity.\n" +
+                "Stats:\n" +
+                "Weight Capacity: +45.00\n" +
+                "Cost: $" + getPrice();
     }
 
     @Override

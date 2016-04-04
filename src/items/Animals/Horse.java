@@ -23,7 +23,10 @@ public class Horse implements ItemInterface {
 
     @Override
     public String getDescription() {
-        return "A powerful steed.  Great for increasing how far you can travel in a day.";
+        return "A powerful steed.  Great for increasing how far you can travel in a day.\n" +
+                "Stats:\n" +
+                "Weight Capacity: +40.00\ns" +
+                "Cost: $" + getPrice();
     }
 
     @Override

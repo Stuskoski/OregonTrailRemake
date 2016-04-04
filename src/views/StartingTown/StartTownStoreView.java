@@ -11,6 +11,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import Start.Main;
 import models.AddKeyListenerToScene;
+import models.CreateTooltip;
 import models.Inventory;
 import models.RandomizeStoreContents;
 
@@ -148,10 +149,12 @@ public class StartTownStoreView {
                 itemName.setText(obj.getQuantity() + "\t" + obj.getName());
             });
 
-            Tooltip itemTooltip = new Tooltip(obj.getDescription());
+            //Tooltip itemTooltip = new Tooltip(obj.getDescription());
+            Tooltip itemTooltip = CreateTooltip.getToolTipFromItem(obj);
             itemName.setOnMouseEntered(event -> {
                 itemName.setId("inventoryLabelBlack");
-                itemTooltip.show(gridPane, event.getScreenX()+15, event.getScreenY()-5);
+                itemTooltip.show(gridPane, event.getScreenX()+15, event.getScreenY());
+                itemTooltip.setId("generalToolTip");
                 hideItemTooltip(itemName, itemTooltip);
             });
         }
@@ -301,7 +304,7 @@ public class StartTownStoreView {
             HBox hbox = new HBox(10);
             Label quantity = new Label(String.valueOf(obj.getQuantity()));
             quantity.setId("cartItems");
-            Label name = new Label(obj.getName());
+            Label name = new Label(obj.getName() + " (" + obj.getWeight()*obj.getQuantity() + " lbs)");
             name.setId("cartItems");
             hbox.getChildren().addAll(quantity, name);
             hbox.setAlignment(Pos.CENTER);
@@ -326,6 +329,7 @@ public class StartTownStoreView {
                 updateCartPrice(cartList);
                 if (obj.getQuantity() > 0) {
                     quantity.setText(String.valueOf(obj.getQuantity()));
+                    name.setText(obj.getName() + " (" + obj.getWeight()*obj.getQuantity() + " lbs)");
                 } else {
                     cart.getChildren().remove(hbox);
                     cartList.remove(obj);

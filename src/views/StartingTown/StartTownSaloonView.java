@@ -117,8 +117,8 @@ public class StartTownSaloonView {
                 }
             });
 
-            System.out.println(event.getX());
-            System.out.println(event.getY());
+            //System.out.println(event.getX());
+            //System.out.println(event.getY());
         });
 
         backBtn.setOnAction(event -> {

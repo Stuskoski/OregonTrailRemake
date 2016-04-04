@@ -47,6 +47,9 @@ public class InventoryItemAction {
         delete.setId("mainScreenBtn");
         vBox.setId("actionMenuScreen");
 
+        if(!item.getCategory().equals("meds"))
+            useOnCharacter.setDisable(true);
+
 
         //Action listeners.
         //After 1 sec, close the window.  Else restart the timer. Beautiful.
@@ -63,6 +66,7 @@ public class InventoryItemAction {
         scene.setOnMouseEntered(event1 -> timeline[0].stop());
 
         delete.setOnAction(event -> showDelMenu(item, screenX, screenY));
+        useOnCharacter.setOnAction(event -> showUseMenu(item, screenX, screenY));
 
         vBox.getChildren().addAll(useOnCharacter, delete);
 
@@ -76,19 +80,61 @@ public class InventoryItemAction {
         stage.setX(screenX-50);
         stage.setY(screenY-50);
     }
-    private static void showUseMenu(ItemInterface item){
-        if(Spouse.isAlive()){
+    private static void showUseMenu(ItemInterface item, double screenX, double screenY){
 
+
+        VBox vBox = new VBox(5);
+        Scene scene = new Scene(vBox, 325, 225);
+        Stage stage = new Stage();
+
+        vBox.setAlignment(Pos.CENTER);
+
+        Button profileUse = new Button("Use on yourself");
+        profileUse.setPrefWidth(300);
+        profileUse.setId("mainScreenBtn");
+        vBox.getChildren().add(profileUse);
+
+        if(Spouse.isAlive()){
+            Button spouseUse = new Button("Use on " + Spouse.getName() + " (Spouse)");
+            spouseUse.setPrefWidth(300);
+            spouseUse.setId("mainScreenBtn");
+            vBox.getChildren().add(spouseUse);
         }
         if(Child1.isAlive()){
-
+            Button child1Use = new Button("Use on " + Child1.getName() + " (Child1)");
+            child1Use.setPrefWidth(300);
+            child1Use.setId("mainScreenBtn");
+            vBox.getChildren().add(child1Use);
         }
         if(Child2.isAlive()){
-
+            Button child2Use = new Button("Use on " + Child2.getName() + " (Child2)");
+            child2Use.setPrefWidth(300);
+            child2Use.setId("mainScreenBtn");
+            vBox.getChildren().add(child2Use);
         }
         if(Child3.isAlive()){
-
+            Button child3Use = new Button("Use on " + Child3.getName() + " (Child3)");
+            child3Use.setPrefWidth(300);
+            child3Use.setId("mainScreenBtn");
+            vBox.getChildren().add(child3Use);
         }
+
+        vBox.setId("actionMenuScreen");
+
+
+        scene.getStylesheets().add("resources/main.css");
+
+        stage.setScene(scene);
+
+        stage.setResizable(false);
+        stage.setX(screenX-50);
+        stage.setY(screenY-50);
+        stage.setTitle("Use Item");
+
+        stage.show();
+
+
+
 
     }
     private static void showDelMenu(ItemInterface item, double screenX, double screenY){

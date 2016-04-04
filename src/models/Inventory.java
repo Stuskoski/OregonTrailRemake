@@ -5,15 +5,19 @@ import items.Animals.Donkey;
 import items.Animals.Horse;
 import items.Animals.Ox;
 import items.ItemInterface;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import views.StaticScenes.InventoryItemAction;
 
 import java.util.ArrayList;
@@ -60,8 +64,13 @@ public class Inventory {
                 label.setId("inventoryItemLabel");
                 vBox.getChildren().add(label);
 
-                label.setOnMouseEntered(event -> label.setId("inventoryLabelBlack"));
-                label.setOnMouseExited(event1 -> label.setId("inventoryItemLabel"));
+                Tooltip itemTooltip = new Tooltip(item.getDescription());
+                label.setOnMouseEntered(event -> {
+                    label.setId("inventoryLabelBlack");
+                    itemTooltip.show(inventoryScrollPane, inventoryScene.getWindow().getX(), inventoryScene.getWindow().getY()+(vBox.getChildren().indexOf(label) * 25 + 75));
+                    hideItemTooltip(label, itemTooltip);
+                });
+
                 label.setOnMouseClicked(event -> InventoryItemAction.showActionMenu(item, event.getScreenX(), event.getScreenY()));
             }else{
                 Label label = new Label(item.getQuantity() + " " + item.getName() +"("+item.getWeight()*item.getQuantity()+" lbs)");
@@ -80,6 +89,13 @@ public class Inventory {
                 if(item.getName().equals("English Ox")){
                     Profile.setCarryingCapacity(Profile.getCarryingCapacity() + item.getQuantity() * new Ox(1).getWeightCapacityIncrease());
                 }
+
+                Tooltip itemTooltip = new Tooltip(item.getDescription());
+                label.setOnMouseEntered(event -> {
+                    label.setId("inventoryLabelBlack");
+                    itemTooltip.show(inventoryScrollPane, inventoryScene.getWindow().getX(), inventoryScene.getWindow().getY()+(vBox.getChildren().indexOf(label) * 25 + 75));
+                    hideItemTooltip(label, itemTooltip);
+                });
 
             }
         }
@@ -103,6 +119,26 @@ public class Inventory {
         inventoryGrid.getStylesheets().add("resources/main.css");
         inventoryStage.setTitle("Inventory");
         inventoryStage.setScene(inventoryScene);
+    }
+
+    private static void showItemTooltip(Tooltip itemTooltip, double sceneX, double sceneY, Label label) {
+        itemTooltip.show(inventoryScrollPane, sceneX, sceneY);
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.5), event -> {
+        }));
+        timeline.setCycleCount(1);
+        timeline.setOnFinished(event1 -> itemTooltip.hide());
+        label.setOnMouseExited(event -> {
+            timeline.play();
+            label.setId("inventoryItemLabel");
+        });
+        label.setOnMouseEntered(event -> timeline.stop());
+    }
+
+    private static void hideItemTooltip(Label label, Tooltip itemTooltip){
+        label.setOnMouseExited(event -> {
+            label.setId("inventoryItemLabel");
+            itemTooltip.hide();
+        });
     }
 
     public static double returnInventoryWeight(){

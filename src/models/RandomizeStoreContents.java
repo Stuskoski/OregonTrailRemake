@@ -6,6 +6,7 @@ import items.Guns.FlintlockPistol;
 import items.Guns.Rifle;
 import items.ItemInterface;
 import items.food.*;
+import items.meds.LargeBandage;
 import items.meds.SmallBandage;
 
 import java.util.ArrayList;
@@ -45,6 +46,7 @@ public class RandomizeStoreContents {
         startTownList.add(new Boots(10));
         startTownList.add(new FlintlockPistol(1));
         startTownList.add(new Bullets(20));
+        startTownList.add(new SmallBandage(5));
 
 
         for (int i = 0; i < 5; i++) {
@@ -89,7 +91,7 @@ public class RandomizeStoreContents {
                 }
                 case 5: {
                     if(bool5) {
-                        startTownList.add(new SmallBandage(random.nextInt(3) + 1));
+                        startTownList.add(new LargeBandage(random.nextInt(3) + 1));
                         bool5 = false;
                     }
                     break;

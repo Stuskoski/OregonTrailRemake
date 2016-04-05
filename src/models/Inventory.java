@@ -1,6 +1,7 @@
 package models;
 
 import CharacterObjects.Profile;
+import Characters.*;
 import items.Animals.Donkey;
 import items.Animals.Horse;
 import items.Animals.Ox;
@@ -56,6 +57,28 @@ public class Inventory {
 
         //Collections.sort(inventory, ItemInterface);
 
+        //Reset the carrying capacity or it will multiply
+        switch (Profile.getCharClass()){
+            case "Jack of All Trades":
+                Profile.setCarryingCapacity(new JackOfAllTrades().getCarryingCapacity());
+                break;
+            case "Banker":
+                Profile.setCarryingCapacity(new Banker().getCarryingCapacity());
+                break;
+            case "Genius":
+                Profile.setCarryingCapacity(new Genius().getCarryingCapacity());
+                break;
+            case "Hunter":
+                Profile.setCarryingCapacity(new Hunter().getCarryingCapacity());
+                break;
+            case "Lucky MF":
+                Profile.setCarryingCapacity(new LuckyMF().getCarryingCapacity());
+                break;
+            case "Survivalist":
+                Profile.setCarryingCapacity(new Survivalist().getCarryingCapacity());
+                break;
+        }
+
         for (ItemInterface item : inventory){
             if(item.getName().equals("Game Meat")){
                 item.setWeight(item.getWeight()*100);
@@ -83,7 +106,7 @@ public class Inventory {
                 label.setOnMouseEntered(event -> label.setId("inventoryLabelBlack"));
                 label.setOnMouseExited(event1 -> label.setId("inventoryItemLabel"));
                 label.setOnMouseClicked(event -> InventoryItemAction.showActionMenu(item, event.getScreenX(), event.getScreenY()));
-                if(item.getName().equals("Donkey")){
+                if(item.getName().equals("Donkey")){ //BUG HERE, everytime you refresh you increment weight capacity on top of previous calc
                     Profile.setCarryingCapacity(Profile.getCarryingCapacity() + item.getQuantity() * new Donkey(1).getWeightCapacityIncrease());
                 }
                 if(item.getName().equals("American Pure Bred")){

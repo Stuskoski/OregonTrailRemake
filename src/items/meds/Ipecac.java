@@ -5,7 +5,7 @@ import items.ItemInterface;
 /**
  * Created by augustus on 2/9/16.
  */
-public class Ipecac implements ItemInterface {
+public class Ipecac implements MedsInterface {
     private int quantity;
 
     public Ipecac(int quantity){
@@ -24,7 +24,7 @@ public class Ipecac implements ItemInterface {
 
     @Override
     public String getDescription() {
-        return null;
+        return "Sure to expunge anything inside you.";
     }
 
     @Override
@@ -55,5 +55,10 @@ public class Ipecac implements ItemInterface {
     @Override
     public ItemInterface cloneObject() {
         return new Ipecac(1);
+    }
+
+    @Override
+    public String diseaseHealed() {
+        return "Cursed";
     }
 }

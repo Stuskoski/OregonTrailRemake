@@ -5,7 +5,7 @@ import items.ItemInterface;
 /**
  * Created by augustus on 1/28/16.
  */
-public class Horse implements ItemInterface {
+public class Horse implements AnimalInterface {
     private int quantity;
     private double weight;
 
@@ -23,10 +23,7 @@ public class Horse implements ItemInterface {
 
     @Override
     public String getDescription() {
-        return "A powerful steed.  Great for increasing how far you can travel in a day.\n" +
-                "Stats:\n" +
-                "Weight Capacity: +40.00\ns" +
-                "Cost: $" + getPrice();
+        return "A powerful steed.  Great for increasing how far you can travel in a day.";
     }
 
     @Override
@@ -61,5 +58,10 @@ public class Horse implements ItemInterface {
     @Override
     public ItemInterface cloneObject() {
         return new Horse(1);
+    }
+
+    @Override
+    public double getCarryingCapacity() {
+        return 40.00;
     }
 }

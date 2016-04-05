@@ -23,7 +23,7 @@ public class BeefJerky implements ItemInterface {
 
     @Override
     public String getDescription() {
-        return "Tasty BeefJerky";
+        return "Tasty Beef Jerky";
     }
 
     @Override

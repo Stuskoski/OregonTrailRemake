@@ -5,7 +5,7 @@ import items.ItemInterface;
 /**
  * Created by augustus on 2/9/16.
  */
-public class CoughMedicine implements ItemInterface {
+public class CoughMedicine implements MedsInterface {
     private int quantity;
 
     public CoughMedicine(int quantity){
@@ -24,7 +24,7 @@ public class CoughMedicine implements ItemInterface {
 
     @Override
     public String getDescription() {
-        return null;
+        return "COUGH COUgh Cough coug cou co ....you get the point.";
     }
 
     @Override
@@ -55,5 +55,10 @@ public class CoughMedicine implements ItemInterface {
     @Override
     public ItemInterface cloneObject() {
         return new CoughMedicine(1);
+    }
+
+    @Override
+    public String diseaseHealed() {
+        return "Small Pox\nChicken Pox";
     }
 }

@@ -153,7 +153,7 @@ public class StartTownStoreView {
             Tooltip itemTooltip = CreateTooltip.getToolTipFromItem(obj);
             itemName.setOnMouseEntered(event -> {
                 itemName.setId("inventoryLabelBlack");
-                itemTooltip.show(gridPane, event.getScreenX()+15, event.getScreenY());
+                itemTooltip.show(gridPane, event.getScreenX(), event.getScreenY()+itemTooltip.getHeight()/2);
                 itemTooltip.setId("generalToolTip");
                 hideItemTooltip(itemName, itemTooltip);
             });

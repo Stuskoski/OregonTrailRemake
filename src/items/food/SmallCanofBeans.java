@@ -24,7 +24,7 @@ public class SmallCanofBeans implements ItemInterface {
 
     @Override
     public String getDescription() {
-        return null;
+        return "Beans beans the magic fruit...";
     }
 
     @Override

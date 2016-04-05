@@ -5,7 +5,7 @@ import items.ItemInterface;
 /**
  * Created by augustus on 2/9/16.
  */
-public class LargeBandage implements ItemInterface{
+public class LargeBandage implements MedsInterface{
     private int quantity;
 
     public LargeBandage(int quantity){
@@ -24,7 +24,7 @@ public class LargeBandage implements ItemInterface{
 
     @Override
     public String getDescription() {
-        return null;
+        return "Large bandage able to help stabilize a limb.";
     }
 
     @Override
@@ -55,5 +55,10 @@ public class LargeBandage implements ItemInterface{
     @Override
     public ItemInterface cloneObject() {
         return new LargeBandage(1);
+    }
+
+    @Override
+    public String diseaseHealed() {
+        return "Broken Bone";
     }
 }

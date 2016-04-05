@@ -1,11 +1,9 @@
 package views.StaticScenes;
 
-import CharacterObjects.Child1;
-import CharacterObjects.Child2;
-import CharacterObjects.Child3;
-import CharacterObjects.Spouse;
+import CharacterObjects.*;
 import items.ItemInterface;
 import items.food.BeefJerky;
+import items.meds.*;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.geometry.Pos;
@@ -93,30 +91,45 @@ public class InventoryItemAction {
         profileUse.setPrefWidth(300);
         profileUse.setId("mainScreenBtn");
         vBox.getChildren().add(profileUse);
+        profileUse.setOnAction(event -> {
+            useMedItem(item, "Profile");
+        });
 
         if(Spouse.isAlive()){
             Button spouseUse = new Button("Use on " + Spouse.getName() + " (Spouse)");
             spouseUse.setPrefWidth(300);
             spouseUse.setId("mainScreenBtn");
             vBox.getChildren().add(spouseUse);
+            spouseUse.setOnAction(event -> {
+                useMedItem(item, "Spouse");
+            });
         }
         if(Child1.isAlive()){
             Button child1Use = new Button("Use on " + Child1.getName() + " (Child1)");
             child1Use.setPrefWidth(300);
             child1Use.setId("mainScreenBtn");
             vBox.getChildren().add(child1Use);
+            child1Use.setOnAction(event -> {
+                useMedItem(item, "Child1");
+            });
         }
         if(Child2.isAlive()){
             Button child2Use = new Button("Use on " + Child2.getName() + " (Child2)");
             child2Use.setPrefWidth(300);
             child2Use.setId("mainScreenBtn");
             vBox.getChildren().add(child2Use);
+            child2Use.setOnAction(event -> {
+                useMedItem(item, "Child2");
+            });
         }
         if(Child3.isAlive()){
             Button child3Use = new Button("Use on " + Child3.getName() + " (Child3)");
             child3Use.setPrefWidth(300);
             child3Use.setId("mainScreenBtn");
             vBox.getChildren().add(child3Use);
+            child3Use.setOnAction(event -> {
+                useMedItem(item, "Child3");
+            });
         }
 
         vBox.setId("actionMenuScreen");
@@ -137,6 +150,547 @@ public class InventoryItemAction {
 
 
     }
+
+    private static void useMedItem(ItemInterface item, String profile) {
+        switch (profile){
+            case "Profile":
+                switch (item.getName()){
+                    case "Antibiotics":
+                        if(item.getQuantity() == 1){
+                            Inventory.getInventory().remove(item);
+                        }else{
+                            item.setQuantity(item.getQuantity() - 1);
+                        }
+
+                        Inventory.updateInventoryScreen();
+
+                        if(Profile.returnHealthStatusAsString().contains("Syphilis")){
+                            Profile.removeHealthStatusWithChecks(new Antibiotics(0).diseaseHealed());
+                            TimeLineStatusPage.addMessageToPane("Antibiotics have cured your Syphilis", "green");
+                        }
+                        break;
+                    case "Cough Medicine":
+                        if(item.getQuantity() == 1){
+                            Inventory.getInventory().remove(item);
+                        }else{
+                            item.setQuantity(item.getQuantity() - 1);
+                        }
+
+                        Inventory.updateInventoryScreen();
+
+                        if(Profile.returnHealthStatusAsString().contains("Small Pox")){
+                            Profile.removeHealthStatusWithChecks("Small Pox");
+                            TimeLineStatusPage.addMessageToPane("Cough Medicine has cured your Small Pox.", "green");
+                        }
+                        if(Profile.returnHealthStatusAsString().contains("Chicken Pox")){
+                            Profile.removeHealthStatusWithChecks("Chicken Pox");
+                            TimeLineStatusPage.addMessageToPane("Cough Medicine has cured your Chicken Pox.", "green");
+                        }
+                        break;
+                    case "Ipecac":
+                        if(item.getQuantity() == 1){
+                            Inventory.getInventory().remove(item);
+                        }else{
+                            item.setQuantity(item.getQuantity() - 1);
+                        }
+
+                        Inventory.updateInventoryScreen();
+
+                        if(Profile.returnHealthStatusAsString().contains("Cursed")){
+                            Profile.removeHealthStatusWithChecks(new Ipecac(0).diseaseHealed());
+                            TimeLineStatusPage.addMessageToPane("You have thrown up some black stuff...gross", "green");
+                        }
+                        break;
+                    case "Large Bandage":
+                        if(item.getQuantity() == 1){
+                            Inventory.getInventory().remove(item);
+                        }else{
+                            item.setQuantity(item.getQuantity() - 1);
+                        }
+
+                        Inventory.updateInventoryScreen();
+
+                        if(Profile.returnHealthStatusAsString().contains("Broken Bone")){
+                            Profile.removeHealthStatusWithChecks(new LargeBandage(0).diseaseHealed());
+                            TimeLineStatusPage.addMessageToPane("The large bandage has healed your broken leg.", "green");
+                        }
+                        break;
+                    case "Small Bandage":
+                        if(item.getQuantity() == 1){
+                            Inventory.getInventory().remove(item);
+                        }else{
+                            item.setQuantity(item.getQuantity() - 1);
+                        }
+
+                        Inventory.updateInventoryScreen();
+
+                        if(Profile.returnHealthStatusAsString().contains("Herpes")){
+                            Profile.removeHealthStatusWithChecks(new SmallBandage(0).diseaseHealed());
+                            TimeLineStatusPage.addMessageToPane("The small bandage has healed your herp derp.", "green");
+                        }
+
+                        break;
+                    case "Pain Killers":
+                        if(item.getQuantity() == 1){
+                            Inventory.getInventory().remove(item);
+                        }else{
+                            item.setQuantity(item.getQuantity() - 1);
+                        }
+
+                        Inventory.updateInventoryScreen();
+
+                        if(Profile.returnHealthStatusAsString().contains("Broken Bone")){
+                            Profile.removeHealthStatusWithChecks(new PainKillers(0).diseaseHealed());
+                            TimeLineStatusPage.addMessageToPane("The pain killers have healed your broken leg.", "green");
+                        }
+                        break;
+                    case "Splint":
+                        if(item.getQuantity() == 1){
+                            Inventory.getInventory().remove(item);
+                        }else{
+                            item.setQuantity(item.getQuantity() - 1);
+                        }
+
+                        Inventory.updateInventoryScreen();
+
+                        if(Profile.returnHealthStatusAsString().contains("Broken Bone")){
+                            Profile.removeHealthStatusWithChecks(new Splint(0).diseaseHealed());
+                            TimeLineStatusPage.addMessageToPane("The split has set your broken leg.", "green");
+                        }
+                        break;
+                }
+                break;
+            case "Spouse":
+                switch (item.getName()){
+                    case "Antibiotics":
+                        if(item.getQuantity() == 1){
+                            Inventory.getInventory().remove(item);
+                        }else{
+                            item.setQuantity(item.getQuantity() - 1);
+                        }
+
+                        Inventory.updateInventoryScreen();
+
+                        if(Spouse.returnHealthStatusAsString().contains("Syphilis")){
+                            Spouse.removeHealthStatusWithChecks(new Antibiotics(0).diseaseHealed());
+                            TimeLineStatusPage.addMessageToPane("Antibiotics have cured Syphilis for " + Spouse.getName()+".", "green");
+                        }
+                        break;
+                    case "Cough Medicine":
+                        if(item.getQuantity() == 1){
+                            Inventory.getInventory().remove(item);
+                        }else{
+                            item.setQuantity(item.getQuantity() - 1);
+                        }
+
+                        Inventory.updateInventoryScreen();
+
+                        if(Spouse.returnHealthStatusAsString().contains("Small Pox")){
+                            Spouse.removeHealthStatusWithChecks("Small Pox");
+                            TimeLineStatusPage.addMessageToPane("Cough Medicine has cured Small Pox for " + Spouse.getName()+".", "green");
+                        }
+                        if(Spouse.returnHealthStatusAsString().contains("Chicken Pox")){
+                            Spouse.removeHealthStatusWithChecks("Chicken Pox");
+                            TimeLineStatusPage.addMessageToPane("Cough Medicine has cured Chicken Pox for" + Spouse.getName()+".", "green");
+                        }
+                        break;
+                    case "Ipecac":
+                        if(item.getQuantity() == 1){
+                            Inventory.getInventory().remove(item);
+                        }else{
+                            item.setQuantity(item.getQuantity() - 1);
+                        }
+
+                        Inventory.updateInventoryScreen();
+
+                        if(Spouse.returnHealthStatusAsString().contains("Cursed")){
+                            Spouse.removeHealthStatusWithChecks(new Ipecac(0).diseaseHealed());
+                            TimeLineStatusPage.addMessageToPane(Spouse.getName() + " has thrown up some black stuff...gross", "green");
+                        }
+                        break;
+                    case "Large Bandage":
+                        if(item.getQuantity() == 1){
+                            Inventory.getInventory().remove(item);
+                        }else{
+                            item.setQuantity(item.getQuantity() - 1);
+                        }
+
+                        Inventory.updateInventoryScreen();
+
+                        if(Spouse.returnHealthStatusAsString().contains("Broken Bone")){
+                            Spouse.removeHealthStatusWithChecks(new LargeBandage(0).diseaseHealed());
+                            TimeLineStatusPage.addMessageToPane("The large bandage has healed the broken leg for " + Spouse.getName()+".", "green");
+                        }
+                        break;
+                    case "Small Bandage":
+                        if(item.getQuantity() == 1){
+                            Inventory.getInventory().remove(item);
+                        }else{
+                            item.setQuantity(item.getQuantity() - 1);
+                        }
+
+                        Inventory.updateInventoryScreen();
+
+                        if(Spouse.returnHealthStatusAsString().contains("Herpes")){
+                            Spouse.removeHealthStatusWithChecks(new SmallBandage(0).diseaseHealed());
+                            TimeLineStatusPage.addMessageToPane("The small bandage has healed the herp derp for " + Spouse.getName()+".", "green");
+                        }
+
+                        break;
+                    case "Pain Killers":
+                        if(item.getQuantity() == 1){
+                            Inventory.getInventory().remove(item);
+                        }else{
+                            item.setQuantity(item.getQuantity() - 1);
+                        }
+
+                        Inventory.updateInventoryScreen();
+
+                        if(Spouse.returnHealthStatusAsString().contains("Broken Bone")){
+                            Spouse.removeHealthStatusWithChecks(new PainKillers(0).diseaseHealed());
+                            TimeLineStatusPage.addMessageToPane("The pain killers have healed the broken leg for " + Spouse.getName()+".", "green");
+                        }
+                        break;
+                    case "Splint":
+                        if(item.getQuantity() == 1){
+                            Inventory.getInventory().remove(item);
+                        }else{
+                            item.setQuantity(item.getQuantity() - 1);
+                        }
+
+                        Inventory.updateInventoryScreen();
+
+                        if(Spouse.returnHealthStatusAsString().contains("Broken Bone")){
+                            Spouse.removeHealthStatusWithChecks(new Splint(0).diseaseHealed());
+                            TimeLineStatusPage.addMessageToPane("The split has set the broken leg for " + Spouse.getName()+".", "green");
+                        }
+                        break;
+                }
+                break;
+            case "Child1":
+                switch (item.getName()){
+                    case "Antibiotics":
+                        if(item.getQuantity() == 1){
+                            Inventory.getInventory().remove(item);
+                        }else{
+                            item.setQuantity(item.getQuantity() - 1);
+                        }
+
+                        Inventory.updateInventoryScreen();
+
+                        if(Child1.returnHealthStatusAsString().contains("Syphilis")){
+                            Child1.removeHealthStatusWithChecks(new Antibiotics(0).diseaseHealed());
+                            TimeLineStatusPage.addMessageToPane("Antibiotics have cured Syphilis for " + Child1.getName()+".", "green");
+                        }
+                        break;
+                    case "Cough Medicine":
+                        if(item.getQuantity() == 1){
+                            Inventory.getInventory().remove(item);
+                        }else{
+                            item.setQuantity(item.getQuantity() - 1);
+                        }
+
+                        Inventory.updateInventoryScreen();
+
+                        if(Child1.returnHealthStatusAsString().contains("Small Pox")){
+                            Child1.removeHealthStatusWithChecks("Small Pox");
+                            TimeLineStatusPage.addMessageToPane("Cough Medicine has cured Small Pox for " + Child1.getName()+".", "green");
+                        }
+                        if(Child1.returnHealthStatusAsString().contains("Chicken Pox")){
+                            Child1.removeHealthStatusWithChecks("Chicken Pox");
+                            TimeLineStatusPage.addMessageToPane("Cough Medicine has cured Chicken Pox for" + Child1.getName()+".", "green");
+                        }
+                        break;
+                    case "Ipecac":
+                        if(item.getQuantity() == 1){
+                            Inventory.getInventory().remove(item);
+                        }else{
+                            item.setQuantity(item.getQuantity() - 1);
+                        }
+
+                        Inventory.updateInventoryScreen();
+
+                        if(Child1.returnHealthStatusAsString().contains("Cursed")){
+                            Child1.removeHealthStatusWithChecks(new Ipecac(0).diseaseHealed());
+                            TimeLineStatusPage.addMessageToPane(Child1.getName() + " has thrown up some black stuff...gross", "green");
+                        }
+                        break;
+                    case "Large Bandage":
+                        if(item.getQuantity() == 1){
+                            Inventory.getInventory().remove(item);
+                        }else{
+                            item.setQuantity(item.getQuantity() - 1);
+                        }
+
+                        Inventory.updateInventoryScreen();
+
+                        if(Child1.returnHealthStatusAsString().contains("Broken Bone")){
+                            Child1.removeHealthStatusWithChecks(new LargeBandage(0).diseaseHealed());
+                            TimeLineStatusPage.addMessageToPane("The large bandage has healed the broken leg for " + Child1.getName()+".", "green");
+                        }
+                        break;
+                    case "Small Bandage":
+                        if(item.getQuantity() == 1){
+                            Inventory.getInventory().remove(item);
+                        }else{
+                            item.setQuantity(item.getQuantity() - 1);
+                        }
+
+                        Inventory.updateInventoryScreen();
+
+                        if(Child1.returnHealthStatusAsString().contains("Herpes")){
+                            Child1.removeHealthStatusWithChecks(new SmallBandage(0).diseaseHealed());
+                            TimeLineStatusPage.addMessageToPane("The small bandage has healed the herp derp for " + Child1.getName()+".", "green");
+                        }
+
+                        break;
+                    case "Pain Killers":
+                        if(item.getQuantity() == 1){
+                            Inventory.getInventory().remove(item);
+                        }else{
+                            item.setQuantity(item.getQuantity() - 1);
+                        }
+
+                        Inventory.updateInventoryScreen();
+
+                        if(Child1.returnHealthStatusAsString().contains("Broken Bone")){
+                            Child1.removeHealthStatusWithChecks(new PainKillers(0).diseaseHealed());
+                            TimeLineStatusPage.addMessageToPane("The pain killers have healed the broken leg for " + Child1.getName()+".", "green");
+                        }
+                        break;
+                    case "Splint":
+                        if(item.getQuantity() == 1){
+                            Inventory.getInventory().remove(item);
+                        }else{
+                            item.setQuantity(item.getQuantity() - 1);
+                        }
+
+                        Inventory.updateInventoryScreen();
+
+                        if(Child1.returnHealthStatusAsString().contains("Broken Bone")){
+                            Child1.removeHealthStatusWithChecks(new Splint(0).diseaseHealed());
+                            TimeLineStatusPage.addMessageToPane("The split has set the broken leg for " + Child1.getName()+".", "green");
+                        }
+                        break;
+                }
+                break;
+            case "Child2":
+                switch (item.getName()){
+                    case "Antibiotics":
+                        if(item.getQuantity() == 1){
+                            Inventory.getInventory().remove(item);
+                        }else{
+                            item.setQuantity(item.getQuantity() - 1);
+                        }
+
+                        Inventory.updateInventoryScreen();
+
+                        if(Child2.returnHealthStatusAsString().contains("Syphilis")){
+                            Child2.removeHealthStatusWithChecks(new Antibiotics(0).diseaseHealed());
+                            TimeLineStatusPage.addMessageToPane("Antibiotics have cured Syphilis for " + Child2.getName()+".", "green");
+                        }
+                        break;
+                    case "Cough Medicine":
+                        if(item.getQuantity() == 1){
+                            Inventory.getInventory().remove(item);
+                        }else{
+                            item.setQuantity(item.getQuantity() - 1);
+                        }
+
+                        Inventory.updateInventoryScreen();
+
+                        if(Child2.returnHealthStatusAsString().contains("Small Pox")){
+                            Child2.removeHealthStatusWithChecks("Small Pox");
+                            TimeLineStatusPage.addMessageToPane("Cough Medicine has cured Small Pox for " + Child2.getName()+".", "green");
+                        }
+                        if(Child2.returnHealthStatusAsString().contains("Chicken Pox")){
+                            Child2.removeHealthStatusWithChecks("Chicken Pox");
+                            TimeLineStatusPage.addMessageToPane("Cough Medicine has cured Chicken Pox for" + Child2.getName()+".", "green");
+                        }
+                        break;
+                    case "Ipecac":
+                        if(item.getQuantity() == 1){
+                            Inventory.getInventory().remove(item);
+                        }else{
+                            item.setQuantity(item.getQuantity() - 1);
+                        }
+
+                        Inventory.updateInventoryScreen();
+
+                        if(Child2.returnHealthStatusAsString().contains("Cursed")){
+                            Child2.removeHealthStatusWithChecks(new Ipecac(0).diseaseHealed());
+                            TimeLineStatusPage.addMessageToPane(Child2.getName() + " has thrown up some black stuff...gross", "green");
+                        }
+                        break;
+                    case "Large Bandage":
+                        if(item.getQuantity() == 1){
+                            Inventory.getInventory().remove(item);
+                        }else{
+                            item.setQuantity(item.getQuantity() - 1);
+                        }
+
+                        Inventory.updateInventoryScreen();
+
+                        if(Child2.returnHealthStatusAsString().contains("Broken Bone")){
+                            Child2.removeHealthStatusWithChecks(new LargeBandage(0).diseaseHealed());
+                            TimeLineStatusPage.addMessageToPane("The large bandage has healed the broken leg for " + Child2.getName()+".", "green");
+                        }
+                        break;
+                    case "Small Bandage":
+                        if(item.getQuantity() == 1){
+                            Inventory.getInventory().remove(item);
+                        }else{
+                            item.setQuantity(item.getQuantity() - 1);
+                        }
+
+                        Inventory.updateInventoryScreen();
+
+                        if(Child2.returnHealthStatusAsString().contains("Herpes")){
+                            Child2.removeHealthStatusWithChecks(new SmallBandage(0).diseaseHealed());
+                            TimeLineStatusPage.addMessageToPane("The small bandage has healed the herp derp for " + Child2.getName()+".", "green");
+                        }
+
+                        break;
+                    case "Pain Killers":
+                        if(item.getQuantity() == 1){
+                            Inventory.getInventory().remove(item);
+                        }else{
+                            item.setQuantity(item.getQuantity() - 1);
+                        }
+
+                        Inventory.updateInventoryScreen();
+
+                        if(Child2.returnHealthStatusAsString().contains("Broken Bone")){
+                            Child2.removeHealthStatusWithChecks(new PainKillers(0).diseaseHealed());
+                            TimeLineStatusPage.addMessageToPane("The pain killers have healed the broken leg for " + Child2.getName()+".", "green");
+                        }
+                        break;
+                    case "Splint":
+                        if(item.getQuantity() == 1){
+                            Inventory.getInventory().remove(item);
+                        }else{
+                            item.setQuantity(item.getQuantity() - 1);
+                        }
+
+                        Inventory.updateInventoryScreen();
+
+                        if(Child2.returnHealthStatusAsString().contains("Broken Bone")){
+                            Child2.removeHealthStatusWithChecks(new Splint(0).diseaseHealed());
+                            TimeLineStatusPage.addMessageToPane("The split has set the broken leg for " + Child2.getName()+".", "green");
+                        }
+                        break;
+                }
+                break;
+            case "Child3":
+                switch (item.getName()){
+                    case "Antibiotics":
+                        if(item.getQuantity() == 1){
+                            Inventory.getInventory().remove(item);
+                        }else{
+                            item.setQuantity(item.getQuantity() - 1);
+                        }
+
+                        Inventory.updateInventoryScreen();
+
+                        if(Child3.returnHealthStatusAsString().contains("Syphilis")){
+                            Child3.removeHealthStatusWithChecks(new Antibiotics(0).diseaseHealed());
+                            TimeLineStatusPage.addMessageToPane("Antibiotics have cured Syphilis for " + Child3.getName()+".", "green");
+                        }
+                        break;
+                    case "Cough Medicine":
+                        if(item.getQuantity() == 1){
+                            Inventory.getInventory().remove(item);
+                        }else{
+                            item.setQuantity(item.getQuantity() - 1);
+                        }
+
+                        Inventory.updateInventoryScreen();
+
+                        if(Child3.returnHealthStatusAsString().contains("Small Pox")){
+                            Child3.removeHealthStatusWithChecks("Small Pox");
+                            TimeLineStatusPage.addMessageToPane("Cough Medicine has cured Small Pox for " + Child3.getName()+".", "green");
+                        }
+                        if(Child3.returnHealthStatusAsString().contains("Chicken Pox")){
+                            Child3.removeHealthStatusWithChecks("Chicken Pox");
+                            TimeLineStatusPage.addMessageToPane("Cough Medicine has cured Chicken Pox for" + Child3.getName()+".", "green");
+                        }
+                        break;
+                    case "Ipecac":
+                        if(item.getQuantity() == 1){
+                            Inventory.getInventory().remove(item);
+                        }else{
+                            item.setQuantity(item.getQuantity() - 1);
+                        }
+
+                        Inventory.updateInventoryScreen();
+
+                        if(Child3.returnHealthStatusAsString().contains("Cursed")){
+                            Child3.removeHealthStatusWithChecks(new Ipecac(0).diseaseHealed());
+                            TimeLineStatusPage.addMessageToPane(Child3.getName() + " has thrown up some black stuff...gross", "green");
+                        }
+                        break;
+                    case "Large Bandage":
+                        if(item.getQuantity() == 1){
+                            Inventory.getInventory().remove(item);
+                        }else{
+                            item.setQuantity(item.getQuantity() - 1);
+                        }
+
+                        Inventory.updateInventoryScreen();
+
+                        if(Child3.returnHealthStatusAsString().contains("Broken Bone")){
+                            Child3.removeHealthStatusWithChecks(new LargeBandage(0).diseaseHealed());
+                            TimeLineStatusPage.addMessageToPane("The large bandage has healed the broken leg for " + Child3.getName()+".", "green");
+                        }
+                        break;
+                    case "Small Bandage":
+                        if(item.getQuantity() == 1){
+                            Inventory.getInventory().remove(item);
+                        }else{
+                            item.setQuantity(item.getQuantity() - 1);
+                        }
+
+                        Inventory.updateInventoryScreen();
+
+                        if(Child3.returnHealthStatusAsString().contains("Herpes")){
+                            Child3.removeHealthStatusWithChecks(new SmallBandage(0).diseaseHealed());
+                            TimeLineStatusPage.addMessageToPane("The small bandage has healed the herp derp for " + Child3.getName()+".", "green");
+                        }
+
+                        break;
+                    case "Pain Killers":
+                        if(item.getQuantity() == 1){
+                            Inventory.getInventory().remove(item);
+                        }else{
+                            item.setQuantity(item.getQuantity() - 1);
+                        }
+
+                        Inventory.updateInventoryScreen();
+
+                        if(Child3.returnHealthStatusAsString().contains("Broken Bone")){
+                            Child3.removeHealthStatusWithChecks(new PainKillers(0).diseaseHealed());
+                            TimeLineStatusPage.addMessageToPane("The pain killers have healed the broken leg for " + Child3.getName()+".", "green");
+                        }
+                        break;
+                    case "Splint":
+                        if(item.getQuantity() == 1){
+                            Inventory.getInventory().remove(item);
+                        }else{
+                            item.setQuantity(item.getQuantity() - 1);
+                        }
+
+                        Inventory.updateInventoryScreen();
+
+                        if(Child3.returnHealthStatusAsString().contains("Broken Bone")){
+                            Child3.removeHealthStatusWithChecks(new Splint(0).diseaseHealed());
+                            TimeLineStatusPage.addMessageToPane("The split has set the broken leg for " + Child3.getName()+".", "green");
+                        }
+                        break;
+                }
+                break;
+        }
+    }
+
     private static void showDelMenu(ItemInterface item, double screenX, double screenY){
         VBox vBox = new VBox(3);
         Scene scene = new Scene(vBox, 185, 95);

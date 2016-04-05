@@ -18,6 +18,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import Start.Main;
 import models.AddKeyListenerToScene;
+import models.CreateTooltip;
 import models.Inventory;
 
 /**
@@ -223,19 +224,19 @@ public class StartTownStableView {
             }
         });
 
-        Tooltip donkeyTooltip = new Tooltip(new Donkey(0).getDescription());
+        Tooltip donkeyTooltip = CreateTooltip.getToolTipFromItem(new Donkey(0));
         buyDonkey.setOnMouseEntered(event1 -> {
             donkeyTooltip.show(gridPane, event1.getScreenX(), event1.getScreenY()+donkeyTooltip.getHeight()/2);
             donkeyTooltip.setId("generalToolTip");
             hideItemTooltip(buyDonkey, donkeyTooltip);
         });
-        Tooltip horseTooltip = new Tooltip(new Horse(0).getDescription());
+        Tooltip horseTooltip = CreateTooltip.getToolTipFromItem(new Horse(0));
         buyHorse.setOnMouseEntered(event1 -> {
             horseTooltip.show(gridPane, event1.getScreenX(), event1.getScreenY()+horseTooltip.getHeight()/2);
             horseTooltip.setId("generalToolTip");
             hideItemTooltip(buyHorse, horseTooltip);
         });
-        Tooltip oxTooltip = new Tooltip(new Ox(0).getDescription());
+        Tooltip oxTooltip = CreateTooltip.getToolTipFromItem(new Ox(0));
         buyOx.setOnMouseEntered(event1 -> {
             oxTooltip.show(gridPane, event1.getScreenX(), event1.getScreenY()+oxTooltip.getHeight()/2);
             oxTooltip.setId("generalToolTip");

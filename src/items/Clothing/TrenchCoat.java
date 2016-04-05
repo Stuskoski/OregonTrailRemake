@@ -5,7 +5,7 @@ import items.ItemInterface;
 /**
  * Created by augustus on 2/9/16.
  */
-public class TrenchCoat implements ItemInterface {
+public class TrenchCoat implements ClothingInterface {
     private int quantity;
 
     public TrenchCoat(int quantity){
@@ -23,7 +23,7 @@ public class TrenchCoat implements ItemInterface {
 
     @Override
     public String getDescription() {
-        return null;
+        return "Standard issue military Trench Coat.  Provides excellent warmth.";
     }
 
     @Override
@@ -54,5 +54,10 @@ public class TrenchCoat implements ItemInterface {
     @Override
     public ItemInterface cloneObject() {
         return new TrenchCoat(1);
+    }
+
+    @Override
+    public int getWarmth() {
+        return 15;
     }
 }

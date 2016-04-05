@@ -6,7 +6,7 @@ import items.food.SmallCanofBeans;
 /**
  * Created by augustus on 2/9/16.
  */
-public class SmallBandage implements ItemInterface {
+public class SmallBandage implements MedsInterface {
     private int quantity;
 
     public SmallBandage(int quantity){
@@ -25,7 +25,7 @@ public class SmallBandage implements ItemInterface {
 
     @Override
     public String getDescription() {
-        return null;
+        return "Small bandage used to cover some wounds.";
     }
 
     @Override
@@ -56,5 +56,10 @@ public class SmallBandage implements ItemInterface {
     @Override
     public ItemInterface cloneObject() {
         return new SmallBandage(1);
+    }
+
+    @Override
+    public String diseaseHealed() {
+        return "Herpes";
     }
 }

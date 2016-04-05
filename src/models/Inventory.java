@@ -65,7 +65,7 @@ public class Inventory {
                 label.setId("inventoryItemLabel");
                 vBox.getChildren().add(label);
 
-                Tooltip itemTooltip = new Tooltip(item.getDescription());
+                Tooltip itemTooltip = CreateTooltip.getToolTipFromItem(item);
                 label.setOnMouseEntered(event -> {
                     label.setId("inventoryLabelBlack");
                     itemTooltip.show(inventoryScrollPane, event.getScreenX()+15, event.getScreenY()-5);
@@ -94,7 +94,7 @@ public class Inventory {
                 }
 
                 //Sometimes the tooltip gets in the way so it resets....need to offset it
-                Tooltip itemTooltip = new Tooltip(item.getDescription());
+                Tooltip itemTooltip = CreateTooltip.getToolTipFromItem(item);
                 label.setOnMouseEntered(event -> {
                     label.setId("inventoryLabelBlack");
                     itemTooltip.show(inventoryScrollPane, event.getScreenX()+15, event.getScreenY()-5);

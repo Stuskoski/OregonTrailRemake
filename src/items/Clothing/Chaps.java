@@ -5,7 +5,7 @@ import items.ItemInterface;
 /**
  * Created by augustus on 2/9/16.
  */
-public class Chaps implements ItemInterface {
+public class Chaps implements ClothingInterface {
     private int quantity;
 
     public Chaps(int quantity){
@@ -23,7 +23,7 @@ public class Chaps implements ItemInterface {
 
     @Override
     public String getDescription() {
-        return null;
+        return "Leather Chaps to protect your legs.";
     }
 
     @Override
@@ -54,5 +54,10 @@ public class Chaps implements ItemInterface {
     @Override
     public ItemInterface cloneObject() {
         return new Chaps(1);
+    }
+
+    @Override
+    public int getWarmth() {
+        return 5;
     }
 }

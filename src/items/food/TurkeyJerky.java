@@ -24,7 +24,7 @@ public class TurkeyJerky implements ItemInterface {
 
     @Override
     public String getDescription() {
-        return null;
+        return "Delicious Turkey Jerky.";
     }
 
     @Override

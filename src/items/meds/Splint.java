@@ -5,7 +5,7 @@ import items.ItemInterface;
 /**
  * Created by augustus on 2/9/16.
  */
-public class Splint implements ItemInterface {
+public class Splint implements MedsInterface {
     private int quantity;
 
     public Splint(int quantity){
@@ -24,7 +24,7 @@ public class Splint implements ItemInterface {
 
     @Override
     public String getDescription() {
-        return null;
+        return "Excellent splint used to help mend bones.";
     }
 
     @Override
@@ -55,5 +55,10 @@ public class Splint implements ItemInterface {
     @Override
     public ItemInterface cloneObject() {
         return new Splint(1);
+    }
+
+    @Override
+    public String diseaseHealed() {
+        return "Broken Bone";
     }
 }

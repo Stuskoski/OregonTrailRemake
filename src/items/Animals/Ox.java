@@ -6,7 +6,7 @@ import items.ItemInterface;
  * Created by augustus on 1/28/16.
  * The powerful Oxen
  */
-public class Ox implements ItemInterface {
+public class Ox implements AnimalInterface {
     private int quantity;
     private double weight;
 
@@ -24,10 +24,7 @@ public class Ox implements ItemInterface {
 
     @Override
     public String getDescription() {
-        return "A large English Ox.  One of the best.  Essential for traveling the Oregon Trail.\n" +
-                "Stats:\n" +
-                "Weight Capacity: +50.00\n" +
-                "Cost: $" + getPrice();
+        return "A large English Ox.  One of the best.  Essential for traveling the Oregon Trail.";
     }
 
     @Override
@@ -62,5 +59,10 @@ public class Ox implements ItemInterface {
     @Override
     public ItemInterface cloneObject() {
         return new Ox(1);
+    }
+
+    @Override
+    public double getCarryingCapacity() {
+        return 50.00;
     }
 }

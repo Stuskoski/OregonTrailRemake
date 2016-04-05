@@ -6,7 +6,7 @@ import items.ItemInterface;
  * Created by augustus on 1/28/16.
  * Donkey and all his details.
  */
-public class Donkey implements ItemInterface {
+public class Donkey implements AnimalInterface {
     private int quantity;
     private double weight;
 
@@ -26,10 +26,7 @@ public class Donkey implements ItemInterface {
 
     @Override
     public String getDescription() {
-        return "El Burro! Donkeys are great for increasing carrying capacity.\n" +
-                "Stats:\n" +
-                "Weight Capacity: +45.00\n" +
-                "Cost: $" + getPrice();
+        return "El Burro! Donkeys are great for increasing carrying capacity.";
     }
 
     @Override
@@ -64,5 +61,10 @@ public class Donkey implements ItemInterface {
     @Override
     public ItemInterface cloneObject() {
         return new Donkey(1);
+    }
+
+    @Override
+    public double getCarryingCapacity() {
+        return 45.00;
     }
 }

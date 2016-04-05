@@ -2,7 +2,6 @@ package views.StaticScenes;
 
 import CharacterObjects.*;
 import items.ItemInterface;
-import items.food.BeefJerky;
 import items.meds.*;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -11,9 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import models.Inventory;

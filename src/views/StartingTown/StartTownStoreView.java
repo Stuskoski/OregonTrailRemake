@@ -304,7 +304,8 @@ public class StartTownStoreView {
             HBox hbox = new HBox(10);
             Label quantity = new Label(String.valueOf(obj.getQuantity()));
             quantity.setId("cartItems");
-            Label name = new Label(obj.getName() + " (" + obj.getWeight()*obj.getQuantity() + " lbs)");
+            DecimalFormat df = new DecimalFormat("####0.00");
+            Label name = new Label(obj.getName() + " (" + df.format(obj.getWeight()*obj.getQuantity()) + " lbs)");
             name.setId("cartItems");
             hbox.getChildren().addAll(quantity, name);
             hbox.setAlignment(Pos.CENTER);

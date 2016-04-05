@@ -106,7 +106,7 @@ public class Inventory {
                 label.setOnMouseEntered(event -> label.setId("inventoryLabelBlack"));
                 label.setOnMouseExited(event1 -> label.setId("inventoryItemLabel"));
                 label.setOnMouseClicked(event -> InventoryItemAction.showActionMenu(item, event.getScreenX(), event.getScreenY()));
-                if(item.getName().equals("Donkey")){ //BUG HERE, everytime you refresh you increment weight capacity on top of previous calc
+                if(item.getName().equals("Donkey")){ //BUG HERE, everytime you refresh you increment weight capacity on top of previous calc...fixed w/ switch above
                     Profile.setCarryingCapacity(Profile.getCarryingCapacity() + item.getQuantity() * new Donkey(1).getWeightCapacityIncrease());
                 }
                 if(item.getName().equals("American Pure Bred")){

@@ -7,6 +7,7 @@ import items.ItemInterface;
  */
 public class CoughMedicine implements MedsInterface {
     private int quantity;
+    private double weight = 0.75;
 
     public CoughMedicine(int quantity){
         this.quantity = quantity;
@@ -14,12 +15,12 @@ public class CoughMedicine implements MedsInterface {
 
     @Override
     public double getWeight() {
-        return 0;
+        return weight;
     }
 
     @Override
     public void setWeight(double weight) {
-
+        this.weight = weight;
     }
 
     @Override
@@ -29,7 +30,7 @@ public class CoughMedicine implements MedsInterface {
 
     @Override
     public double getPrice() {
-        return 0;
+        return 30.00;
     }
 
     @Override

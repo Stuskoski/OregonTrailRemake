@@ -24,6 +24,11 @@ public class ShotGun implements GunInterface {
 
     }
 
+    public javafx.scene.image.Image getImage() {
+        javafx.scene.image.Image image = new javafx.scene.image.Image("resources/HuntingMiniGame/shotgun.png");
+        return image;
+    }
+
     @Override
     public String getDescription() {
         return "Standard shotgun, low rate of fire but multiple bullets.";

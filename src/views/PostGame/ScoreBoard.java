@@ -76,7 +76,7 @@ public class ScoreBoard {
 
         scoreTimeline.stop();
 
-        Label timeTaken = new Label("Time taken to beat the game: " + counter + " seconds(" + (10000 - counter) + ")");
+        Label timeTaken = new Label("Time taken to beat the game: " + counter + " seconds(" + (10000 - (counter*4)) + ")");
         Label animalsKilled = new Label("Animals killed: " + Profile.getAnimalsKilled() + "(" + (Profile.getAnimalsKilled() * 50) + ")"); //need to implement
         Label familyAlive = new Label("Family members still alive: " + getFamilyAlive() + "(" + (getFamilyAlive() * 100) + ")");
         Label moneyLeft = new Label("Money Left: " + Profile.getMoney() + "(" + (Math.round(Profile.getMoney()) * 2) + ")");

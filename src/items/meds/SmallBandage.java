@@ -8,6 +8,7 @@ import items.food.SmallCanofBeans;
  */
 public class SmallBandage implements MedsInterface {
     private int quantity;
+    private double weight = 0.25;
 
     public SmallBandage(int quantity){
         this.quantity = quantity;
@@ -15,12 +16,12 @@ public class SmallBandage implements MedsInterface {
 
     @Override
     public double getWeight() {
-        return 0;
+        return weight;
     }
 
     @Override
     public void setWeight(double weight) {
-
+        this.weight = weight;
     }
 
     @Override
@@ -30,7 +31,7 @@ public class SmallBandage implements MedsInterface {
 
     @Override
     public double getPrice() {
-        return 0;
+        return 10.00;
     }
 
     @Override

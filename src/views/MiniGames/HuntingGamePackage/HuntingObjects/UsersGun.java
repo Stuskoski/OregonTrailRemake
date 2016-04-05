@@ -92,8 +92,7 @@ public class UsersGun {
         final double finalReloadTime1 = reloadTime;
         huntingScene.setOnMouseMoved(event1 -> {
             gc1.clearRect(0, HuntingGame.getScene().getHeight()-150, HuntingGame.getScene().getWidth(), 175);
-            Image image = new Image("resources/HuntingMiniGame/shotgun.png");
-            gc1.drawImage(image, event1.getX()-45, HuntingGame.getScene().getHeight()-125);
+            gc1.drawImage(gun.getImage(), event1.getX()-45, HuntingGame.getScene().getHeight()-125);
 
             final double finalReloadTime = finalReloadTime1;
             huntingScene.setOnMouseClicked(event2 -> {

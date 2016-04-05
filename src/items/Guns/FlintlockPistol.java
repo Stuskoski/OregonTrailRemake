@@ -28,6 +28,11 @@ public class FlintlockPistol implements GunInterface {
         return "Standard flintlock pistol. Cheap but fires slow.";
     }
 
+    public javafx.scene.image.Image getImage() {
+        javafx.scene.image.Image image = new javafx.scene.image.Image("resources/HuntingMiniGame/shotgun.png");
+        return image;
+    }
+
     @Override
     public double getPrice() {
         return 5.00;

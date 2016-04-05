@@ -1,6 +1,10 @@
 package items.Guns;
 
 import items.ItemInterface;
+import javafx.scene.image.*;
+
+import java.awt.*;
+import java.awt.Image;
 
 /**
  * Created by augustus on 2/16/16.
@@ -60,6 +64,12 @@ public class AlienRifle implements GunInterface {
     @Override
     public int getQuantity() {
         return quantity;
+    }
+
+    @Override
+    public javafx.scene.image.Image getImage() {
+        javafx.scene.image.Image image = new javafx.scene.image.Image("resources/HuntingMiniGame/alienRifle2.png");
+        return image;
     }
 
     @Override

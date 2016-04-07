@@ -7,19 +7,19 @@ import javafx.animation.Timeline;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Line;
-import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 import models.CalculateRandomChanceForHealth;
 import views.HittingTheTrail.TrailControlPanel;
-import views.HittingTheTrail.TrailObjects.Wagon;
+import views.MiniGames.FinalRiverGame.Objects.RockObj;
 import views.MiniGames.FinalRiverGame.Objects.WagonObj;
 import views.PostGame.ScoreBoard;
 import views.PostGame.YouLoseScreen;
 import views.StaticScenes.TrailMap;
-
-import java.sql.Time;
+import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created by augustus on 4/6/16.
@@ -29,7 +29,9 @@ import java.sql.Time;
 public class FinalRiverScene {
     public static Timeline timeToWin;
     public static Timeline drawingAndCollisionDetection;
+    public static ArrayList<RockObj> riverObjCollision = new ArrayList<>();
     public static void ShowFinalRiverGame(){
+
 
         //Stop Timers
         TrailControlPanel.consumeTimelineFast.stop();
@@ -64,7 +66,7 @@ public class FinalRiverScene {
     }
 
     private static void drawWagonAndAddListenersForIt(Scene scene, GraphicsContext gc1, Pane pane) {
-        int speed = 3;
+        int speed = 5;
         int clearRectXtraSpace = 50;
 
         Line lineL = new Line(12.0, 599.0, 311.0, 3.0);
@@ -97,7 +99,6 @@ public class FinalRiverScene {
 
 
 
-
         drawingAndCollisionDetection = new Timeline(new KeyFrame(Duration.millis(0.25), timelineEvent -> {
             gc1.clearRect(WagonObj.x-clearRectXtraSpace, WagonObj.y-clearRectXtraSpace, WagonObj.w+clearRectXtraSpace*2, WagonObj.h+clearRectXtraSpace*2);
             gc1.drawImage(WagonObj.img, WagonObj.x, WagonObj.y, WagonObj.w, WagonObj.h);
@@ -108,12 +109,10 @@ public class FinalRiverScene {
             if(WagonObj.y <= 0){
                 up.stop();
                 WagonObj.y = 1;
-                System.out.println("edge top");
             }
             if((WagonObj.y+WagonObj.h) >= 599.0){
                 down.stop();
                 WagonObj.y = (int) (599.0 - WagonObj.h) - 1;
-                System.out.println("edge bottom");
             }
 
             if(WagonObj.x <= getXCordForLeft() || WagonObj.x >= getXCordForRight()){
@@ -194,6 +193,108 @@ public class FinalRiverScene {
     }
 
     private static void generateRandomRocks(GraphicsContext gc2) {
+        Random rand = new Random();
+        int max = 25;
+        int min = 15;
+        ArrayList<RockObj> riverObjs = new ArrayList<>();
+
+        //number of objects
+        int randomNum = randomIntBtwTwoPoints(max, min);
+        System.out.println(randomNum + "objs created");
+        //create the number of objects
+        for(int i=0; i<randomNum; i++){
+            switch (rand.nextInt(4)){
+                case 0:{
+                    riverObjs.add(new RockObj(new Image("resources/FinalRiverGame/bolder1.png"), randomIntBtwTwoPoints(527,311), 0, randomIntBtwTwoPoints(80,40), randomIntBtwTwoPoints(80,40), randomIntBtwTwoPoints(55, 0), returnNegOrPos(), randomDoubleBtwnTwoPoints(1.0, 2.0)));
+                    break;
+                }
+                case 1:{
+                    riverObjs.add(new RockObj(new Image("resources/FinalRiverGame/bolder2.png"), randomIntBtwTwoPoints(527,311), 0, randomIntBtwTwoPoints(80,40), randomIntBtwTwoPoints(80,40), randomIntBtwTwoPoints(55, 0), returnNegOrPos(), randomDoubleBtwnTwoPoints(1.0, 2.0)));
+                    break;
+                }
+                case 2:{
+                    riverObjs.add(new RockObj(new Image("resources/FinalRiverGame/bolder3.png"), randomIntBtwTwoPoints(527,311), 0, randomIntBtwTwoPoints(80,40), randomIntBtwTwoPoints(80,40), randomIntBtwTwoPoints(55, 0), returnNegOrPos(), randomDoubleBtwnTwoPoints(1.0, 2.0)));
+                    break;
+                }
+                case 3:{
+                    riverObjs.add(new RockObj(new Image("resources/FinalRiverGame/log1.png"), randomIntBtwTwoPoints(527,311), 0, randomIntBtwTwoPoints(40,30), randomIntBtwTwoPoints(20,10), randomIntBtwTwoPoints(55, 0), returnNegOrPos(), randomDoubleBtwnTwoPoints(1.0, 2.0)));
+                    break;
+                }
+            }
+        }
+
+        final int[] counter = {0};
+        Timeline time = new Timeline(new KeyFrame(Duration.seconds(1), timelineEvent -> {
+            for (RockObj obj : riverObjs) {
+                System.out.println(counter[0]);
+                if(obj.startTime == counter[0]){
+                    System.out.println("Obj started at " + counter[0]);
+                    riverObjCollision.add(obj); //if its time then add it to collision detection
+                }
+            }
+            counter[0]++;
+        }));
+        time.setCycleCount(60);
+        time.play();
+
+        Timeline time2 = new Timeline(new KeyFrame(Duration.millis(randomIntBtwTwoPoints(15, 7)), timelineEvent -> {
+            for (RockObj obj : riverObjCollision) {
+                gc2.clearRect(obj.x-1, obj.y-1, obj.w+1, obj.h+1);
+                obj.x += obj.xDec;
+                obj.y += obj.yDec;
+                gc2.drawImage(obj.img, obj.x, obj.y, obj.w, obj.h);
+            }
+        }));
+        time2.setCycleCount(Animation.INDEFINITE);
+        time2.play();
+
+    }
+    private static double returnNegOrPos(){
+        Random random = new Random();
+
+        switch (random.nextInt(10)){
+            case 0:{
+                return -0.1;
+            }
+            case 1:{
+                return 0.1;
+            }
+            case 2:{
+                return -0.2;
+            }
+            case 3:{
+                return 0.2;
+            }
+            case 4:{
+                return -0.3;
+            }
+            case 5:{
+                return 0.3;
+            }
+            case 6:{
+                return -0.4;
+            }
+            case 7:{
+                return 0.4;
+            }
+            case 8:{
+                return -0.5;
+            }
+            case 9:{
+                return 0.5;
+            }
+        }
+        return 0.5;
+    }
+
+    private static int randomIntBtwTwoPoints(int max, int min){
+        Random rand = new Random();
+        return rand.nextInt((max - min) + 1) + min;
+    }
+
+    private static double randomDoubleBtwnTwoPoints(double max, double min){
+        Random rand = new Random();
+        return min + (max - min) * rand.nextDouble();
     }
 
     //Survive 60 seconds to win

@@ -5,6 +5,8 @@ import javafx.application.Platform;
 import javafx.stage.Stage;
 import views.PreGame.MainScreenView;
 
+import java.io.IOException;
+
 public class Main extends Application {
 
     private static Stage mainPrimaryStage;
@@ -28,9 +30,10 @@ public class Main extends Application {
             Platform.exit();
             System.exit(0);
         });
-        mainPrimaryStage.show();
+
         mainPrimaryStage.setX(850);
         mainPrimaryStage.setY(100);
+        mainPrimaryStage.show();
     }
 
 

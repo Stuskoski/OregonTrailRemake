@@ -59,7 +59,6 @@ public class FamilyStatus {
         gridPane.add(vBox1, 0, 2);
         gridPane.add(vBox2, 1, 2);
 
-
         scene = new Scene(gridPane, 450, 175);
         stage.setScene(scene);
         //stage.show();

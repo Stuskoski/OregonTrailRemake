@@ -29,7 +29,7 @@ public class CreateTooltip {
                 break;
             case "clothing":
                 ClothingInterface clothing = (ClothingInterface) item;
-                string += ("\nWarmth: " + clothing.getWarmth());
+                string += ("\nProtection: " + clothing.getWarmth());
                 break;
             case "guns":
                 if(!item.getName().equals("Bullet")) {

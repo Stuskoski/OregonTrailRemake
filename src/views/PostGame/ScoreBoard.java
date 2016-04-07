@@ -56,13 +56,8 @@ public class ScoreBoard {
         Inventory.getInventoryStage().hide();
         FamilyStatus.stage.hide();
 
-        //stop all timers
-        TrailControlPanel.consumeTimelineFast.stop();
-        TrailControlPanel.consumeTimelineSlow.stop();
-        TrailControlPanel.gameTimeline.stop();
+        //stop scoreboard timer
         scoreTimeline.stop();
-        CalculateRandomChanceForHealth.statusRemoveTimeline.pause();
-        TrailMap.timeline.stop();
 
         GridPane gridPane = new GridPane();
 

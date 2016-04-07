@@ -332,7 +332,14 @@
     -fx-background-position: center center;
     -fx-background-color: black;
 }
-/*---------------------------------------------------------------*/
+/*----------------------Final River Game-------------------------*/
+#FinalRiverGameBack{
+    -fx-background-image: url("FinalRiverGame/riverGame.gif");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+    -fx-background-color: black;
+}
 /*---------------------------------------------------------------*/
 /*---------------------------------------------------------------*/
 /*---------------------------------------------------------------*/

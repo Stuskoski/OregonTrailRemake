@@ -26,6 +26,7 @@ import models.ChanceToRemoveAilmentWhenResting;
 import models.Inventory;
 import views.HittingTheTrail.TrailObjects.HorseForWagon;
 import views.HittingTheTrail.TrailObjects.Wagon;
+import views.MiniGames.FinalRiverGame.FinalRiverScene;
 import views.MiniGames.HuntingGamePackage.HuntingGame;
 import views.PostGame.ScoreBoard;
 import views.StaticScenes.FamilyStatus;
@@ -113,7 +114,9 @@ public class TrailControlPanel {
             TimeLineStatusPage.addMessageToPane(String.format("%.2f", (((double)counterForMap/(double)gameTimeline.getCycleCount())*100.00))+"% done", "white");
         }));
         gameTimeline.setCycleCount(125);
-        gameTimeline.setOnFinished(event1 -> ScoreBoard.showScoreBoard());
+        gameTimeline.setOnFinished(event1 -> {
+            FinalRiverScene.ShowFinalRiverGame();
+        });
 
 
 
@@ -247,6 +250,7 @@ public class TrailControlPanel {
                 TrailMap.stage.show();
             }
 
+            FinalRiverScene.ShowFinalRiverGame();
             Inventory.getInventory().add(new Shirt(42));
             Inventory.getInventory().add(new AlienRifle(1));
             Inventory.getInventory().add(new Bullets(20));

@@ -103,6 +103,27 @@ public class TrailControlPanel {
         controlGridPane.add(goHunt, 15, 0);
         controlGridPane.add(familyStatus, 15, 15);
 
+        Button testButton = new Button("Btn For Test");
+        testButton.setPrefWidth(125);
+        testButton.setId("mainScreenBtn");
+        controlGridPane.add(testButton, 7, 15);
+        testButton.setOnAction(event2 -> {
+            FinalRiverScene.ShowFinalRiverGame();
+            Inventory.getInventory().add(new Shirt(42));
+            Inventory.getInventory().add(new AlienRifle(1));
+            Inventory.getInventory().add(new Bullets(20));
+            Profile.hashSet.clear();
+            Spouse.hashSet.clear();
+            Child1.hashSet.clear();
+            Child2.hashSet.clear();
+            Child3.hashSet.clear();
+            Profile.hashSet.add("Healthy");
+            Spouse.hashSet.add("Healthy");
+            Child1.hashSet.add("Healthy");
+            Child2.hashSet.add("Healthy");
+            Child3.hashSet.add("Healthy");
+        });
+
         /**
          * Timeline that controls when the game ends.
          */
@@ -249,21 +270,6 @@ public class TrailControlPanel {
             if(!TrailMap.stage.isShowing()) {
                 TrailMap.stage.show();
             }
-
-            FinalRiverScene.ShowFinalRiverGame();
-            Inventory.getInventory().add(new Shirt(42));
-            Inventory.getInventory().add(new AlienRifle(1));
-            Inventory.getInventory().add(new Bullets(20));
-            Profile.hashSet.clear();
-            Spouse.hashSet.clear();
-            Child1.hashSet.clear();
-            Child2.hashSet.clear();
-            Child3.hashSet.clear();
-            Profile.hashSet.add("Healthy");
-            Spouse.hashSet.add("Healthy");
-            Child1.hashSet.add("Healthy");
-            Child2.hashSet.add("Healthy");
-            Child3.hashSet.add("Healthy");
             FamilyStatus.showFamilyStatus();
         });
 

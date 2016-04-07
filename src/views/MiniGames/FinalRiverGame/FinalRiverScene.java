@@ -105,13 +105,24 @@ public class FinalRiverScene {
             //get your x cord with your given y.
             //int x = getXCordForLeft(WagonObj.y);
 
+            if(WagonObj.y <= 0){
+                up.stop();
+                WagonObj.y = 1;
+                System.out.println("edge top");
+            }
+            if((WagonObj.y+WagonObj.h) >= 599.0){
+                down.stop();
+                WagonObj.y = (int) (599.0 - WagonObj.h) - 1;
+                System.out.println("edge bottom");
+            }
+
             if(WagonObj.x <= getXCordForLeft() || WagonObj.x >= getXCordForRight()){
                 left.stop();
                 down.stop();
                 right.stop();
                 up.stop();
 
-                //YouLoseScreen.showYouLoseScene();
+                YouLoseScreen.showYouLoseScene();
             }
 
 
@@ -158,18 +169,18 @@ public class FinalRiverScene {
             }
         });
 
-        scene.setOnKeyReleased(event -> {
-            left.stop();
-            down.stop();
-            right.stop();
-            up.stop();
+        //scene.setOnKeyReleased(event -> {
+        //    left.stop();
+       //     down.stop();
+       //     right.stop();
+        //    up.stop();
 
-        });
+        //});
     }
 
     private static int getXCordForRight() {
         double temp = (599 - WagonObj.y) / 1.99164;
-        return (int) (792 -temp);
+        return (int) (790 -temp);
         //(599 - WagonObj.y) / 1.9933 = temp
         //x = 12 + temp
     }
